@@ -24,4 +24,4 @@ class Person:
 
     def set_desc(self, desc: str):
         # takes a string and sets it as the value of _desc
-        self._desc = descgit 
+        self._desc = desc
