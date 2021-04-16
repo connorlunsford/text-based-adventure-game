@@ -1,5 +1,6 @@
 import json
 import room
+import person
 
 
 class Converter:
@@ -99,9 +100,36 @@ class Converter:
         """takes a json object and converts it to a Feature object"""
         return
 
-    def person_to_json(self):
+    def person_to_json(self, person_obj: person.Person):
         """takes a person object and converts it to a json object"""
-        return
+        # a list to store the object ids
+        obj_list = []
+        # runs through list of objects and gets the ids
+        for obj in room_obj.get_objects():
+            obj_list.append(obj.get_id())
+        # a list to store the feat ids
+        feat_list = []
+        # runs through list of features and gets the ids
+        for feat in room_obj.get_features():
+            feat_list.append(feat.get_id())
+        # a list to store the person ids
+        people_list = []
+        # runs through list of people and gets the ids
+        for person in room_obj.get_people():
+            people_list.append(person.get_id())
+        # stores everything in a dict
+        room_dict = {
+            'id': room_obj.get_id(),
+            'desc': room_obj.get_desc(),
+            'sdesc': room_obj.get_sdesc(),
+            'visited': room_obj.get_visited(),
+            'objects': obj_list,
+            'features': feat_list,
+            'people': people_list,
+            'connections': room_obj.get_connections(),
+        }
+        # converts the dict to json file and returns it
+        return json.dumps(room_dict)
 
     def person_from_json(self):
         """takes a json object and converts it to a Person object"""
