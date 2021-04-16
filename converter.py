@@ -102,35 +102,22 @@ class Converter:
 
     def person_to_json(self, person_obj: person.Person):
         """takes a person object and converts it to a json object"""
-        # a list to store the object ids
-        obj_list = []
-        # runs through list of objects and gets the ids
-        for obj in room_obj.get_objects():
-            obj_list.append(obj.get_id())
-        # a list to store the feat ids
-        feat_list = []
-        # runs through list of features and gets the ids
-        for feat in room_obj.get_features():
-            feat_list.append(feat.get_id())
-        # a list to store the person ids
-        people_list = []
-        # runs through list of people and gets the ids
-        for person in room_obj.get_people():
-            people_list.append(person.get_id())
         # stores everything in a dict
-        room_dict = {
-            'id': room_obj.get_id(),
-            'desc': room_obj.get_desc(),
-            'sdesc': room_obj.get_sdesc(),
-            'visited': room_obj.get_visited(),
-            'objects': obj_list,
-            'features': feat_list,
-            'people': people_list,
-            'connections': room_obj.get_connections(),
+        person_dict = {
+            'id': person_obj.get_id(),
+            'desc': person_obj.get_desc(),
         }
         # converts the dict to json file and returns it
-        return json.dumps(room_dict)
+        return json.dumps(person_dict)
 
-    def person_from_json(self):
-        """takes a json object and converts it to a Person object"""
-        return
+    def person_from_json(self, json_person):
+        """takes a json object and converts it into a person object"""
+        # turns the json file into a dict
+        person_dict = json.loads(json_person)
+        # gets all the basic variables from the dict
+        id = person_dict.get('id')
+        desc = person_dict.get('desc')
+        # creates a new person with the variables
+        new_person = person.Person(id, desc)
+        # returns the new_room new_person as a Person object
+        return new_person
