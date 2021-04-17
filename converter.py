@@ -1,5 +1,6 @@
 import json
 import room
+import person
 
 
 class Converter:
@@ -99,10 +100,24 @@ class Converter:
         """takes a json object and converts it to a Feature object"""
         return
 
-    def person_to_json(self):
+    def person_to_json(self, person_obj: person.Person):
         """takes a person object and converts it to a json object"""
-        return
+        # stores everything in a dict
+        person_dict = {
+            'id': person_obj.get_id(),
+            'desc': person_obj.get_desc(),
+        }
+        # converts the dict to json file and returns it
+        return json.dumps(person_dict)
 
-    def person_from_json(self):
-        """takes a json object and converts it to a Person object"""
-        return
+    def person_from_json(self, json_person):
+        """takes a json object and converts it into a person object"""
+        # turns the json file into a dict
+        person_dict = json.loads(json_person)
+        # gets all the basic variables from the dict
+        id = person_dict.get('id')
+        desc = person_dict.get('desc')
+        # creates a new person with the variables
+        new_person = person.Person(id, desc)
+        # returns the new_room new_person as a Person object
+        return new_person
