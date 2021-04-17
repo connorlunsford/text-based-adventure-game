@@ -23,6 +23,8 @@ class Room:
         self._people = []
         # contains a list of connections in the form of Room ids
         self._connections = []
+        # contains a dict of possible responses for certain commands
+        self._verbs = {}
 
     # methods for managing ID
 
@@ -170,3 +172,32 @@ class Room:
         and sets self.connections to this list"""
         self._connections = connections
         return True
+
+    # methods for managing self.verbs
+
+    def set_verbs(self, verbs: dict):
+        """takes a dict of verbs as keys with possible responses as the value.
+        Saves that dict as the self.verbs variable"""
+        self._verbs = verbs
+        return True
+
+    def get_verbs(self):
+        """returns the dicts stored in the self._verbs value. Keys are all
+        possible verbs/commands, value is the response for those commands"""
+        return self._verbs
+
+    def add_verb(self, verb: str, response: str):
+        """Takes a verb and a response, adds it to self._verbs as a key and
+        a value paid"""
+        self._verbs[verb] = response
+        return True
+
+    def remove_verb(self, verb):
+        """Takes a verb and removes it and the response from self._verbs"""
+        self._verbs.pop(verb)
+        return True
+
+    def get_response(self, verb):
+        """takes a verb in reference to a room and returns the response that
+        the verb holds"""
+        return self._verbs[verb]
