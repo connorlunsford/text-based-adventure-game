@@ -64,4 +64,3 @@ class Feature:
     def remove_interactions(self, action: str):
         """removes all key-value pairs in the interactions dictionary"""
         self._interactions.clear()
-        
