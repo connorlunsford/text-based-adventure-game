@@ -37,6 +37,7 @@ class Converter:
             'features': feat_list,
             'people': people_list,
             'connections': room_obj.get_connections(),
+            'verbs': room_obj.get_verbs()
         }
         # converts the dict to json file and returns it
         return json.dumps(room_dict)
@@ -80,6 +81,9 @@ class Converter:
 
         # adds all the room ids in 'connections' into self._connections
         new_room.set_connections(room_dict.get('connections'))
+
+        # adds the verbs from 'verbs' into self._verbs
+        new_room.set_verbs(room_dict.get('verbs'))
 
         # returns the new_room object as a Room object
         return new_room
