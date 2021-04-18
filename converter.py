@@ -1,6 +1,7 @@
 import json
-import room
 import person
+import player
+import room
 
 
 class Converter:
@@ -119,5 +120,31 @@ class Converter:
         desc = person_dict.get('desc')
         # creates a new person with the variables
         new_person = person.Person(id, desc)
-        # returns the new_room new_person as a Person object
+        # returns the new_person as a Person object
         return new_person
+
+    def player_to_json(self, player_obj: player.Player):
+        """takes a player object and converts it to a json object"""
+        # stores everything in a dict
+        player_dict = {
+            'id': player_obj.get_id(),
+            'inventory': player_obj.get_inventory(),
+        }
+        # converts the dict to json file and returns it
+        return json.dumps(player_dict)
+
+    def player_from_json(self, json_player):
+        """takes a json object and converts it into a player object"""
+        # turns the json file into a dict
+        player_dict = json.loads(json_player)
+        # gets all the basic variables from the dict
+        id = player_dict.get('id')
+        # creates a new person with the variables
+        new_player = player.Player(id)
+        # gets list of objects in inventory
+        inventory_list = player_dict.get('inventory')
+        # appends each object to the inventory
+        for item in inventory_list:
+            new_player.add_to_inventory(item)
+        # returns the new_player as a Person object
+        return new_player
