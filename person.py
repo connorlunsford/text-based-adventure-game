@@ -5,7 +5,7 @@ class Person:
         self._id = id
         # contains the description of the person
         self._desc = desc
-    
+
     # methods for managing ID
 
     def get_id(self):
@@ -14,7 +14,7 @@ class Person:
 
     def set_id(self, id: str):
         # takes a string and sets it as the value of self._id
-        return self._id        
+        return self._id
 
     # methods for managing desc
 
