@@ -17,7 +17,7 @@ class Player:
 
     def set_id(self, id: str):
         # takes a string and sets it as the value of self._id
-        return self._id     
+        return self._id
 
     # methods for managing inventory
 
