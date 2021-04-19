@@ -148,6 +148,7 @@ class Converter:
         person_dict = {
             'id': person_obj.get_id(),
             'desc': person_obj.get_desc(),
+            'verbs': person_obj.get_verbs()
         }
         # converts the dict to json file and returns it
         return json.dumps(person_dict)
@@ -161,6 +162,8 @@ class Converter:
         desc = person_dict.get('desc')
         # creates a new person with the variables
         new_person = person.Person(id, desc)
+        # adds the verbs from 'verbs' into self._verbs
+        new_person.set_verbs(person_dict.get('verbs'))
         # returns the new_person as a Person object
         return new_person
 
