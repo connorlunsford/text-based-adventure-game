@@ -149,5 +149,5 @@ class Converter:
             if obj.get_id() in self._objects:
                 # appends the object to the player's inventory
                 new_player.add_to_inventory(obj)
-        # returns the new_player as a Player object
+        # returns new_player as a Player object
         return new_player
