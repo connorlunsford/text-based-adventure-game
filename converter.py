@@ -1,8 +1,9 @@
 import json
 import person
+import feature
+import object
 import player
 import room
-
 
 class Converter:
 
@@ -89,21 +90,57 @@ class Converter:
         # returns the new_room object as a Room object
         return new_room
 
-    def obj_to_json(self):
+    def obj_to_json(self, object_obj: object.Object):
         """takes an Object object and converts it to a json object"""
-        return
+        # store each of object_obj's atttributes in a dict
+        object_dict = {
+            'id': object_obj.get_id(),
+            'name': object_obj.get_named()
+        }
+        
+        # converts the dict to a json file and returns it
+        return json.dumps(object_dict)
 
-    def obj_from_json(self):
+    def obj_from_json(self, json_object):
         """takes a json object and converts it to an Object object"""
-        return
+        # turns the json file into a dict
+        object_dict = json.loads(json_object)
+        # gets all the basic variables/attributes from the dict
+        id = object_dict.get('id')
+        name = object_dict.get('name')
 
-    def feat_to_json(self):
+        # creates a new Objectobject with the specified attributes
+        new_object = object.Object(id, name)
+
+        # returns the new_object object as an Object object
+        return new_object
+
+    def feat_to_json(self, feat_obj: feature.Feature):
         """takes a Feature object and converts it to a json object"""
-        return
+        # store each of feat_obj's attributes in a dict
+        feature_dict = {
+            'id': feat_obj.get_id(),
+            'name': feat_obj.get_name(),
+            'interactions': feat_obj.get_interactions()
+        }
+        
+        # converts the dict to an json file and returns it
+        return json.dumps(feature_dict)
 
-    def feat_from_json(self):
+    def feat_from_json(self, json_feature):
         """takes a json object and converts it to a Feature object"""
-        return
+        # turns the json file into a dict
+        feature_dict = json.loads(json_feature)
+        # gets all the basic variables/attributes from the dict
+        id = feature_dict.get('id')
+        name = feature_dict.get('name')
+        interactions = feature_dict.get('interactions')
+        
+        # creates a new Feature object with the specified attributes
+        new_feature = feature.Feature(id, name, interactions)
+        
+        # returns the new_feature object as a Feature object
+        return new_feature
 
     def person_to_json(self, person_obj: person.Person):
         """takes a person object and converts it to a json object"""
