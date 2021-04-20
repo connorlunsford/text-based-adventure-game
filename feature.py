@@ -1,70 +1,44 @@
-class Feature:
+from interactable import Interactable
+from object import Object
 
-    def __init__(self, id: str, name: str, interactions: dict, condition1=False, condition2=False):
-        # the ID of the feature
-        self._id = id
-        # the name of the feature
-        self._name = name
-        # a dictionary of interactions associated with the feature
-        # in the form 'action': 'result'
-        # E.g., {'look at': 'A large, cluttered desk.', 'eat': 'You
-        # can't eat this.'}
-        self._interactions = interactions
-        # an optional condition variable
-        self._condition1 = condition1
-        # an optional condition variable
-        self._condition2 = condition2
+class Feature(Object):
 
-    # methods for managing ID
-    def get_id(self):
-        """returns the value of self._id"""
-        return self._id
+    def __init__(self, id: str, name: str, desc: str, interactions: dict, hidden: bool):
+        super().__init__(id, name, desc, interactions, hidden)
 
-    # methods for managing name
-    def get_name(self):
-        """returns the value of self._name"""
-        return self._name
+    # methods for managing the optional condition variable
+    def add_condition(self, condition: bool):
+        """adds an optional condition attribute to the object with the value
+        provided in the condition argument if self._condition does not already
+        exist; otherwise, this method does nothing"""
+        if not hasattr(self, "_condition"):
+            self._condition = condition
 
-    def set_name(self, name: str):
-        """changes the value of self._name to the value provided in
-        the name argument"""
-        self._name = name
+    def get_condition(self):
+        """returns the value of self._condition if self._condition exists;
+        otherwise, this method does nothing"""
+        if hasattr(self, "_condition"):
+            return self._condition
 
-    # methods for managing interactions
-    def get_interaction(self, action: str):
-        """returns the value associated with the key provided in the 
-        action argument; if the key does not exist, this method returns
-        None"""
-        if action in self._interactions:
-            return self._interactions[action]
-        else:
-            return None
+    def set_condition(self, condition: bool):
+        """changes the value of self._condition to the value provided in
+        the condition argument if self._condition exists; otherwise,
+        this method does nothing"""
+        if hasattr(self, "_condition"):
+            self._condition = condition
 
-    def add_interaction(self, action: str, result: str):
-        """adds the key-value pair provided in the action and result
-        arguments to the dictionary; if they key already exists in the 
-        dictionary, this method does nothing"""
-        if action not in self._interactions:
-            self._interactions[action] = result
+    def switch_condition(self):
+        """changes the value of self._condition to the opposite of its
+        current Boolean value if self._condition exists; otherwise, 
+        this method does nothing"""
+        if hasattr(self, "_condition"):
+            if self._condition:
+                self._condition = False
+            else:
+                self._condition = True
 
-    def set_interaction(self, action: str, result: str):
-        """changes the value associated with the key provided in the
-        action argument to the value of the result argument; if the key 
-        does not exist, this method does nothing"""
-        if action in self._interactions:
-            self._interactions[action] = result
-
-    def remove_interaction(self, action: str):
-        """removes the key-value pair associated with the key provided
-        in the action argument; if the key does not exist, this method 
-        does nothing"""
-        if action in self._interactions:
-           del self._interactions[action]
-
-    def get_interactions(self):
-        """returns the entire interactions dictionary"""
-        return self._interactions
-
-    def remove_interactions(self, action: str):
-        """removes all key-value pairs in the interactions dictionary"""
-        self._interactions.clear()
+    def remove_condition(self):
+        """removes the optional condition attribute from an object if
+        self._condition exists; otherwise, this method does nothing"""
+        if hasattr(self, "_condition"):
+            del(self._condition)

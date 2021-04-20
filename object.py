@@ -20,7 +20,7 @@ class Object(Interactable):
 
     def switch_hidden(self):
         """changes the value of self._hidden to the opposite of its
-        current value"""
+        current Boolean value"""
         if self._hidden:
             self._hidden = False
         else:
