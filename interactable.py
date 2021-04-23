@@ -73,6 +73,6 @@ class Interactable:
         """returns the entire interactions dictionary"""
         return self._interactions
 
-    def remove_interactions(self, action: str):
+    def remove_interactions(self):
         """removes all key-value pairs in the interactions dictionary"""
         self._interactions.clear()
