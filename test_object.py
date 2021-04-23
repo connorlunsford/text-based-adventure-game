@@ -14,22 +14,26 @@ class TestCase(unittest.TestCase):
     def tearDown(self):
         del self.test_object
 
-    # testing methods for managing hidden
+    # testing methods associated with the hidden attribute
     def test_get_hidden(self):
-        self.assertEqual(self.test_object.get_hidden(), True)
+        """get_hidden successfully returns the value of the hidden attribute"""
+        self.assertTrue(self.test_object.get_hidden())
 
     def test_set_hidden(self):
+        """set_hidden successfully sets the value of the hidden attribute to the provided value"""
         self.test_object.set_hidden(False)
-        self.assertEqual(self.test_object.get_hidden(), False)
+        self.assertFalse(self.test_object.get_hidden())
 
     def test_switch_hidden1(self):
+        """switch_hidden successfully switches the value of the hidden attribute from True to False"""
         self.test_object.switch_hidden()
-        self.assertEqual(self.test_object.get_hidden(), False)
+        self.assertFalse(self.test_object.get_hidden())
 
     def test_switch_hidden2(self):
+        """switch_hidden successfully switches the value of the hidden attribute from False to True"""
         self.test_object.switch_hidden()
         self.test_object.switch_hidden()
-        self.assertEqual(self.test_object.get_hidden(), True)
+        self.assertTrue(self.test_object.get_hidden())
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
