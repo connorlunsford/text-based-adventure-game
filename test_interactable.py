@@ -82,5 +82,5 @@ class TestCase(unittest.TestCase):
         self.test_interactable.remove_interactions()
         self.assertEqual(self.test_interactable.get_interactions(), {})
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)
