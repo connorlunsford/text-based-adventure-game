@@ -1,3 +1,15 @@
+class InteractableException(Exception):
+    """Base exception class for the Interactable class"""
+    pass
+
+class KeyDoesNotExist(InteractableException):
+    """Raised when key does not exist"""
+    pass
+
+class KeyAlreadyExists(InteractableException):
+    """Raised when key already exists"""
+    pass
+
 class Interactable:
 
     def __init__(self, id: str, name: str, desc: str, interactions: dict):
@@ -8,7 +20,7 @@ class Interactable:
         # a description of the interactable
         self._desc = desc
         # a dictionary of interactions associated with the interactable
-        # in the form 'verb': 'result'
+        # in the form 'verb': 'response'
         # E.g., {'look at': 'A woman's silver earring.', 'eat': 'You
         # can't eat this.'}
         self._interactions = interactions
@@ -41,33 +53,39 @@ class Interactable:
     # methods for managing interactions
     def get_interaction(self, action: str):
         """returns the value associated with the key provided in the 
-        action argument; if the key does not exist, this method returns
-        None"""
+        action argument; if the key does not exist, this method raises 
+        an exception"""
         if action in self._interactions:
             return self._interactions[action]
         else:
-            return None
+            raise KeyDoesNotExist
 
     def add_interaction(self, action: str, result: str):
         """adds the key-value pair provided in the action and result
         arguments to the dictionary; if they key already exists in the 
-        dictionary, this method does nothing"""
+        dictionary, this method raises an exception"""
         if action not in self._interactions:
             self._interactions[action] = result
+        else:
+            raise KeyAlreadyExists
 
     def set_interaction(self, action: str, result: str):
         """changes the value associated with the key provided in the
         action argument to the value of the result argument; if the key 
-        does not exist, this method does nothing"""
+        does not exist, this raises an exception"""
         if action in self._interactions:
             self._interactions[action] = result
+        else:
+            raise KeyDoesNotExist
 
     def remove_interaction(self, action: str):
         """removes the key-value pair associated with the key provided
         in the action argument; if the key does not exist, this method 
-        does nothing"""
+        raises an exception"""
         if action in self._interactions:
            del self._interactions[action]
+        else:
+            raise KeyDoesNotExist
 
     def get_interactions(self):
         """returns the entire interactions dictionary"""

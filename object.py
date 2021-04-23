@@ -1,5 +1,9 @@
 from interactable import Interactable
 
+class ObjectException(Exception):
+    """Base exception class for the Object class"""
+    pass
+
 class Object(Interactable):
 
     def __init__(self, id: str, name: str, desc: str, interactions: dict,
@@ -8,7 +12,7 @@ class Object(Interactable):
         # the visible/hidden status of the object
         self._hidden = hidden
 
-    # methods for managing hidden
+    # testing methods used for managing hidden
     def get_hidden(self):
         """returns the value of self._hidden"""
         return self._hidden
