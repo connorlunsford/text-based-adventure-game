@@ -24,7 +24,7 @@ class Room:
         # contains a list of connections in the form of Room ids
         self._connections = []
         # contains a dict of possible responses for certain commands
-        self._verbs = {}
+        self._interactions = {}
 
     # methods for managing ID
 
@@ -100,6 +100,11 @@ class Room:
         """returns the list of Object objects in self.objects"""
         return self._objects
 
+    def set_objects(self, objects: list):
+        """takes a list of ids and sets self.objects to the list"""
+        self._objects = objects
+        return True
+
     # methods for managing self.features
 
     def add_feature(self, feat: feature.Feature):
@@ -122,6 +127,11 @@ class Room:
         """returns a list of Feature objects in self.features"""
         return self._features
 
+    def set_features(self, features: list):
+        """takes a list of ids and sets self.features to the list"""
+        self._features = features
+        return True
+
     # methods for managing self.people
 
     def add_person(self, per: person.Person):
@@ -143,6 +153,11 @@ class Room:
     def get_people(self):
         """returns a list of Person objects in self.people"""
         return self._people
+
+    def set_people(self, people: list):
+        """takes a list of ids and sets self.people to the list"""
+        self._people = people
+        return True
 
     # methods for managing self.connections
 
@@ -173,31 +188,39 @@ class Room:
         self._connections = connections
         return True
 
-    # methods for managing self.verbs
+    # methods for managing self.interactions
 
-    def set_verbs(self, verbs: dict):
-        """takes a dict of verbs as keys with possible responses as the value.
-        Saves that dict as the self.verbs variable"""
-        self._verbs = verbs
+    def set_interactions(self, interactions: dict):
+        """takes a dict of interactions as keys with possible responses as the value.
+        Saves that dict as the self.interactions variable"""
+        self._interactions = interactions
         return True
 
-    def get_verbs(self):
-        """returns the dicts stored in the self._verbs value. Keys are all
-        possible verbs/commands, value is the response for those commands"""
-        return self._verbs
+    def get_interactions(self):
+        """returns the dicts stored in the self._interactions value. Keys are all
+        possible interactions/commands, value is the response for those commands"""
+        return self._interactions
 
-    def add_verb(self, verb: str, response: str):
-        """Takes a verb and a response, adds it to self._verbs as a key and
+    def add_interaction(self, interaction: str, response: str):
+        """Takes a interaction and a response, adds it to self._interactions as a key and
         a value paid"""
-        self._verbs[verb] = response
+        self._interactions[interaction] = response
         return True
 
-    def remove_verb(self, verb):
-        """Takes a verb and removes it and the response from self._verbs"""
-        self._verbs.pop(verb)
+    def remove_interaction(self, interaction: str):
+        """Takes a interaction and removes it and the response from self._interactions"""
+        self._interactions.pop(interaction)
         return True
 
-    def get_response(self, verb):
-        """takes a verb in reference to a room and returns the response that
-        the verb holds"""
-        return self._verbs[verb]
+    def get_interaction(self, interaction: str, sub1=None, sub2=None):
+        """takes a interaction in reference to a room and returns the response that
+        the interaction holds"""
+        # interaction is the first level of the dict
+        # sub1 is the second level of the dict
+        # sub2 is the third level of the dict if needed
+        if sub1 is None:
+            return self._interactions[interaction]
+        elif sub2 is None and sub1 is not None:
+            return self._interactions[interaction][sub1]
+        else:
+            return self._interactions[interaction][sub1][sub2]
