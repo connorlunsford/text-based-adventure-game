@@ -148,9 +148,7 @@ class Converter:
         id = player_dict.get('id')
         # creates a new person with the variables
         new_player = player.Player(id)
-        # gets list of objects in inventory
-        inventory_list = player_dict.get('inventory')
-        # set's the list as the player's inventory
-        new_player.set_inventory(inventory_list)
+        # sets the inventory list as the player's inventory
+        new_player.set_inventory(player_dict['inventory'])
         # returns new_player as a Player object
         return new_player
