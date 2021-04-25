@@ -9,7 +9,7 @@ class Player:
         # string will store the player's name once obtained
         """need to check when we'll get the name, if this should be part 
         of the initializer (converter will need to be updated too)"""
-        self._name
+        self._name = None
         # contains list of objects player currently has, will start empty
         self._inventory = []
 
@@ -43,6 +43,9 @@ class Player:
         """takes a list of inventory items and sets it as the player's
         inventory. Useful for loading from json"""
         self._inventory = inventory_list
+
+    def delete_all_inventory(self):
+        self._inventory.clear()
 
     def add_to_inventory(self, obj: object.Object):
         # takes an Object object and adds it to the player's inventory list
