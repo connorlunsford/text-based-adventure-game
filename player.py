@@ -56,7 +56,7 @@ class Player:
         """takes an Object object and checks to see if it's in the inventory.
         Removes it from the inventory and returns True if found, otherwise
         returns False"""
-        if object in self._inventory:
+        if obj in self._inventory:
             self._inventory.remove(obj)
             return True
         else:
@@ -65,7 +65,7 @@ class Player:
     def search_inventory(self, obj: object.Object):
         """takes an Object object and checks to see if it's in the inventory
         and returns True if found"""
-        if object in self._inventory:
+        if obj in self._inventory:
             return True
         else:
             return False
