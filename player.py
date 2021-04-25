@@ -17,13 +17,18 @@ class Player:
 
     def set_id(self, id: str):
         # takes a string and sets it as the value of self._id
-        return self._id
+        self._id = id
 
     # methods for managing inventory
 
     def get_inventory(self):
         # returns the list of items the player has
         return self._inventory
+
+    def set_inventory(self, inventory_list: list):
+        """takes a list of inventory items and sets it as the player's
+        inventory. Useful for loading from json"""
+        self._inventory = inventory_list
 
     def add_to_inventory(self, obj: object.Object):
         # takes an Object object and adds it to the player's inventory list

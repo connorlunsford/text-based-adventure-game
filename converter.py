@@ -150,11 +150,7 @@ class Converter:
         new_player = player.Player(id)
         # gets list of objects in inventory
         inventory_list = player_dict.get('inventory')
-        # runs through db of objects to validate
-        for obj in inventory_list:
-            # if it's a valid object
-            if obj.get_id() in self._objects:
-                # appends the object to the player's inventory
-                new_player.add_to_inventory(obj)
+        # set's the list as the player's inventory
+        new_player.set_inventory(inventory_list)
         # returns new_player as a Player object
         return new_player
