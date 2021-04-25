@@ -58,7 +58,10 @@ class Converter:
         # store each of object_obj's atttributes in a dict
         object_dict = {
             'id': object_obj.get_id(),
-            'name': object_obj.get_named()
+            'name': object_obj.get_named(),
+            'desc': object_obj.get_desc(),
+            'interactions': object_obj.get_interactions(),
+            'hidden': object_obj.get_hidden()
         }
 
         # converts the dict to a json file and returns it
@@ -71,9 +74,12 @@ class Converter:
         # gets all the basic variables/attributes from the dict
         id = object_dict.get('id')
         name = object_dict.get('name')
+        desc = object_dict.get('desc')
+        interactions = object_dict.get('interactions')
+        hidden = object_dict.get('hidden')
 
-        # creates a new Objectobject with the specified attributes
-        new_object = object.Object(id, name)
+        # creates a new Object object with the specified attributes
+        new_object = object.Object(id, name, desc, interactions, hidden)
 
         # returns the new_object object as an Object object
         return new_object
@@ -84,7 +90,9 @@ class Converter:
         feature_dict = {
             'id': feat_obj.get_id(),
             'name': feat_obj.get_name(),
-            'interactions': feat_obj.get_interactions()
+            'desc': feat_obj.get_desc(),
+            'interactions': feat_obj.get_interactions(),
+            'hidden': feat_obj.get_hidden()
         }
 
         # converts the dict to an json file and returns it
@@ -97,10 +105,12 @@ class Converter:
         # gets all the basic variables/attributes from the dict
         id = feature_dict.get('id')
         name = feature_dict.get('name')
+        desc = feature_dict.get('desc')
         interactions = feature_dict.get('interactions')
+        hidden = feature_dict.get('hidden')
 
         # creates a new Feature object with the specified attributes
-        new_feature = feature.Feature(id, name, interactions)
+        new_feature = feature.Feature(id, name, desc, interactions, hidden)
 
         # returns the new_feature object as a Feature object
         return new_feature
