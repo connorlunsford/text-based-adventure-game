@@ -6,7 +6,7 @@ class Player:
     def __init__(self, id: str):
         # contains id for the player
         self._id = id
-        # contains list of objects player currently has
+        # contains list of objects player currently has, will start empty
         self._inventory = []
 
     # methods for managing ID

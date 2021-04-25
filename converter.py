@@ -144,11 +144,18 @@ class Converter:
         """takes a json object and converts it into a player object"""
         # turns the json file into a dict
         player_dict = json.loads(json_player)
-        # gets all the basic variables from the dict
-        id = player_dict.get('id')
-        # creates a new person with the variables
-        new_player = player.Player(id)
-        # sets the inventory list as the player's inventory
-        new_player.set_inventory(player_dict['inventory'])
+        # checks to make sure there's an id in the dict
+        if player_dict['id']:
+            # creates a new player object using that id
+            new_player = player.Player(player_dict['id'])
+        else: 
+            """need to see if there's another way we want to handle this (print
+            a message?)"""
+            # cannot create a player without an id
+            return False
+        # checks to see if inventory in json
+        if player_dict['inventory']:
+            # sets the inventory list as the player's inventory
+            new_player.set_inventory(player_dict['inventory'])
         # returns new_player as a Player object
         return new_player
