@@ -6,6 +6,10 @@ class Player:
     def __init__(self, id: str):
         # contains id for the player
         self._id = id
+        # string will store the player's name once obtained
+        """need to check when we'll get the name, if this should be part 
+        of the initializer (converter will need to be updated too)"""
+        self._name
         # contains list of objects player currently has, will start empty
         self._inventory = []
 
@@ -18,6 +22,16 @@ class Player:
     def set_id(self, id: str):
         # takes a string and sets it as the value of self._id
         self._id = id
+
+    # methods for managing name
+
+    def get_name(self):
+        # returns the value of self._name
+        return self._name
+
+    def set_name(self, name: str):
+        # takes a string and sets it as the value of self._name
+        self._name = name
 
     # methods for managing inventory
 

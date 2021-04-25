@@ -135,6 +135,7 @@ class Converter:
         # stores everything in a dict
         player_dict = {
             'id': player_obj.get_id(),
+            'name': player_obj.get_name(),
             'inventory': player_obj.get_inventory(),
         }
         # converts the dict to json file and returns it
@@ -153,7 +154,11 @@ class Converter:
             a message?)"""
             # cannot create a player without an id
             return False
-        # checks to see if inventory in json
+        # checks to see if name in json/dict
+        if player_dict['name']:
+            # sets the name as the player's name
+            new_player.set_name(player_dict['name'])
+        # checks to see if inventory in json/dict
         if player_dict['inventory']:
             # sets the inventory list as the player's inventory
             new_player.set_inventory(player_dict['inventory'])
