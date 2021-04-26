@@ -116,27 +116,30 @@ class Converter:
         return new_feature
 
     def person_to_json(self, person_obj: person.Person):
-        """takes a person object and converts it to a json object"""
+        """takes a Person object and converts it to a json object"""
         # stores everything in a dict
         person_dict = {
             'id': person_obj.get_id(),
+            'name': person_obj.get_name(),
             'desc': person_obj.get_desc(),
-            'verbs': person_obj.get_verbs()
+            'verbs': person_obj.get_interactions()
         }
         # converts the dict to json file and returns it
         return json.dumps(person_dict)
 
     def person_from_json(self, json_person):
-        """takes a json object and converts it into a person object"""
+        """takes a json object and converts it into a Person object"""
         # turns the json file into a dict
         person_dict = json.loads(json_person)
         # gets all the basic variables from the dict
-        id = person_dict.get('id')
-        desc = person_dict.get('desc')
+        """since we're controlling the input/json files, all attributes
+        should be present, not adding validation at this time"""
+        id = person_dict['id']
+        name = person_dict['name']
+        desc = person_dict['desc']
+        interactions = person_dict['interactions']
         # creates a new person with the variables
-        new_person = person.Person(id, desc)
-        # adds the verbs from 'verbs' into self._verbs
-        new_person.set_verbs(person_dict.get('verbs'))
+        new_person = person.Person(id, name, desc, interactions)
         # returns the new_person as a Person object
         return new_person
 
