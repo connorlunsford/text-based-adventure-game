@@ -1,7 +1,95 @@
+class ParserException(Exception):
+    """Base exception class for the Parser class"""
+    pass
+
 class Parser:
 
     def __init__(self):
         return
+
+    # methods for managing a prepositions text file
+    def add_prepositions(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_prepositions"):
+            self._prepositions = file_contents
+            #setattr(self, attribute_name, file_contents)
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException
+
+    def set_prepositions(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_prepositions"):
+            self._prepositions = file_contents
+            #setattr(self, attribute_name, file_contents)
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException        
+
+    def delete_prepositions(self):
+        if hasattr(self, "_prepositions"):
+            del(self._prepositions)
+            #delattr(self, attribute_name)
+        else:
+            raise ParserException
+
+    # methods for managing a special commands text file
+    def add_special_commands(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_special_commands"):
+            self._special_commands = file_contents
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException
+
+    def set_special_commands(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_special_commands"):
+            self._special_commands = file_contents
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException        
+
+    def delete_special_commands(self):
+        if hasattr(self, "_special_commands"):
+            del(self._special_commands)
+        else:
+            raise ParserException
+
+    # methods for managing a connections text file
+    def add_connections(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_connections"):
+            self._connections = file_contents
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException
+
+    def set_connections(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = fp.read()
+        if not hasattr(self, "_connections"):
+            self._connections = file_contents
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException        
+
+    def delete_connections(self):
+        if hasattr(self, "_connections"):
+            del(self._connections)
+        else:
+            raise ParserException
 
     def parse(self, inp: str):
         """this should take a phrase and return a list containing a command in

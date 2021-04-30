@@ -12,7 +12,7 @@ class Object(Interactable):
         # the visible/hidden status of the object
         self._hidden = hidden
 
-    # testing methods used for managing hidden
+    # methods for managing object
     def get_hidden(self):
         """returns the value of self._hidden"""
         return self._hidden
