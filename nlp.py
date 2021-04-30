@@ -6,6 +6,11 @@ class Parser:
     def parse(self, inp: str):
         """this should take a phrase and return a list containing a command in
         spot 0, and an object/feature/person id in spot 1 and potentially 2"""
+
+        """will this be calling all the other methods in order, using the 
+        previous method's output as the input? Or how are we handling all
+        the various steps?"""
+    
         return [inp]
 
     def find_killer(self, killer):
@@ -20,7 +25,8 @@ class Parser:
         """Takes user input as a string, converts to lower case, removes all
         punctuation, and tokenizes to separate individual words. Credit for this
         method: https://stackoverflow.com/questions/9797357/dividing-a-string-at-various-punctuation-marks-using-split/33393581
-        This will split hyphenated words though."""
+        This will split hyphenated words, but I don't think that's an issue
+        in this game."""
         lower_input = input.lower()
         words = "".join((char if char.isalpha() else " ") for char in lower_input).split()
         return words
@@ -37,8 +43,35 @@ class Parser:
 
     def remove_stopwords(self, words: list):
         """takes a list of words and removes stopwords"""
+
         # hard-coded for development and testing, will use external file later
-        stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', 'couldn', 'didn', 'doesn', 'hadn', 'hasn', 'haven', 'isn', 'ma', 'mightn', 'mustn', 'needn', 'shan', 'shouldn', 'wasn', 'weren', 'won', 'wouldn']
+
+        """ NOTE: This currently removes 's' which is useful because that will
+        be leftover after tokenizing contractions. However, if we decide to 
+        accept 'n', 's', 'e', and 'w' for directions then this will need to be
+        adjusted. That is not part of the requirements though, so I suggest
+        we don't allow them. Otherwise, at the moment, I'm not sure how to deal
+        with a leftover 's' vs 's' for 'south'."""
+
+        """TODO: are we going to have a special case for 'it' in the classify
+        stage? If so, it will also need to be removed from this list"""
+
+        stopwords = ['a', 'again', 'ain', 'all', 'am', 'an', 'and', 'any',
+         'are', 'aren', 'as', 'be', 'because', 'been', 'being', 'both', 'but',
+         'can', 'couldn', 'd', 'did', 'didn', 'do', 'does', 'doesn', 'doing',
+         'don', 'during', 'each', 'few', 'further', 'had', 'hadn', 'has',
+         'hasn', 'have', 'haven', 'having', 'he', 'her', 'here', 'hers',
+         'herself', 'him', 'himself', 'his', 'how', 'i', 'if', 'is', 'isn',
+         'it', 'its', 'itself', 'just', 'll', 'm', 'ma', 'me', 'mightn', 'more',
+         'most', 'mustn', 'my', 'myself', 'needn', 'no', 'nor', 'not', 'now',
+         'o', 'once', 'only', 'or', 'other', 'our', 'ours', 'ourselves', 'own',
+         're', 's', 'same', 'shan', 'she', 'should', 'shouldn', 'so', 'some',
+         'such', 't', 'than', 'that', 'the', 'their', 'theirs', 'them',
+         'themselves', 'then', 'there', 'these', 'they', 'this', 'those',
+         'too', 've', 'very', 'was', 'wasn', 'we', 'were', 'weren', 'what',
+         'when', 'where', 'which', 'while', 'who', 'whom', 'why', 'will',
+         'with', 'won', 'wouldn', 'y', 'you', 'your', 'yours', 'yourself',
+         'yourselves']
         words_no_stopwords = []
         for word in words:
             if word not in stopwords:
@@ -57,7 +90,7 @@ class Parser:
         # sample dictionary for dev/testing. 
         """ TODO: need to compose full list of words we want the game to recognize"""
         
-        game_dictionary = ["get", "take", "look", "earring", "pick"]
+        game_dictionary = ["get", "take", "look", "earring", "pick", "up"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:

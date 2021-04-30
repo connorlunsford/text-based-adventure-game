@@ -12,8 +12,8 @@ class TestParserClass(unittest.TestCase):
         self.text2 = "Pick up the earring"
         self.text2_tokenized = ["pick", "up", "the", "earring"]
         self.text2_tok_no_article = ["pick", "up", "earring"]
-        self.text2_tok_no_art_or_stop = ["pick", "earring"]
-        self.text2_final_words = ["pick", "earring"]
+        self.text2_tok_no_art_or_stop = ["pick", "up", "earring"]
+        self.text2_final_words = ["pick", "up", "earring"]
 
     def test_tokenize(self):
         self.assertEqual(self.test_parser.tokenize(self.text1), self.text1_tokenized)
