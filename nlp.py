@@ -2,6 +2,10 @@ class ParserException(Exception):
     """Base exception class for the Parser class"""
     pass
 
+class ParserMissingFile(Exception):
+    """Raised when a required text file has not been added to a Parser object"""
+    pass
+
 class Parser:
 
     def __init__(self):
@@ -183,4 +187,98 @@ class Parser:
         for word in clean_input:
             if word in game_dictionary:
                 final_words.append(word)
-        return final_words     
+        return final_words
+
+    # Classify Stage Methods
+
+    def classify_input(self, input:list):
+        
+        # Get all prepositions
+        if hasattr(self, "_prepositions"):
+            prepositions = self._prepositions
+        else:
+            raise ParserMissingFile
+
+        # First word is always the verb
+        verb = input[0]
+        
+        # Second word is either a preposition or a direct object/part of a direct object
+        second_word = input[1]
+        
+        # If second word is a preposition, combine it with the verb
+        # Consider everything after the preposition to be the direct object
+        if second_word in prepositions:
+            verb = verb + " " + second_word
+            direct_object = input[2:]
+        # If the second word is not a preposition, consider everything after
+        # the verb to be the direct object
+        else:
+            direct_object = input[1:]
+
+        # Search for any prepositions in the remaining input as this would 
+        # indicate the presence of an indirect object
+        for i in range(len(direct_object)):
+            # If a preposition is found
+            if direct_object[i] in prepositions:
+                # Get the second half of the array; this is the indirect object
+                #indirect_object= " ".join(direct_object[i + 1:])
+                indirect_object = direct_object[i + 1:]
+                # Get the left half of the array; this is the direct object
+                #direct_object = " ".join(direct_object[:i])
+                direct_object = direct_object[:i]
+                break
+
+        # Make sure that there are no additional prepositions in the input
+        # as this would suggest an invalid sentence structure
+        if "indirect_object" in locals():
+            for i in range(len(indirect_object)):
+                if indirect_object[i] in prepositions:
+                    raise ParserException
+        else:
+            for i in range(len(direct_object)):
+                if direct_object[i] in prepositions:
+                    raise ParserException
+
+        # Concatenate the direct object array into a single string
+        direct_object = " ".join(direct_object)
+
+        # Add the verb and direct object to the result list
+        result = [verb, direct_object]
+
+        # If an indirect_object is present, concatenate its array
+        # into a single string and add it to the result list
+        if "indirect_object" in locals():
+            indirect_object = " ".join(indirect_object)
+            result.append(indirect_object)
+
+        return result
+
+    def classify_handler(self, input: list):
+        
+        # Get all connections
+        if hasattr(self, "_connections"):
+            connections = self._connections
+        else:
+            raise ParserMissingFile
+        
+        # Get all special (single-word) commands
+        if hasattr(self, "_special_commands"):
+            single_commands = self._special_commands
+        else:
+            raise ParserMissingFile
+
+        # Check for the presence of a single command
+        if len(input) == 1 and input[0] in single_commands:
+            return input[:1]
+
+        # Check for the presence of a connection without a "go" verb
+        if " ".join(input) in connections:
+            return ["go", " ".join(input)]
+
+        # Input that reaches this point should be longer than one word long;
+        # raise an exception if it is not
+        if len(input) == 1:
+            raise ParserException
+
+        # Analyze the sentence structure and return the result
+        return self.classify_input(input)
