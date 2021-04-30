@@ -1,3 +1,4 @@
+
 class ParserException(Exception):
     """Base exception class for the Parser class"""
     pass
@@ -102,7 +103,6 @@ class Parser:
         """will this be calling all the other methods in order, using the 
         previous method's output as the input? Or how are we handling all
         the various steps?"""
-    
         return [inp]
 
     def find_killer(self, killer):
@@ -112,7 +112,7 @@ class Parser:
     def find_weapon(self, weapon):
         """this should take a phrase and return either 'CANDLESTICK' or 'WRONG'"""
         return 'WRONG'
-
+      
     def tokenize(self, input: str):
         """Takes user input as a string, converts to lower case, removes all
         punctuation, and tokenizes to separate individual words. Credit for this

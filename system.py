@@ -1,11 +1,16 @@
+# python modules
+import time
+import os
+import json
+
+# our modules
 import converter
 import feature
 import object
-import parser
 import person
 import player
 import room
-import time
+import nlp
 
 
 class System:
@@ -25,7 +30,7 @@ class System:
         # contains the id for the room the player is currently in
         self._cur_room = 'R01'
         # contains the natural language parser
-        self._parser = parser.Parser()
+        self._parser = nlp.Parser()
 
     def game_loop(self):
         while True:
@@ -71,12 +76,50 @@ class System:
     def use(self, object1: str, object2: str):
         """this command takes 2 parameters, object1, which needs to be an object and is being used on object 2,
         which can be any feature, person, or object"""
-        return
+        # object1 is always the giving object
+        # object 2 is always the receiving object
+        # checks if the object is in the inventory
+        if object1 in self._player.get_inventory():
+            # checks if the second object is in the room
+            if object2 in self._rooms[self._cur_room].get_features:
+                if self._features[object2].get_interaction('use', object1) is not None:
+                    print(self._features[object2].get_interaction('use',object1))
+
+                    # change the features state here
+
+                else:
+                    print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
+                          + self._features[object2].get_name())
+            # checks if the object is a person
+            elif object2 in self._people:
+                print('You cannot use an object on a person')
+                return False
+            # checks if the object is a room
+            elif object2 in self._rooms:
+                print('You cannot use an object on a room')
+                return False
+            else:
+                print('You cannot use an object that is not in the room')
+                return False
+        else:
+            print("You cannot use an object that isn't in your inventory")
+            return False
 
     def ask(self, person_id: str, obj_id: str):
         """this command takes 2 parameters, person which is an id for a person, and object, which is an id for an
         object"""
-        return
+        # checks if the person is in the room
+        if person_id in self._rooms[self._cur_room].get_people():
+            # checks if the object is in the inventory
+            if obj_id in self._player.get_inventory():
+                print(self._people[person_id].get_interaction('ask', obj_id))
+                return True
+            else:
+                print('You cannot ask someone about an object that is not in your inventory')
+                return False
+        else:
+            print("You cannot speak with something that isn't a person")
+            return False
 
     def call(self):
         """this command allows you to call the police when you are in the grand foyer and end the game"""
@@ -399,10 +442,13 @@ class System:
         print('taste [object] - allows you to taste an object, may give you more clues')
         print('smell [object] - allows you to smell an object or room, may give you more clues')
         print('listen [object] - allows you to smell an object or room, may give you more clues')
+        return
 
 
     def inventory(self):
         """takes no parameters, prints out the players current inventory"""
+        for obj in self._player.get_inventory():
+            print(self._objects[obj].get_name())
         return
 
     def save(self):
@@ -426,5 +472,48 @@ class System:
             print(self._people[person_id].get_desc())
         return
 
+    def start(self):
+        """starts the game by loading the files, playing the introduction, and starting the main gameplay loop"""
 
+        # grabs the list of json objects located in the rooms subdirectory
+        room_files = os.listdir('gamefiles/rooms')
+        for room_file_name in room_files:
+            room_file = open(room_file_name,'r')
+            room_json = json.load(room_file)
+            room_obj = converter.room_from_json(room_json)
+            self._rooms[room_obj['id']] = room_obj
 
+        # grabs the list of json objects located in the objects subdirectory
+        object_files = os.listdir('gamefiles/objects')
+        for object_file_name in object_files:
+            object_file = open(object_file_name,'r')
+            object_json = json.load(object_file)
+            object_obj = converter.obj_from_json(object_json)
+            self._objects[object_obj['id']] = object_obj
+
+        # grabs the list of json objects located in the features subdirectory
+        feature_files = os.listdir('gamefiles/features')
+        for feature_file_name in feature_files:
+            feature_file = open(feature_file_name,'r')
+            feature_json = json.load(feature_file)
+            feature_obj = converter.feat_from_json(feature_json)
+            self._features[feature_obj['id']] = feature_obj
+
+        # grabs the list of json objects located in the people subdirectory
+        people_files = os.listdir('gamefiles/people')
+        for people_file_name in people_files:
+            people_file = open(people_file_name,'r')
+            people_json = json.load(people_file)
+            people_obj = converter.person_from_json(people_json)
+            self._people[people_obj['id']] = people_obj
+
+        self.introduction()
+
+        return
+
+    def introduction(self):
+        """plays the main introduction for the game"""
+
+        # insert main storyline stuff here
+
+        # just use print statements in this, everything else will be handled outside of this class
