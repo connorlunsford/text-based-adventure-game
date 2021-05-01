@@ -87,6 +87,15 @@ class Interactable:
         else:
             raise KeyDoesNotExist
 
+    def remove_nested_interaction(self, action: str, obj: str):
+        """removes a nested interaction such as one used in 'use' or 'ask'"""
+        if action in self._interactions:
+            if obj in self._interactions[action]:
+                del self._interactions[action][obj]
+                return True
+        raise KeyDoesNotExist
+
+
     def get_interactions(self):
         """returns the entire interactions dictionary"""
         return self._interactions

@@ -5,9 +5,11 @@ import person
 
 class Room:
 
-    def __init__(self, id: str, desc: str, sdesc: str, visited: bool):
+    def __init__(self, id: str, name: str, desc: str, sdesc: str, visited: bool):
         # contains the id for the room
         self._id = id
+        # contains the name of the room
+        self._name = name
         # contains the long form description for the room
         self._desc = desc
         # contains the short form description for the room
@@ -80,13 +82,13 @@ class Room:
 
     # methods for managing self.objects
 
-    def add_object(self, obj: object.Object):
+    def add_object(self, obj: str):
         """takes an Object object and adds it to this rooms self.objects,
         returns True"""
         self._objects.append(obj)
         return True
 
-    def remove_object(self, obj: object.Object):
+    def remove_object(self, obj: str):
         """takes an Object object and attempts to remove it from this rooms
         self.objects. If it fails it returns False, if it succeeds it returns
         True"""
@@ -107,13 +109,13 @@ class Room:
 
     # methods for managing self.features
 
-    def add_feature(self, feat: feature.Feature):
+    def add_feature(self, feat: str):
         """takes a feature object and adds it to this rooms self.features,
             returns True"""
         self._features.append(feat)
         return True
 
-    def remove_feature(self, feat: feature.Feature):
+    def remove_feature(self, feat: str):
         """takes a feature object and attempts to remove it from this rooms
         self.features. If it fails it returns False, if it succeeds it returns
         True"""
@@ -134,13 +136,13 @@ class Room:
 
     # methods for managing self.people
 
-    def add_person(self, per: person.Person):
+    def add_person(self, per: str):
         """takes a person object and adds it to this rooms self.persons,
             returns True"""
         self._people.append(per)
         return True
 
-    def remove_person(self, per: person.Person):
+    def remove_person(self, per: str):
         """takes a person object and attempts to remove it from this rooms
         self.persons. If it fails it returns False, if it succeeds it returns
         True"""
@@ -224,3 +226,7 @@ class Room:
             return self._interactions[interaction][sub1]
         else:
             return self._interactions[interaction][sub1][sub2]
+
+        # NOTE:
+
+        # need to add methods for self._name

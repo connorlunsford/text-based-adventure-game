@@ -65,8 +65,3 @@ class Feature(Object):
             del(self._condition)
         else:
             raise AttributeDoesNotExist
-
-    def get_obj_interaction(self):
-        """returns the id of an object that can be used on this
-        or returns None"""
-        return None
