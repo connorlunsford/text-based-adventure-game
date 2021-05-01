@@ -36,6 +36,7 @@ class System:
         while True:
             print('What would you like to do?')
             inp = input()
+
             # parses the input and returns a command with an interaction word and 1-2 objects
             command = self._parser.parse(inp)
             if command[0] == 'use':
@@ -83,13 +84,17 @@ class System:
             # checks if the second object is in the room
             if object2 in self._rooms[self._cur_room].get_features:
                 if self._features[object2].get_interaction('use', object1) is not None:
+                    # prints what happens the first time you use object1 on object 2
                     print(self._features[object2].get_interaction('use',object1))
-
-                    # change the features state here
-
+                    # sets the condition for the feature to True (unlocked, interacted, etc)
+                    self._features[object2].set_condition(True)
+                    # removes the interaction from the dictionary
+                    self._features[object2].remove_nested_interaction('use',object1)
+                    return True
                 else:
                     print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
                           + self._features[object2].get_name())
+                    return False
             # checks if the object is a person
             elif object2 in self._people:
                 print('You cannot use an object on a person')
@@ -184,12 +189,20 @@ class System:
         """this command takes an object and allows you to attempt to read it"""
         # if the object is in your inventory
         if obj in self._player.get_inventory():
-            print(self._objects[obj].get_interaction('read'))
-            return True
+            if self._objects[obj].get_interaction('read') is None:
+                print('You cannot read this object')
+                return False
+            else:
+                print(self._objects[obj].get_interaction('read'))
+                return True
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
-            print(self._objects[obj].get_interaction('read'))
-            return True
+            if self._objects[obj].get_interaction('read') is None:
+                print('You cannot read this object')
+                return False
+            else:
+                print(self._objects[obj].get_interaction('read'))
+                return True
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
             print(self._features[obj].get_interaction('read'))
@@ -444,7 +457,6 @@ class System:
         print('listen [object] - allows you to smell an object or room, may give you more clues')
         return
 
-
     def inventory(self):
         """takes no parameters, prints out the players current inventory"""
         for obj in self._player.get_inventory():
@@ -462,19 +474,19 @@ class System:
     def get_description(self):
         """gets the description of the room and all the objects/features/people in the room"""
         print(self._rooms[self._cur_room].get_description())
-        for obj in self._rooms[self._cur_room].get_objects():
-            if self._objects[obj].get_hidden is False:
-                print(self._objects[obj].get_desc())
+        print('In the room there is:')
         for feat in self._rooms[self._cur_room].get_features():
-            if self._features[feat].get_hidden is False:
+            if self._features[feat].get_hidden() is False:
                 print(self._features[feat].get_desc())
+        for obj in self._rooms[self._cur_room].get_objects():
+            if self._objects[obj].get_hidden() is False:
+                print(self._objects[obj].get_desc())
         for person_id in self._rooms[self._cur_room].get_people():
             print(self._people[person_id].get_desc())
         return
 
     def start(self):
         """starts the game by loading the files, playing the introduction, and starting the main gameplay loop"""
-
         # grabs the list of json objects located in the rooms subdirectory
         room_files = os.listdir('gamefiles/rooms')
         for room_file_name in room_files:
@@ -509,6 +521,8 @@ class System:
 
         self.introduction()
 
+        self.game_loop()
+
         return
 
     def introduction(self):
@@ -517,3 +531,25 @@ class System:
         # insert main storyline stuff here
 
         # just use print statements in this, everything else will be handled outside of this class
+
+    def add_feature(self,feature):
+        """adds a feature to self._features"""
+        self._features[feature.get_id()] = feature
+        return True
+
+    def add_room(self,room):
+        """adds a room to self._rooms"""
+        self._rooms[room.get_id()] = room
+        return True
+
+    def add_obj(self,obj):
+        """adds a obj to self._objects"""
+        self._objects[obj.get_id()] = obj
+        return True
+
+    def add_person(self,person):
+        """adds a person to self._people"""
+        self._people[person.get_id()] = person
+        return True
+
+
