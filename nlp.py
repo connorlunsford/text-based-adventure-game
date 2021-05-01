@@ -27,7 +27,7 @@ class Parser:
     def set_prepositions(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if not hasattr(self, "_prepositions"):
+        if hasattr(self, "_prepositions"):
             self._prepositions = file_contents
             #setattr(self, attribute_name, file_contents)
             fp.close()
@@ -56,7 +56,7 @@ class Parser:
     def set_special_commands(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if not hasattr(self, "_special_commands"):
+        if hasattr(self, "_special_commands"):
             self._special_commands = file_contents
             fp.close()
         else:
@@ -83,7 +83,7 @@ class Parser:
     def set_connections(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if not hasattr(self, "_connections"):
+        if hasattr(self, "_connections"):
             self._connections = file_contents
             fp.close()
         else:
