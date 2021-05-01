@@ -31,6 +31,10 @@ class System:
         self._cur_room = 'R01'
         # contains the natural language parser
         self._parser = nlp.Parser()
+        # add necesary text files for natural language parser to work
+        self._parser.add_connections("./resources/connections.txt")
+        self._parser.add_special_commands("./resources/special_commands.txt")
+        self._parser.add_prepositions("./resources/prepositions.txt")
 
     def game_loop(self):
         while True:
