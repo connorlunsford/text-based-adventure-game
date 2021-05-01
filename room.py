@@ -1,6 +1,7 @@
 import object
 import feature
 import person
+import interactable
 
 
 class Room:
@@ -221,12 +222,30 @@ class Room:
         # sub1 is the second level of the dict
         # sub2 is the third level of the dict if needed
         if sub1 is None:
-            return self._interactions[interaction]
+            # try/except will check if the interaction exists in interactions
+            # if it does not it raises an error, except will then return none
+            try:
+                return self._interactions[interaction]
+            except KeyError:
+                raise interactable.KeyDoesNotExist
         elif sub2 is None and sub1 is not None:
-            return self._interactions[interaction][sub1]
+            try:
+                return self._interactions[interaction][sub1]
+            except KeyError:
+                raise interactable.KeyDoesNotExist
         else:
-            return self._interactions[interaction][sub1][sub2]
+            try:
+                return self._interactions[interaction][sub1][sub2]
+            except KeyError:
+                raise interactable.KeyDoesNotExist
 
-        # NOTE:
+    # methods for self._name
 
-        # need to add methods for self._name
+    def get_name(self):
+        """returns the name of the room"""
+        return self._name
+
+    def set_name(self, name: str):
+        """sets the given string value to the name of the room"""
+        self._name = name
+        return True

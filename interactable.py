@@ -60,6 +60,7 @@ class Interactable:
         else:
             raise KeyDoesNotExist
 
+
     def add_interaction(self, action: str, result: str):
         """adds the key-value pair provided in the action and result
         arguments to the dictionary; if they key already exists in the 
