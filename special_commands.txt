@@ -1,0 +1,5 @@
+look
+help
+inventory
+savegame
+loadgame

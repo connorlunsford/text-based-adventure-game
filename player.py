@@ -10,7 +10,7 @@ class Player:
         """need to check when we'll get the name, if this should be part 
         of the initializer (converter will need to be updated too)"""
         self._name = None
-        # contains list of objects player currently has, will start empty
+        # contains list of objects player currently has in the form of ids, will start empty
         self._inventory = []
 
     # methods for managing ID
@@ -47,12 +47,12 @@ class Player:
     def delete_all_inventory(self):
         self._inventory.clear()
 
-    def add_to_inventory(self, obj: object.Object):
+    def add_to_inventory(self, obj: str):
         # takes an Object object and adds it to the player's inventory list
         self._inventory.append(obj)
         return True
 
-    def remove_from_inventory(self, obj: object.Object):
+    def remove_from_inventory(self, obj: str):
         """takes an Object object and checks to see if it's in the inventory.
         Removes it from the inventory and returns True if found, otherwise
         returns False"""
