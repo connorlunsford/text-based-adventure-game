@@ -133,16 +133,6 @@ class Parser:
         else:
             raise ParserException
 
-    def parse(self, inp: str):
-        """this should take a phrase and return a list containing a command in
-        spot 0, and an object/feature/person id in spot 1 and potentially 2"""
-
-        """will this be calling all the other methods in order, using the 
-        previous method's output as the input? Or how are we handling all
-        the various steps?"""
-    
-        return [inp]
-
     def find_killer(self, killer):
         """this should take a phrase and return either the killers name or 'WRONG'"""
         return 'WRONG'
@@ -161,6 +151,7 @@ class Parser:
         in this game."""
         lower_input = input.lower()
         words = "".join((char if char.isalpha() else " ") for char in lower_input).split()
+        # returns list of individual words
         return words
 
     def remove_articles(self, words: list):
@@ -192,7 +183,7 @@ class Parser:
         # return list of words with no articles or stopwords
         return words_no_stopwords
 
-    def verify_words(self, clean_input: str):
+    def verify_words(self, clean_input: list):
         """takes a list of cleaned words and verifies that they are recognized
         by the game"""
 
@@ -212,6 +203,15 @@ class Parser:
             if word in game_dictionary:
                 final_words.append(word)
         return final_words
+
+    def lexical_handler(self, input: str):
+        # 1st: converts to all lower case, remove punctuation, tokenize words
+        # 2nd: removes articles from the list
+        # 3rd: removes stopwords from the list
+        # 4th: verifies words are recognized by the game
+
+        # returns clean list of words, ready to be classified
+        return self.verify_words(self.remove_stopwords(self.remove_articles(self.tokenize(input))))
 
     # Classify Stage Methods
 
@@ -401,5 +401,14 @@ class Parser:
         # return list of resolved words
         return resolved_command
     
+    def parse(self, inp: str):
+        """this should take a phrase and return a list containing a command in
+        spot 0, and an object/feature/person id in spot 1 and potentially 2"""
 
+        # complete lexical parsing stage to parse and clean input
+        parsed_input = self.lexical_handler(inp)
+        classified_input = self.classify_handler(parsed_input)
+        final_command = self.resolve(classified_input)
+    
+        return final_command
     

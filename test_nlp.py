@@ -121,4 +121,8 @@ class TestParserClass(unittest.TestCase):
 
     def test_check_verb5(self):
         self.assertEqual(self.test_parser.resolve(self.text5_classified_words),
-         self.text5_resolved_command)           
+         self.text5_resolved_command)          
+
+    # test full parse() functionality
+    def test_parse_text5(self):
+        self.assertEqual(self.test_parser.parse(self.text5), self.text5_resolved_command)
