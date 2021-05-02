@@ -18,6 +18,15 @@ if __name__ == '__main__':
     # instantiates the system
     sys = system.System()
 
+    roominteractions = {
+        'search': 'You take a closer look at the room, searching every nook and cranny. You do not seem to notice anything '
+                  'out of the ordinary that you failed to notice on your first examination ',
+        'touch': 'You touch the walls of the room, they are made of a nice wood paneling',
+        'taste': 'You stick your tongue out and lick the ground...you taste dust',
+        'smell': 'The smell of fresh blood is strong in this room',
+        'listen': 'You hold your hand up to your ear, you can hear a faint sobbing sound coming from the upstairs hallway'
+    }
+
     R01 = room.Room('R01','Grand Foyer',
                     'A large room with a grand staircase toward the upper floors, it has connections to the kitchen and '
                     'the library but they are both blocked by police tape.',
@@ -26,6 +35,7 @@ if __name__ == '__main__':
     R01.add_object('O01')
     R01.add_object('O02')
     R01.add_feature('F01')
+    R01.set_interactions(roominteractions)
 
     obj1interactions = {
         'touch': 'The candlestick is carved intricately and beatuifully, it is made of silver',
