@@ -203,7 +203,8 @@ class Parser:
          "lock", "touch", "taste", "smell", "listen", "read", "search",
          "kitchen", "library", "stairs", "room", "examine", "staircase",
          "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
-         "body", "gentleman"]
+         "body", "gentleman", "inventory", "help", "north", "south", "east", "west",
+         "about", "into", "ask", "call", "open", "savegame", "loadgame"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:
@@ -325,7 +326,7 @@ class Parser:
         self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
          {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
          {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
-         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}]
+         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]}]
         self._game_preps = ["at", "on", "in"]
         self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
             {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
