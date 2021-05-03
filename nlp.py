@@ -326,7 +326,9 @@ class Parser:
         self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
          {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
          {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
-         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]}]
+         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]},
+         {"help": ["help"]}, {"inventory": ["inventory"]}, {"savegame": ["savegame"]},
+         {"loadgame": ["loadgame"]}]
         self._game_preps = ["at", "on", "in"]
         self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
             {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
