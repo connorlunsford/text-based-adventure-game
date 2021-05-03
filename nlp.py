@@ -192,7 +192,9 @@ class Parser:
         some kind of message about not understanding what the user means?"""
         
         # sample dictionary for dev/testing. 
-        """ TODO: need to compose full list of words we want the game to recognize"""
+        # TODO: need to compose full list of words we want the game to recognize
+        # TODO: implement error checking/exception for unrecognized/misspelled
+        # words
         
         """sample dictionary for testing and development, will implement pulling
         from a text file later"""
@@ -200,7 +202,7 @@ class Parser:
          "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
          "lock", "touch", "taste", "smell", "listen", "read", "search",
          "kitchen", "library", "stairs", "room", "examine", "staircase",
-         "blood", "paper", "perfume", "pocket", "victim", "head", "object"]
+         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:
