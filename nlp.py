@@ -197,7 +197,10 @@ class Parser:
         """sample dictionary for testing and development, will implement pulling
         from a text file later"""
         game_dictionary = ["get", "take", "look", "earring", "pick", "up",
-         "letter", "at", "large", "silver", "candlestick", "use", "key", "on", "lock"]
+         "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
+         "lock", "touch", "taste", "smell", "listen", "read", "search",
+         "kitchen", "library", "stairs", "room", "examine", "staircase",
+         "blood", "paper", "perfume", "pocket", "victim", "head", "object"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:
@@ -316,11 +319,13 @@ class Parser:
         
         """sample dictionary lists for testing and development, will implement 
         pulling from a json file later"""
-        self._game_verbs = [{"take": ["take", "pick", "grab", "get"]}, {"use": ["use","try"]}, 
-            {"look": ["look", "examine"]}, {"go": ["go"]}]
+        self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
+         {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
+         {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
+         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}]
         self._game_preps = ["at", "on", "in"]
         self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
-            {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim"]}]
+            {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
 
         # at least one word will be returned
         input_verb = input[0]

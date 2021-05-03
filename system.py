@@ -36,6 +36,8 @@ class System:
         self._parser.add_connections("./resources/connections.txt")
         self._parser.add_special_commands("./resources/special_commands.txt")
         self._parser.add_prepositions("./resources/prepositions.txt")
+        self._parser.load_articles("articles.txt")
+        self._parser.load_stopwords("stopwords.txt")
 
     def game_loop(self):
         while True:
@@ -66,8 +68,8 @@ class System:
                 self.listen(command[1])
             elif command[0] == 'look':
                 self.look()
-            elif command[0] == 'look_at':
-                self.look(command[1])
+            elif command[0] == 'look at':
+                self.look_at(command[1])
             elif command[0] == 'go':
                 self.go(command[1])
             elif command[0] == 'take':
@@ -608,7 +610,7 @@ class System:
             room_file = open(room_file_name,'r')
             room_json = json.load(room_file)
             room_obj = converter.room_from_json(room_json)
-            self._rooms[room_obj['id']] = room_obj
+            self._rooms[room_obj]['id'] = room_obj
 
         # grabs the list of json objects located in the objects subdirectory
         object_files = os.listdir('gamefiles/objects')
@@ -616,7 +618,7 @@ class System:
             object_file = open(object_file_name,'r')
             object_json = json.load(object_file)
             object_obj = converter.obj_from_json(object_json)
-            self._objects[object_obj['id']] = object_obj
+            self._objects[object_obj]['id'] = object_obj
 
         # grabs the list of json objects located in the features subdirectory
         feature_files = os.listdir('gamefiles/features')
@@ -624,7 +626,7 @@ class System:
             feature_file = open(feature_file_name,'r')
             feature_json = json.load(feature_file)
             feature_obj = converter.feat_from_json(feature_json)
-            self._features[feature_obj['id']] = feature_obj
+            self._features[feature_obj]['id'] = feature_obj
 
         # grabs the list of json objects located in the people subdirectory
         people_files = os.listdir('gamefiles/people')
@@ -632,7 +634,7 @@ class System:
             people_file = open(people_file_name,'r')
             people_json = json.load(people_file)
             people_obj = converter.person_from_json(people_json)
-            self._people[people_obj['id']] = people_obj
+            self._people[people_obj]['id'] = people_obj
 
         self.introduction()
 
