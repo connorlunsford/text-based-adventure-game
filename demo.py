@@ -68,7 +68,8 @@ if __name__ == '__main__':
         'smell': 'The victim smells of blood and heavy cologne',
         'listen': 'You cannot hear a heartbeat...he must be dead',
     }
-    F01 = feature.Feature('F01',"Victim's Body",'An older gentleman lies face down on the floor in a pool of blood. His '
+    F01 = feature.Feature('F01',"Victim's Body",'The Victim, an older gentleman lies face down on the floor in a pool of '
+                                                'blood. His '
                                                 'head has been wounded by some kind of blunt object',
                           feat1interactions, False)
 
