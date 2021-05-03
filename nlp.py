@@ -202,7 +202,8 @@ class Parser:
          "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
          "lock", "touch", "taste", "smell", "listen", "read", "search",
          "kitchen", "library", "stairs", "room", "examine", "staircase",
-         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go"]
+         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
+         "body", "gentleman"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:
