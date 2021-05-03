@@ -1,3 +1,4 @@
+import json
 
 class ParserException(Exception):
     """Base exception class for the Parser class"""
@@ -11,6 +12,42 @@ class Parser:
 
     def __init__(self):
         return
+
+    # load the articles text file
+    def load_articles(self, filepath: str):
+        # read each line/word from the file and create a list
+        with open(filepath, "r") as fp:
+            articles = list(fp.read().split())
+        if not hasattr(self, "_articles"):
+            self._articles = articles
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException      
+
+    # load the stopwords text file
+    def load_stopwords(self, filepath: str):
+        # read each line/word from the file and create a list
+        with open(filepath, "r") as fp:
+            stopwords = list(fp.read().split())
+        if not hasattr(self, "_stopwords"):
+            self._stopwords = stopwords
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException  
+
+    # load the dictionary text file
+    # TODO: this is not being used yet but it will need some changes
+    def load_dictionary(self, filepath: str):
+        fp = open(filepath, "r")
+        file_contents = json.load(fp)
+        if not hasattr(self, "_game_dictionary"):
+            self._game_dictionary = file_contents
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException  
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
@@ -27,7 +64,7 @@ class Parser:
     def set_prepositions(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if hasattr(self, "_prepositions"):
+        if not hasattr(self, "_prepositions"):
             self._prepositions = file_contents
             #setattr(self, attribute_name, file_contents)
             fp.close()
@@ -56,7 +93,7 @@ class Parser:
     def set_special_commands(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if hasattr(self, "_special_commands"):
+        if not hasattr(self, "_special_commands"):
             self._special_commands = file_contents
             fp.close()
         else:
@@ -83,7 +120,7 @@ class Parser:
     def set_connections(self, filepath: str):
         fp = open(filepath, "r")
         file_contents = fp.read()
-        if hasattr(self, "_connections"):
+        if not hasattr(self, "_connections"):
             self._connections = file_contents
             fp.close()
         else:
@@ -96,15 +133,6 @@ class Parser:
         else:
             raise ParserException
 
-    def parse(self, inp: str):
-        """this should take a phrase and return a list containing a command in
-        spot 0, and an object/feature/person id in spot 1 and potentially 2"""
-
-        """will this be calling all the other methods in order, using the 
-        previous method's output as the input? Or how are we handling all
-        the various steps?"""
-        return [inp]
-
     def find_killer(self, killer):
         """this should take a phrase and return either the killers name or 'WRONG'"""
         return 'WRONG'
@@ -112,7 +140,9 @@ class Parser:
     def find_weapon(self, weapon):
         """this should take a phrase and return either 'CANDLESTICK' or 'WRONG'"""
         return 'WRONG'
-      
+
+    # Lexical Parsing Stage Methods        
+
     def tokenize(self, input: str):
         """Takes user input as a string, converts to lower case, removes all
         punctuation, and tokenizes to separate individual words. Credit for this
@@ -121,22 +151,20 @@ class Parser:
         in this game."""
         lower_input = input.lower()
         words = "".join((char if char.isalpha() else " ") for char in lower_input).split()
+        # returns list of individual words
         return words
 
     def remove_articles(self, words: list):
-        """ takes a list of words and removes all articles"""
+        """ takes a list of words and removes all articles, returns a list"""
         words_no_articles = []
-        articles = ["a", "an", "the"]
         for word in words:
-            if word not in articles:
+            if word not in self._articles:
                 words_no_articles.append(word)
         # return list of words not including articles or punctuation
         return words_no_articles
 
     def remove_stopwords(self, words: list):
-        """takes a list of words and removes stopwords"""
-
-        # hard-coded for development and testing, will use external file later
+        """takes a list of words and removes stopwords, returns a list"""
 
         """ NOTE: This currently removes 's' which is useful because that will
         be leftover after tokenizing contractions. However, if we decide to 
@@ -148,30 +176,14 @@ class Parser:
         """TODO: are we going to have a special case for 'it' in the classify
         stage? If so, it will also need to be removed from this list"""
 
-        stopwords = ['a', 'again', 'ain', 'all', 'am', 'an', 'and', 'any',
-         'are', 'aren', 'as', 'be', 'because', 'been', 'being', 'both', 'but',
-         'can', 'couldn', 'd', 'did', 'didn', 'do', 'does', 'doesn', 'doing',
-         'don', 'during', 'each', 'few', 'further', 'had', 'hadn', 'has',
-         'hasn', 'have', 'haven', 'having', 'he', 'her', 'here', 'hers',
-         'herself', 'him', 'himself', 'his', 'how', 'i', 'if', 'is', 'isn',
-         'it', 'its', 'itself', 'just', 'll', 'm', 'ma', 'me', 'mightn', 'more',
-         'most', 'mustn', 'my', 'myself', 'needn', 'no', 'nor', 'not', 'now',
-         'o', 'once', 'only', 'or', 'other', 'our', 'ours', 'ourselves', 'own',
-         're', 's', 'same', 'shan', 'she', 'should', 'shouldn', 'so', 'some',
-         'such', 't', 'than', 'that', 'the', 'their', 'theirs', 'them',
-         'themselves', 'then', 'there', 'these', 'they', 'this', 'those',
-         'too', 've', 'very', 'was', 'wasn', 'we', 'were', 'weren', 'what',
-         'when', 'where', 'which', 'while', 'who', 'whom', 'why', 'will',
-         'with', 'won', 'wouldn', 'y', 'you', 'your', 'yours', 'yourself',
-         'yourselves']
         words_no_stopwords = []
         for word in words:
-            if word not in stopwords:
+            if word not in self._stopwords:
                 words_no_stopwords.append(word)
         # return list of words with no articles or stopwords
         return words_no_stopwords
 
-    def verify_words(self, clean_input: str):
+    def verify_words(self, clean_input: list):
         """takes a list of cleaned words and verifies that they are recognized
         by the game"""
 
@@ -180,14 +192,31 @@ class Parser:
         some kind of message about not understanding what the user means?"""
         
         # sample dictionary for dev/testing. 
-        """ TODO: need to compose full list of words we want the game to recognize"""
+        # TODO: need to compose full list of words we want the game to recognize
+        # TODO: implement error checking/exception for unrecognized/misspelled
+        # words
         
-        game_dictionary = ["get", "take", "look", "earring", "pick", "up"]
+        """sample dictionary for testing and development, will implement pulling
+        from a text file later"""
+        game_dictionary = ["get", "take", "look", "earring", "pick", "up",
+         "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
+         "lock", "touch", "taste", "smell", "listen", "read", "search",
+         "kitchen", "library", "stairs", "room", "examine", "staircase",
+         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go"]
         final_words = []
         for word in clean_input:
             if word in game_dictionary:
                 final_words.append(word)
         return final_words
+
+    def lexical_handler(self, input: str):
+        # 1st: converts to all lower case, remove punctuation, tokenize words
+        # 2nd: removes articles from the list
+        # 3rd: removes stopwords from the list
+        # 4th: verifies words are recognized by the game
+
+        # returns clean list of words, ready to be classified
+        return self.verify_words(self.remove_stopwords(self.remove_articles(self.tokenize(input))))
 
     # Classify Stage Methods
 
@@ -282,3 +311,117 @@ class Parser:
 
         # Analyze the sentence structure and return the result
         return self.classify_input(input)
+
+
+    # Resolve Stage Methods
+
+    def resolve(self, input: list):
+        """will receive a list of strings that are words or phrases: [verb, direct 
+        object, indirect object (opt)] (each can be 1 or more words)"""
+        
+        """sample dictionary lists for testing and development, will implement 
+        pulling from a json file later"""
+        self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
+         {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
+         {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
+         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}]
+        self._game_preps = ["at", "on", "in"]
+        self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
+            {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
+
+        # at least one word will be returned
+        input_verb = input[0]
+        # if not a single word command, then next is direct object
+        if len(input) >= 2:
+            input_direct = input[1]
+        else:
+            input_direct = None
+        # if third, then indirect object
+        if len(input) == 3:
+            input_indirect = input[2]
+        else:
+            input_indirect = None            
+
+        resoved_direct_obj = []
+        resoved_indirect_obj = []
+        resolved_command = []
+
+        # RESOLVE VERB: can be single verb word or "verb prep" combo
+
+        # first word in the "verb" location of the list will always be the verb
+        verb_words = input_verb.split()
+        verb = verb_words[0]
+        # if there's a second word, it's a preposition
+        if len(verb_words) == 2:
+            prep = verb_words[1]
+        else:
+            prep = None
+
+        # check against all verbs game dictionary
+        for i in range(len(self._game_verbs)):
+            for verb_set in self._game_verbs[i]:
+                key_list = list(self._game_verbs[i].keys())
+                value_list = list(self._game_verbs[i].values())
+                if verb in value_list[0]:
+                    resolved_verb = key_list[0]
+
+        # search game dictionary for prep
+        if prep != None:
+            if prep in self._game_preps:
+                resolved_verb = resolved_verb + " " + prep
+        
+        # add verb/phrase to command to be returned
+        resolved_command.append(resolved_verb)
+
+        # RESOLVE DIRECT OBJECT: can be one or more words
+
+        # check each word in direct object against game dictionary
+        if input_direct != None:
+            direct_words = input_direct.split()
+            for i in range(len(direct_words)):
+                for j in range(len(self._game_objects)):
+                    for obj_set in self._game_objects[j]:
+                        key_list = list(self._game_objects[j].keys())
+                        value_list = list(self._game_objects[j].values())
+                        if direct_words[i] in value_list[0]:
+                            resoved_direct_obj.append(key_list[0])
+
+            # concats list of resolved direct object words and returns string
+            resolved_command.append(" ".join(resoved_direct_obj))
+
+        # RESOLVE INDIRECT OBJECT: can be one or more words
+
+        # if an indirect object, check against game dictionary
+        if input_indirect != None:
+            indirect_words = input_indirect.split()
+            for i in range(len(indirect_words)):
+                for j in range(len(self._game_objects)):
+                    for obj_set in self._game_objects[j]:
+                        key_list = list(self._game_objects[j].keys())
+                        value_list = list(self._game_objects[j].values())
+                        if indirect_words[i] in value_list[0]:
+                            resoved_indirect_obj.append(key_list[0])
+
+            # concats list of resolved indirect object words and returns string
+            resolved_command.append(" ".join(resoved_indirect_obj))
+
+        # return list of resolved words
+        return resolved_command
+    
+    def parse(self, inp: str):
+        """this should take a phrase and return a list containing a command in
+        spot 0, and an object/feature/person id in spot 1 and potentially 2"""
+
+        # takes input from user and completes the lexical parsing stage to 
+        # parse and clean input
+        parsed_input = self.lexical_handler(inp)
+        # takes parsed input and completes the classify stage to break input
+        # into verb, direct object, and indirect object
+        classified_input = self.classify_handler(parsed_input)
+        # takes classified input and resolves it to game verbs, objects or 
+        # features
+        final_command = self.resolve(classified_input)
+    
+        # returns [verb, direct object id (opt), indirect object id(opt)]
+        return final_command
+    
