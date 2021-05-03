@@ -576,6 +576,8 @@ class System:
 
     def inventory(self):
         """takes no parameters, prints out the players current inventory"""
+        if len(self._player.get_inventory()) == 0:
+            print('your inventory is empty')
         for obj in self._player.get_inventory():
             print(self._objects[obj].get_name())
         return
