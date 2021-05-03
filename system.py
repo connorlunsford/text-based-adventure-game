@@ -36,8 +36,8 @@ class System:
         self._parser.add_connections("./resources/connections.txt")
         self._parser.add_special_commands("./resources/special_commands.txt")
         self._parser.add_prepositions("./resources/prepositions.txt")
-        self._parser.load_articles("articles.txt")
-        self._parser.load_stopwords("stopwords.txt")
+        self._parser.load_articles("./resources/articles.txt")
+        self._parser.load_stopwords("./resources/stopwords.txt")
 
     def game_loop(self):
         while True:
