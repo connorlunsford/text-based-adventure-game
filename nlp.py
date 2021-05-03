@@ -405,10 +405,16 @@ class Parser:
         """this should take a phrase and return a list containing a command in
         spot 0, and an object/feature/person id in spot 1 and potentially 2"""
 
-        # complete lexical parsing stage to parse and clean input
+        # takes input from user and completes the lexical parsing stage to 
+        # parse and clean input
         parsed_input = self.lexical_handler(inp)
+        # takes parsed input and completes the classify stage to break input
+        # into verb, direct object, and indirect object
         classified_input = self.classify_handler(parsed_input)
+        # takes classified input and resolves it to game verbs, objects or 
+        # features
         final_command = self.resolve(classified_input)
     
+        # returns [verb, direct object id (opt), indirect object id(opt)]
         return final_command
     
