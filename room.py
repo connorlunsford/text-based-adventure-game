@@ -3,6 +3,17 @@ import feature
 import person
 import interactable
 
+class RoomException(Exception):
+    """Base exception class for the Room class"""
+    pass
+
+class IDDoesNotExist(RoomException):
+    """Raised when ID does not exist"""
+    pass
+
+class IDAlreadyExists(RoomException):
+    """Raised when ID already exists"""
+    pass
 
 class Room:
 
@@ -34,6 +45,16 @@ class Room:
     def get_id(self):
         """returns the value of self.id"""
         return self._id
+
+    # methods for self._name
+
+    def get_name(self):
+        """returns the name of the room"""
+        return self._name
+
+    def set_name(self, name: str):
+        """sets the given string value to the name of the room"""
+        self._name = name
 
     # methods for managing desc
 
@@ -84,23 +105,24 @@ class Room:
     # methods for managing self.objects
 
     def add_object(self, obj: str):
-        """takes an Object object and adds it to this rooms self.objects,
-        returns True"""
-        self._objects.append(obj)
-        return True
+        """takes an Object object's ID and adds it to this rooms self.objects; if
+        the ID already exists inside the list, this method raises an exception"""
+        if obj not in self._objects:
+            self._objects.append(obj)
+        else:
+            raise IDAlreadyExists
 
     def remove_object(self, obj: str):
-        """takes an Object object and attempts to remove it from this rooms
-        self.objects. If it fails it returns False, if it succeeds it returns
-        True"""
-        if object in self._objects:
+        """takes an Object object's ID and attempts to remove it from this room's
+        self.objects. If the ID does not exist inside the list, this method
+        raises an exception"""
+        if obj in self._objects:
             self._objects.remove(obj)
-            return True
         else:
-            return False
+            raise IDDoesNotExist
 
     def get_objects(self):
-        """returns the list of Object objects in self.objects"""
+        """returns the list of Object object IDs in self.objects"""
         return self._objects
 
     def set_objects(self, objects: list):
@@ -238,14 +260,3 @@ class Room:
                 return self._interactions[interaction][sub1][sub2]
             except KeyError:
                 raise interactable.KeyDoesNotExist
-
-    # methods for self._name
-
-    def get_name(self):
-        """returns the name of the room"""
-        return self._name
-
-    def set_name(self, name: str):
-        """sets the given string value to the name of the room"""
-        self._name = name
-        return True

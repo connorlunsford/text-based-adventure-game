@@ -30,7 +30,7 @@ class TestCase(unittest.TestCase):
 
     # testing methods used for managing description
     def test_get_desc(self):
-        """get_description successfully returns the value of the desc attribute"""
+        """get_desc successfully returns the value of the desc attribute"""
         self.assertEqual(self.test_interactable.get_desc(), "A large oak table.")
 
     def test_set_desc(self):
