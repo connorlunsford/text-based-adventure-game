@@ -105,8 +105,8 @@ class Room:
     # methods for managing self.objects
 
     def add_object(self, obj: str):
-        """takes an Object object's ID and adds it to this rooms self.objects,
-        returns True"""
+        """takes an Object object's ID and adds it to this rooms self.objects; if
+        the ID already exists inside the list, this method raises an exception"""
         if obj not in self._objects:
             self._objects.append(obj)
         else:
@@ -114,13 +114,12 @@ class Room:
 
     def remove_object(self, obj: str):
         """takes an Object object's ID and attempts to remove it from this room's
-        self.objects. If it fails it returns False, if it succeeds it returns
-        True"""
+        self.objects. If the ID does not exist inside the list, this method
+        raises an exception"""
         if obj in self._objects:
             self._objects.remove(obj)
-            return True
         else:
-            return False
+            raise IDDoesNotExist
 
     def get_objects(self):
         """returns the list of Object object IDs in self.objects"""

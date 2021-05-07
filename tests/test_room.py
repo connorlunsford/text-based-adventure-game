@@ -92,12 +92,18 @@ class TestCase(unittest.TestCase):
         with self.assertRaises(room.IDAlreadyExists):
             self.test_room.add_object("O01")
 
-    def test_remove_object(self):
-        """remove_object successfully removes an object from the objects list"""
+    def test_remove_object1(self):
+        """remove_object successfully removes an object ID from the objects list"""
         self.test_room.add_object("O01")
         self.test_room.add_object("O02")
         self.test_room.remove_object("O01")
         self.assertEqual(self.test_room.get_objects(), ["O02"])
+
+    def test_remove_object2(self):
+        """remove_object successfully raises an exception when the provided
+        object ID does not exist in the objects list"""
+        with self.assertRaises(room.IDDoesNotExist):
+            self.test_room.remove_object("O01")
     
     def test_get_objects1(self):
         """get_objects successfully returns the entire objects list with the 
@@ -121,7 +127,7 @@ class TestCase(unittest.TestCase):
 
     def test_set_objects2(self):
         """set_objects successfully sets the value of the objects list to the
-        provided list when the previous list is empty/had no IDs added to it"""
+        provided list when the previous list had no IDs added to it"""
         self.test_room.set_objects(["O01", "O02", "O03"])
         self.assertEqual(self.test_room.get_objects(), ["O01", "O02", "O03"])
 
