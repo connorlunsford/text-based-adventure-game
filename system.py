@@ -32,7 +32,7 @@ class System:
         self._cur_room = 'R01'
         # contains the natural language parser
         self._parser = nlp.Parser()
-        # add necesary text files for natural language parser to work
+        # add necessary text files for natural language parser to work
         self._parser.add_connections("./resources/connections.txt")
         self._parser.add_special_commands("./resources/special_commands.txt")
         self._parser.add_prepositions("./resources/prepositions.txt")
@@ -47,9 +47,9 @@ class System:
             # parses the input and returns a command with an interaction word and 1-2 objects
             command = self._parser.parse(inp)
             if command[0] == 'use':
-                self.use(command[1],command[2])
+                self.use(command[1], command[2])
             elif command[0] == 'ask':
-                self.ask(command[1],command[2])
+                self.ask(command[1], command[2])
             elif command[0] == 'call':
                 self.call()
             elif command[0] == 'read':
@@ -82,6 +82,10 @@ class System:
                 self.save()
             elif command[0] == 'loadgame':
                 self.load()
+            else:
+                print('Sorry the game does not understand that input')
+                print('Try again with simpler language')
+                print("Use the command 'help' for a list of useful phrases")
 
     def use(self, object1: str, object2: str):
         """this command takes 2 parameters, object1, which needs to be an object and is being used on object 2,
@@ -91,14 +95,14 @@ class System:
         # checks if the object is in the inventory
         if object1 in self._player.get_inventory():
             # checks if the second object is in the room
-            if object2 in self._rooms[self._cur_room].get_features:
+            if object2 in self._rooms[self._cur_room].get_features():
                 try:
                     # prints what happens the first time you use object1 on object 2
-                    print(self._features[object2].get_interaction('use',object1))
+                    print(self._features[object2].get_interaction('use', object1))
                     # sets the condition for the feature to True (unlocked, interacted, etc)
                     self._features[object2].set_condition(True)
                     # removes the interaction from the dictionary
-                    self._features[object2].remove_nested_interaction('use',object1)
+                    self._features[object2].remove_nested_interaction('use', object1)
                     return True
                 except interactable.KeyDoesNotExist:
                     print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
@@ -113,7 +117,7 @@ class System:
                 print('You cannot use an object on a room')
                 return False
             else:
-                print('You cannot use an object that is not in the room')
+                print('You cannot use that on an object that is not in the room')
                 return False
         else:
             print("You cannot use an object that isn't in your inventory")
@@ -121,7 +125,7 @@ class System:
 
     def ask(self, person_id: str, obj_id: str):
         """this command takes 2 parameters, person which is an id for a person, and object, which is an id for an
-        object"""
+        object, feature, or person"""
         # checks if the person is in the room
         if person_id in self._rooms[self._cur_room].get_people():
             # checks if the object is in the inventory
@@ -130,13 +134,27 @@ class System:
                     print(self._people[person_id].get_interaction('ask', obj_id))
                     return True
                 except interactable.KeyDoesNotExist:
-                    print("'Sorry I don't know anything about that object'")
+                    print("'Sorry I don't know anything about that'")
+                    return False
+            elif obj_id in self._features:
+                try:
+                    print(self._people[person_id].get_interaction('ask', obj_id))
+                    return True
+                except interactable.KeyDoesNotExist:
+                    print("'Sorry I don't know anything about that'")
+                    return False
+            elif obj_id in self._people:
+                try:
+                    print(self._people[person_id].get_interaction('ask', obj_id))
+                    return True
+                except interactable.KeyDoesNotExist:
+                    print("'Sorry I don't know anything about that'")
                     return False
             else:
-                print('You cannot ask someone about an object that is not in your inventory')
+                print("'Sorry I don't know anything about that'")
                 return False
         else:
-            print("You cannot speak with something that isn't a person")
+            print("You can only speak with a person in this room")
             return False
 
     def call(self):
@@ -220,7 +238,7 @@ class System:
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
             try:
-                print(self._objects[obj].get_interaction('read'))
+                print(self._features[obj].get_interaction('read'))
                 return True
             except interactable.KeyDoesNotExist:
                 print('You cannot read this object')
@@ -252,7 +270,7 @@ class System:
         elif obj in self._rooms[self._cur_room].get_features():
             # for certain features the condition specifies if the object is locked
             if self._features[obj].get_condition() is True:
-                print(self._features[obj].get_interaction('open','locked'))
+                print(self._features[obj].get_interaction('open', 'locked'))
             else:
                 print(self._features[obj].get_interaction('open', 'unlocked'))
         # if the object is a room
@@ -336,7 +354,7 @@ class System:
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
             try:
-                print(self._objects[self._cur_room].get_interaction('touch'))
+                print(self._rooms[self._cur_room].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
                 print('You cannot touch the room')
@@ -383,7 +401,7 @@ class System:
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
             try:
-                print(self._objects[self._cur_room].get_interaction('taste'))
+                print(self._rooms[self._cur_room].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
                 print('You cannot taste that thing')
@@ -430,7 +448,7 @@ class System:
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
             try:
-                print(self._objects[self._cur_room].get_interaction('smell'))
+                print(self._rooms[self._cur_room].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
                 print('Sorry you cannot smell that thing')
@@ -448,7 +466,7 @@ class System:
                 print(self._objects[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('Sorry you cannot listen to that thing')
+                print('You hear nothing')
                 return False
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
@@ -456,7 +474,7 @@ class System:
                 print(self._objects[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('Sorry you cannot listen to that thing')
+                print('You hear nothing')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -464,7 +482,7 @@ class System:
                 print(self._features[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('Sorry you cannot listen to that thing')
+                print('You hear nothing')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -472,12 +490,12 @@ class System:
                 print(self._people[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('Sorry you cannot listen to that thing')
+                print('You hear nothing')
                 return False
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
             try:
-                print(self._objects[self._cur_room].get_interaction('listen'))
+                print(self._rooms[self._cur_room].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
                 print('Sorry you cannot listen to that thing')
@@ -503,11 +521,11 @@ class System:
             return True
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
-            print(self._features[obj].get_desc())
+            print(self._people[obj].get_desc())
             return True
         # if the object you are trying to read is the room itself
         elif obj in self._rooms:
-            print(self._features[obj].get_description())
+            print(self._rooms[obj].get_description())
             return True
         # if the object is not in your room or the inventory
         else:
@@ -555,6 +573,7 @@ class System:
 
     def help(self):
         """takes no parameters, prints out a list of commands that the player is allowed to use"""
+        print('Player: ' + self._player.get_name())
         print('Here are some examples of possible commands you can use')
         print('look at [object] - allows you to examine an object, feature, or person')
         print('look - allows you to examine the room')
@@ -578,9 +597,10 @@ class System:
         """takes no parameters, prints out the players current inventory"""
         if len(self._player.get_inventory()) == 0:
             print('your inventory is empty')
+            return False
         for obj in self._player.get_inventory():
             print(self._objects[obj].get_name())
-        return
+        return True
 
     def save(self):
         """takes no parameters, allows you to save the game"""
@@ -609,7 +629,7 @@ class System:
         # grabs the list of json objects located in the rooms subdirectory
         room_files = os.listdir('gamefiles/rooms')
         for room_file_name in room_files:
-            room_file = open(room_file_name,'r')
+            room_file = open(room_file_name, 'r')
             room_json = json.load(room_file)
             room_obj = converter.room_from_json(room_json)
             self._rooms[room_obj]['id'] = room_obj
@@ -617,7 +637,7 @@ class System:
         # grabs the list of json objects located in the objects subdirectory
         object_files = os.listdir('gamefiles/objects')
         for object_file_name in object_files:
-            object_file = open(object_file_name,'r')
+            object_file = open(object_file_name, 'r')
             object_json = json.load(object_file)
             object_obj = converter.obj_from_json(object_json)
             self._objects[object_obj]['id'] = object_obj
@@ -625,7 +645,7 @@ class System:
         # grabs the list of json objects located in the features subdirectory
         feature_files = os.listdir('gamefiles/features')
         for feature_file_name in feature_files:
-            feature_file = open(feature_file_name,'r')
+            feature_file = open(feature_file_name, 'r')
             feature_json = json.load(feature_file)
             feature_obj = converter.feat_from_json(feature_json)
             self._features[feature_obj]['id'] = feature_obj
@@ -633,7 +653,7 @@ class System:
         # grabs the list of json objects located in the people subdirectory
         people_files = os.listdir('gamefiles/people')
         for people_file_name in people_files:
-            people_file = open(people_file_name,'r')
+            people_file = open(people_file_name, 'r')
             people_json = json.load(people_file)
             people_obj = converter.person_from_json(people_json)
             self._people[people_obj]['id'] = people_obj
@@ -651,22 +671,22 @@ class System:
 
         # just use print statements in this, everything else will be handled outside of this class
 
-    def add_feature(self,feature):
+    def add_feature(self, feat: feature.Feature):
         """adds a feature to self._features"""
-        self._features[feature.get_id()] = feature
+        self._features[feat.get_id()] = feat
         return True
 
-    def add_room(self,room):
+    def add_room(self, room_obj: room.Room):
         """adds a room to self._rooms"""
-        self._rooms[room.get_id()] = room
+        self._rooms[room_obj.get_id()] = room_obj
         return True
 
-    def add_obj(self,obj):
+    def add_obj(self, obj: object.Object):
         """adds a obj to self._objects"""
         self._objects[obj.get_id()] = obj
         return True
 
-    def add_person(self,person):
+    def add_person(self, per: person.Person):
         """adds a person to self._people"""
-        self._people[person.get_id()] = person
+        self._people[per.get_id()] = per
         return True
