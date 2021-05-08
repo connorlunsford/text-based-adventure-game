@@ -51,12 +51,18 @@ class Interactable:
         self._desc = desc
 
     # methods for managing interactions
-    def get_interaction(self, action: str):
+    def get_interaction(self, action: str, obj=None):
         """returns the value associated with the key provided in the 
         action argument; if the key does not exist, this method raises 
         an exception"""
         if action in self._interactions:
-            return self._interactions[action]
+            if obj is not None:
+                if obj in self._interactions[action]:
+                    return self._interactions[action][obj]
+                else:
+                    raise KeyDoesNotExist
+            else:
+                return self._interactions[action]
         else:
             raise KeyDoesNotExist
 
