@@ -290,5 +290,97 @@ class TestCase(unittest.TestCase):
         self.test_room.set_connections(["R01", "R02", "R03"])
         self.assertEqual(self.test_room.get_connections(), ["R01", "R02", "R03"])
 
+    # testing methods for managing connections
+    def test_add_interaction1(self):
+        """add_interaction successfully adds a key-value pair to the interactions dict"""
+        self.test_room.add_interaction("key1", "value1")
+        self.assertEqual(self.test_room.get_interactions(), {"key1": "value1"})
+
+    def test_add_interaction2(self):
+        """add_interaction successfully raises an exception when the provided 
+        key already exists in the interactions dict"""
+        self.test_room.add_interaction("key1", "value1")
+        with self.assertRaises(room.KeyAlreadyExists):
+            self.test_room.add_interaction("key1", "value1")
+
+    def test_remove_interaction1(self):
+        """remove_interaction successfully removes a key-value pair from the 
+        interactions dict"""
+        self.test_room.add_interaction("key1", "value1")
+        self.test_room.add_interaction("key2", "value2")
+        self.test_room.remove_interaction("key1")
+        self.assertEqual(self.test_room.get_interactions(), {"key2": "value2"})
+
+    def test_remove_interaction2(self):
+        """remove_interaction successfully raises an exception when the provided
+        key does not exist in the connections list"""
+        with self.assertRaises(room.KeyDoesNotExist):
+            self.test_room.remove_interaction("key1")
+
+    def test_get_interaction1(self):
+        """get_interaction successfully returns an interaction that contains
+        no nesting"""
+        self.test_room.add_interaction("key1", "value1")
+        self.assertEqual(self.test_room.get_interaction("key1"), "value1")
+
+    def test_get_interaction2(self):
+        """get_interaction successfully raises an exception when the provided
+        key does not exist in the interactions dict (no nesting)"""
+        self.test_room.add_interaction("key1", "value1")
+        with self.assertRaises(room.KeyDoesNotExist):
+            self.test_room.get_interaction("key2")
+
+    def test_get_interaction3(self):
+        """get_interaction successfully returns an interaction that contains
+        single-level nesting"""
+        self.test_room.add_interaction("key1", {"sub1": "subvalue1"})
+        self.assertEqual(self.test_room.get_interaction("key1", "sub1"), "subvalue1")
+
+    def test_get_interaction4(self):
+        """get_interaction successfully raises an exception when the provided
+        key does not exist in the interactions dict (single-level nesting)"""
+        self.test_room.add_interaction("key1", {"sub1": "subvalue1"})
+        with self.assertRaises(room.KeyDoesNotExist):
+            self.test_room.get_interaction("key1", "sub2")
+
+    def test_get_interaction5(self):
+        """get_interaction successfully returns an interaction that contains
+        double-level nesting"""
+        self.test_room.add_interaction("key1", {"sub1": {"subsub1": "subsubvalue1"}})
+        self.assertEqual(self.test_room.get_interaction("key1", "sub1", "subsub1"), "subsubvalue1")
+
+    def test_get_interaction6(self):
+        """get_interaction successfully raises an exception when the provided
+        key does not exist in the interactions dict (double-level nesting)"""
+        self.test_room.add_interaction("key1", {"sub1": {"subsub1": "subsubvalue1"}})
+        with self.assertRaises(room.KeyDoesNotExist):
+            self.test_room.get_interaction("key1", "sub1", "subsub2")
+
+    def test_set_interactions1(self):
+        """set_interactions successfully sets the value of the interactions dict
+        to the provided dict when the previous dict had IDs added to it"""
+        self.test_room.add_interaction("key1", "value1")
+        self.test_room.add_interaction("key2", "value2")
+        self.test_room.set_interactions({"key1": "value1", "key2": "value2"})
+        self.assertEqual(self.test_room.get_interactions(), {"key1": "value1", "key2": "value2"})
+
+    def test_set_interactions2(self):
+        """set_connections successfully sets the value of the interactions dict
+        to the provided dict when the previous dict had no IDs added to it"""
+        self.test_room.set_interactions({"key1": "value1", "key2": "value2"})
+        self.assertEqual(self.test_room.get_interactions(), {"key1": "value1", "key2": "value2"})
+
+    def test_get_interactions1(self):
+        """get_interactions successfully returns the entire interactions dict
+        with the correct contents when empty"""
+        self.assertEqual(self.test_room.get_interactions(), {})
+
+    def test_get_interactions2(self):
+        """get_connections successfully returns the entire interactions dict
+        with the correct contents when not empty"""
+        self.test_room.add_interaction("key1", "value1")
+        self.test_room.add_interaction("key2", "value2")
+        self.assertEqual(self.test_room.get_interactions(), {"key1": "value1", "key2": "value2"})
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

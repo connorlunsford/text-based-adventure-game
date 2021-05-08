@@ -15,6 +15,14 @@ class IDAlreadyExists(RoomException):
     """Raised when ID already exists"""
     pass
 
+class KeyDoesNotExist(RoomException):
+    """Raised when key does not exist"""
+    pass
+
+class KeyAlreadyExists(RoomException):
+    """Raised when key already exists"""
+    pass
+
 class Room:
 
     def __init__(self, id: str, name: str, desc: str, sdesc: str, visited: bool):
@@ -219,7 +227,6 @@ class Room:
         """takes a dict of interactions as keys with possible responses as the value.
         Saves that dict as the self.interactions variable"""
         self._interactions = interactions
-        return True
 
     def get_interactions(self):
         """returns the dicts stored in the self._interactions value. Keys are all
@@ -229,13 +236,17 @@ class Room:
     def add_interaction(self, interaction: str, response: str):
         """Takes a interaction and a response, adds it to self._interactions as a key and
         a value paid"""
-        self._interactions[interaction] = response
-        return True
+        if interaction not in self._interactions:
+            self._interactions[interaction] = response
+        else:
+            raise KeyAlreadyExists
 
     def remove_interaction(self, interaction: str):
         """Takes a interaction and removes it and the response from self._interactions"""
-        self._interactions.pop(interaction)
-        return True
+        if interaction in self._interactions:
+            self._interactions.pop(interaction)
+        else:
+            raise KeyDoesNotExist
 
     def get_interaction(self, interaction: str, sub1=None, sub2=None):
         """takes a interaction in reference to a room and returns the response that
@@ -246,17 +257,17 @@ class Room:
         if sub1 is None:
             # try/except will check if the interaction exists in interactions
             # if it does not it raises an error, except will then return none
-            try:
+            if interaction in self._interactions:
                 return self._interactions[interaction]
-            except KeyError:
-                raise interactable.KeyDoesNotExist
+            else:
+                raise KeyDoesNotExist
         elif sub2 is None and sub1 is not None:
-            try:
+            if interaction in self._interactions and sub1 in self._interactions[interaction]:
                 return self._interactions[interaction][sub1]
-            except KeyError:
-                raise interactable.KeyDoesNotExist
+            else:
+                raise KeyDoesNotExist
         else:
-            try:
+            if interaction in self._interactions and sub1 in self._interactions[interaction] and sub2 in self._interactions[interaction][sub1]:
                 return self._interactions[interaction][sub1][sub2]
-            except KeyError:
-                raise interactable.KeyDoesNotExist
+            else:
+                raise KeyDoesNotExist
