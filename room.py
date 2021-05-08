@@ -128,25 +128,25 @@ class Room:
     def set_objects(self, objects: list):
         """takes a list of ids and sets self.objects to the list"""
         self._objects = objects
-        return True
 
     # methods for managing self.features
 
     def add_feature(self, feat: str):
-        """takes a feature object and adds it to this rooms self.features,
-            returns True"""
-        self._features.append(feat)
-        return True
+        """takes a feature's ID and adds it to this rooms self.features; if
+        the ID already exists inside the list, this method raises an exception"""
+        if feat not in self._features:
+            self._features.append(feat)
+        else:
+            raise IDAlreadyExists
 
     def remove_feature(self, feat: str):
-        """takes a feature object and attempts to remove it from this rooms
-        self.features. If it fails it returns False, if it succeeds it returns
-        True"""
+        """takes a feature's ID and attempts to remove it from this room's
+        self.features. If the ID does not exist inside the list, this method
+        raises an exception"""
         if feat in self._features:
             self._features.remove(feat)
-            return True
         else:
-            return False
+            raise IDDoesNotExist
 
     def get_features(self):
         """returns a list of Feature objects in self.features"""
@@ -155,25 +155,25 @@ class Room:
     def set_features(self, features: list):
         """takes a list of ids and sets self.features to the list"""
         self._features = features
-        return True
 
     # methods for managing self.people
 
     def add_person(self, per: str):
-        """takes a person object and adds it to this rooms self.persons,
-            returns True"""
-        self._people.append(per)
-        return True
+        """takes a person's ID and adds it to this rooms self.persons; if
+        the ID already exists inside the list, this method raises an exception"""
+        if per not in self._people:
+            self._people.append(per)
+        else:
+            raise IDAlreadyExists
 
     def remove_person(self, per: str):
-        """takes a person object and attempts to remove it from this rooms
-        self.persons. If it fails it returns False, if it succeeds it returns
-        True"""
+        """takes a person's ID and attempts to remove it from this rooms
+        self.persons. If the ID does not exist inside the list, this method
+        raises an exception"""
         if per in self._people:
             self._people.remove(per)
-            return True
         else:
-            return False
+            raise IDDoesNotExist
 
     def get_people(self):
         """returns a list of Person objects in self.people"""
@@ -182,25 +182,26 @@ class Room:
     def set_people(self, people: list):
         """takes a list of ids and sets self.people to the list"""
         self._people = people
-        return True
 
     # methods for managing self.connections
 
     def add_connection(self, connection: str):
         """takes a string which specifies a room ID and adds it to the list
-        of connections to this room"""
-        self._connections.append(connection)
-        return True
+        of connections to this room; if the ID already exists inside the list, 
+        this method raises an exception"""
+        if connection not in self._connections:
+            self._connections.append(connection)
+        else:
+            raise IDAlreadyExists
 
     def remove_connection(self, connection: str):
         """takes a string which specifies a room ID and removes it from the
-        list of connections to this room. If the connection is not in the list
-        it returns False. Otherwise it removes it and returns True"""
+        list of connections to this room. If the ID does not exist inside the 
+        list, this method raises an exception"""
         if connection in self._connections:
             self._connections.remove(connection)
-            return True
         else:
-            return False
+            raise IDDoesNotExist
 
     def get_connections(self):
         """returns a list of connections to this room in the form of room IDs
@@ -211,7 +212,6 @@ class Room:
         """takes a list of connections to this room in the form of room IDs
         and sets self.connections to this list"""
         self._connections = connections
-        return True
 
     # methods for managing self.interactions
 

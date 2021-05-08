@@ -131,5 +131,164 @@ class TestCase(unittest.TestCase):
         self.test_room.set_objects(["O01", "O02", "O03"])
         self.assertEqual(self.test_room.get_objects(), ["O01", "O02", "O03"])
 
+    # testing methods for managing features
+    def test_add_feature1(self):
+        """add_feature successfully adds a feature ID to the features list"""
+        self.test_room.add_feature("F01")
+        self.assertEqual(self.test_room.get_features(), ["F01"])
+
+    def test_add_feature2(self):
+        """add_feature successfully raises an exception when the provided 
+        feature ID already exists in the feature list"""
+        self.test_room.add_feature("F01")
+        with self.assertRaises(room.IDAlreadyExists):
+            self.test_room.add_feature("F01")
+
+    def test_remove_feature1(self):
+        """remove_feature successfully removes a feature ID from the 
+        features list"""
+        self.test_room.add_feature("F01")
+        self.test_room.add_feature("F02")
+        self.test_room.remove_feature("F01")
+        self.assertEqual(self.test_room.get_features(), ["F02"])
+
+    def test_remove_feature2(self):
+        """remove_feature successfully raises an exception when the provided
+        feature ID does not exist in the features list"""
+        with self.assertRaises(room.IDDoesNotExist):
+            self.test_room.remove_feature("F01")
+    
+    def test_get_features1(self):
+        """get_features successfully returns the entire features list with the 
+        correct contents when empty"""
+        self.assertEqual(self.test_room.get_features(), [])
+
+    def test_get_features2(self):
+        """get_features successfully returns the entire features list with the
+        correct contents when not empty"""
+        self.test_room.add_feature("F01")
+        self.test_room.add_feature("F02")
+        self.assertEqual(self.test_room.get_features(), ["F01", "F02"])
+
+    def test_set_features1(self):
+        """set_features successfully sets the value of the features list to the
+        provided list when the previous list had IDs added to it"""
+        self.test_room.add_feature("F01")
+        self.test_room.add_feature("F02")
+        self.test_room.set_features(["F01", "F02", "F03"])
+        self.assertEqual(self.test_room.get_features(), ["F01", "F02", "F03"])
+
+    def test_set_features2(self):
+        """set_features successfully sets the value of the features list to the
+        provided list when the previous list had no IDs added to it"""
+        self.test_room.set_features(["F01", "F02", "F03"])
+        self.assertEqual(self.test_room.get_features(), ["F01", "F02", "F03"])
+
+    # testing methods for managing persons
+    def test_add_person1(self):
+        """add_person successfully adds a person ID to the persons list"""
+        self.test_room.add_person("P01")
+        self.assertEqual(self.test_room.get_people(), ["P01"])
+
+    def test_add_person2(self):
+        """add_person successfully raises an exception when the provided 
+        person ID already exists in the persons list"""
+        self.test_room.add_person("P01")
+        with self.assertRaises(room.IDAlreadyExists):
+            self.test_room.add_person("P01")
+
+    def test_remove_person1(self):
+        """remove_person successfully removes a person ID from the 
+        persons list"""
+        self.test_room.add_person("P01")
+        self.test_room.add_person("P02")
+        self.test_room.remove_person("P01")
+        self.assertEqual(self.test_room.get_people(), ["P02"])
+
+    def test_remove_person2(self):
+        """remove_person successfully raises an exception when the provided
+        person ID does not exist in the persons list"""
+        with self.assertRaises(room.IDDoesNotExist):
+            self.test_room.remove_person("P01")
+    
+    def test_get_people1(self):
+        """get_people successfully returns the entire persons list with the 
+        correct contents when empty"""
+        self.assertEqual(self.test_room.get_people(), [])
+
+    def test_get_people2(self):
+        """get_people successfully returns the entire persons list with the
+        correct contents when not empty"""
+        self.test_room.add_person("P01")
+        self.test_room.add_person("P02")
+        self.assertEqual(self.test_room.get_people(), ["P01", "P02"])
+
+    def test_set_people1(self):
+        """set_people successfully sets the value of the persons list to the
+        provided list when the previous list had IDs added to it"""
+        self.test_room.add_person("P01")
+        self.test_room.add_person("P02")
+        self.test_room.set_people(["P01", "P02", "P03"])
+        self.assertEqual(self.test_room.get_people(), ["P01", "P02", "P03"])
+
+    def test_set_people2(self):
+        """set_people successfully sets the value of the persons list to the
+        provided list when the previous list had no IDs added to it"""
+        self.test_room.set_people(["P01", "P02", "P03"])
+        self.assertEqual(self.test_room.get_people(), ["P01", "P02", "P03"])
+
+    # testing methods for managing connections
+    def test_add_connection1(self):
+        """add_connection successfully adds a room ID to the connections list"""
+        self.test_room.add_connection("R01")
+        self.assertEqual(self.test_room.get_connections(), ["R01"])
+
+    def test_add_connection2(self):
+        """add_connection successfully raises an exception when the provided 
+        room ID already exists in the connections list"""
+        self.test_room.add_connection("R01")
+        with self.assertRaises(room.IDAlreadyExists):
+            self.test_room.add_connection("R01")
+
+    def test_remove_connection1(self):
+        """remove_connection successfully removes a room ID from the 
+        connections list"""
+        self.test_room.add_connection("R01")
+        self.test_room.add_connection("R02")
+        self.test_room.remove_connection("R01")
+        self.assertEqual(self.test_room.get_connections(), ["R02"])
+
+    def test_remove_connection2(self):
+        """remove_connection successfully raises an exception when the provided
+        room ID does not exist in the connections list"""
+        with self.assertRaises(room.IDDoesNotExist):
+            self.test_room.remove_connection("R01")
+    
+    def test_get_connections1(self):
+        """get_connections successfully returns the entire connections list
+        with the correct contents when empty"""
+        self.assertEqual(self.test_room.get_connections(), [])
+
+    def test_get_connections2(self):
+        """get_connections successfully returns the entire connections list
+        with the correct contents when not empty"""
+        self.test_room.add_connection("R01")
+        self.test_room.add_connection("R02")
+        self.assertEqual(self.test_room.get_connections(), ["R01", "R02"])
+
+    def test_set_connections1(self):
+        """set_connections successfully sets the value of the connections list
+        to the provided list when the previous list had IDs added to it"""
+        self.test_room.add_connection("R01")
+        self.test_room.add_connection("R02")
+        self.test_room.set_connections(["R01", "R02", "R03"])
+        self.assertEqual(self.test_room.get_connections(), ["R01", "R02", "R03"])
+
+    def test_set_connections2(self):
+        """set_connections successfully sets the value of the connections list
+        to the provided list when the previous list had no IDs added to it"""
+        self.test_room.set_connections(["R01", "R02", "R03"])
+        self.assertEqual(self.test_room.get_connections(), ["R01", "R02", "R03"])
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
