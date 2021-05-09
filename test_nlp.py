@@ -193,5 +193,29 @@ class TestParserClass(unittest.TestCase):
         with self.assertRaises(nlp.InvalidSentenceStructure):
             self.test_parser.classify_input(input)
 
+    ############################################################################
+    # Function: classify_handler
+    ############################################################################
+
+    def test_classify_handler1(self):
+        input = ["look", "at", "mirror"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["look at", "mirror"])
+
+    def test_classify_handler2(self):
+        input = ["search", "through", "drawer"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["search through", "drawer"])   
+
+    def test_classify_handler3(self):
+        input = ["help"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["help"]) 
+
+    def test_classify_handler4(self):
+        input = ["south"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "south"])
+
+    def test_classify_handler5(self):
+        input = ["south", "east"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "south east"]) 
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
