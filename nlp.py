@@ -4,9 +4,13 @@ class ParserException(Exception):
     """Base exception class for the Parser class"""
     pass
 
-class ParserMissingFile(Exception):
+class ParserMissingFile(ParserException):
     """Raised when a required text file has not been added to a Parser object"""
     pass
+
+class InvalidSentenceStructure(ParserException):
+    """Raised when an input has an invalid sentence structure"""
+    pass  
 
 class Parser:
 
@@ -238,9 +242,11 @@ class Parser:
         
         # If second word is a preposition, combine it with the verb
         # Consider everything after the preposition to be the direct object
+        verb_modifier = False
         if second_word in prepositions:
             verb = verb + " " + second_word
             direct_object = input[2:]
+            verb_modifier = True
         # If the second word is not a preposition, consider everything after
         # the verb to be the direct object
         else:
@@ -251,6 +257,18 @@ class Parser:
         for i in range(len(direct_object)):
             # If a preposition is found
             if direct_object[i] in prepositions:
+                # Note on special case: verb + preposition + noun + preposition + noun
+                # E.g., "look at painting on wall"
+                # In this case, the wall is no longer an indirect object, so everything after the second
+                # preposition should be removed OR it should be considered part of the direct object
+                # In this instance, I opted to remove it as it keeping it would require
+                # the tracking of more object aliases.
+                # Case 1: a verb-modifying preposition was present
+                #if verb_modifier:
+                #    direct_object = direct_object[:i]
+                #    break
+                # Case 2: a verb-modifying preposition was not present
+                #else:
                 # Get the second half of the array; this is the indirect object
                 #indirect_object= " ".join(direct_object[i + 1:])
                 indirect_object = direct_object[i + 1:]
@@ -264,11 +282,20 @@ class Parser:
         if "indirect_object" in locals():
             for i in range(len(indirect_object)):
                 if indirect_object[i] in prepositions:
-                    raise ParserException
+                    raise InvalidSentenceStructure
         else:
             for i in range(len(direct_object)):
                 if direct_object[i] in prepositions:
-                    raise ParserException
+                    raise InvalidSentenceStructure
+
+        # Handle case: verb + preposition + noun + preposition + noun
+        # E.g., "look at painting on wall"
+        # In this case, the wall is no longer an indirect object, so everything after the second
+        # preposition should be removed OR it should be considered part of the direct object
+        # In this instance, I opted to remove it as it keeping it would require
+        # the tracking of more object aliases.
+        if verb_modifier and "indirect_object" in locals():
+            del indirect_object
 
         # Concatenate the direct object array into a single string
         direct_object = " ".join(direct_object)
