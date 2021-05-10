@@ -6,7 +6,7 @@ import player
 import room
 
 
-def room_to_json(self, room_obj: room.Room):
+def room_to_json(room_obj: room.Room):
     """takes a room object and converts it to a json object"""
     # stores everything in a dict
     room_dict = {
@@ -56,7 +56,7 @@ def obj_to_json(object_obj: object.Object):
     # store each of object_obj's atttributes in a dict
     object_dict = {
         'id': object_obj.get_id(),
-        'name': object_obj.get_named(),
+        'name': object_obj.get_name(),
         'desc': object_obj.get_desc(),
         'interactions': object_obj.get_interactions(),
         'hidden': object_obj.get_hidden()
@@ -87,13 +87,23 @@ def obj_from_json(json_object):
 def feat_to_json(feat_obj: feature.Feature):
     """takes a Feature object and converts it to a json object"""
     # store each of feat_obj's attributes in a dict
-    feature_dict = {
-        'id': feat_obj.get_id(),
-        'name': feat_obj.get_name(),
-        'desc': feat_obj.get_desc(),
-        'interactions': feat_obj.get_interactions(),
-        'hidden': feat_obj.get_hidden()
-    }
+    if hasattr(feat_obj, "_condition"):
+        feature_dict = {
+            'id': feat_obj.get_id(),
+            'name': feat_obj.get_name(),
+            'desc': feat_obj.get_desc(),
+            'interactions': feat_obj.get_interactions(),
+            'hidden': feat_obj.get_hidden(),
+            'condition': feat_obj.get_condition()
+        }
+    else:
+        feature_dict = {
+            'id': feat_obj.get_id(),
+            'name': feat_obj.get_name(),
+            'desc': feat_obj.get_desc(),
+            'interactions': feat_obj.get_interactions(),
+            'hidden': feat_obj.get_hidden()
+        }
 
     # converts the dict to an json file and returns it
     return json.dumps(feature_dict)
@@ -113,6 +123,9 @@ def feat_from_json(json_feature):
     # creates a new Feature object with the specified attributes
     new_feature = feature.Feature(id, name, desc, interactions, hidden)
 
+    if json_feature['condition'] is not None:
+        new_feature.add_condition(feature_dict.get('condition'))
+
     # returns the new_feature object as a Feature object
     return new_feature
 
@@ -124,7 +137,7 @@ def person_to_json(person_obj: person.Person):
         'id': person_obj.get_id(),
         'name': person_obj.get_name(),
         'desc': person_obj.get_desc(),
-        'verbs': person_obj.get_interactions()
+        'interactions': person_obj.get_interactions()
     }
     # converts the dict to json file and returns it
     return json.dumps(person_dict)
@@ -182,3 +195,5 @@ def player_from_json(json_player):
         new_player.set_inventory(player_dict['inventory'])
     # returns new_player as a Player object
     return new_player
+
+

@@ -35,8 +35,8 @@ class Room:
         self._features = []
         # contains a list of Person objects
         self._people = []
-        # contains a list of connections in the form of Room ids
-        self._connections = []
+        # contains a dictionary of connections, with the key being a direction and the value being the room id
+        self._connections = {}
         # contains a dict of possible responses for certain commands
         self._interactions = {}
 
@@ -186,30 +186,32 @@ class Room:
 
     # methods for managing self.connections
 
-    def add_connection(self, connection: str):
+    def add_connection(self, direction: str, connection: str):
         """takes a string which specifies a room ID and adds it to the list
         of connections to this room"""
-        self._connections.append(connection)
+        if str not in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
+            return False
+        self._connections[direction] = connection
         return True
 
-    def remove_connection(self, connection: str):
-        """takes a string which specifies a room ID and removes it from the
-        list of connections to this room. If the connection is not in the list
+    def remove_connection(self, direction: str):
+        """takes a string which specifies a direction and removes it from the
+        list of connections to this room. If the connection is not in the dict
         it returns False. Otherwise it removes it and returns True"""
-        if connection in self._connections:
-            self._connections.remove(connection)
+        if direction in self._connections:
+            self._connections.pop(direction)
             return True
         else:
             return False
 
     def get_connections(self):
-        """returns a list of connections to this room in the form of room IDs
+        """returns a dictionary of connections to this room in the form of room IDs
         stored in self.connections"""
         return self._connections
 
-    def set_connections(self, connections: list):
-        """takes a list of connections to this room in the form of room IDs
-        and sets self.connections to this list"""
+    def set_connections(self, connections: dict):
+        """takes a dictionary of connections to this room in the form of room IDs
+        and sets self.connections to this dict"""
         self._connections = connections
         return True
 

@@ -690,3 +690,32 @@ class System:
         """adds a person to self._people"""
         self._people[per.get_id()] = per
         return True
+
+    def save_base_game_files(self):
+        """takes all parameters in the system and saves
+        them into the proper base gamefiles in the
+        gamefiles folder. Do not use this for saving"""
+
+        for feat in self._features.values():
+            json_feat = converter.feat_to_json(feat)
+            filename = 'gamefiles/features/' + feat.get_id() + '.json'
+            json.dump(json_feat, open(filename, 'w'))
+
+        for obj in self._objects.values():
+            json_obj = converter.obj_to_json(obj)
+            filename = 'gamefiles/objects/' + obj.get_id() + '.json'
+            json.dump(json_obj, open(filename, 'w'))
+
+        for person in self._people.values():
+            json_person = converter.person_to_json(person)
+            filename = 'gamefiles/people/' + person.get_id() + '.json'
+            json.dump(json_person, open(filename, 'w'))
+
+        for room_obj in self._rooms.values():
+            json_room = converter.room_to_json(room_obj)
+            filename = 'gamefiles/rooms/' + room_obj.get_id() + '.json'
+            json.dump(json_room, open(filename, 'w'))
+
+        return
+
+

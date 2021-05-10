@@ -78,10 +78,4 @@ if __name__ == '__main__':
     sys.add_obj(O02)
     sys.add_feature(F01)
 
-
-
-    print("The game is about to start, use the command 'help' if you get stuck")
-    # gets a description so the user can check out stuff in the room
-    sys.get_description()
-
-    sys.game_loop()
+    sys.save_base_game_files()
