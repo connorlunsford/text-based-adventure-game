@@ -133,8 +133,14 @@ class Parser:
         else:
             raise ParserException
 
+    # TODO: load killer and weapon values from an external files, maybe in game
+    # folder? and have aliases for the killer and weapon
+
+    # TODO: implement killer and weapon methods
+
     def find_killer(self, killer):
         """this should take a phrase and return either the killers name or 'WRONG'"""
+        # NOTE: 
         return 'WRONG'
 
     def find_weapon(self, weapon):
@@ -166,16 +172,6 @@ class Parser:
     def remove_stopwords(self, words: list):
         """takes a list of words and removes stopwords, returns a list"""
 
-        """ NOTE: This currently removes 's' which is useful because that will
-        be leftover after tokenizing contractions. However, if we decide to 
-        accept 'n', 's', 'e', and 'w' for directions then this will need to be
-        adjusted. That is not part of the requirements though, so I suggest
-        we don't allow them. Otherwise, at the moment, I'm not sure how to deal
-        with a leftover 's' vs 's' for 'south'."""
-
-        """TODO: are we going to have a special case for 'it' in the classify
-        stage? If so, it will also need to be removed from this list"""
-
         words_no_stopwords = []
         for word in words:
             if word not in self._stopwords:
@@ -191,7 +187,6 @@ class Parser:
         all others. Is this how we want to handle this? Or do we want to return
         some kind of message about not understanding what the user means?"""
         
-        # sample dictionary for dev/testing. 
         # TODO: need to compose full list of words we want the game to recognize
         # TODO: implement error checking/exception for unrecognized/misspelled
         # words
@@ -333,6 +328,12 @@ class Parser:
         self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
             {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
 
+        # TODO: implement connections/directions - return as a string, so need
+        # to add to objects dictionary
+
+        # TODO: check if prepositions will be received (from classifier) as
+        # part of direct and indirect objects
+
         # at least one word will be returned
         input_verb = input[0]
         # if not a single word command, then next is direct object
@@ -369,15 +370,30 @@ class Parser:
                 if verb in value_list[0]:
                     resolved_verb = key_list[0]
 
+        # TODO: the only preposition that should be returned is "at" for "look at"
         # search game dictionary for prep
         if prep != None:
-            if prep in self._game_preps:
-                resolved_verb = resolved_verb + " " + prep
+            # if prep in self._game_preps:
+            #     resolved_verb = resolved_verb + " " + prep
+
+            if resolved_verb == "look" and prep == "at":
+                resolved_verb = "look at"
         
         # add verb/phrase to command to be returned
         resolved_command.append(resolved_verb)
 
         # RESOLVE DIRECT OBJECT: can be one or more words
+
+        # TODO: need to change how objects are searched in the game_objects
+        # dictionary if we're accepting multiple-word aliases
+        # How to decide if search multi-word phrase or single word and ignore
+        # unncessary words?
+
+        # TODO: check classifier to see if prepositions are returned with the 
+        # indirect object, if so I need to adjust for that
+
+        # TODO: double check the game system and confirm that I need to return
+        # feature or room IDs, similar to the object ID 
 
         # check each word in direct object against game dictionary
         if input_direct != None:
