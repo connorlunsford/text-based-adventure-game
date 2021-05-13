@@ -566,6 +566,7 @@ class System:
             print('You picked up the ' + self._objects[obj].get_name())
             self._rooms[self._cur_room].remove_object(obj)
             self._player.add_to_inventory(obj)
+            self._objects[obj].set_hidden(False)
             return True
         else:
             print('That object is not in the room')
@@ -612,16 +613,20 @@ class System:
 
     def get_description(self):
         """gets the description of the room and all the objects/features/people in the room"""
-        print(self._rooms[self._cur_room].get_description())
-        print('In the room there is:')
-        for feat in self._rooms[self._cur_room].get_features():
-            if self._features[feat].get_hidden() is False:
-                print(self._features[feat].get_desc())
-        for obj in self._rooms[self._cur_room].get_objects():
-            if self._objects[obj].get_hidden() is False:
-                print(self._objects[obj].get_desc())
-        for person_id in self._rooms[self._cur_room].get_people():
-            print(self._people[person_id].get_desc())
+        if self._rooms[self._cur_room].get_visited is False:
+            print(self._rooms[self._cur_room].get_description())
+            print('In the room there is:')
+            for feat in self._rooms[self._cur_room].get_features():
+                if self._features[feat].get_hidden() is False:
+                    print(self._features[feat].get_sdesc())
+            for obj in self._rooms[self._cur_room].get_objects():
+                if self._objects[obj].get_hidden() is False:
+                    print(self._objects[obj].get_sdesc())
+            for person_id in self._rooms[self._cur_room].get_people():
+                print(self._people[person_id].get_sdesc())
+        else:
+            print(self._rooms[self._cur_room].get_description())
+
         return
 
     def start(self):

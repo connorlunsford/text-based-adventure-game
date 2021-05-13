@@ -17,7 +17,7 @@ class IDAlreadyExists(RoomException):
 
 class Room:
 
-    def __init__(self, id: str, name: str, desc: str, sdesc: str, visited: bool):
+    def __init__(self, id: str, name: str, desc: str, sdesc: str):
         # contains the id for the room
         self._id = id
         # contains the name of the room
@@ -28,7 +28,7 @@ class Room:
         self._sdesc = sdesc
         # contains a bool that specifies whether or not the room has been
         # visited before
-        self._visited = visited
+        self._visited = False
         # contains a list of Object objects
         self._objects = []
         # contains a list of Feature objects

@@ -78,4 +78,4 @@ if __name__ == '__main__':
     sys.add_obj(O02)
     sys.add_feature(F01)
 
-    sys.save_base_game_files()
+    sys.start()

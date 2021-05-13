@@ -58,6 +58,7 @@ def obj_to_json(object_obj: object.Object):
         'id': object_obj.get_id(),
         'name': object_obj.get_name(),
         'desc': object_obj.get_desc(),
+        'sdesc': object_obj.get_sdesc(),
         'interactions': object_obj.get_interactions(),
         'hidden': object_obj.get_hidden()
     }
@@ -74,11 +75,12 @@ def obj_from_json(json_object):
     id = object_dict.get('id')
     name = object_dict.get('name')
     desc = object_dict.get('desc')
+    sdesc = object_dict.get('sdesc')
     interactions = object_dict.get('interactions')
     hidden = object_dict.get('hidden')
 
     # creates a new Object object with the specified attributes
-    new_object = object.Object(id, name, desc, interactions, hidden)
+    new_object = object.Object(id, name, desc, sdesc, interactions, hidden)
 
     # returns the new_object object as an Object object
     return new_object
@@ -92,6 +94,7 @@ def feat_to_json(feat_obj: feature.Feature):
             'id': feat_obj.get_id(),
             'name': feat_obj.get_name(),
             'desc': feat_obj.get_desc(),
+            'sdesc': feat_obj.get_sdesc(),
             'interactions': feat_obj.get_interactions(),
             'hidden': feat_obj.get_hidden(),
             'condition': feat_obj.get_condition()
@@ -101,6 +104,7 @@ def feat_to_json(feat_obj: feature.Feature):
             'id': feat_obj.get_id(),
             'name': feat_obj.get_name(),
             'desc': feat_obj.get_desc(),
+            'sdesc': feat_obj.get_sdesc(),
             'interactions': feat_obj.get_interactions(),
             'hidden': feat_obj.get_hidden()
         }
@@ -117,11 +121,12 @@ def feat_from_json(json_feature):
     id = feature_dict.get('id')
     name = feature_dict.get('name')
     desc = feature_dict.get('desc')
+    sdesc = feature_dict.get('sdesc')
     interactions = feature_dict.get('interactions')
     hidden = feature_dict.get('hidden')
 
     # creates a new Feature object with the specified attributes
-    new_feature = feature.Feature(id, name, desc, interactions, hidden)
+    new_feature = feature.Feature(id, name, desc, sdesc, interactions, hidden)
 
     if json_feature['condition'] is not None:
         new_feature.add_condition(feature_dict.get('condition'))
@@ -137,6 +142,7 @@ def person_to_json(person_obj: person.Person):
         'id': person_obj.get_id(),
         'name': person_obj.get_name(),
         'desc': person_obj.get_desc(),
+        'sdesc': person_obj.get_sdesc(),
         'interactions': person_obj.get_interactions()
     }
     # converts the dict to json file and returns it
@@ -153,9 +159,10 @@ def person_from_json(json_person):
     id = person_dict['id']
     name = person_dict['name']
     desc = person_dict['desc']
+    sdesc = person_dict['sdesc']
     interactions = person_dict['interactions']
     # creates a new person with the variables
-    new_person = person.Person(id, name, desc, interactions)
+    new_person = person.Person(id, name, desc, sdesc, interactions)
     # returns the new_person as a Person object
     return new_person
 
