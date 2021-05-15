@@ -65,17 +65,28 @@ class Parser:
             fp.close()
             raise ParserException  
 
-    # load the dictionary text file
-    # TODO: this is not being used yet but it will need some changes
-    def load_dictionary(self, filepath: str):
+    # load the verbs dictionary with all aliases
+    def load_game_verbs(self, filepath: str):
         fp = open(filepath, "r")
-        file_contents = json.load(fp)
-        if not hasattr(self, "_game_dictionary"):
-            self._game_dictionary = file_contents
+        if not hasattr(self, "_game_verbs"):
+            self._game_verbs = json.load(fp)
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException              
+
+    # load the game items dictionary. inludes all rooms, objects, people,
+    # features, and directions
+    def load_game_items(self, filepath: str):
+        fp = open(filepath, "r")
+        if not hasattr(self, "_game_items"):
+            self._game_items = json.load(fp)
             fp.close()
         else:
             fp.close()
             raise ParserException  
+
+    # TODO: load full game dictionary for verify_words step
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
@@ -223,13 +234,14 @@ class Parser:
         all others. Is this how we want to handle this? Or do we want to return
         some kind of message about not understanding what the user means?"""
         
-        # TODO: need to compose full list of words we want the game to recognize - work in progress
+
         # TODO: implement error checking/exception for unrecognized/misspelled words
+        # this should probably be done as part of the resolver?
         
         """sample dictionary for testing and development, will implement pulling
         from a text file later"""
         game_dictionary = ["get", "take", "look", "earring", "pick", "up",
-         "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
+         "letter", "at", "large", "silver", "candlestick", "candle", "stick", "use", "key", "on", "small",
          "lock", "touch", "taste", "smell", "listen", "read", "search",
          "kitchen", "library", "stairs", "room", "examine", "staircase",
          "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
@@ -374,29 +386,6 @@ class Parser:
         """will receive a list of strings that are words or phrases: [verb, direct 
         object, indirect object (opt)] (each can be 1 or more words)"""
         
-        """sample dictionary lists for testing and development, will implement 
-        pulling from a json file later"""
-        self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
-         {"use": ["use","try"]}, {"look": ["look"]}, {"look at": ["look at", "examine"]},
-            {"go": ["go"]},
-         {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
-         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]},
-         {"help": ["help"]}, {"inventory": ["inventory"]}, {"savegame": ["savegame"]},
-         {"loadgame": ["loadgame"]}]
-        self._game_preps = ["at", "on", "in"]
-        self._game_objects = [
-            {"O01": ["candlestick", "silver candlestick", "large silver candlestick"]},
-            {"O02": ["letter", "paper"]},
-            {"O03": ["key", "silver key"]}, 
-            {"O04": ["lock"]}, 
-            {"F01": ["body", "victim", "gentleman"]}]
-
-        # TODO: separate game_rooms, _objects, _people, _features, _connections/_directions
-        # files or all in one file?
-
-        # NOTE: implement connections/directions - return as a string, so need
-        # to add to objects dictionary - dictionary is a work in progress
-
         # at least one "word" will be returned
         input_verb = input[0]
         # if not a single word command, then next is direct object
@@ -410,9 +399,10 @@ class Parser:
         else:
             input_indirect = None            
 
+        resolved_verb = None
         resoved_direct_obj = []
         resoved_indirect_obj = []
-        # list of respolved ["verb", direct_object_id, indirect_object_id] to
+        # list of resolved ["verb", direct_object_id, indirect_object_id] to
         # returned to game system
         resolved_command = []
 
@@ -435,10 +425,14 @@ class Parser:
                 if verb in value_list[0]:
                     resolved_verb = key_list[0]
 
-        # TODO: error checking if they use an unrecognized verb                    
+        # error checking if player uses an unrecognized verb
+        # the game system will default to saying it doesn't understand input
+        if resolved_verb == None:
+            return ["error"]
 
         # the only preposition that should be returned to the game system with 
         # the verb is "at" for "look at", so checking for this special case
+        # all/any other prepostions will just be ignored
         if prep != None:
             if resolved_verb == "look" and prep == "at":
                 resolved_verb = "look at"
@@ -448,25 +442,14 @@ class Parser:
 
         # RESOLVE DIRECT OBJECT: can be one or more words
 
-        # TODO: are prepositions being returned from classify as part of direct
-        # and indirect objects?
-
-        # TODO: need to change how objects are searched in the game_objects
-        # dictionary if we're accepting multiple-word aliases
-        # How to decide if search multi-word phrase or single word and ignore
-        # unncessary words?
-        # search/compare full phrase first, then if nothing found search individual
-        # words? would I still need to search individual words or if not found
-        # by searching full phrase, then return error about not understanding?
-
         # check each word in direct object against game dictionary
         if input_direct != None:
             # direct_words = input_direct.split()
             # for i in range(len(direct_words)):
-            for j in range(len(self._game_objects)):
-                for obj_set in self._game_objects[j]:
-                    key_list = list(self._game_objects[j].keys())
-                    value_list = list(self._game_objects[j].values())
+            for j in range(len(self._game_items)):
+                for obj_set in self._game_items[j]:
+                    key_list = list(self._game_items[j].keys())
+                    value_list = list(self._game_items[j].values())
                     # if direct_words[i] in value_list[0]:
                     if input_direct in value_list[0]:
                         resoved_direct_obj.append(key_list[0])
@@ -480,10 +463,10 @@ class Parser:
         if input_indirect != None:
             # indirect_words = input_indirect.split()
             # for i in range(len(indirect_words)):
-            for j in range(len(self._game_objects)):
-                for obj_set in self._game_objects[j]:
-                    key_list = list(self._game_objects[j].keys())
-                    value_list = list(self._game_objects[j].values())
+            for j in range(len(self._game_items)):
+                for obj_set in self._game_items[j]:
+                    key_list = list(self._game_items[j].keys())
+                    value_list = list(self._game_items[j].values())
                     # if indirect_words[i] in value_list[0]:
                     if input_indirect in value_list[0]:
                         resoved_indirect_obj.append(key_list[0])

@@ -1,0 +1,21 @@
+[
+{"take": ["take", "pick", "grab", "get"]},
+{"drop": ["remove","relinquish","place","set down"]},
+{"use": ["use","try"]}, 
+{"look": ["look"]},
+{"look at": ["look at", "examine"]},
+{"go": ["go"]},
+{"open": ["open"]}, 
+{"search": ["search"]}, 
+{"touch": ["touch"]}, 
+{"taste": ["taste"]},
+{"smell": ["smell"]},
+{"listen": ["listen"]},
+{"read": ["read"]}, 
+{"call": ["call"]},
+{"ask": ["ask", "talk", "speak"]},
+{"help": ["help"]}, 
+{"inventory": ["inventory"]}, 
+{"savegame": ["savegame"]},
+{"loadgame": ["loadgame"]}
+]

@@ -26,24 +26,27 @@ class TestParserClass(unittest.TestCase):
         self.text3_tok_no_art_or_stop = ["take", "letter"]
         self.text3_final_words = ["take", "letter"]
         self.text3_classified_words = ["take", "letter"]
-        self.text3_resolved_command = ["take", "O02"]
+        self.text3_resolved_command = ["take", "O09"]
 
-        self.text4 = "Look at the large silver candlestick"
-        self.text4_tokenized = ["look", "at", "the", "large", "silver", "candlestick"]
-        self.text4_tok_no_article = ["look", "at", "large", "silver", "candlestick"]
-        self.text4_tok_no_art_or_stop = ["look", "at", "large", "silver", "candlestick"]
-        self.text4_final_words = ["look", "at", "large", "silver", "candlestick"]
-        self.text4_classified_words = ["look at", "large silver candlestick"]
+        self.text4 = "Look at the candle stick"
+        self.text4_tokenized = ["look", "at", "the", "candle", "stick"]
+        self.text4_tok_no_article = ["look", "at", "candle", "stick"]
+        self.text4_tok_no_art_or_stop = ["look", "at", "candle", "stick"]
+        self.text4_final_words = ["look", "at", "candle", "stick"]
+        self.text4_classified_words = ["look at", "candle stick"]
         self.text4_resolved_command = ["look at", "O01"]
 
         self.text5 = "Use the silver key on the lock"
-        self.text5_tokenized = ["use", "the", "silver", "key", "on", "the", "lock"]
-        self.text5_tok_no_article = ["use", "silver", "key", "on", "lock"]
-        self.text5_tok_no_art_or_stop = ["use", "silver", "key", "on", "lock"]
-        self.text5_final_words = ["use", "silver", "key", "on", "lock"]
-        self.text5_classified_words = ["use", "silver key", "lock"]
-        self.text5_resolved_command = ["use", "O03", "O04"]
+        self.text5_tokenized = ["use", "the", "small", "key", "on", "the", "lock"]
+        self.text5_tok_no_article = ["use", "small", "key", "on", "lock"]
+        self.text5_tok_no_art_or_stop = ["use", "small", "key", "on", "lock"]
+        self.text5_final_words = ["use", "small", "key", "on", "lock"]
+        self.text5_classified_words = ["use", "small key", "lock"]
+        # TODO: update object/id for lock once all features added to dictionary
+        self.text5_resolved_command = ["use", "O02", "O04"]
 
+        self.test_parser.load_game_verbs("./resources/game_verbs.json")
+        self.test_parser.load_game_items("./resources/game_items.json")
         self.test_parser.load_articles("./resources/articles.txt")
         self.test_parser.load_stopwords("./resources/stopwords.txt")
         self.test_parser.load_killer("./resources/killer.txt")
