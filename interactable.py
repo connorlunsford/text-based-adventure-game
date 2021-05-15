@@ -12,13 +12,15 @@ class KeyAlreadyExists(InteractableException):
 
 class Interactable:
 
-    def __init__(self, id: str, name: str, desc: str, interactions: dict):
+    def __init__(self, id: str, name: str, desc: str, sdesc: str, interactions: dict):
         # the ID of the interactable
         self._id = id
         # the name of the interactable
         self._name = name
         # a description of the interactable
         self._desc = desc
+        # a short description of the interactable which plays when you enter the room
+        self._sdesc = sdesc
         # a dictionary of interactions associated with the interactable
         # in the form 'verb': 'response'
         # E.g., {'look at': 'A woman's silver earring.', 'eat': 'You
@@ -49,6 +51,16 @@ class Interactable:
         """changes the value of self._desc to the value provided in
         the desc argument"""
         self._desc = desc
+
+    # methods for managing short description
+    def get_sdesc(self):
+        """returns the value of self._sdesc"""
+        return self._sdesc
+
+    def set_sdesc(self, sdesc: str):
+        """changes the value of self._sdesc to the value provided in
+        the sdesc argument"""
+        self._sdesc = sdesc
 
     # methods for managing interactions
     def get_interaction(self, action: str, obj=None):

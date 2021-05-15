@@ -15,8 +15,8 @@ class AttributeAlreadyExists(FeatureException):
 
 class Feature(Object):
 
-    def __init__(self, id: str, name: str, desc: str, interactions: dict, hidden: bool):
-        super().__init__(id, name, desc, interactions, hidden)
+    def __init__(self, id: str, name: str, desc: str, sdesc: str, interactions: dict, hidden: bool):
+        super().__init__(id, name, desc, sdesc, interactions, hidden)
 
     # methods for managing the optional condition variable
     def add_condition(self, condition: bool):

@@ -5,10 +5,9 @@ import room
 import object
 import player
 import nlp
-import feature
 import interactable
 import person
-import object
+import feature
 
 class TestSystemClass(unittest.TestCase):
 
@@ -51,7 +50,7 @@ class TestSystemClass(unittest.TestCase):
         sys.add_person(per2)
         sys.add_room(r1)
         r2 = room.Room('R02', 'Room2', 'a room', 'room', False)
-        r1.add_connection('R02')
+        r1.add_connection('north','R02')
         sys.add_room(r2)
         return sys,ob1,feat1, per1, r1
 
