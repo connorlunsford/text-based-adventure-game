@@ -25,7 +25,7 @@ class KeyAlreadyExists(RoomException):
 
 class Room:
 
-    def __init__(self, id: str, name: str, desc: str, sdesc: str, visited: bool):
+    def __init__(self, id: str, name: str, desc: str, sdesc: str):
         # contains the id for the room
         self._id = id
         # contains the name of the room
@@ -36,15 +36,15 @@ class Room:
         self._sdesc = sdesc
         # contains a bool that specifies whether or not the room has been
         # visited before
-        self._visited = visited
+        self._visited = False
         # contains a list of Object objects
         self._objects = []
         # contains a list of Feature objects
         self._features = []
         # contains a list of Person objects
         self._people = []
-        # contains a list of connections in the form of Room ids
-        self._connections = []
+        # contains a dictionary of connections, with the key being a direction and the value being the room id
+        self._connections = {}
         # contains a dict of possible responses for certain commands
         self._interactions = {}
 
@@ -193,14 +193,24 @@ class Room:
 
     # methods for managing self.connections
 
-    def add_connection(self, connection: str):
+    def add_connection(self, direction: str, connection: str):
         """takes a string which specifies a room ID and adds it to the list
         of connections to this room; if the ID already exists inside the list, 
         this method raises an exception"""
+        if direction not in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
+            raise IDAlreadyExists
         if connection not in self._connections:
-            self._connections.append(connection)
+            self._connections[direction] = connection
         else:
             raise IDAlreadyExists
+
+    def remove_connection(self, direction: str):
+        """takes a string which specifies a direction and removes it from the
+        list of connections to this room. If the connection is not in the dict
+        it returns False. Otherwise it removes it and returns True"""
+        if direction in self._connections:
+            self._connections.pop(direction)
+            return True 
 
     def remove_connection(self, connection: str):
         """takes a string which specifies a room ID and removes it from the
@@ -212,13 +222,13 @@ class Room:
             raise IDDoesNotExist
 
     def get_connections(self):
-        """returns a list of connections to this room in the form of room IDs
+        """returns a dictionary of connections to this room in the form of room IDs
         stored in self.connections"""
         return self._connections
 
-    def set_connections(self, connections: list):
-        """takes a list of connections to this room in the form of room IDs
-        and sets self.connections to this list"""
+    def set_connections(self, connections: dict):
+        """takes a dictionary of connections to this room in the form of room IDs
+        and sets self.connections to this dict"""
         self._connections = connections
 
     # methods for managing self.interactions

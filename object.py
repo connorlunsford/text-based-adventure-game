@@ -6,9 +6,9 @@ class ObjectException(Exception):
 
 class Object(Interactable):
 
-    def __init__(self, id: str, name: str, desc: str, interactions: dict,
+    def __init__(self, id: str, name: str, desc: str, sdesc: str, interactions: dict,
      hidden: bool):
-        super().__init__(id, name, desc, interactions)
+        super().__init__(id, name, desc, sdesc, interactions)
         # the visible/hidden status of the object
         self._hidden = hidden
 
