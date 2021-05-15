@@ -2,3 +2,11 @@ north
 east
 south
 west
+northeast
+northwest
+southeast
+southwest
+north east
+north west
+south east
+south west
