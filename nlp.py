@@ -17,6 +17,30 @@ class Parser:
     def __init__(self):
         return
 
+    # load name of killer from file
+    def load_killer(self, filepath: str):
+        # read killer name from file as a string
+        with open(filepath, "r") as fp:
+            # articles = list(fp.read().split())
+            if not hasattr(self, "_killer"):
+                self._killer = fp.read()
+                fp.close()
+            else:
+                fp.close()
+                raise ParserException    
+
+    # load weapon from file
+    def load_weapon(self, filepath: str):
+        # read weapon from file as a string
+        with open(filepath, "r") as fp:
+            # articles = list(fp.read().split())
+            if not hasattr(self, "_weapon"):
+                self._weapon = fp.read()
+                fp.close()
+            else:
+                fp.close()
+                raise ParserException          
+
     # load the articles text file
     def load_articles(self, filepath: str):
         # read each line/word from the file and create a list
@@ -137,19 +161,27 @@ class Parser:
         else:
             raise ParserException
 
-    # TODO: load killer and weapon values from an external files, maybe in game
-    # folder? and have aliases for the killer and weapon
+    # killer and weapon methods
 
-    # TODO: implement killer and weapon methods
-
-    def find_killer(self, killer):
+    def find_killer(self, killer: str):
         """this should take a phrase and return either the killers name or 'WRONG'"""
-        # NOTE: 
-        return 'WRONG'
+        # TODO: do we want to allow aliases when the user is guessing the killer or
+        # will they have to enter the exact full name (ex. "Ava" instead of "Ava Scarlett")
+        # and will the aliases be stored in the same text file or search the 
+        # game dictionary?
+        if killer.lower() == self._killer.lower():
+            return self._killer
+        else:
+            return 'WRONG'
 
-    def find_weapon(self, weapon):
+    def find_weapon(self, weapon: str):
         """this should take a phrase and return either 'CANDLESTICK' or 'WRONG'"""
-        return 'WRONG'
+        # TODO: do we want to allow aliases when the user is guessing the weapon or
+        # will they have to enter the exact value?
+        if weapon.lower() == self._weapon.lower():
+            return self._weapon
+        else:
+            return 'WRONG'
 
     # Lexical Parsing Stage Methods        
 
@@ -191,9 +223,8 @@ class Parser:
         all others. Is this how we want to handle this? Or do we want to return
         some kind of message about not understanding what the user means?"""
         
-        # TODO: need to compose full list of words we want the game to recognize
-        # TODO: implement error checking/exception for unrecognized/misspelled
-        # words
+        # TODO: need to compose full list of words we want the game to recognize - work in progress
+        # TODO: implement error checking/exception for unrecognized/misspelled words
         
         """sample dictionary for testing and development, will implement pulling
         from a text file later"""
@@ -355,11 +386,8 @@ class Parser:
         self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
             {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
 
-        # TODO: implement connections/directions - return as a string, so need
-        # to add to objects dictionary
-
-        # TODO: check if prepositions will be received (from classifier) as
-        # part of direct and indirect objects
+        # NOTE: implement connections/directions - return as a string, so need
+        # to add to objects dictionary - dictionary is a work in progress
 
         # at least one word will be returned
         input_verb = input[0]
@@ -397,8 +425,8 @@ class Parser:
                 if verb in value_list[0]:
                     resolved_verb = key_list[0]
 
-        # TODO: the only preposition that should be returned is "at" for "look at"
-        # search game dictionary for prep
+        # the only preposition that should be returned is "at" for "look at"
+        # so checking for this special case
         if prep != None:
             # if prep in self._game_preps:
             #     resolved_verb = resolved_verb + " " + prep
