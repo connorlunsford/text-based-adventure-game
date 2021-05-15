@@ -377,19 +377,27 @@ class Parser:
         """sample dictionary lists for testing and development, will implement 
         pulling from a json file later"""
         self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
-         {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
+         {"use": ["use","try"]}, {"look": ["look"]}, {"look at": ["look at", "examine"]},
+            {"go": ["go"]},
          {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
          {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]},
          {"help": ["help"]}, {"inventory": ["inventory"]}, {"savegame": ["savegame"]},
          {"loadgame": ["loadgame"]}]
         self._game_preps = ["at", "on", "in"]
-        self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
-            {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
+        self._game_objects = [
+            {"O01": ["candlestick", "silver candlestick", "large silver candlestick"]},
+            {"O02": ["letter", "paper"]},
+            {"O03": ["key", "silver key"]}, 
+            {"O04": ["lock"]}, 
+            {"F01": ["body", "victim", "gentleman"]}]
+
+        # TODO: separate game_rooms, _objects, _people, _features, _connections/_directions
+        # files or all in one file?
 
         # NOTE: implement connections/directions - return as a string, so need
         # to add to objects dictionary - dictionary is a work in progress
 
-        # at least one word will be returned
+        # at least one "word" will be returned
         input_verb = input[0]
         # if not a single word command, then next is direct object
         if len(input) >= 2:
@@ -404,6 +412,8 @@ class Parser:
 
         resoved_direct_obj = []
         resoved_indirect_obj = []
+        # list of respolved ["verb", direct_object_id, indirect_object_id] to
+        # returned to game system
         resolved_command = []
 
         # RESOLVE VERB: can be single verb word or "verb prep" combo
@@ -425,12 +435,11 @@ class Parser:
                 if verb in value_list[0]:
                     resolved_verb = key_list[0]
 
-        # the only preposition that should be returned is "at" for "look at"
-        # so checking for this special case
-        if prep != None:
-            # if prep in self._game_preps:
-            #     resolved_verb = resolved_verb + " " + prep
+        # TODO: error checking if they use an unrecognized verb                    
 
+        # the only preposition that should be returned to the game system with 
+        # the verb is "at" for "look at", so checking for this special case
+        if prep != None:
             if resolved_verb == "look" and prep == "at":
                 resolved_verb = "look at"
         
@@ -439,27 +448,28 @@ class Parser:
 
         # RESOLVE DIRECT OBJECT: can be one or more words
 
+        # TODO: are prepositions being returned from classify as part of direct
+        # and indirect objects?
+
         # TODO: need to change how objects are searched in the game_objects
         # dictionary if we're accepting multiple-word aliases
         # How to decide if search multi-word phrase or single word and ignore
         # unncessary words?
-
-        # TODO: check classifier to see if prepositions are returned with the 
-        # indirect object, if so I need to adjust for that
-
-        # TODO: double check the game system and confirm that I need to return
-        # feature or room IDs, similar to the object ID 
+        # search/compare full phrase first, then if nothing found search individual
+        # words? would I still need to search individual words or if not found
+        # by searching full phrase, then return error about not understanding?
 
         # check each word in direct object against game dictionary
         if input_direct != None:
-            direct_words = input_direct.split()
-            for i in range(len(direct_words)):
-                for j in range(len(self._game_objects)):
-                    for obj_set in self._game_objects[j]:
-                        key_list = list(self._game_objects[j].keys())
-                        value_list = list(self._game_objects[j].values())
-                        if direct_words[i] in value_list[0]:
-                            resoved_direct_obj.append(key_list[0])
+            # direct_words = input_direct.split()
+            # for i in range(len(direct_words)):
+            for j in range(len(self._game_objects)):
+                for obj_set in self._game_objects[j]:
+                    key_list = list(self._game_objects[j].keys())
+                    value_list = list(self._game_objects[j].values())
+                    # if direct_words[i] in value_list[0]:
+                    if input_direct in value_list[0]:
+                        resoved_direct_obj.append(key_list[0])
 
             # concats list of resolved direct object words and returns string
             resolved_command.append(" ".join(resoved_direct_obj))
@@ -468,14 +478,15 @@ class Parser:
 
         # if an indirect object, check against game dictionary
         if input_indirect != None:
-            indirect_words = input_indirect.split()
-            for i in range(len(indirect_words)):
-                for j in range(len(self._game_objects)):
-                    for obj_set in self._game_objects[j]:
-                        key_list = list(self._game_objects[j].keys())
-                        value_list = list(self._game_objects[j].values())
-                        if indirect_words[i] in value_list[0]:
-                            resoved_indirect_obj.append(key_list[0])
+            # indirect_words = input_indirect.split()
+            # for i in range(len(indirect_words)):
+            for j in range(len(self._game_objects)):
+                for obj_set in self._game_objects[j]:
+                    key_list = list(self._game_objects[j].keys())
+                    value_list = list(self._game_objects[j].values())
+                    # if indirect_words[i] in value_list[0]:
+                    if input_indirect in value_list[0]:
+                        resoved_indirect_obj.append(key_list[0])
 
             # concats list of resolved indirect object words and returns string
             resolved_command.append(" ".join(resoved_indirect_obj))

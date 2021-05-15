@@ -46,6 +46,8 @@ class TestParserClass(unittest.TestCase):
 
         self.test_parser.load_articles("./resources/articles.txt")
         self.test_parser.load_stopwords("./resources/stopwords.txt")
+        self.test_parser.load_killer("./resources/killer.txt")
+        self.test_parser.load_weapon("./resources/weapon.txt")
         # self.test_parser.load_dictionary("game_dictionary.json")
 
     # test for phrase 1
@@ -131,6 +133,12 @@ class TestParserClass(unittest.TestCase):
     # test full parse() functionality
     def test_parse_text5(self):
         self.assertEqual(self.test_parser.parse(self.text5), self.text5_resolved_command)
+
+    def test_load_killer(self):
+        self.assertEqual(self.test_parser._killer, "Ava Scarlett")
+
+    def test_load_weapon(self):
+        self.assertEqual(self.test_parser._weapon, "candlestick")
 
     ############################################################################
     # Classify Stage - Tests
