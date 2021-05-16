@@ -17,6 +17,30 @@ class Parser:
     def __init__(self):
         return
 
+    # load name of killer from file
+    def load_killer(self, filepath: str):
+        # read killer name from file as a string
+        with open(filepath, "r") as fp:
+            # articles = list(fp.read().split())
+            if not hasattr(self, "_killer"):
+                self._killer = fp.read()
+                fp.close()
+            else:
+                fp.close()
+                raise ParserException    
+
+    # load weapon from file
+    def load_weapon(self, filepath: str):
+        # read weapon from file as a string
+        with open(filepath, "r") as fp:
+            # articles = list(fp.read().split())
+            if not hasattr(self, "_weapon"):
+                self._weapon = fp.read()
+                fp.close()
+            else:
+                fp.close()
+                raise ParserException          
+
     # load the articles text file
     def load_articles(self, filepath: str):
         # read each line/word from the file and create a list
@@ -41,17 +65,28 @@ class Parser:
             fp.close()
             raise ParserException  
 
-    # load the dictionary text file
-    # TODO: this is not being used yet but it will need some changes
-    def load_dictionary(self, filepath: str):
+    # load the verbs dictionary with all aliases
+    def load_game_verbs(self, filepath: str):
         fp = open(filepath, "r")
-        file_contents = json.load(fp)
-        if not hasattr(self, "_game_dictionary"):
-            self._game_dictionary = file_contents
+        if not hasattr(self, "_game_verbs"):
+            self._game_verbs = json.load(fp)
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException              
+
+    # load the game items dictionary. inludes all rooms, objects, people,
+    # features, and directions
+    def load_game_items(self, filepath: str):
+        fp = open(filepath, "r")
+        if not hasattr(self, "_game_items"):
+            self._game_items = json.load(fp)
             fp.close()
         else:
             fp.close()
             raise ParserException  
+
+    # TODO: load full game dictionary for verify_words step
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
@@ -137,13 +172,27 @@ class Parser:
         else:
             raise ParserException
 
-    def find_killer(self, killer):
-        """this should take a phrase and return either the killers name or 'WRONG'"""
-        return 'WRONG'
+    # killer and weapon methods
 
-    def find_weapon(self, weapon):
+    def find_killer(self, killer: str):
+        """this should take a phrase and return either the killers name or 'WRONG'"""
+        # TODO: do we want to allow aliases when the user is guessing the killer or
+        # will they have to enter the exact full name (ex. "Ava" instead of "Ava Scarlett")
+        # and will the aliases be stored in the same text file or search the 
+        # game dictionary?
+        if killer.lower() == self._killer.lower():
+            return self._killer
+        else:
+            return 'WRONG'
+
+    def find_weapon(self, weapon: str):
         """this should take a phrase and return either 'CANDLESTICK' or 'WRONG'"""
-        return 'WRONG'
+        # TODO: do we want to allow aliases when the user is guessing the weapon or
+        # will they have to enter the exact value?
+        if weapon.lower() == self._weapon.lower():
+            return self._weapon
+        else:
+            return 'WRONG'
 
     # Lexical Parsing Stage Methods        
 
@@ -170,16 +219,6 @@ class Parser:
     def remove_stopwords(self, words: list):
         """takes a list of words and removes stopwords, returns a list"""
 
-        """ NOTE: This currently removes 's' which is useful because that will
-        be leftover after tokenizing contractions. However, if we decide to 
-        accept 'n', 's', 'e', and 'w' for directions then this will need to be
-        adjusted. That is not part of the requirements though, so I suggest
-        we don't allow them. Otherwise, at the moment, I'm not sure how to deal
-        with a leftover 's' vs 's' for 'south'."""
-
-        """TODO: are we going to have a special case for 'it' in the classify
-        stage? If so, it will also need to be removed from this list"""
-
         words_no_stopwords = []
         for word in words:
             if word not in self._stopwords:
@@ -195,15 +234,14 @@ class Parser:
         all others. Is this how we want to handle this? Or do we want to return
         some kind of message about not understanding what the user means?"""
         
-        # sample dictionary for dev/testing. 
-        # TODO: need to compose full list of words we want the game to recognize
-        # TODO: implement error checking/exception for unrecognized/misspelled
-        # words
+
+        # TODO: implement error checking/exception for unrecognized/misspelled words
+        # this should probably be done as part of the resolver?
         
         """sample dictionary for testing and development, will implement pulling
         from a text file later"""
         game_dictionary = ["get", "take", "look", "earring", "pick", "up",
-         "letter", "at", "large", "silver", "candlestick", "use", "key", "on",
+         "letter", "at", "large", "silver", "candlestick", "candle", "stick", "use", "key", "on", "small",
          "lock", "touch", "taste", "smell", "listen", "read", "search",
          "kitchen", "library", "stairs", "room", "examine", "staircase",
          "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
@@ -348,19 +386,7 @@ class Parser:
         """will receive a list of strings that are words or phrases: [verb, direct 
         object, indirect object (opt)] (each can be 1 or more words)"""
         
-        """sample dictionary lists for testing and development, will implement 
-        pulling from a json file later"""
-        self._game_verbs = [{"take": ["take", "pick", "grab", "get"]},
-         {"use": ["use","try"]}, {"look": ["look", "examine"]}, {"go": ["go"]},
-         {"search": ["search"]}, {"touch": ["touch"]}, {"taste": ["taste"]},
-         {"smell": ["smell"]}, {"listen": ["listen"]}, {"read": ["read"]}, {"ask": ["ask"]},
-         {"help": ["help"]}, {"inventory": ["inventory"]}, {"savegame": ["savegame"]},
-         {"loadgame": ["loadgame"]}]
-        self._game_preps = ["at", "on", "in"]
-        self._game_objects = [{"O01": ["candlestick"]}, {"O02": ["letter", "paper"]},
-            {"O03": "key"}, {"O04": "lock"}, {"F01": ["body", "victim", "gentleman"]}]
-
-        # at least one word will be returned
+        # at least one "word" will be returned
         input_verb = input[0]
         # if not a single word command, then next is direct object
         if len(input) >= 2:
@@ -373,8 +399,11 @@ class Parser:
         else:
             input_indirect = None            
 
+        resolved_verb = None
         resoved_direct_obj = []
         resoved_indirect_obj = []
+        # list of resolved ["verb", direct_object_id, indirect_object_id] to
+        # returned to game system
         resolved_command = []
 
         # RESOLVE VERB: can be single verb word or "verb prep" combo
@@ -396,10 +425,17 @@ class Parser:
                 if verb in value_list[0]:
                     resolved_verb = key_list[0]
 
-        # search game dictionary for prep
+        # error checking if player uses an unrecognized verb
+        # the game system will default to saying it doesn't understand input
+        if resolved_verb == None:
+            return ["error"]
+
+        # the only preposition that should be returned to the game system with 
+        # the verb is "at" for "look at", so checking for this special case
+        # all/any other prepostions will just be ignored
         if prep != None:
-            if prep in self._game_preps:
-                resolved_verb = resolved_verb + " " + prep
+            if resolved_verb == "look" and prep == "at":
+                resolved_verb = "look at"
         
         # add verb/phrase to command to be returned
         resolved_command.append(resolved_verb)
@@ -408,14 +444,15 @@ class Parser:
 
         # check each word in direct object against game dictionary
         if input_direct != None:
-            direct_words = input_direct.split()
-            for i in range(len(direct_words)):
-                for j in range(len(self._game_objects)):
-                    for obj_set in self._game_objects[j]:
-                        key_list = list(self._game_objects[j].keys())
-                        value_list = list(self._game_objects[j].values())
-                        if direct_words[i] in value_list[0]:
-                            resoved_direct_obj.append(key_list[0])
+            # direct_words = input_direct.split()
+            # for i in range(len(direct_words)):
+            for j in range(len(self._game_items)):
+                for obj_set in self._game_items[j]:
+                    key_list = list(self._game_items[j].keys())
+                    value_list = list(self._game_items[j].values())
+                    # if direct_words[i] in value_list[0]:
+                    if input_direct in value_list[0]:
+                        resoved_direct_obj.append(key_list[0])
 
             # concats list of resolved direct object words and returns string
             resolved_command.append(" ".join(resoved_direct_obj))
@@ -424,14 +461,15 @@ class Parser:
 
         # if an indirect object, check against game dictionary
         if input_indirect != None:
-            indirect_words = input_indirect.split()
-            for i in range(len(indirect_words)):
-                for j in range(len(self._game_objects)):
-                    for obj_set in self._game_objects[j]:
-                        key_list = list(self._game_objects[j].keys())
-                        value_list = list(self._game_objects[j].values())
-                        if indirect_words[i] in value_list[0]:
-                            resoved_indirect_obj.append(key_list[0])
+            # indirect_words = input_indirect.split()
+            # for i in range(len(indirect_words)):
+            for j in range(len(self._game_items)):
+                for obj_set in self._game_items[j]:
+                    key_list = list(self._game_items[j].keys())
+                    value_list = list(self._game_items[j].values())
+                    # if indirect_words[i] in value_list[0]:
+                    if input_indirect in value_list[0]:
+                        resoved_indirect_obj.append(key_list[0])
 
             # concats list of resolved indirect object words and returns string
             resolved_command.append(" ".join(resoved_indirect_obj))
