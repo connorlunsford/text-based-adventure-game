@@ -101,8 +101,6 @@ class System:
                     print(self._features[object2].get_interaction('use', object1))
                     # sets the condition for the feature to True (unlocked, interacted, etc)
                     self._features[object2].set_condition(True)
-                    # removes the interaction from the dictionary
-                    self._features[object2].remove_nested_interaction('use', object1)
                     return True
                 except interactable.KeyDoesNotExist:
                     print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
@@ -119,8 +117,19 @@ class System:
             else:
                 print('You cannot use that on an object that is not in the room')
                 return False
+        elif object1 in self._features:
+            try:
+                # prints what happens the first time you use object1 on object 2
+                print(self._features[object2].get_interaction('use', object1))
+                # sets the condition for the feature to True (unlocked, interacted, etc)
+                self._features[object2].set_condition(True)
+                return True
+            except interactable.KeyDoesNotExist:
+                print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
+                      + self._features[object2].get_name())
+                return False
         else:
-            print("You cannot use an object that isn't in your inventory")
+            print("You cannot use that object")
             return False
 
     def ask(self, person_id: str, obj_id: str):
@@ -187,30 +196,48 @@ class System:
                 killer = self._parser.find_killer(killer)
                 weapon = self._parser.find_weapon(weapon)
 
+                print("Not long after you you make the call, the police arrive on the scene, "
+                "taking " + str(killer) + " into custody and the " + str(weapon) + " as evidence. "
+                "You return home, and life goes on, but, a week later, you come across "
+                "an article in the news that reads: ")
                 if killer == 'WRONG' and weapon == 'WRONG':
-                    pass
-                    # insert lose scenario #1
-                    # both killer and weapon is wrong
-                    #
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
+                    print("It turns out that " + str(killer) + " was not the killer and that the " + 
+                    str(weapon) + "was not the murder weapon. You continue to follow the case in "
+                    "the years that follow, but no substantial updates are ever released, and "
+                    "eventually it's declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    "at the retreat was able to get away.")
+                    print("THE END.")
+
                 # change 'CORRECT' to the killers name in final implementation
                 elif killer == 'CORRECT' and weapon == 'WRONG':
-                    pass
-                    #
-                    # insert lose scenario #2
-                    #
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
+                    print("It turns out that the " + str(weapon) + " was not the murder weapon."
+                    "You continue to follow the case in the years that follow, but no substantial "
+                    "updates are ever released, and eventually it's declared a cold case.")
+                    print("As a result, " + str(killer) + "  was able to get away with killing Norman "
+                    "that bright Saturday morning at the retreat.")
+                    print("THE END.")
+
                 # change 'CORRECT' to the weapon name in final implementation
                 elif killer == 'WRONG' and weapon == 'CORRECT':
-                    pass
-                    #
-                    # insert lose scenario #3
-                    #
-                # change 'CORRECT' to the killers name in final implementation
-                # change 'CORRECT' to the weapon name in final implementation
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
+                    print("It turns out that " + str(killer) + " was not the killer. "
+                    "You continue to follow the case in the years that follow, but no substantial "
+                    "updates are ever released, and eventually it's declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    "at the retreat was able to get away.")
+                    print("THE END.")
+
                 elif killer == 'CORRECT' and weapon == 'CORRECT':
-                    pass
-                    #
-                    # insert win scenario
-                    #
+                    print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
+                    print("It seems like your information was correct! You closely follow the case")
+                    ("in the years that follow until one afternoon three years later, you turn on the TV "
+                    "to see a guilty verdict given to " + str(killer) + " who, by all accounts and evidence "
+                    "presented to the court, murdered Norman Bates with the " + str(weapon) + " one bright "
+                    "Saturday morning three years ago.")
+                    print("THE END.")
             else:
                 print('You decide you need more evidence. You set the phone down')
         else:
@@ -514,10 +541,14 @@ class System:
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
             print(self._objects[obj].get_desc())
+            if self._objects[obj].get_hidden() is True:
+                self._objects[obj].set_hidden(False)
             return True
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
             print(self._features[obj].get_desc())
+            if self._features[obj].get_hidden() is True:
+                self._features[obj].set_hidden(False)
             return True
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
