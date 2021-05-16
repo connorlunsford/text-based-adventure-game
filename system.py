@@ -196,30 +196,48 @@ class System:
                 killer = self._parser.find_killer(killer)
                 weapon = self._parser.find_weapon(weapon)
 
+                print("Not long after you you make the call, the police arrive on the scene, "
+                "taking " + str(killer) + " into custody and the " + str(weapon) + " as evidence. "
+                "You return home, and life goes on, but, a week later, you come across "
+                "an article in the news that reads: ")
                 if killer == 'WRONG' and weapon == 'WRONG':
-                    pass
-                    # insert lose scenario #1
-                    # both killer and weapon is wrong
-                    #
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
+                    print("It turns out that " + str(killer) + " was not the killer and that the " + 
+                    str(weapon) + "was not the murder weapon. You continue to follow the case in "
+                    "the years that follow, but no substantial updates are ever released, and "
+                    "eventually it's declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    "at the retreat was able to get away.")
+                    print("THE END.")
+
                 # change 'CORRECT' to the killers name in final implementation
                 elif killer == 'CORRECT' and weapon == 'WRONG':
-                    pass
-                    #
-                    # insert lose scenario #2
-                    #
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
+                    print("It turns out that the " + str(weapon) + " was not the murder weapon."
+                    "You continue to follow the case in the years that follow, but no substantial "
+                    "updates are ever released, and eventually it's declared a cold case.")
+                    print("As a result, " + str(killer) + "  was able to get away with killing Norman "
+                    "that bright Saturday morning at the retreat.")
+                    print("THE END.")
+
                 # change 'CORRECT' to the weapon name in final implementation
                 elif killer == 'WRONG' and weapon == 'CORRECT':
-                    pass
-                    #
-                    # insert lose scenario #3
-                    #
-                # change 'CORRECT' to the killers name in final implementation
-                # change 'CORRECT' to the weapon name in final implementation
+                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
+                    print("It turns out that " + str(killer) + " was not the killer. "
+                    "You continue to follow the case in the years that follow, but no substantial "
+                    "updates are ever released, and eventually it's declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    "at the retreat was able to get away.")
+                    print("THE END.")
+
                 elif killer == 'CORRECT' and weapon == 'CORRECT':
-                    pass
-                    #
-                    # insert win scenario
-                    #
+                    print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
+                    print("It seems like your information was correct! You closely follow the case")
+                    ("in the years that follow until one afternoon three years later, you turn on the TV "
+                    "to see a guilty verdict given to " + str(killer) + " who, by all accounts and evidence "
+                    "presented to the court, murdered Norman Bates with the " + str(weapon) + " one bright "
+                    "Saturday morning three years ago.")
+                    print("THE END.")
             else:
                 print('You decide you need more evidence. You set the phone down')
         else:
