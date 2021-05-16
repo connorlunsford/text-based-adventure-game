@@ -101,8 +101,6 @@ class System:
                     print(self._features[object2].get_interaction('use', object1))
                     # sets the condition for the feature to True (unlocked, interacted, etc)
                     self._features[object2].set_condition(True)
-                    # removes the interaction from the dictionary
-                    self._features[object2].remove_nested_interaction('use', object1)
                     return True
                 except interactable.KeyDoesNotExist:
                     print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
@@ -119,8 +117,19 @@ class System:
             else:
                 print('You cannot use that on an object that is not in the room')
                 return False
+        elif object1 in self._features:
+            try:
+                # prints what happens the first time you use object1 on object 2
+                print(self._features[object2].get_interaction('use', object1))
+                # sets the condition for the feature to True (unlocked, interacted, etc)
+                self._features[object2].set_condition(True)
+                return True
+            except interactable.KeyDoesNotExist:
+                print('You cannot use the ' + self._objects[object1].get_name() + ' on the '
+                      + self._features[object2].get_name())
+                return False
         else:
-            print("You cannot use an object that isn't in your inventory")
+            print("You cannot use that object")
             return False
 
     def ask(self, person_id: str, obj_id: str):
@@ -514,10 +523,14 @@ class System:
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
             print(self._objects[obj].get_desc())
+            if self._objects[obj].get_hidden() is True:
+                self._objects[obj].set_hidden(False)
             return True
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
             print(self._features[obj].get_desc())
+            if self._features[obj].get_hidden() is True:
+                self._features[obj].set_hidden(False)
             return True
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
