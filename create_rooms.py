@@ -49,16 +49,17 @@ if __name__ == '__main__':
                     'solved.\n'
                     'To the west through an open arch appears to be the entrance to a gleaming white kitchen.\n'
                     'To the east through a massive set of open double doors seems to be a Library of sorts.\n'
-                    'Going up the staircase would take you to the top floor of the house.',
+                    'Going up the staircase to the north would take you to the top floor of the house.',
                     'The Grand Foyer stretches out in front of you. To the west is the kitchen, to the east is the '
-                    'library, and going up the staircase would take you to the top floor.')
+                    'library, and going up the staircase to the north would take you to the top floor.')
     # sets the connections for the room
     R01.set_connections({
         'west': 'R02',  # kitchen
         'east': 'R03',  # library
-        'staircase': 'R11'  # hallway
+        'north': 'R11'  # hallway
     })
     # sets the objects in the room
+    # sets the objects in the roof
     R01.set_objects(['O02',  # rusty key
                      ])
     # sets the features in the room
@@ -423,9 +424,10 @@ if __name__ == '__main__':
     # F03R03 button
 
     F03R03 = feature.Feature('F03R03', "Button",
-                             'A button sits on the back of the shelf, all but hidden if the books were in their normal '
+                             'A small, red button sits on the back of the shelf, all but hidden if the books were'
+                             ' in their normal '
                              'spot on the shelf',
-                             '',
+                             'A button peers out from where a book used to be on the shelf',
                              {
                                  'touch': 'Touching the button reveals it is able to be pressed (perhaps you could try to '
                                           "'use' the button on the bookcase)",
@@ -626,7 +628,8 @@ if __name__ == '__main__':
                                      'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents'
                                                  "of the safe underneath it; several thick black rubber bands with '$10,000 "
                                                  "written on them in white writing, and a piece of high quality paper with "
-                                                 "'Norman Bate's Will' written on it in thick bold lettering."
+                                                 "'Norman Bates's Will' written on it in thick bold lettering.",
+                                     'ids': ['O11'],
                                  },
                              },
                              True)
@@ -666,6 +669,8 @@ if __name__ == '__main__':
                                     "my death'"
                         },
                         True)
+
+    O11.set_condition(True)
 
     sys.add_obj(O11)
 

@@ -10,7 +10,7 @@ class TestCase(unittest.TestCase):
             Afternoon light pours in from the front windows, exposing dust particles in the air."
         test_sdesc = "A large room with marble floors and a grand staircase."
         test_visited = False
-        self.test_room = room.Room(test_id, test_name, test_desc, test_sdesc, test_visited)
+        self.test_room = room.Room(test_id, test_name, test_desc, test_sdesc)
     
     def tearDown(self):
         del self.test_room
@@ -240,23 +240,26 @@ class TestCase(unittest.TestCase):
     # testing methods for managing connections
     def test_add_connection1(self):
         """add_connection successfully adds a room ID to the connections list"""
-        self.test_room.add_connection("R01")
-        self.assertEqual(self.test_room.get_connections(), ["R01"])
+        self.test_room.add_connection("north","R01")
+        self.assertEqual(self.test_room.get_connections(), {'north':"R01"})
 
-    def test_add_connection2(self):
-        """add_connection successfully raises an exception when the provided 
-        room ID already exists in the connections list"""
-        self.test_room.add_connection("R01")
-        with self.assertRaises(room.IDAlreadyExists):
-            self.test_room.add_connection("R01")
+    #
+    # this test is depreciated since connections is a dict now
+    #
+    # def test_add_connection2(self):
+    #     """add_connection successfully raises an exception when the provided
+    #     room ID already exists in the connections list"""
+    #     self.test_room.add_connection("north","R01")
+    #     with self.assertRaises(room.IDAlreadyExists):
+    #         self.test_room.add_connection("north","R01")
 
-    def test_remove_connection1(self):
-        """remove_connection successfully removes a room ID from the 
-        connections list"""
-        self.test_room.add_connection("R01")
-        self.test_room.add_connection("R02")
-        self.test_room.remove_connection("R01")
-        self.assertEqual(self.test_room.get_connections(), ["R02"])
+    # def test_remove_connection1(self):
+    #     """remove_connection successfully removes a room ID from the
+    #     connections list"""
+    #     self.test_room.add_connection("north","R01")
+    #     self.test_room.add_connection("west","R02")
+    #     self.test_room.remove_connection("R01")
+    #     self.assertEqual(self.test_room.get_connections(), {'west':"R02"})
 
     def test_remove_connection2(self):
         """remove_connection successfully raises an exception when the provided
@@ -267,28 +270,28 @@ class TestCase(unittest.TestCase):
     def test_get_connections1(self):
         """get_connections successfully returns the entire connections list
         with the correct contents when empty"""
-        self.assertEqual(self.test_room.get_connections(), [])
+        self.assertEqual(self.test_room.get_connections(), {})
 
     def test_get_connections2(self):
         """get_connections successfully returns the entire connections list
         with the correct contents when not empty"""
-        self.test_room.add_connection("R01")
-        self.test_room.add_connection("R02")
-        self.assertEqual(self.test_room.get_connections(), ["R01", "R02"])
+        self.test_room.add_connection("north","R01")
+        self.test_room.add_connection("west","R02")
+        self.assertEqual(self.test_room.get_connections(), {'north':"R01",'west': "R02"})
 
     def test_set_connections1(self):
         """set_connections successfully sets the value of the connections list
         to the provided list when the previous list had IDs added to it"""
-        self.test_room.add_connection("R01")
-        self.test_room.add_connection("R02")
-        self.test_room.set_connections(["R01", "R02", "R03"])
-        self.assertEqual(self.test_room.get_connections(), ["R01", "R02", "R03"])
+        self.test_room.add_connection("north","R01")
+        self.test_room.add_connection("west","R02")
+        self.test_room.set_connections({'north':"R01",'west': "R02", 'east': "R03"})
+        self.assertEqual(self.test_room.get_connections(), {'north':"R01",'west': "R02", 'east': "R03"})
 
     def test_set_connections2(self):
         """set_connections successfully sets the value of the connections list
         to the provided list when the previous list had no IDs added to it"""
-        self.test_room.set_connections(["R01", "R02", "R03"])
-        self.assertEqual(self.test_room.get_connections(), ["R01", "R02", "R03"])
+        self.test_room.set_connections({'north':"R01",'west': "R02", 'east': "R03"})
+        self.assertEqual(self.test_room.get_connections(), {'north':"R01",'west': "R02", 'east': "R03"})
 
     # testing methods for managing connections
     def test_add_interaction1(self):
