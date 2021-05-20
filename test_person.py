@@ -7,9 +7,10 @@ class TestPersonClass(unittest.TestCase):
         id = "01"
         name = "Ralph"
         desc = "Ralph has been the groundskeeper for many years."
+        sdesc = 'a man'
         interactions = {"look at": """The groundskeeper is acting nervous
             and seems to have misplaced something."""} 
-        self.test_person = person.Person(id, name, desc, interactions)
+        self.test_person = person.Person(id, name, desc, sdesc, interactions)
 
     def test_get_id(self):
         expected = "01"

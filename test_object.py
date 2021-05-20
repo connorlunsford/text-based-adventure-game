@@ -7,9 +7,10 @@ class TestCase(unittest.TestCase):
         test_id = "F1"
         test_name = "Pearl Earring"
         test_desc = "A small pearl earring."
+        test_sdesc = 'a round earring'
         test_interaction = {"look at": "The small pearl earring is covered in dust."}
         test_hidden = True
-        self.test_object = object.Object(test_id, test_name, test_desc, test_interaction, test_hidden)
+        self.test_object = object.Object(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
     def tearDown(self):
         del self.test_object

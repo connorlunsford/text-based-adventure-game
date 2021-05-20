@@ -8,26 +8,29 @@ class TestPlayerClass(unittest.TestCase):
         test_id = "F1"
         test_name = "Pearl Earring"
         test_desc = "A small pearl earring."
+        test_sdesc = 'a round earring'
         test_interaction = {
             "look at": "The small pearl earring is covered in dust."}
         test_hidden = True
-        self.test_object_1 = object.Object(test_id, test_name, test_desc, test_interaction, test_hidden)
+        self.test_object_1 = object.Object(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
         test_id = "F2"
         test_name = "paper"
         test_desc = "A piece of paper with a picture."
+        test_sdesc = 'a piece of paper'
         test_interaction = {
             "look at": "It looks like a page torn from a book."}
         test_hidden = True
-        self.test_object_2 = object.Object(test_id, test_name, test_desc, test_interaction, test_hidden)
+        self.test_object_2 = object.Object(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
         test_id = "F3"
         test_name = "candlestick"
         test_desc = "A silver candlestick."
+        test_sdesc = 'candelstick thing'
         test_interaction = {
             "look at": "It looks like it might have blood on it."}
         test_hidden = True
-        self.test_object_3 = object.Object(test_id, test_name, test_desc, test_interaction, test_hidden)
+        self.test_object_3 = object.Object(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
         self.test_player = player.Player("01")
         self.test_player.set_name("Jennifer")
