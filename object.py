@@ -4,15 +4,11 @@ class ObjectException(Exception):
     """Base exception class for the Object class"""
     pass
 
-class FeatureException(Exception):
-    """Base exception class for the Feature class"""
-    pass
-
-class AttributeDoesNotExist(FeatureException):
+class AttributeDoesNotExist(ObjectException):
     """Raised when attribute does not exist"""
     pass
 
-class AttributeAlreadyExists(FeatureException):
+class AttributeAlreadyExists(ObjectException):
     """Raised when attribute already exists"""
     pass
 
