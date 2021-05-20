@@ -7,9 +7,10 @@ class TestCase(unittest.TestCase):
         test_id = "F1"
         test_name = "Old Desk"
         test_desc = "An old wood desk."
+        test_sdesc = 'a wood desk'
         test_interaction = {"look at": "The old wood desk's top is faded. It has a small center drawer."}
         test_hidden = False
-        self.test_feature = feature.Feature(test_id, test_name, test_desc, test_interaction, test_hidden)
+        self.test_feature = feature.Feature(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
     def tearDown(self):
         del self.test_feature
