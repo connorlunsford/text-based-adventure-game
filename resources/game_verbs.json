@@ -3,7 +3,7 @@
 {"drop": ["remove","relinquish","place","set down"]},
 {"use": ["use","try"]}, 
 {"look": ["look"]},
-{"look at": ["look at", "examine"]},
+{"look at": ["look at", "examine", "inspect"]},
 {"go": ["go"]},
 {"open": ["open"]}, 
 {"search": ["search"]}, 
