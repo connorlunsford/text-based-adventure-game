@@ -38,6 +38,9 @@ class System:
         self._parser.add_prepositions("./resources/prepositions.txt")
         self._parser.load_articles("./resources/articles.txt")
         self._parser.load_stopwords("./resources/stopwords.txt")
+        self._parser.load_game_verbs("./resources/game_verbs.json")
+        self._parser.load_game_items("./resources/game_items.json")
+        self._parser.load_game_dictionary("./resources/game_dictionary.txt")
 
     def game_loop(self):
         while True:
