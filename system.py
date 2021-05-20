@@ -32,7 +32,7 @@ class System:
         self._cur_room = 'R01'
         # contains the natural language parser
         self._parser = nlp.Parser()
-        # add necessary text files for natural language parser to work
+        # add necessary text/JSON files for natural language parser to work
         self._parser.add_connections("./resources/connections.txt")
         self._parser.add_special_commands("./resources/special_commands.txt")
         self._parser.add_prepositions("./resources/prepositions.txt")
@@ -193,25 +193,24 @@ class System:
                 print('"Ah I see, and how did they kill this man?"')
                 weapon = input('What was the murder weapon: ').upper()
 
-                # NOTE:
+                # Save and format player input for later use
+                killer_str = killer.title()
+                weapon_str = weapon.title()
 
-                # at this point we need to add some sort of validation for the killer and weapon
-
-                # the best way to handle this might be the language parser
-
+                # Validate the killer and weapon using the respective NLP methods
                 killer = self._parser.find_killer(killer)
                 weapon = self._parser.find_weapon(weapon)
 
                 print("Not long after you you make the call, the police arrive on the scene, "
-                "taking " + str(killer) + " into custody and the " + str(weapon) + " as evidence. "
+                "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
                 "You return home, and life goes on, but, a week later, you come across "
                 "an article in the news that reads: ")
                 if killer == 'wrong' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
-                    print("It turns out that " + str(killer) + " was not the killer and that the " + 
-                    str(weapon) + "was not the murder weapon. You continue to follow the case in "
-                    "the years that follow, but no substantial updates are ever released, and "
-                    "eventually it's declared a cold case.")
+                    print("It turns out that " + str(killer_str) + " was not the killer and that the " + 
+                    str(weapon_str) + "was not the murder weapon. You continue to follow the case in "
+                    "the years that follow, but no substantial updates are ever released, and, "
+                    "eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Saturday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
@@ -220,10 +219,10 @@ class System:
                 # change 'correct' to the killers name in final implementation
                 elif killer == 'correct' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
-                    print("It turns out that the " + str(weapon) + " was not the murder weapon."
+                    print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
                     "You continue to follow the case in the years that follow, but no substantial "
-                    "updates are ever released, and eventually it's declared a cold case.")
-                    print("As a result, " + str(killer) + "  was able to get away with killing Norman "
+                    "updates are ever released, and, eventually, it's declared a cold case.")
+                    print("As a result, " + str(killer_str) + "  was able to get away with killing Norman "
                     "that bright Saturday morning at the retreat.")
                     print("THE END.")
                     exit()
@@ -231,9 +230,9 @@ class System:
                 # change 'correct' to the weapon name in final implementation
                 elif killer == 'wrong' and weapon == 'correct':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
-                    print("It turns out that " + str(killer) + " was not the killer. "
+                    print("It turns out that " + str(killer_str) + " was not the killer. "
                     "You continue to follow the case in the years that follow, but no substantial "
-                    "updates are ever released, and eventually it's declared a cold case.")
+                    "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Saturday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
@@ -243,8 +242,8 @@ class System:
                     print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
                     print("It seems like your information was correct! You closely follow the case")
                     ("in the years that follow until one afternoon three years later, you turn on the TV "
-                    "to see a guilty verdict given to " + str(killer) + " who, by all accounts and evidence "
-                    "presented to the court, murdered Norman Bates with the " + str(weapon) + " one bright "
+                    "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
+                    "presented to the court, murdered Norman Bates with the " + str(weapon_str) + " one bright "
                     "Saturday morning three years ago.")
                     print("THE END.")
                     exit()
