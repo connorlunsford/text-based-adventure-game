@@ -197,6 +197,8 @@ class Parser:
                         return "correct"
                     else:
                         return "wrong"
+                else:
+                    return "wrong"
 
     def find_weapon(self, weapon: str):
         """this should take a phrase and return either "correct" or "wrong" """
@@ -212,6 +214,8 @@ class Parser:
                         return "correct"
                     else:
                         return "wrong"
+                else:
+                    return "wrong"
 
     # Lexical Parsing Stage Methods        
 

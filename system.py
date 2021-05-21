@@ -210,11 +210,11 @@ class System:
                 "an article in the news that reads: ")
                 if killer == 'wrong' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
-                    print("It turns out that " + str(killer_str) + " was not the killer and that the " + 
-                    str(weapon_str) + "was not the murder weapon. You continue to follow the case in "
+                    print("It turns out that " + str(killer_str) + " was not the killer and the " + 
+                    str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
                     "the years that follow, but no substantial updates are ever released, and, "
                     "eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    print("As a result, whoever it was that killed Norman that bright Friday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
                     exit()
@@ -225,8 +225,8 @@ class System:
                     print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
                     "You continue to follow the case in the years that follow, but no substantial "
                     "updates are ever released, and, eventually, it's declared a cold case.")
-                    print("As a result, " + str(killer_str) + "  was able to get away with killing Norman "
-                    "that bright Saturday morning at the retreat.")
+                    print("As a result, " + str(killer_str) + " was able to get away with killing Norman "
+                    "that bright Friday morning at the retreat.")
                     print("THE END.")
                     exit()
 
@@ -236,18 +236,18 @@ class System:
                     print("It turns out that " + str(killer_str) + " was not the killer. "
                     "You continue to follow the case in the years that follow, but no substantial "
                     "updates are ever released, and, eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    print("As a result, whoever it was that killed Norman that bright Friday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
                     exit()
 
                 elif killer == 'correct' and weapon == 'correct':
                     print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
-                    print("It seems like your information was correct! You closely follow the case")
-                    ("in the years that follow until one afternoon three years later, you turn on the TV "
+                    print("It seems like your information was correct! You closely follow the case"
+                    "in the years that follow until one afternoon three years later, you turn on the TV "
                     "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
                     "presented to the court, murdered Norman Bates with the " + str(weapon_str) + " one bright "
-                    "Saturday morning three years ago.")
+                    "Friday morning three years ago.")
                     print("THE END.")
                     exit()
             else:
@@ -915,8 +915,8 @@ class System:
             print(char, end="", flush=True)
             time.sleep(0.05)
 
-        time.sleep(1.0)
-        print("\n")
+        time.sleep(0.75)
+        print("")
 
         for string in introduction:
             print(string)
