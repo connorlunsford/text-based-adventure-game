@@ -3,3 +3,5 @@ help
 inventory
 savegame
 loadgame
+call
+exit

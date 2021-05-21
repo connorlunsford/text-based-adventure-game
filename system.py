@@ -198,7 +198,7 @@ class System:
 
                 # Save and format player input for later use
                 killer_str = killer.title()
-                weapon_str = weapon.title()
+                weapon_str = weapon.lower()
 
                 # Validate the killer and weapon using the respective NLP methods
                 killer = self._parser.find_killer(killer)
@@ -210,11 +210,11 @@ class System:
                 "an article in the news that reads: ")
                 if killer == 'wrong' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
-                    print("It turns out that " + str(killer_str) + " was not the killer and that the " + 
-                    str(weapon_str) + "was not the murder weapon. You continue to follow the case in "
+                    print("It turns out that " + str(killer_str) + " was not the killer and the " + 
+                    str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
                     "the years that follow, but no substantial updates are ever released, and, "
                     "eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    print("As a result, whoever it was that killed Norman that bright Friday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
                     exit()
@@ -225,8 +225,8 @@ class System:
                     print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
                     "You continue to follow the case in the years that follow, but no substantial "
                     "updates are ever released, and, eventually, it's declared a cold case.")
-                    print("As a result, " + str(killer_str) + "  was able to get away with killing Norman "
-                    "that bright Saturday morning at the retreat.")
+                    print("As a result, " + str(killer_str) + " was able to get away with killing Norman "
+                    "that bright Friday morning at the retreat.")
                     print("THE END.")
                     exit()
 
@@ -236,18 +236,18 @@ class System:
                     print("It turns out that " + str(killer_str) + " was not the killer. "
                     "You continue to follow the case in the years that follow, but no substantial "
                     "updates are ever released, and, eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Saturday morning "
+                    print("As a result, whoever it was that killed Norman that bright Friday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
                     exit()
 
                 elif killer == 'correct' and weapon == 'correct':
                     print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
-                    print("It seems like your information was correct! You closely follow the case")
-                    ("in the years that follow until one afternoon three years later, you turn on the TV "
+                    print("It seems like your information was correct! You closely follow the case"
+                    "in the years that follow until one afternoon three years later, you turn on the TV "
                     "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
                     "presented to the court, murdered Norman Bates with the " + str(weapon_str) + " one bright "
-                    "Saturday morning three years ago.")
+                    "Friday morning three years ago.")
                     print("THE END.")
                     exit()
             else:
@@ -849,10 +849,78 @@ class System:
 
     def introduction(self):
         """plays the main introduction for the game"""
+        
+        setting = "San Francisco, California. June 2019."
+        introduction = [
+            "Work has been difficult lately. "
+            "Over the past six months, your boss at the law firm has been "
+            "down your neck due to an important case that, according to him, "
+            "could 'make his career'. "
+            "You've been living off of coffee and cold lunches and, now, with "
+            "the case formally closed, you find yourself yearning for a much "
+            "needed vacation and change of pace. ",
+            "One afternoon, on your lunch break, you come across an advertisement "
+            "in the newspaper for a digital detox retreat. The retreat is hosted "
+            "over the weekend at an old, historical mansion in a remote location "
+            "five hours north of the city. No cellphones, laptops, or computers "
+            "of any kind are permitted. "
+            "'Perfect', you think. The retreat is not too far away, and you've "
+            "been looking for an excuse to finally turn off your cellphone and "
+            "get away from everything. ",
+            "You perform a quick Google search and learn that the mansion is owned "
+            "by the descendent of an old family that became wealthy during the "
+            "California Gold Rush circa the 1850s--a man by the name of Norman "
+            "Bates. "
+            "This piques your interest and, the next day, you call the phone "
+            "number on the advertisement to book a reservation two weeks from "
+            "now and request that Friday off from work. ",
+            "Two weeks later, on the Friday of the first day of the retreat, "
+            "you wake up at 4:00 AM to get ready and catch the bus north to "
+            "the city of Eureka. "
+            "From there, you follow the instructions in the reservation email "
+            "to wait at the post office, and you're picked up by a man in a "
+            "weathered truck who simply introduces himself as 'Todd'.",
+            "Todd drives west, into the mountains that border the eastern edge "
+            "of the city and, before long, you find yourself surrounded by "
+            "dense, dark forests. "
+            "The car ride is silent, and you begin dozing off soon after Todd "
+            "exits the main road, turning onto an unmarked backroad that cuts "
+            "deeper into the forest. ",
+            "After an unknown amount of time, you wake up to the sound of Todd "
+            "clearing his throat. You groggily look around to discover that "
+            "you've arrived at a clearly old, yet seemingly well-kept mansion "
+            "that matches the pictures you had seen online. "
+            "You can tell that Todd is impatient, so you quickly grab your "
+            "bags, thank him, and then exit the truck. Todd drives away as you "
+            "stand there, still tired, examining the front of the mansion. "
+            "The architecture has a distinctly Victorian style feel to it, and "
+            "it looks strangely out of place this far into the forest. ",
+            "You look around, but see nobody. You recall from the reservation "
+            "email that you received that three other retreat participants--"
+            "a man by the name of Sam Smith, a woman by the name of Heather "
+            "Poirot, and another woman by the name of Ava Scarlett--"
+            "were supposed to be attending the retreat along with you. "
+            "The email also noted that Norman Bates' son, Adam Bates, and "
+            "his assistant, Alice Stone, would be present during the retreat "
+            "as well. You vaguely remember that a groundskeeper called "
+            "Al Weatherby had been mentioned too. ",
+            "Securing your bags, you climb the front steps and knock on the "
+            "door. When no one answers, you try the doorknob. To your "
+            "surprise, it's unlocked. ",
+            "You open the door and enter..."
+        ]       
 
-        # insert main storyline stuff here
+        print("")
+        for char in setting:
+            print(char, end="", flush=True)
+            time.sleep(0.05)
 
-        # just use print statements in this, everything else will be handled outside of this class
+        time.sleep(0.75)
+        print("")
+
+        for string in introduction:
+            print(string)
+            input("(press enter to continue)")
 
     def add_feature(self, feat: feature.Feature):
         """adds a feature to self._features"""
@@ -900,5 +968,3 @@ class System:
             json.dump(json_room, open(filename, 'w'))
 
         return
-
-
