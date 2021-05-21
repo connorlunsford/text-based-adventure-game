@@ -42,6 +42,7 @@ class System:
         self._parser.load_game_items("./resources/game_items.json")
         self._parser.load_killer("./gamefiles/killer.txt")
         self._parser.load_weapon("./gamefiles/weapon.txt")
+        self._parser.load_game_dictionary("./resources/game_dictionary.txt")
 
     def game_loop(self):
         while True:
