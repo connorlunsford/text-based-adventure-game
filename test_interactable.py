@@ -7,8 +7,9 @@ class TestCase(unittest.TestCase):
         test_id = "F1"
         test_name = "Large Oak Table"
         test_desc = "A large oak table."
+        test_sdesc = 'a wood table'
         test_interaction = {"look at": "Apart from its size, the large oak table is uninteresting."}
-        self.test_interactable = interactable.Interactable(test_id, test_name, test_desc, test_interaction)
+        self.test_interactable = interactable.Interactable(test_id, test_name, test_desc, test_sdesc, test_interaction)
 
     def tearDown(self):
         del self.test_interactable

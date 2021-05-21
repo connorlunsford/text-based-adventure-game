@@ -128,8 +128,11 @@ def feat_from_json(json_feature):
     # creates a new Feature object with the specified attributes
     new_feature = feature.Feature(id, name, desc, sdesc, interactions, hidden)
 
-    if json_feature['condition'] is not None:
-        new_feature.add_condition(feature_dict.get('condition'))
+    try:
+        if feature_dict['condition'] is not None:
+            new_feature.add_condition(feature_dict.get('condition'))
+    except KeyError:
+        pass
 
     # returns the new_feature object as a Feature object
     return new_feature

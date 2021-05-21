@@ -19,9 +19,8 @@ class Parser:
 
     # load name of killer from file
     def load_killer(self, filepath: str):
-        # read killer name from file as a string
+        # read killer id from file as a string
         with open(filepath, "r") as fp:
-            # articles = list(fp.read().split())
             if not hasattr(self, "_killer"):
                 self._killer = fp.read()
                 fp.close()
@@ -31,7 +30,7 @@ class Parser:
 
     # load weapon from file
     def load_weapon(self, filepath: str):
-        # read weapon from file as a string
+        # read weapon id from file as a string
         with open(filepath, "r") as fp:
             # articles = list(fp.read().split())
             if not hasattr(self, "_weapon"):
@@ -86,7 +85,17 @@ class Parser:
             fp.close()
             raise ParserException  
 
-    # TODO: load full game dictionary for verify_words step
+    # load full game dictionary for verify_words step. inludes all rooms, 
+    # objects, people, features, verbs, special commands, directions, and
+    # prepositions
+    def load_game_dictionary(self, filepath: str):
+        fp = open(filepath, "r")
+        if not hasattr(self, "_game_dictionary"):
+            self._game_dictionary = fp.read()
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException  
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
@@ -175,24 +184,34 @@ class Parser:
     # killer and weapon methods
 
     def find_killer(self, killer: str):
-        """this should take a phrase and return either the killers name or 'WRONG'"""
-        # TODO: do we want to allow aliases when the user is guessing the killer or
-        # will they have to enter the exact full name (ex. "Ava" instead of "Ava Scarlett")
-        # and will the aliases be stored in the same text file or search the 
-        # game dictionary?
-        if killer.lower() == self._killer.lower():
-            return self._killer
-        else:
-            return 'WRONG'
+        """this should take a phrase and return either "correct" or "wrong" """
+
+        # check all aliases to see if player's guess matches a person
+        for i in range(len(self._game_items)):
+            for obj_set in self._game_items[i]:
+                key_list = list(self._game_items[i].keys())
+                value_list = list(self._game_items[i].values())
+                # if it matches a person, check to see if it is the killer
+                if killer.lower() in value_list[0]:
+                    if key_list[0] == self._killer:
+                        return "correct"
+                    else:
+                        return "wrong"
 
     def find_weapon(self, weapon: str):
-        """this should take a phrase and return either 'CANDLESTICK' or 'WRONG'"""
-        # TODO: do we want to allow aliases when the user is guessing the weapon or
-        # will they have to enter the exact value?
-        if weapon.lower() == self._weapon.lower():
-            return self._weapon
-        else:
-            return 'WRONG'
+        """this should take a phrase and return either "correct" or "wrong" """
+
+        # check all aliases to see if player's guess matches an object
+        for i in range(len(self._game_items)):
+            for obj_set in self._game_items[i]:
+                key_list = list(self._game_items[i].keys())
+                value_list = list(self._game_items[i].values())
+                # if it matches an object, check to see if it is the correct object/weapon
+                if weapon.lower() in value_list[0]:
+                    if key_list[0] == self._weapon:
+                        return "correct"
+                    else:
+                        return "wrong"
 
     # Lexical Parsing Stage Methods        
 
@@ -238,18 +257,9 @@ class Parser:
         # TODO: implement error checking/exception for unrecognized/misspelled words
         # this should probably be done as part of the resolver?
         
-        """sample dictionary for testing and development, will implement pulling
-        from a text file later"""
-        game_dictionary = ["get", "take", "look", "earring", "pick", "up",
-         "letter", "at", "large", "silver", "candlestick", "candle", "stick", "use", "key", "on", "small",
-         "lock", "touch", "taste", "smell", "listen", "read", "search",
-         "kitchen", "library", "stairs", "room", "examine", "staircase",
-         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
-         "body", "gentleman", "inventory", "help", "north", "south", "east", "west",
-         "about", "into", "ask", "call", "open", "savegame", "loadgame"]
         final_words = []
         for word in clean_input:
-            if word in game_dictionary:
+            if word in self._game_dictionary:
                 final_words.append(word)
         return final_words
 

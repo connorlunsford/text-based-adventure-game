@@ -32,12 +32,17 @@ class System:
         self._cur_room = 'R01'
         # contains the natural language parser
         self._parser = nlp.Parser()
-        # add necessary text files for natural language parser to work
+        # add necessary text/JSON files for natural language parser to work
         self._parser.add_connections("./resources/connections.txt")
         self._parser.add_special_commands("./resources/special_commands.txt")
         self._parser.add_prepositions("./resources/prepositions.txt")
         self._parser.load_articles("./resources/articles.txt")
         self._parser.load_stopwords("./resources/stopwords.txt")
+        self._parser.load_game_verbs("./resources/game_verbs.json")
+        self._parser.load_game_items("./resources/game_items.json")
+        self._parser.load_killer("./gamefiles/killer.txt")
+        self._parser.load_weapon("./gamefiles/weapon.txt")
+        self._parser.load_game_dictionary("./resources/game_dictionary.txt")
 
     def game_loop(self):
         while True:
@@ -82,6 +87,10 @@ class System:
                 self.save()
             elif command[0] == 'loadgame':
                 self.load()
+            elif command[0] == 'exit':
+                self.exit()
+            elif command[0] == 'drop':
+                self.drop(command[1])
             else:
                 print('Sorry the game does not understand that input')
                 print('Try again with simpler language')
@@ -187,57 +196,60 @@ class System:
                 print('"Ah I see, and how did they kill this man?"')
                 weapon = input('What was the murder weapon: ').upper()
 
-                # NOTE:
+                # Save and format player input for later use
+                killer_str = killer.title()
+                weapon_str = weapon.title()
 
-                # at this point we need to add some sort of validation for the killer and weapon
-
-                # the best way to handle this might be the language parser
-
+                # Validate the killer and weapon using the respective NLP methods
                 killer = self._parser.find_killer(killer)
                 weapon = self._parser.find_weapon(weapon)
 
                 print("Not long after you you make the call, the police arrive on the scene, "
-                "taking " + str(killer) + " into custody and the " + str(weapon) + " as evidence. "
+                "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
                 "You return home, and life goes on, but, a week later, you come across "
                 "an article in the news that reads: ")
-                if killer == 'WRONG' and weapon == 'WRONG':
+                if killer == 'wrong' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
-                    print("It turns out that " + str(killer) + " was not the killer and that the " + 
-                    str(weapon) + "was not the murder weapon. You continue to follow the case in "
-                    "the years that follow, but no substantial updates are ever released, and "
-                    "eventually it's declared a cold case.")
+                    print("It turns out that " + str(killer_str) + " was not the killer and that the " + 
+                    str(weapon_str) + "was not the murder weapon. You continue to follow the case in "
+                    "the years that follow, but no substantial updates are ever released, and, "
+                    "eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Saturday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
+                    exit()
 
-                # change 'CORRECT' to the killers name in final implementation
-                elif killer == 'CORRECT' and weapon == 'WRONG':
+                # change 'correct' to the killers name in final implementation
+                elif killer == 'correct' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
-                    print("It turns out that the " + str(weapon) + " was not the murder weapon."
+                    print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
                     "You continue to follow the case in the years that follow, but no substantial "
-                    "updates are ever released, and eventually it's declared a cold case.")
-                    print("As a result, " + str(killer) + "  was able to get away with killing Norman "
+                    "updates are ever released, and, eventually, it's declared a cold case.")
+                    print("As a result, " + str(killer_str) + "  was able to get away with killing Norman "
                     "that bright Saturday morning at the retreat.")
                     print("THE END.")
+                    exit()
 
-                # change 'CORRECT' to the weapon name in final implementation
-                elif killer == 'WRONG' and weapon == 'CORRECT':
+                # change 'correct' to the weapon name in final implementation
+                elif killer == 'wrong' and weapon == 'correct':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
-                    print("It turns out that " + str(killer) + " was not the killer. "
+                    print("It turns out that " + str(killer_str) + " was not the killer. "
                     "You continue to follow the case in the years that follow, but no substantial "
-                    "updates are ever released, and eventually it's declared a cold case.")
+                    "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Saturday morning "
                     "at the retreat was able to get away.")
                     print("THE END.")
+                    exit()
 
-                elif killer == 'CORRECT' and weapon == 'CORRECT':
+                elif killer == 'correct' and weapon == 'correct':
                     print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
                     print("It seems like your information was correct! You closely follow the case")
                     ("in the years that follow until one afternoon three years later, you turn on the TV "
-                    "to see a guilty verdict given to " + str(killer) + " who, by all accounts and evidence "
-                    "presented to the court, murdered Norman Bates with the " + str(weapon) + " one bright "
+                    "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
+                    "presented to the court, murdered Norman Bates with the " + str(weapon_str) + " one bright "
                     "Saturday morning three years ago.")
                     print("THE END.")
+                    exit()
             else:
                 print('You decide you need more evidence. You set the phone down')
         else:
@@ -298,8 +310,17 @@ class System:
             # for certain features the condition specifies if the object is locked
             if self._features[obj].get_condition() is True:
                 print(self._features[obj].get_interaction('open', 'locked'))
+                return True
             else:
                 print(self._features[obj].get_interaction('open', 'unlocked'))
+                try:
+                    id_list = self._features[obj].get_interaction('open','ids')
+                    for item in id_list:
+                        if item in self._rooms[self._cur_room].get_objects():
+                            self._objects[item].set_condition(False)
+                except interactable.KeyDoesNotExist:
+                    pass
+                return True
         # if the object is a room
         elif obj in self._rooms:
             print('You cannot open a room, try "go to [room]" or "open [door to room]" instead')
@@ -570,8 +591,19 @@ class System:
         return True
 
     def go(self, room_id: str):
-        """takes a room id and allows you to attempt to go there from the current room"""
-        if room_id in self._rooms[self._cur_room].get_connections():
+        """takes a room id or a direction and allows you to attempt to go there from the current room"""
+        # if room_id is a direction
+        if room_id in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
+            try:
+                connections = self._rooms[self._cur_room].get_connections()
+                go_to = connections[room_id]
+                self._cur_room = go_to
+                print(self.get_description())
+            except room.IDAlreadyExists:
+                print('This room does not have a connection to the ' + room_id)
+                return False
+        # if the room_id is actually a room_id
+        if room_id in self._rooms[self._cur_room].get_connections().values():
             self._cur_room = room_id
             print(self.get_description())
             return True
@@ -594,18 +626,39 @@ class System:
             print('That object is already in your inventory')
             return False
         elif obj in self._rooms[self._cur_room].get_objects():
-            print('You picked up the ' + self._objects[obj].get_name())
-            self._rooms[self._cur_room].remove_object(obj)
-            self._player.add_to_inventory(obj)
-            self._objects[obj].set_hidden(False)
-            return True
+            try:
+                if self._objects[obj].get_condition() is True:
+                    print('You cannot pick up that object')
+                    return False
+                else:
+                    print('You picked up the ' + self._objects[obj].get_name())
+                    self._rooms[self._cur_room].remove_object(obj)
+                    self._player.add_to_inventory(obj)
+                    self._objects[obj].set_hidden(False)
+                    return True
+            except object.AttributeDoesNotExist:
+                print('You picked up the ' + self._objects[obj].get_name())
+                self._rooms[self._cur_room].remove_object(obj)
+                self._player.add_to_inventory(obj)
+                self._objects[obj].set_hidden(False)
+                return True
         else:
             print('That object is not in the room')
             return False
 
+    def drop(self, item):
+        """takes one parameter, the item to drop, drops that item in the current room and returns nothing"""
+        if item in self._player.get_inventory():
+            self._player.remove_from_inventory(item)
+            self._rooms[self._cur_room].add_object(item)
+            print('You dropped the ' + self._objects[item].get_name())
+            return True
+        else:
+            print('That item is not in your inventory')
+            return False
+
     def help(self):
         """takes no parameters, prints out a list of commands that the player is allowed to use"""
-        print('Player: ' + self._player.get_name())
         print('Here are some examples of possible commands you can use')
         print('look at [object] - allows you to examine an object, feature, or person')
         print('look - allows you to examine the room')
@@ -636,10 +689,92 @@ class System:
 
     def save(self):
         """takes no parameters, allows you to save the game"""
+
+        print('Please enter a save file name (case sensitive)')
+        location = input()
+
+        json_player = converter.player_to_json(self._player)
+        filename = 'saves/' + location + '/player.json'
+        json.dump(json_player, open(filename, 'w'))
+
+        for feat in self._features.values():
+            json_feat = converter.feat_to_json(feat)
+            filename = 'saves/' + location + '/features/' + feat.get_id() + '.json'
+            json.dump(json_feat, open(filename, 'w'))
+
+        for obj in self._objects.values():
+            json_obj = converter.obj_to_json(obj)
+            filename = 'saves/' + location + '/objects/' + obj.get_id() + '.json'
+            json.dump(json_obj, open(filename, 'w'))
+
+        for person in self._people.values():
+            json_person = converter.person_to_json(person)
+            filename = 'saves/' + location + '/people/' + person.get_id() + '.json'
+            json.dump(json_person, open(filename, 'w'))
+
+        for room_obj in self._rooms.values():
+            json_room = converter.room_to_json(room_obj)
+            filename = 'saves/' + location + '/rooms/' + room_obj.get_id() + '.json'
+            json.dump(json_room, open(filename, 'w'))
+
         return
 
     def load(self):
         """takes no parameters, allows you to load the game from a save file"""
+
+        print('Enter the name you saved the game under (case sensitive) ')
+        location = input()
+
+        if os.path.isdir('saves/' + location):
+
+            print('Saving Game...')
+            time.sleep(1)
+
+            # grabs the player object
+            player_file = open('saves/' + location + '/player.json', 'r')
+            player_json = json.load(player_file)
+            player_obj = converter.player_from_json(player_json)
+            self._player = player_obj
+
+            # grabs the list of json objects located in the rooms subdirectory
+            room_files = os.listdir('saves/' + location + '/rooms')
+            for room_file_name in room_files:
+                room_file = open(room_file_name, 'r')
+                room_json = json.load(room_file)
+                room_obj = converter.room_from_json(room_json)
+                self._rooms[room_obj]['id'] = room_obj
+                self._rooms[room_obj]['id'] = room_obj
+
+            # grabs the list of json objects located in the objects subdirectory
+            object_files = os.listdir('saves/' + location +'/objects')
+            for object_file_name in object_files:
+                object_file = open(object_file_name, 'r')
+                object_json = json.load(object_file)
+                object_obj = converter.obj_from_json(object_json)
+                self._objects[object_obj]['id'] = object_obj
+
+            # grabs the list of json objects located in the features subdirectory
+            feature_files = os.listdir('saves/' + location +'/features')
+            for feature_file_name in feature_files:
+                feature_file = open(feature_file_name, 'r')
+                feature_json = json.load(feature_file)
+                feature_obj = converter.feat_from_json(feature_json)
+                self._features[feature_obj]['id'] = feature_obj
+
+            # grabs the list of json objects located in the people subdirectory
+            people_files = os.listdir('saves/' + location +'/people')
+            for people_file_name in people_files:
+                people_file = open(people_file_name, 'r')
+                people_json = json.load(people_file)
+                people_obj = converter.person_from_json(people_json)
+                self._people[people_obj]['id'] = people_obj
+
+            print('Game Saved under save file: ' + location)
+
+        else:
+
+            print('Save file could not be found')
+
         return
 
     def get_description(self):
@@ -660,39 +795,51 @@ class System:
 
         return
 
+    def exit(self):
+        print('are you sure you want to quit the game? (y/n)')
+        ans = input().lower()
+        if ans in ['y','yes','yeah']:
+            print('Exiting Game...')
+            time.sleep(1)
+            exit()
+        else:
+            print('Returning to game...')
+            return
+
+
     def start(self):
         """starts the game by loading the files, playing the introduction, and starting the main gameplay loop"""
         # grabs the list of json objects located in the rooms subdirectory
         room_files = os.listdir('gamefiles/rooms')
         for room_file_name in room_files:
-            room_file = open(room_file_name, 'r')
+            room_file = open('gamefiles/rooms/' + room_file_name, 'r')
             room_json = json.load(room_file)
             room_obj = converter.room_from_json(room_json)
-            self._rooms[room_obj]['id'] = room_obj
+            self._rooms[room_obj.get_id()] = room_obj
 
         # grabs the list of json objects located in the objects subdirectory
         object_files = os.listdir('gamefiles/objects')
         for object_file_name in object_files:
-            object_file = open(object_file_name, 'r')
+            object_file = open('gamefiles/objects/' + object_file_name, 'r')
             object_json = json.load(object_file)
             object_obj = converter.obj_from_json(object_json)
-            self._objects[object_obj]['id'] = object_obj
+            self._objects[object_obj.get_id()] = object_obj
 
         # grabs the list of json objects located in the features subdirectory
         feature_files = os.listdir('gamefiles/features')
         for feature_file_name in feature_files:
-            feature_file = open(feature_file_name, 'r')
+            feature_file = open('gamefiles/features/' + feature_file_name, 'r')
             feature_json = json.load(feature_file)
             feature_obj = converter.feat_from_json(feature_json)
-            self._features[feature_obj]['id'] = feature_obj
+            self._features[feature_obj.get_id()] = feature_obj
 
         # grabs the list of json objects located in the people subdirectory
         people_files = os.listdir('gamefiles/people')
         for people_file_name in people_files:
-            people_file = open(people_file_name, 'r')
+            people_file = open('gamefiles/people/' + people_file_name, 'r')
             people_json = json.load(people_file)
             people_obj = converter.person_from_json(people_json)
-            self._people[people_obj]['id'] = people_obj
+            self._people[people_obj.get_id()] = people_obj
 
         self.introduction()
 
