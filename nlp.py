@@ -86,7 +86,17 @@ class Parser:
             fp.close()
             raise ParserException  
 
-    # TODO: load full game dictionary for verify_words step
+    # load full game dictionary for verify_words step. inludes all rooms, 
+    # objects, people, features, verbs, special commands, directions, and
+    # prepositions
+    def load_game_dictionary(self, filepath: str):
+        fp = open(filepath, "r")
+        if not hasattr(self, "_game_dictionary"):
+            self._game_dictionary = fp.read()
+            fp.close()
+        else:
+            fp.close()
+            raise ParserException  
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
@@ -238,18 +248,9 @@ class Parser:
         # TODO: implement error checking/exception for unrecognized/misspelled words
         # this should probably be done as part of the resolver?
         
-        """sample dictionary for testing and development, will implement pulling
-        from a text file later"""
-        game_dictionary = ["get", "take", "look", "earring", "pick", "up",
-         "letter", "at", "large", "silver", "candlestick", "candle", "stick", "use", "key", "on", "small",
-         "lock", "touch", "taste", "smell", "listen", "read", "search",
-         "kitchen", "library", "stairs", "room", "examine", "staircase",
-         "blood", "paper", "perfume", "pocket", "victim", "head", "object", "go",
-         "body", "gentleman", "inventory", "help", "north", "south", "east", "west",
-         "about", "into", "ask", "call", "open", "savegame", "loadgame"]
         final_words = []
         for word in clean_input:
-            if word in game_dictionary:
+            if word in self._game_dictionary:
                 final_words.append(word)
         return final_words
 
