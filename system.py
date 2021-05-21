@@ -40,6 +40,8 @@ class System:
         self._parser.load_stopwords("./resources/stopwords.txt")
         self._parser.load_game_verbs("./resources/game_verbs.json")
         self._parser.load_game_items("./resources/game_items.json")
+        self._parser.load_killer("./gamefiles/killer.txt")
+        self._parser.load_weapon("./gamefiles/weapon.txt")
         self._parser.load_game_dictionary("./resources/game_dictionary.txt")
 
     def game_loop(self):
@@ -593,7 +595,8 @@ class System:
         # if room_id is a direction
         if room_id in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
             try:
-                go_to = self._rooms[self._cur_room].get_connection(room_id)
+                connections = self._rooms[self._cur_room].get_connections()
+                go_to = connections[room_id]
                 self._cur_room = go_to
                 print(self.get_description())
             except room.IDAlreadyExists:
