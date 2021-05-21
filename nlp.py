@@ -182,36 +182,46 @@ class Parser:
             raise ParserException
 
     # killer and weapon methods
+    # TODO: refactor to remove repitition
 
     def find_killer(self, killer: str):
         """this should take a phrase and return either "correct" or "wrong" """
 
-        # check all aliases to see if player's guess matches a person
+        # check all aliases to see if player's guess resolves to a person
         for i in range(len(self._game_items)):
             for obj_set in self._game_items[i]:
                 key_list = list(self._game_items[i].keys())
                 value_list = list(self._game_items[i].values())
-                # if it matches a person, check to see if it is the killer
+                # if it resolves to a person, check to see if it is the killer
                 if killer.lower() in value_list[0]:
                     if key_list[0] == self._killer:
                         return "correct"
                     else:
                         return "wrong"
+        
+        # if it gets this far, it has searched the entire game_items dictionary
+        # and the player's input does not resolve to a person
+        return "wrong"
+
 
     def find_weapon(self, weapon: str):
         """this should take a phrase and return either "correct" or "wrong" """
 
-        # check all aliases to see if player's guess matches an object
+        # check all aliases to see if player's guess resolves to an object
         for i in range(len(self._game_items)):
             for obj_set in self._game_items[i]:
                 key_list = list(self._game_items[i].keys())
                 value_list = list(self._game_items[i].values())
-                # if it matches an object, check to see if it is the correct object/weapon
+                # if it resolves to an object, check to see if it is the correct object/weapon
                 if weapon.lower() in value_list[0]:
                     if key_list[0] == self._weapon:
                         return "correct"
                     else:
                         return "wrong"
+
+        # if it gets this far, it has searched the entire game_items dictionary
+        # and the player's input does not resolve to a recognized object/weapon
+        return "wrong"
 
     # Lexical Parsing Stage Methods        
 
@@ -451,6 +461,7 @@ class Parser:
         resolved_command.append(resolved_verb)
 
         # RESOLVE DIRECT OBJECT: can be one or more words
+        # TODO: refactor to remove repitition
 
         # check each word in direct object against game dictionary
         if input_direct != None:
