@@ -595,7 +595,8 @@ class System:
         # if room_id is a direction
         if room_id in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
             try:
-                go_to = self._rooms[self._cur_room].get_connection(room_id)
+                connections = self._rooms[self._cur_room].get_connections()
+                go_to = connections[room_id]
                 self._cur_room = go_to
                 print(self.get_description())
             except room.IDAlreadyExists:
