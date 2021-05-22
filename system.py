@@ -586,7 +586,7 @@ class System:
 
     def look(self):
         """prints the long form description of the current room"""
-        self._rooms[self._cur_room].set_visited = False
+        self._rooms[self._cur_room].set_visited(False)
         self.get_description()
         return True
 
@@ -779,8 +779,9 @@ class System:
 
     def get_description(self):
         """gets the description of the room and all the objects/features/people in the room"""
-        if self._rooms[self._cur_room].get_visited is False:
-            print(self._rooms[self._cur_room].get_description())
+        if self._rooms[self._cur_room].get_visited() is False:
+            print(self._rooms[self._cur_room].get_desc())
+            self._rooms[self._cur_room].set_visited(False)
             print('In the room there is:')
             for feat in self._rooms[self._cur_room].get_features():
                 if self._features[feat].get_hidden() is False:
@@ -791,8 +792,7 @@ class System:
             for person_id in self._rooms[self._cur_room].get_people():
                 print(self._people[person_id].get_sdesc())
         else:
-            print(self._rooms[self._cur_room].get_description())
-
+            print(self._rooms[self._cur_room].get_sdesc())
         return
 
     def exit(self):
@@ -842,6 +842,8 @@ class System:
             self._people[people_obj.get_id()] = people_obj
 
         self.introduction()
+
+        self.get_description()
 
         self.game_loop()
 

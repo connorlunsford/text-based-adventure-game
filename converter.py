@@ -11,6 +11,7 @@ def room_to_json(room_obj: room.Room):
     # stores everything in a dict
     room_dict = {
         'id': room_obj.get_id(),
+        'name': room_obj.get_name(),
         'desc': room_obj.get_desc(),
         'sdesc': room_obj.get_sdesc(),
         'visited': room_obj.get_visited(),
@@ -30,19 +31,22 @@ def room_from_json(json_room):
     room_dict = json.loads(json_room)
     # gets all the basic variables from the dict
     id = room_dict['id']
+    name = room_dict['name']
     desc = room_dict['desc']
     sdesc = room_dict['sdesc']
     visited = room_dict['visited']
     # creates a new room with the variables
-    new_room = room.Room(id, desc, sdesc, visited)
+    new_room = room.Room(id, name, desc, sdesc)
     # adds all the objects into the room
-    new_room.set_objects = room_dict['objects']
+    new_room.set_objects(room_dict['objects'])
     # adds all the features into the room
-    new_room.set_features = room_dict['features']
+    new_room.set_features(room_dict['features'])
     # adds all the people into the room
-    new_room.set_people = room_dict['people']
+    new_room.set_people(room_dict['people'])
     # adds all the room ids in 'connections' into self._connections
     new_room.set_connections(room_dict['connections'])
+    # sets visited
+    new_room.set_visited(visited)
 
     # adds the verbs from 'verbs' into self._verbs
     new_room.set_interactions(room_dict['interactions'])

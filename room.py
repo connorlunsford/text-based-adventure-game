@@ -210,16 +210,7 @@ class Room:
         it returns False. Otherwise it removes it and returns True"""
         if direction in self._connections:
             self._connections.pop(direction)
-            return True 
-
-    def remove_connection(self, connection: str):
-        """takes a string which specifies a room ID and removes it from the
-        list of connections to this room. If the ID does not exist inside the 
-        list, this method raises an exception"""
-        if connection in self._connections:
-            self._connections.remove(connection)
-        else:
-            raise IDDoesNotExist
+            return True
 
     def get_connections(self):
         """returns a dictionary of connections to this room in the form of room IDs

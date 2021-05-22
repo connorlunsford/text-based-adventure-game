@@ -249,7 +249,7 @@ if __name__ == '__main__':
                              },
                              False)
 
-    sys.add_feature(F01R02)
+    sys.add_feature(F02R02)
 
     # P06 Ava Scarlett (The Killer)
 
@@ -670,7 +670,7 @@ if __name__ == '__main__':
                         },
                         True)
 
-    O11.set_condition(True)
+    O11.add_condition(True)
 
     sys.add_obj(O11)
 
