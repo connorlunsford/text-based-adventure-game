@@ -785,7 +785,7 @@ class System:
         if self._rooms[self._cur_room].get_visited() is False:
             print(self._rooms[self._cur_room].get_desc())
             self._rooms[self._cur_room].set_visited(False)
-            print('In the room there is:')
+            print('Looking around, you observe the following details:')
             for feat in self._rooms[self._cur_room].get_features():
                 if self._features[feat].get_hidden() is False:
                     print(self._features[feat].get_sdesc())
@@ -799,9 +799,9 @@ class System:
         return
 
     def exit(self):
-        print('are you sure you want to quit the game? (y/n)')
+        print('Are you sure you want to quit the game? (y/n)')
         ans = input().lower()
-        if ans in ['y','yes','yeah']:
+        if ans in ['y','yes','yeah','Y','YES']:
             print('Exiting Game...')
             time.sleep(1)
             exit()
@@ -916,9 +916,9 @@ class System:
             "surprise, it's unlocked. ",
             "You open the door and enter...",
             "You quickly realize this vacation is not going to be as calming as you had hoped. A dead body is lying in the "
-            "floor, your host, Norman Bates. 6 people surround him, in various states of shock and despair. The next few "
-            "minutes are a blur, but you realize that, as the only person in the house who could not be the killer, you "
-            "are the only one qualified to find out who is.",
+            "floor. You recognized it as your host, Norman Bates. Six people surround him, in various states of shock and despair. "
+            "The next few minutes are a blur, but you realize that, as the only person in the house who could not be the "
+            "killer, you are the only one qualified to find out who is.",
             "Search the house, talk to the suspects, and find out what happened here. When you are reasonably certain you "
             "know the killer and the murder weapon, come back to this room and call the police on the rotary phone in this "
             "room. This will end the story. (Remember at any point you can type 'help' for a list of useful commands and "

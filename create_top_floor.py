@@ -275,37 +275,65 @@ if __name__ == "__main__":
                             "Alice Stone stands in the corner of the room, gazing out the window and quietly sobbing.",
                             {
                                    "ask": {
-                                   "P02": "Alice sighs softly before answering. 'Norman and Adam's relationship was... "
+                                   "P02": "You ask Alice about Adam. "
+                                          "Alice sighs softly before answering. 'Norman and Adam's relationship was... "
                                           "complicated, to say the least. They had your typical father and son "
                                           "disagreements about who should inherit the house and Norman's business. "
                                           "Norman wanted Adam to stay here and take over the business, but Adam wanted  "
                                           "to forge a new path on his own. Norman loved Adam dearly, though, and I "
                                           "believe Adam loved his father too.",
-                                   "P03": "Alice waves her hand dismissively. 'He's a little shady looking, if you ask "
-                                          "me, but, quite frankly, I haven't had much time to get to know the most "
-                                          "recent retreat participants after what happened.'",
-                                   "P04": "Alice's face lights up slightly. 'He can be quite the miserable old "
-                                          "character, but I like him. He's been a loyal employee of Norman's for over "
+                                   "P03": "You ask Alice about Sam. "
+                                          "Alice waves her hand dismissively. 'He's a little shady looking, if you ask "
+                                          "me, but, quite frankly, I haven't had much time to get to know the retreat "
+                                          "participants after what happened.'",
+                                   "P04": "You ask Alice about Al. "
+                                          "Alice's face lights up slightly. 'He can be quite the miserable old "
+                                          "character, but I like Al. He's been a loyal employee of Norman's for over "
                                           "twenty years.'",
-                                   "P05": "Alice shrugs her shoulders dismissively. 'She seems like any other retreat "
+                                   "P05": "You ask Alice about Heather. "
+                                          "Alice shrugs her shoulders dismissively. 'She seems like any other retreat "
                                           "participant to me.'",
-                                   "P06": "", # Check - Did Alice know Ava?
-                                   "F01R01": "At the very mention of Norman, Alice begins to heavily sob again. She "
+                                   "P06": "You ask Alice about Ava. "
+                                          "'Ava Scarlett is her name, right?' Alice asks. 'The woman straight up "
+                                          "glared at me like I had killed dog when she arrived here. Gave me a really "
+                                          "bad vibe.'",
+                                   "F01R01": "You ask Alice about Norman. " 
+                                          "At the very mention of Norman, Alice begins to sob heavily again. She "
                                           "waves you away, indicating that she wants to be left alone.",
-                                   "O01": "Alice looks at the candlestick with a vague disinterest. 'That looks like it "
+                                   "O01": "You show the candlestick to Alice. "
+                                          "Alice looks at the candlestick with a vague disinterest. 'That looks like it "
                                           "belongs in the foyer downstairs,' she mumbles. She pauses and then eyes you "
                                           "suspiciously. 'Please don't tell me you're using this as an opportunity to "
                                           "steal items from a dead man.'",
-                                   "O05": "Alice takes the earring, quickly examines it, then hands it back to you. "
+                                   "O05": "You ask Alice about the earring. "
+                                          "Alice takes the earring, quickly examines it, then hands it back to you. "
                                           "'There's no way that's mine,' she says. 'I'm allergic to silver.'",
-                                   "O06": "Alice recoils when you show her the blood-stained washcloth. 'Is that... "
+                                   "O06": "You ask Alice about the washcloth. "
+                                          "Alice recoils when you show her the blood stains. 'Is that... "
                                           "his blood?' she asks, her voice barely a whisper. When you tell her that it "
                                           "was found in her room, she squints her eyes. 'Do you...? Do you think... "
                                           "that I did it?' When you don't answer, she responds angrily. 'Norman meant"
                                           "'the world to me. I won't be subjected to such accusations.' She looks away,"
                                           "indicating that the conversation is over.",
-                                   "O09": "", # Check - Did Alice know about Ava?
-                                   "O11": "" # Check - Does Alice know she is in the will?
+                                   "O09": "You ask Alice about the letter. "
+                                          "'Norman had mentioned that one of his exes was still trying to get back "
+                                          "together with him,' Alice tells you after reading the letter. 'Although he "
+                                          "never mentioned that she was this serious. The woman sounds obsessed.' "
+                                          "She thinks for a moment. 'What was the name of that one retreat "
+                                          "participant downstairs? The woman named Ava? If I recall correctly, he "
+                                          "dated a woman who went by that name many years ago, although it could just ",
+                                          "be a coincidence.'"
+                                   "O11": "You ask Alice about the will. "
+                                          "Alice's lips purse when you mention that she will inherit everything. You "
+                                          "find her expression hard to read. 'Does Adam know?' she asks with a little "
+                                          "fear in her voice. 'I knew that Norman had changed it,' she states, after "
+                                          "you press her on the matter, 'but it was entirely Norman's decision. I even "
+                                          "urged him not to change it, knowing that it would ruin the relationship "
+                                          "between him and Adam, but Norman was stubborn.'",
+                                   "O12": "You show the FBI badge to Alice. "
+                                          "Alice's face turns white when you show her the FBI badge. 'Where did you "
+                                          "find that?' she asks, clearly agitated. You attempt to question her "
+                                          "further, but she refuses to provide you with any additional information."
                                    },
                                    "search": "Alice is wearing only a plain t-shirt and jeans. You ask her if she has "
                                    "anything of importance on her. She shakes her head.",
@@ -333,11 +361,11 @@ if __name__ == "__main__":
        R14.set_connections({"west": "R11" # hallway
                             })
 
-       R14.set_features(["F01R14", # bed                # CHECK: add fireplace, tapestry/painting if time
+       R14.set_features(["F01R14", # bed
                          "F02R14"  # nightstand
                          ])
 
-       R14.set_objects(["O12" # love letter
+       R14.set_objects(["O09" # love letter
                         ])
        
        # Set the interactions
@@ -382,7 +410,7 @@ if __name__ == "__main__":
                                    "A small nightstand made of the same dark, red wood as the rest of the furniture "
                                    "sits right next to the bed.",
                                    {
-                                   "search": "You search nightstand. You find nothing interesting among the assortment "
+                                   "search": "You search the nightstand. You find nothing interesting among the assortment "
                                    "of items lying on top of it, but opening the drawer reveals a letter inside.", # CHECK
                                    "touch": "The dark red wood is smooth and clearly polished.",
                                    "taste": "The nightstand tastes like wood polish. It is also tastes like dust.",
@@ -393,8 +421,8 @@ if __name__ == "__main__":
 
        sys.add_feature(F02R14)
 
-       # Letter (O12)
-       O12 = object.Object("O12", "Letter",
+       # Letter (O09)
+       O09 = object.Object("O12", "Letter",
                             "The letter is neatly folded and looks otherwise unremarkable at first glance. Maybe you "
                             "should read it.",
                             "A neatly folded letter sits in the nightstand drawer.", # CHECK
@@ -415,16 +443,20 @@ if __name__ == "__main__":
                                    "be a reason why you haven't dated anyone else after all these years.\n Anyway, "
                                    "I know that, like always, you likely won't respond to this, but I'll be in your "
                                    "area in a couple weeks for work, and I was thinking that maybe I could stop by.\n"
-                                   "Love, A.S."
+                                   "Love,\n     A.S."
                             },
                             True)
 
-       sys.add_obj(O12)
+       sys.add_obj(O09)
 
        # STUDY (R15)
        R15 = room.Room("R15", "Study",
-                     "You enter a very welcoming study. Behind you, a door leads back to the hallway.",
-                     "You enter a very welcoming study. Behind you, a door leads back to the hallway."
+                     "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
+                     "Several leather chairs are positioned in various parts of the room, presumably to accomodate "
+                     "visitors. A large paned window provides a view to the outside. Behind you, a door leads back to "
+                     "the hallway.",
+                     "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
+                     "Behind you, a door leads back to the hallway."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -467,7 +499,9 @@ if __name__ == "__main__":
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
                                    "smell": "You smell cigar smoke.",
-                                   "listen": "You hear nothing."
+                                   "listen": "You hear nothing.",
+                                   "open": "You open the drawer and rummage through it. At the bottom of the drawer, "
+                                   "you notice a small paper."
                                    },
                                    False)
 
@@ -497,14 +531,14 @@ if __name__ == "__main__":
        # Safe Code Paper (O04)
        O04 = object.Object("O04", "Safe Code Paper",
                             "The small piece of paper is dirty and looks like it has been previously crumpled. Four "
-                            "letters are written across it in thick ink: 0142",
-                            "A small piece of paper sits beneath the other items in the drawer.",
+                            "letters are written across it in thick ink: 0123",
+                            "A small piece of paper sits beneath the other items in the drawer.", # CHECK - How is sdesc being used for features and objects?
                             {
                                    "touch": "The paper is rough where it has been previously folded.",
                                    "taste": "You taste the dirtied paper. It tastes like paper.",
                                    "smell": "The paper has a slight smell of cigar smoke.",
                                    "listen": "You hear nothing.",
-                                   "read": "In thick ink, the paper reads: 0142"
+                                   "read": "In thick ink, the paper reads: 0123"
                             },
                             True)
 
@@ -520,19 +554,96 @@ if __name__ == "__main__":
                             "He begins flipping through the book absentmindedly.",
                             {
                                    "ask": {
-                                   "P02": "",
-                                   "P03": "",
-                                   "P04": "",
-                                   "P05": "",
-                                   "P06": "",
-                                   "F01R01": "",
-                                   "O01": "",
-                                   "O05": "",
-                                   "O06": "",
-                                   "O09": "",
-                                   "O11": ""
+                                   "P03": "You ask Adam about Sam. "
+                                          "'Sam Smith is his name, right?' Adam says.'To be honest, he's a little "
+                                          "suspicious, and I noticed that he mentioned nothihng about occupation when "
+                                          "we spoke. That being said, I don't know much about him.'",
+                                   "P04": "You ask Adam about Al. "
+                                          "'Al has always been there for me,' Adam says, 'even when my father wasn't. "
+                                          "Truth be told, my father probably didn't treat him as well as he should have. But "
+                                          "Al was always loyal, maybe even too loyal... Either way, you won't catch me "
+                                          "saying a bad thing about Al. He's like a second father to me.'",
+                                   "P05": "You ask Adam about Heather. "
+                                          "'Ah, Heather Poirot.' Adam says. 'I didn't get much of an opportunity to "
+                                          "speak with her, but I got the sense that she came here with a purpose. As far "
+                                          "as what that purpose may be, your guess is as good as mine...",
+                                   "P06": "You ask Adam about Ava. "
+                                          "'She looks very familiar to me,' Adam says, 'but, for the life of me, I "
+                                          "can't entirely place her. I think my father may have known her years ago...?'",
+                                   "P13": "You ask Adam about Alice. "
+                                          "'Alice and my father have been dating for a few years,' Adam says. 'She "
+                                          "started out as just his assistant, but then I guess they grew closer. I have mixed "
+                                          "feelings about her. On the one hand, she's been good for my father in many ways. "
+                                          "On the other hand, I feel that they grew too close too quickly and, when there's "
+                                          "money involved, you can never be completely sure about a person's intentions, "
+                                          "you know?'",
+                                   "F01R01": "You ask Adam about Norman. " 
+                                          "Adam grimaces when he hears you say his father's name. 'He wasn't the "
+                                          "best father,' Adam admits. 'He wasn't exactly there for me when I was younger, "
+                                          "and we didn't get along. For years, I wished the old man would just pass away "
+                                          "so I could live my life without forever being weighed down by his presence in "
+                                          "my life.' Adam pauses, as if deliberating over something. After a few "
+                                          "moments, he continues. 'To be honest, we got in an argument this morning. The last "
+                                          "words I said to him were... well, let's just say that they weren't that kind.' "
+                                          "Adam's expression changes to one of sorrow and regret. He clears this throat and "
+                                          "turns away.",
+                                   "O01": "You ask Adam about the candlestick. "
+                                          "'That candlestick is part of a set that my father inherited,' Adam says. "
+                                          "'I'm not sure how long it's been in our family.'",
+                                   "O04": "You ask Adam about the scrap paper. "
+                                          "'Looks like a safe combination,' Adam says. 'I don't recall my father "
+                                          "having a safe anywhere though...' He narrows his eyes and repeats the numbers "
+                                          "under his breath as if commiting them to memory.",
+                                   "O05": "You ask Adam about the earring. "
+                                          "Adam looks at the earring with clear disinterest. 'I don't recognize it,' "
+                                          "he says.",
+                                   "O06": "You ask Adam about the washcloth. "
+                                          "Adam winces ever so slightly when you show him the blood-stained washcloth. "
+                                          "'So that's his blood, eh?' he asks, although it's more of a statement. When you "
+                                          "give him a suspicious look, he raises his hands defensively. 'Hey, I had nothing "
+                                          "to do with it. You mentioned that you found it in Alice's room though?' He rubs his "
+                                          "chin thoughtfully. 'I wonder if...' He shakes his head. 'Nah...'",
+                                   "O09": "You show the letter to Adam. "
+                                          "Adam takes the letter and quickly looks over it. 'My father has dated a lot "
+                                          "of women over the years,' he says, 'but I don't recall him mentioning anyone other "
+                                          "than Alice recently. From the looks of it, it sounds like this woman was obsessed.'"
+                                          "He pauses for a moment to think. 'You don't think that woman downstairs was the "
+                                          "the one who sent this, do you?' He shakes his head. 'Nah, probably not. Although"
+                                          "I swear she looks familiar...'",
+                                   "O10": "You show the drawing of the Wolfsbane to Adam. "
+                                          "Adam's cheeks turn red when he looks at the drawing. You notice him "
+                                          "clenching his fists so tightly that his knuckles turn white. 'Alright,' he "
+                                          "says. 'I had a hunch that my father might be changing his will sometime "
+                                          "soon, what with him and Alice being so close and all. That didn't sit right "
+                                          "with me. After all, the estate has been in our family for many generations.' "
+                                          "Adam pauses, and takes a deep breath. 'So I poisoned his breakfast. The man "
+                                          "had it coming. He was an utterly worthless father and a terrible human "
+                                          "being. But, at the last minute, we got into an argument, and I confessed "
+                                          "what I had done to him. He stormed off, and that was the last time I saw "
+                                          "him alive. I never actually poisoned him though.'",
+                                   "O11": "You ask Adam about the will. "
+                                          "Adam's interest is clearly piqued when you mention the will. 'What's that?' "
+                                          "he asks. 'You found it?' When you tell him that Alice stands to inherit everything, "
+                                          "he slams his fist down on the desk. 'That weasel,' he says. 'Leave it to him to "
+                                          "do something as backstabbing as disinheriting his own son. And here I was feeling "
+                                          "sorry that he had died. I should have killed him when...' Realizing that he may "
+                                          "have said too much, Adam suddenly stops speaking.",
+                                   "O12": "You show the FBI bad to Adam. "
+                                          "Adam seems slightly startled when you show him the FBI badge. 'That's "
+                                          "concerning,' he states, lowering his voice. 'To be completely honest with you, "
+                                          "I suspect that my father, well, may have gotten into some trouble with the IRS if "
+                                          "you catch my drift, although I was never one-hundred percent sure. He wouldn't "
+                                          "talk about it when I brought it up. Either way, it looks like something caught up "
+                                          "to him. My guess is that one of the retreat participants is here undercover.' He "
+                                          "eyes you suspiciously. 'You wouldn't happen to be an undercover FBI agent, "
+                                          "would you?'",
+                                   "F01R15": "You ask Adam about the desk. "
+                                          "'My father kept a lot of important papers there,' he says. 'Let me know if "
+                                          "you find anything of interest.",
+                                   "F02R15": "You ask Adam about the bar cart. " 
+                                          "Adam shrugs. 'My father liked to drink,' he simply says."
                                    },
-                                   "search": "",
+                                   "search": "Adam doesn't seem like the type of person that would let you search him.",
                                    "touch": "You place your hand on Adam's shoulder. He looks up, pats it awkwardly, "
                                    "and then returns to reading.",
                                    "smell": "You near Adam and attempt to smell him. He smells slightly of alcohol.",
