@@ -95,9 +95,9 @@ class System:
                 elif command[0] == 'drop':
                     self.drop(command[1])
                 else:
-                    print('Sorry the game does not understand that input')
-                    print('Try again with simpler language')
-                    print("Use the command 'help' for a list of useful phrases")
+                    print('Sorry, the game does not understand that input.')
+                    print('Try again with simpler language, and please make sure that you use commands and objects that are in the game.')
+                    print("Use the command 'help' for a list of useful phrases.")
 
     def use(self, object1: str, object2: str):
         """this command takes 2 parameters, object1, which needs to be an object and is being used on object 2,
