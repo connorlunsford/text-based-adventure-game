@@ -46,55 +46,58 @@ class System:
 
     def game_loop(self):
         while True:
-            print('What would you like to do?')
-            inp = input()
-
-            # parses the input and returns a command with an interaction word and 1-2 objects
-            command = self._parser.parse(inp)
-            if command[0] == 'use':
-                self.use(command[1], command[2])
-            elif command[0] == 'ask':
-                self.ask(command[1], command[2])
-            elif command[0] == 'call':
-                self.call()
-            elif command[0] == 'read':
-                self.read(command[1])
-            elif command[0] == 'open':
-                self.open(command[1])
-            elif command[0] == 'search':
-                self.search(command[1])
-            elif command[0] == 'touch':
-                self.touch(command[1])
-            elif command[0] == 'taste':
-                self.taste(command[1])
-            elif command[0] == 'smell':
-                self.smell(command[1])
-            elif command[0] == 'listen':
-                self.listen(command[1])
-            elif command[0] == 'look':
-                self.look()
-            elif command[0] == 'look at':
-                self.look_at(command[1])
-            elif command[0] == 'go':
-                self.go(command[1])
-            elif command[0] == 'take':
-                self.take(command[1])
-            elif command[0] == 'help':
-                self.help()
-            elif command[0] == 'inventory':
-                self.inventory()
-            elif command[0] == 'savegame':
-                self.save()
-            elif command[0] == 'loadgame':
-                self.load()
-            elif command[0] == 'exit':
-                self.exit()
-            elif command[0] == 'drop':
-                self.drop(command[1])
+            print('\033[0;31;40mWhat would you like to do?')
+            inp = input('\033[0;32;40m')
+            print('\033[0;37;40m')
+            if inp == '':
+                print('Please type a command')
             else:
-                print('Sorry the game does not understand that input')
-                print('Try again with simpler language')
-                print("Use the command 'help' for a list of useful phrases")
+                # parses the input and returns a command with an interaction word and 1-2 objects
+                command = self._parser.parse(inp)
+                if command[0] == 'use':
+                    self.use(command[1], command[2])
+                elif command[0] == 'ask':
+                    self.ask(command[1], command[2])
+                elif command[0] == 'call':
+                    self.call()
+                elif command[0] == 'read':
+                    self.read(command[1])
+                elif command[0] == 'open':
+                    self.open(command[1])
+                elif command[0] == 'search':
+                    self.search(command[1])
+                elif command[0] == 'touch':
+                    self.touch(command[1])
+                elif command[0] == 'taste':
+                    self.taste(command[1])
+                elif command[0] == 'smell':
+                    self.smell(command[1])
+                elif command[0] == 'listen':
+                    self.listen(command[1])
+                elif command[0] == 'look':
+                    self.look()
+                elif command[0] == 'look at':
+                    self.look_at(command[1])
+                elif command[0] == 'go':
+                    self.go(command[1])
+                elif command[0] == 'take':
+                    self.take(command[1])
+                elif command[0] == 'help':
+                    self.help()
+                elif command[0] == 'inventory':
+                    self.inventory()
+                elif command[0] == 'savegame':
+                    self.save()
+                elif command[0] == 'loadgame':
+                    self.load()
+                elif command[0] == 'exit':
+                    self.exit()
+                elif command[0] == 'drop':
+                    self.drop(command[1])
+                else:
+                    print('Sorry the game does not understand that input')
+                    print('Try again with simpler language')
+                    print("Use the command 'help' for a list of useful phrases")
 
     def use(self, object1: str, object2: str):
         """this command takes 2 parameters, object1, which needs to be an object and is being used on object 2,
@@ -586,7 +589,7 @@ class System:
 
     def look(self):
         """prints the long form description of the current room"""
-        self._rooms[self._cur_room].set_visited = False
+        self._rooms[self._cur_room].set_visited(False)
         self.get_description()
         return True
 
@@ -643,7 +646,7 @@ class System:
                 self._objects[obj].set_hidden(False)
                 return True
         else:
-            print('That object is not in the room')
+            print('You could not find that object in this room, try being more specific')
             return False
 
     def drop(self, item):
@@ -779,8 +782,9 @@ class System:
 
     def get_description(self):
         """gets the description of the room and all the objects/features/people in the room"""
-        if self._rooms[self._cur_room].get_visited is False:
-            print(self._rooms[self._cur_room].get_description())
+        if self._rooms[self._cur_room].get_visited() is False:
+            print(self._rooms[self._cur_room].get_desc())
+            self._rooms[self._cur_room].set_visited(False)
             print('In the room there is:')
             for feat in self._rooms[self._cur_room].get_features():
                 if self._features[feat].get_hidden() is False:
@@ -791,8 +795,7 @@ class System:
             for person_id in self._rooms[self._cur_room].get_people():
                 print(self._people[person_id].get_sdesc())
         else:
-            print(self._rooms[self._cur_room].get_description())
-
+            print(self._rooms[self._cur_room].get_sdesc())
         return
 
     def exit(self):
@@ -841,7 +844,11 @@ class System:
             people_obj = converter.person_from_json(people_json)
             self._people[people_obj.get_id()] = people_obj
 
+        os.system('color')
+
         self.introduction()
+
+        self.get_description()
 
         self.game_loop()
 
@@ -853,7 +860,7 @@ class System:
         setting = "San Francisco, California. June 2019."
         introduction = [
             "Work has been difficult lately. "
-            "Over the past six months, your boss at the law firm has been "
+            "Over the past six months, your boss at the detective agency has been "
             "down your neck due to an important case that, according to him, "
             "could 'make his career'. "
             "You've been living off of coffee and cold lunches and, now, with "
@@ -907,7 +914,15 @@ class System:
             "Securing your bags, you climb the front steps and knock on the "
             "door. When no one answers, you try the doorknob. To your "
             "surprise, it's unlocked. ",
-            "You open the door and enter..."
+            "You open the door and enter...",
+            "You quickly realize this vacation is not going to be as calming as you had hoped. A dead body is lying in the "
+            "floor, your host, Norman Bates. 6 people surround him, in various states of shock and despair. The next few "
+            "minutes are a blur, but you realize that, as the only person in the house who could not be the killer, you "
+            "are the only one qualified to find out who is.",
+            "Search the house, talk to the suspects, and find out what happened here. When you are reasonably certain you "
+            "know the killer and the murder weapon, come back to this room and call the police on the rotary phone in this "
+            "room. This will end the story. (Remember at any point you can type 'help' for a list of useful commands and "
+            "phrases).",
         ]       
 
         print("")
