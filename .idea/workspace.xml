@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1253bbac-2698-407c-af54-4e3847347ab0" name="Default Changelist" comment="Edited the demo and system to fix a few bugs">
-      <change beforePath="$PROJECT_DIR$/converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/converter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_rooms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/features/F03R04.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/features/F03R04.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R01.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R01.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R02.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R02.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R03.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R03.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R04.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R04.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R05.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R05.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R06.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R06.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R07.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R07.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R08.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R08.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R09.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R09.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R10.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R10.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R11.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R11.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R12.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R12.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R13.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R13.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R14.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R14.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamefiles/rooms/R15.json" beforeDir="false" afterPath="$PROJECT_DIR$/gamefiles/rooms/R15.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/room.py" beforeDir="false" afterPath="$PROJECT_DIR$/room.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system.py" beforeDir="false" afterPath="$PROJECT_DIR$/system.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +194,7 @@
       <workItem from="1621107950276" duration="14333000" />
       <workItem from="1621274910480" duration="197000" />
       <workItem from="1621367457618" duration="10709000" />
-      <workItem from="1621555968417" duration="5215000" />
+      <workItem from="1621555968417" duration="8300000" />
     </task>
     <task id="LOCAL-00001" summary="Added a verbs variable to the room class and edited the converter to work with it">
       <created>1618700959448</created>
@@ -298,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621556352290</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed a bug">
+      <created>1621707476486</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621707476486</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
