@@ -8,6 +8,10 @@ class ParserMissingFile(ParserException):
     """Raised when a required text file has not been added to a Parser object"""
     pass
 
+class InvalidInput(ParserException):
+    """Riased when the input is invalid"""
+    pass
+
 class InvalidSentenceStructure(ParserException):
     """Raised when an input has an invalid sentence structure"""
     pass  
@@ -315,23 +319,9 @@ class Parser:
         for i in range(len(direct_object)):
             # If a preposition is found
             if direct_object[i] in prepositions:
-                # Note on special case: verb + preposition + noun + preposition + noun
-                # E.g., "look at painting on wall"
-                # In this case, the wall is no longer an indirect object, so everything after the second
-                # preposition should be removed OR it should be considered part of the direct object
-                # In this instance, I opted to remove it as it keeping it would require
-                # the tracking of more object aliases.
-                # Case 1: a verb-modifying preposition was present
-                #if verb_modifier:
-                #    direct_object = direct_object[:i]
-                #    break
-                # Case 2: a verb-modifying preposition was not present
-                #else:
                 # Get the second half of the array; this is the indirect object
-                #indirect_object= " ".join(direct_object[i + 1:])
                 indirect_object = direct_object[i + 1:]
                 # Get the left half of the array; this is the direct object
-                #direct_object = " ".join(direct_object[:i])
                 direct_object = direct_object[:i]
                 break
 
@@ -370,7 +360,10 @@ class Parser:
         return result
 
     def classify_handler(self, input: list):
-        
+
+        if input == []:
+            raise InvalidInput
+
         # Get all connections
         if hasattr(self, "_connections"):
             connections = self._connections
@@ -394,7 +387,7 @@ class Parser:
         # Input that reaches this point should be longer than one word long;
         # raise an exception if it is not
         if len(input) == 1:
-            raise ParserException
+            raise InvalidInput
 
         # Analyze the sentence structure and return the result
         return self.classify_input(input)
@@ -507,7 +500,10 @@ class Parser:
         parsed_input = self.lexical_handler(inp)
         # takes parsed input and completes the classify stage to break input
         # into verb, direct object, and indirect object
-        classified_input = self.classify_handler(parsed_input)
+        try:
+            classified_input = self.classify_handler(parsed_input)
+        except:
+            return ["error"]
         # takes classified input and resolves it to game verbs, objects or 
         # features
         final_command = self.resolve(classified_input)
