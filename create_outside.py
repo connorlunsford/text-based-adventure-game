@@ -516,7 +516,7 @@ if __name__ == "__main__":
                         })
 
     R10.set_features(["F01R10", # broken flower pots
-                        # TODO: need a second feature
+                        "F02R10" # bags of potting soil
                         ])
 
     R10.set_objects(["O08"  # gardening shears from shed
@@ -525,8 +525,9 @@ if __name__ == "__main__":
     # Set the interactions
     R10.set_interactions({
             "search": "You walk through the greenhouse. There's an section of flowers pots that are knocked over"
-            "and broken. That strikes you as very odd, not something that the gardener would do. A large set of "
-            "gardening shears are on the floor by the broken pots.",
+            "and broken. That strikes you as very odd, not something that the gardener would do. There's a pile "
+            "of bags of potting soil in the corner that also looks disturbed. The gardener seems to be the orderly "
+            "sort so this also seems uncharacteristic.",
             "touch": "There are so many plants in here. What specifically do you want to touch?",
             "taste": "There are so many plants in here. What specifically do you want to taste?",
             "smell": "It's quite fragrant. There's so many flowers you can pick out just one sent. The smell of"
@@ -553,6 +554,24 @@ if __name__ == "__main__":
                                 True)
 
     sys.add_feature(F01R10)
+
+    # bags of potting soil (F02R10)
+    F02R10 = feature.Feature("F02R10", "bags of potting soil",
+                                "The bags look like they were once stacked neatly but some have been pulled out of the "
+                                "middle of the stack and messed up the pile.",
+                                "Some bags have been pulled out of the middle of the pile.",
+                                {
+                                "search": "You take a closer look at where the bags have been removed and see a pair "
+                                "of gardening shears stuck down in the middle of the pile.",
+                                "touch": "The bags just feel like bags of potting soil.",
+                                "taste": "Tastes like dirt.",
+                                "smell": "Smells like potting soil.",
+                                "listen": "You hear nothing."
+                                },
+                                True)
+
+    sys.add_feature(F02R10)
+
 
     # gardening shears (O08)
     O08 = object.Object("O08", "gardening shears",
