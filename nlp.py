@@ -372,7 +372,7 @@ class Parser:
 
         # Get all connections
         if hasattr(self, "_connections"):
-            connections = self._connections
+            directions = self._connections
         else:
             raise ParserMissingFile
         
@@ -386,9 +386,18 @@ class Parser:
         if len(input) == 1 and input[0] in single_commands:
             return input[:1]
 
-        # Check for the presence of a connection without a "go" verb
-        if " ".join(input) in connections:
+        # Check for the presence of a direction without a "go" verb
+        if " ".join(input) in directions:
             return ["go", " ".join(input)]
+
+        # Check for the presence of a connection (e.g., door, room) 
+        # without a "go" verb
+        for item_dictionary in self._game_items:
+            for key, list in item_dictionary.items():
+                if key.startswith("R"):
+                    for value in list:
+                        if value == " ".join(input):
+                            return ["go", " ".join(input)]
 
         # Input that reaches this point should be longer than one word long;
         # raise an exception if it is not
