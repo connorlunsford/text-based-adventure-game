@@ -452,12 +452,20 @@ class Parser:
         if resolved_verb == None:
             return ["error"]
 
-        # the only preposition that should be returned to the game system with 
-        # the verb is "at" for "look at", so checking for this special case
+        # 1st special case:
+        # returning "at" for "look at", so checking for this special case
         # all/any other prepostions will just be ignored
         if prep != None:
             if resolved_verb == "look" and prep == "at":
                 resolved_verb = "look at"
+
+        # 2st special case:
+        # returning "up" for "pick up" (resolves to "take"), so checking for 
+        # this special case 
+        # all/any other prepostions will just be ignored
+        if prep != None:
+            if resolved_verb == "pick" and prep == "up":
+                resolved_verb = "take"                
         
         # add verb/phrase to command to be returned
         resolved_command.append(resolved_verb)
