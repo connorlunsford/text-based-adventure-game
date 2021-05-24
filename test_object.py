@@ -15,6 +15,8 @@ class TestCase(unittest.TestCase):
     def tearDown(self):
         del self.test_object
 
+    # NOTE: These tests are now deprecated as the classes were refactored such that Object inherits from Feature
+
     # testing methods associated with the hidden attribute
     def test_get_hidden(self):
         """get_hidden successfully returns the value of the hidden attribute"""
