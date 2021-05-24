@@ -49,9 +49,9 @@ if __name__ == '__main__':
                     'solved.\n'
                     'To the west through an open arch appears to be the entrance to a gleaming white kitchen.\n'
                     'To the east through a massive set of open double doors seems to be a Library of sorts.\n'
-                    'Going up the staircase to the north would take you to the top floor of the house.',
+                    'To the north is the upstairs hall of the house',
                     'The Grand Foyer stretches out in front of you. To the west is the kitchen, to the east is the '
-                    'library, and going up the staircase to the north would take you to the top floor.')
+                    'library, and going upstairs to the north would take you to the upstairs hall')
     # sets the connections for the room
     R01.set_connections({
         'west': 'R02',  # kitchen
@@ -444,6 +444,8 @@ if __name__ == '__main__':
 
                              },
                              True)
+
+    sys.add_feature(F04R03)
 
     # P05 Heather Poirot
 

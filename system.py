@@ -46,6 +46,7 @@ class System:
 
     def game_loop(self):
         while True:
+            print()
             print('\033[0;31;40mWhat would you like to do?')
             inp = input('\033[0;32;40m')
             print('\033[0;37;40m')
@@ -54,6 +55,13 @@ class System:
             else:
                 # parses the input and returns a command with an interaction word and 1-2 objects
                 command = self._parser.parse(inp)
+                if 'verb_error' in command:
+                    print('The game cannot determine what action you are trying to take')
+                    print('Please try again using a simpler verb')
+                    print("Try typing 'help' for a list of commands")
+                if 'object_error' in command:
+                    print('The game cannot find the object you are interacting with')
+                    print('Try to be more specific when talking about the item')
                 if command[0] == 'use':
                     self.use(command[1], command[2])
                 elif command[0] == 'ask':
@@ -602,7 +610,8 @@ class System:
                 go_to = connections[room_id]
                 self._cur_room = go_to
                 print(self.get_description())
-            except room.IDAlreadyExists:
+                return True
+            except KeyError:
                 print('This room does not have a connection to the ' + room_id)
                 return False
         # if the room_id is actually a room_id
@@ -667,11 +676,14 @@ class System:
         print('look - allows you to examine the room')
         print('go to [room] - allows you to enter unlocked rooms connected to the current room')
         print('take [object] - allows you to pick up an object')
+        print('drop [object] - allows you to drop an object in your inventory into the room')
         print('inventory - allows you to examine the contents of your inventory')
         print('savegame - allows you to save the game')
         print('loadgame - allows you to load the game')
-        print('use [object1] on [object2] - allows you to use an object on another object')
-        print('ask [person] about [object] - allows you to interrogate a person about an object')
+        print('exit - allows you to exit the game (remember to save your progress first)')
+        print('use [object] on [object/feature] - allows you to use an object on another object')
+        print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, feature of '
+              'the house, or another person')
         print('read [object] - allows you to read an object')
         print('open [object] - allows you to open an unlocked door or other similar object')
         print('search [object] - allows you to search through an object or room')
@@ -802,8 +814,11 @@ class System:
         print('Are you sure you want to quit the game? (y/n)')
         ans = input().lower()
         if ans in ['y','yes','yeah','Y','YES']:
+            print('Would you like to save first (y/n)?')
+            ans = input().lower()
+            if ans in ['y','yes','yeah','Y','YES']:
+                self.save()
             print('Exiting Game...')
-            time.sleep(1)
             exit()
         else:
             print('Returning to game...')
@@ -916,10 +931,13 @@ class System:
             "surprise, it's unlocked. ",
             "You open the door and enter...",
             "You quickly realize this vacation is not going to be as calming as you had hoped. A dead body is lying in the "
-            "floor. You recognized it as your host, Norman Bates. Six people surround him, in various states of shock and despair. "
+            "floor. You recognized it as your host, Norman Bates. Six people surround him, in various states of shock and "
+            "despair. "
             "The next few minutes are a blur, but you realize that, as the only person in the house who could not be the "
             "killer, you are the only one qualified to find out who is.",
-            "Search the house, talk to the suspects, and find out what happened here. When you are reasonably certain you "
+            "Search the house, talk to the suspects, and find out what happened here. As you explore you may need to pick "
+            "up objects and collect evidence to enter locked rooms, interact with other objects, and question "
+            "the inhabitants. When you are reasonably certain you "
             "know the killer and the murder weapon, come back to this room and call the police on the rotary phone in this "
             "room. This will end the story. (Remember at any point you can type 'help' for a list of useful commands and "
             "phrases).",
