@@ -289,6 +289,9 @@ class Parser:
     # Classify Stage Methods
 
     def classify_input(self, input:list):
+        """analyzes the grammatical structure of an input and attempts to assign 
+        grammatical classifications, such as verb, direct object, or indirect object,
+        based upon this structure"""
         
         # Get all prepositions
         if hasattr(self, "_prepositions"):
@@ -360,6 +363,9 @@ class Parser:
         return result
 
     def classify_handler(self, input: list):
+        """handles the classify stage of the natural language parser, including 
+        special cases (e.g., direction, single word commands) and passing the 
+        input to the method responsible for analyzing the grammatical structure"""
 
         if input == []:
             raise InvalidInput
@@ -390,7 +396,10 @@ class Parser:
             raise InvalidInput
 
         # Analyze the sentence structure and return the result
-        return self.classify_input(input)
+        try:
+            return self.classify_input(input)
+        except:
+            raise ParserException
 
 
     # Resolve Stage Methods

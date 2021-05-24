@@ -36,7 +36,7 @@ class TestParserClass(unittest.TestCase):
         self.text4_classified_words = ["look at", "candle stick"]
         self.text4_resolved_command = ["look at", "O01"]
 
-        self.text5 = "Use the silver key on the lock"
+        self.text5 = "Use the small key on the lock"
         self.text5_tokenized = ["use", "the", "small", "key", "on", "the", "lock"]
         self.text5_tok_no_article = ["use", "small", "key", "on", "lock"]
         self.text5_tok_no_art_or_stop = ["use", "small", "key", "on", "lock"]
@@ -49,9 +49,13 @@ class TestParserClass(unittest.TestCase):
         self.test_parser.load_game_items("./resources/game_items.json")
         self.test_parser.load_articles("./resources/articles.txt")
         self.test_parser.load_stopwords("./resources/stopwords.txt")
-        self.test_parser.load_killer("./resources/killer.txt")
-        self.test_parser.load_weapon("./resources/weapon.txt")
-        # self.test_parser.load_dictionary("game_dictionary.json")
+        self.test_parser.load_killer("./gamefiles/killer.txt")
+        self.test_parser.load_weapon("./gamefiles/weapon.txt")
+        self.test_parser.load_game_dictionary("./resources/game_dictionary.txt")
+
+    ############################################################################
+    # Lexical Parsing Stage & Parsing Stage - Tests
+    ############################################################################
 
     # test for phrase 1
     def test_tokenize(self):
@@ -138,10 +142,10 @@ class TestParserClass(unittest.TestCase):
         self.assertEqual(self.test_parser.parse(self.text5), self.text5_resolved_command)
 
     def test_load_killer(self):
-        self.assertEqual(self.test_parser._killer, "Ava Scarlett")
+        self.assertEqual(self.test_parser._killer, "P06")
 
     def test_load_weapon(self):
-        self.assertEqual(self.test_parser._weapon, "candlestick")
+        self.assertEqual(self.test_parser._weapon, "O01")
 
     ############################################################################
     # Classify Stage - Tests
@@ -209,24 +213,40 @@ class TestParserClass(unittest.TestCase):
     ############################################################################
 
     def test_classify_handler1(self):
+        """classify_handler correctly processes the following special case: 'look at'"""
         input = ["look", "at", "mirror"]
         self.assertEqual(self.test_parser.classify_handler(input), ["look at", "mirror"])
 
     def test_classify_handler2(self):
+        """classify_handler correctly processes the following special case: 'search through'"""
         input = ["search", "through", "drawer"]
         self.assertEqual(self.test_parser.classify_handler(input), ["search through", "drawer"])   
 
     def test_classify_handler3(self):
+        """classify_handler correctly processes the following special case: 'help'"""
         input = ["help"]
         self.assertEqual(self.test_parser.classify_handler(input), ["help"]) 
 
     def test_classify_handler4(self):
+        """classify_handler correctly processes the following special case: 'south'"""
         input = ["south"]
         self.assertEqual(self.test_parser.classify_handler(input), ["go", "south"])
 
     def test_classify_handler5(self):
+        """classify_handler correctly processes the following special case: 'south east'"""
         input = ["south", "east"]
-        self.assertEqual(self.test_parser.classify_handler(input), ["go", "south east"]) 
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "south east"])
+
+    def test_classify_handler6(self):
+        """classify_handler correctly processes the following special case: 'go south east'"""
+        input = ["go", "south", "east"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "south east"])
+
+    def test_classify_handler7(self):
+        """classify_handler correctly processes the following special case: '' (i.g., []) """
+        input = []
+        with self.assertRaises(nlp.InvalidInput):
+            self.test_parser.classify_handler(input)
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
