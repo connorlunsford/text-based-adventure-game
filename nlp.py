@@ -103,38 +103,42 @@ class Parser:
 
     # methods for managing a prepositions text file
     def add_prepositions(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
+        """adds a prepositions attribute to the Parser object and
+        sets it to the contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
         if not hasattr(self, "_prepositions"):
             self._prepositions = file_contents
-            #setattr(self, attribute_name, file_contents)
             fp.close()
         else:
             fp.close()
             raise ParserException
 
     def set_prepositions(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
-        if not hasattr(self, "_prepositions"):
+        """sets the Parser object's prepositions attribute to the
+        contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
+        if hasattr(self, "_prepositions"):
             self._prepositions = file_contents
-            #setattr(self, attribute_name, file_contents)
             fp.close()
         else:
             fp.close()
             raise ParserException        
 
     def delete_prepositions(self):
+        """removes the Parser object's preposition attribute"""
         if hasattr(self, "_prepositions"):
             del(self._prepositions)
-            #delattr(self, attribute_name)
         else:
             raise ParserException
 
     # methods for managing a special commands text file
     def add_special_commands(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
+        """adds a special_commands attribute to the Parser object and
+        sets it to the contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
         if not hasattr(self, "_special_commands"):
             self._special_commands = file_contents
             fp.close()
@@ -143,9 +147,11 @@ class Parser:
             raise ParserException
 
     def set_special_commands(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
-        if not hasattr(self, "_special_commands"):
+        """sets the Parser object's special_commands attribute to the
+        contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
+        if hasattr(self, "_special_commands"):
             self._special_commands = file_contents
             fp.close()
         else:
@@ -153,6 +159,7 @@ class Parser:
             raise ParserException        
 
     def delete_special_commands(self):
+        """removes the Parser object's special_commands attribute"""
         if hasattr(self, "_special_commands"):
             del(self._special_commands)
         else:
@@ -160,8 +167,10 @@ class Parser:
 
     # methods for managing a connections text file
     def add_connections(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
+        """adds a connections attribute to the Parser object and
+        sets it to the contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
         if not hasattr(self, "_connections"):
             self._connections = file_contents
             fp.close()
@@ -170,9 +179,11 @@ class Parser:
             raise ParserException
 
     def set_connections(self, filepath: str):
-        fp = open(filepath, "r")
-        file_contents = fp.read()
-        if not hasattr(self, "_connections"):
+        """sets the Parser object's connections attribute to the
+        contents of the file specified in the filepath"""
+        with open(filepath, "r") as fp:
+            file_contents = list(fp.read().split("\n"))
+        if hasattr(self, "_connections"):
             self._connections = file_contents
             fp.close()
         else:
@@ -180,6 +191,7 @@ class Parser:
             raise ParserException        
 
     def delete_connections(self):
+        """removes the Parser object's connections attribute"""
         if hasattr(self, "_connections"):
             del(self._connections)
         else:
@@ -372,7 +384,7 @@ class Parser:
 
         # Get all connections
         if hasattr(self, "_connections"):
-            connections = self._connections
+            directions = self._connections
         else:
             raise ParserMissingFile
         
@@ -386,9 +398,18 @@ class Parser:
         if len(input) == 1 and input[0] in single_commands:
             return input[:1]
 
-        # Check for the presence of a connection without a "go" verb
-        if " ".join(input) in connections:
+        # Check for the presence of a direction without a "go" verb
+        if " ".join(input) in directions:
             return ["go", " ".join(input)]
+
+        # Check for the presence of a connection (e.g., door, room) 
+        # without a "go" verb
+        for item_dictionary in self._game_items:
+            for key, list in item_dictionary.items():
+                if key.startswith("R"):
+                    for value in list:
+                        if value == " ".join(input):
+                            return ["go", " ".join(input)]
 
         # Input that reaches this point should be longer than one word long;
         # raise an exception if it is not

@@ -18,7 +18,7 @@ if __name__ == "__main__":
                      "exposing floating dust in the air and providing a sliver of light by which you make out some of "
                      "the features within the hallway. There are four doors, two on each side of the hallway: "
                      "a northwest door, a southwest door, a northeast door, and a southwest door. "
-                     "To the south, a grand staircase leads to the bottom floor",
+                     "To the south, a grand staircase leads to the bottom floor.",
                      "You find yourself in a dimly lit hallway. There are four doors, two on each side of the hallway: "
                      "a northwest door, a southwest door, a northeast door, and a southwest door. "
                      "A grand staircase leads back to the bottom floor."
@@ -90,7 +90,7 @@ if __name__ == "__main__":
        # BATHROOM (R12)
        R12 = room.Room("R12", "Bathroom",
                      "You enter a bathroom with marble floors and granite countertops. The bathroom is large... "
-                     "almost too large. And bright... almost too bright. It reminds you of a museum gallery.  You feel "
+                     "almost too large. And bright... almost too bright. It reminds you of a museum gallery. You feel "
                      "strangely small within it. Behind you, a door leads back to the hallway. You notice a faint smell...",
                      "You enter a large bathroom with marble floors and granite countertops. Behind you, a door leads "
                      "back to the hallway."
@@ -175,7 +175,7 @@ if __name__ == "__main__":
 
        # SECOND BEDROOM (R13)
        R13 = room.Room("R13", "Second Bedroom",
-                     "You enter a medium-sized bedroom pleasantly decorated with flower wallpaper. Bright, morning "
+                     "You enter a small bedroom pleasantly decorated with flower wallpaper. Bright, morning "
                      "light pours in through a set of large windows on the opposite side of the room. An assortment of "
                      "vases filled with flower arrangements are scattered around the room. Behind you, a door leads"
                      "back to the hallway.",
