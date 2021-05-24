@@ -422,8 +422,8 @@ class Parser:
             input_indirect = None            
 
         resolved_verb = None
-        resoved_direct_obj = []
-        resoved_indirect_obj = []
+        resolved_direct_obj = []
+        resolved_indirect_obj = []
         # list of resolved ["verb", direct_object_id, indirect_object_id] to
         # returned to game system
         resolved_command = []
@@ -459,7 +459,7 @@ class Parser:
             if resolved_verb == "look" and prep == "at":
                 resolved_verb = "look at"
 
-        # 2st special case:
+        # 2nd special case:
         # returning "up" for "pick up" (resolves to "take"), so checking for 
         # this special case 
         # all/any other prepostions will just be ignored
@@ -475,35 +475,47 @@ class Parser:
 
         # check each word in direct object against game dictionary
         if input_direct != None:
-            # direct_words = input_direct.split()
-            # for i in range(len(direct_words)):
+            # for each item in game_items
             for j in range(len(self._game_items)):
                 for obj_set in self._game_items[j]:
+                    # assign key value
                     key_list = list(self._game_items[j].keys())
+                    # create a list of the aliases for the item
                     value_list = list(self._game_items[j].values())
-                    # if direct_words[i] in value_list[0]:
+                    # if user input found in the aliases
                     if input_direct in value_list[0]:
-                        resoved_direct_obj.append(key_list[0])
+                        # return the key (resolved value) for the alias
+                        resolved_direct_obj = key_list[0]
 
-            # concats list of resolved direct object words and returns string
-            resolved_command.append(" ".join(resoved_direct_obj))
+            # if direct object input from user does not resolve to an object
+            if resolved_direct_obj == []:
+                resolved_direct_obj = "object_error"
+
+            # append resolved direct object to resolved command
+            resolved_command.append(resolved_direct_obj)
 
         # RESOLVE INDIRECT OBJECT: can be one or more words
 
         # if an indirect object, check against game dictionary
         if input_indirect != None:
-            # indirect_words = input_indirect.split()
-            # for i in range(len(indirect_words)):
+            # for each item in game_items
             for j in range(len(self._game_items)):
                 for obj_set in self._game_items[j]:
+                    # assign key value                    
                     key_list = list(self._game_items[j].keys())
+                    # create a list of the aliases for the item                    
                     value_list = list(self._game_items[j].values())
-                    # if indirect_words[i] in value_list[0]:
+                    # if user input found in the aliases
                     if input_indirect in value_list[0]:
-                        resoved_indirect_obj.append(key_list[0])
+                        # return the key (resolved value) for the alias
+                        resolved_indirect_obj = key_list[0]
 
-            # concats list of resolved indirect object words and returns string
-            resolved_command.append(" ".join(resoved_indirect_obj))
+            # if direct object input from user does not resolve to an object
+            if resolved_indirect_obj == []:
+                resolved_indirect_obj = "object_error"
+
+            # append resolved indirect object to resolved command
+            resolved_command.append(resolved_indirect_obj)
 
         # return list of resolved words
         return resolved_command
