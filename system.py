@@ -109,7 +109,7 @@ class System:
 
     def use(self, object1: str, object2: str):
         """this command takes 2 parameters, object1, which needs to be an object and is being used on object 2,
-        which can be any feature, person, or object"""
+        which can be any feature, person, or object """
         # object1 is always the giving object
         # object 2 is always the receiving object
         # checks if the object is in the inventory
