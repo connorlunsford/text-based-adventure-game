@@ -266,8 +266,8 @@ if __name__ == "__main__":
 
        sys.add_obj(O06)
 
-       # Alice Stone (P13)
-       P13 = person.Person("P13", "Alice Stone",
+       # Alice Stone (P01)
+       P01 = person.Person("P01", "Alice Stone",
                             "Alice Stone turns her head to meet your gaze as you look at her. The bright sunlight from "
                             "the window clearly illuminates her face, revealing her swollen eyes and red, blotchy skin "
                             "from crying. She dabs the corner of her eyes with a tissue before turning back to the "
@@ -345,7 +345,7 @@ if __name__ == "__main__":
                                    "listen": "Alice sobs quietly."
                             })
 
-       sys.add_person(P13)
+       sys.add_person(P01)
 
        # MASTER BEDROOM (R14)
        R14 = room.Room("R14", "Master Bedroom",
@@ -554,6 +554,13 @@ if __name__ == "__main__":
                             "He begins flipping through the book absentmindedly.",
                             {
                                    "ask": {
+                                   "P01": "You ask Adam about Alice. "
+                                          "'Alice and my father have been dating for a few years,' Adam says. 'She "
+                                          "started out as just his assistant, but then I guess they grew closer. I have mixed "
+                                          "feelings about her. On the one hand, she's been good for my father in many ways. "
+                                          "On the other hand, I feel that they grew too close too quickly and, when there's "
+                                          "money involved, you can never be completely sure about a person's intentions, "
+                                          "you know?'",                                       
                                    "P03": "You ask Adam about Sam. "
                                           "'Sam Smith is his name, right?' Adam says.'To be honest, he's a little "
                                           "suspicious, and I noticed that he mentioned nothihng about occupation when "
@@ -570,13 +577,6 @@ if __name__ == "__main__":
                                    "P06": "You ask Adam about Ava. "
                                           "'She looks very familiar to me,' Adam says, 'but, for the life of me, I "
                                           "can't entirely place her. I think my father may have known her years ago...?'",
-                                   "P13": "You ask Adam about Alice. "
-                                          "'Alice and my father have been dating for a few years,' Adam says. 'She "
-                                          "started out as just his assistant, but then I guess they grew closer. I have mixed "
-                                          "feelings about her. On the one hand, she's been good for my father in many ways. "
-                                          "On the other hand, I feel that they grew too close too quickly and, when there's "
-                                          "money involved, you can never be completely sure about a person's intentions, "
-                                          "you know?'",
                                    "F01R01": "You ask Adam about Norman. " 
                                           "Adam grimaces when he hears you say his father's name. 'He wasn't the "
                                           "best father,' Adam admits. 'He wasn't exactly there for me when I was younger, "
