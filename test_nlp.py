@@ -36,14 +36,13 @@ class TestParserClass(unittest.TestCase):
         self.text4_classified_words = ["look at", "candle stick"]
         self.text4_resolved_command = ["look at", "O01"]
 
-        self.text5 = "Use the small key on the lock"
-        self.text5_tokenized = ["use", "the", "small", "key", "on", "the", "lock"]
-        self.text5_tok_no_article = ["use", "small", "key", "on", "lock"]
-        self.text5_tok_no_art_or_stop = ["use", "small", "key", "on", "lock"]
-        self.text5_final_words = ["use", "small", "key", "on", "lock"]
-        self.text5_classified_words = ["use", "small key", "lock"]
-        # TODO: update object/id for lock once all features added to dictionary
-        self.text5_resolved_command = ["use", "O02", "O04"]
+        self.text5 = "Use the small key on the desk"
+        self.text5_tokenized = ["use", "the", "small", "key", "on", "the", "desk"]
+        self.text5_tok_no_article = ["use", "small", "key", "on", "desk"]
+        self.text5_tok_no_art_or_stop = ["use", "small", "key", "on", "desk"]
+        self.text5_final_words = ["use", "small", "key", "on", "desk"]
+        self.text5_classified_words = ["use", "small key", "desk"]
+        self.text5_resolved_command = ["use", "O02", "F01R15"]
 
         self.test_parser.load_game_verbs("./resources/game_verbs.json")
         self.test_parser.load_game_items("./resources/game_items.json")
