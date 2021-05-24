@@ -9,11 +9,32 @@ class TestCase(unittest.TestCase):
         test_desc = "An old wood desk."
         test_sdesc = 'a wood desk'
         test_interaction = {"look at": "The old wood desk's top is faded. It has a small center drawer."}
-        test_hidden = False
+        test_hidden = True
         self.test_feature = feature.Feature(test_id, test_name, test_desc, test_sdesc, test_interaction, test_hidden)
 
     def tearDown(self):
         del self.test_feature
+
+    # testing methods associated with the hidden attribute
+    def test_get_hidden(self):
+        """get_hidden successfully returns the value of the hidden attribute"""
+        self.assertTrue(self.test_feature.get_hidden())
+
+    def test_set_hidden(self):
+        """set_hidden successfully sets the value of the hidden attribute to the provided value"""
+        self.test_feature.set_hidden(False)
+        self.assertFalse(self.test_feature.get_hidden())
+
+    def test_switch_hidden1(self):
+        """switch_hidden successfully switches the value of the hidden attribute from True to False"""
+        self.test_feature.switch_hidden()
+        self.assertFalse(self.test_feature.get_hidden())
+
+    def test_switch_hidden2(self):
+        """switch_hidden successfully switches the value of the hidden attribute from False to True"""
+        self.test_feature.switch_hidden()
+        self.test_feature.switch_hidden()
+        self.assertTrue(self.test_feature.get_hidden())
 
     # testing methods used for managing condition
     def test_add_condition1(self):
