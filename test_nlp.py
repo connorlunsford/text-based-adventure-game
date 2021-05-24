@@ -207,6 +207,11 @@ class TestParserClass(unittest.TestCase):
         with self.assertRaises(nlp.InvalidSentenceStructure):
             self.test_parser.classify_input(input)
 
+    def test_classify_input10(self):
+        """classify_input correctly processes the following special case: multi-worded preposition--e.g., 'on top of'"""
+        input = ["put", "book", "on top of", "table"]
+        self.assertEqual(self.test_parser.classify_input(input), ["put", "book", "table"])
+
     ############################################################################
     # Function: classify_handler
     ############################################################################
