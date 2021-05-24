@@ -262,6 +262,16 @@ class TestParserClass(unittest.TestCase):
         self.assertEqual(self.test_parser.classify_handler(input), ["go", "grand foyer"])
 
     def test_classify_handler11(self):
+        """classify_handler correctly processes the following special case: 'bathroom door'"""
+        input = ["bathroom door"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "bathroom door"])
+
+    def test_classify_handler12(self):
+        """classify_handler correctly processes the following special case: 'go bathroom door'"""
+        input = ["go", "bathroom door"]
+        self.assertEqual(self.test_parser.classify_handler(input), ["go", "bathroom door"])
+
+    def test_classify_handler13(self):
         """classify_handler correctly processes the following special case: '' (i.g., []) """
         input = []
         with self.assertRaises(nlp.InvalidInput):
