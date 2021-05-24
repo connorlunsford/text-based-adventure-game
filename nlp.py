@@ -450,7 +450,7 @@ class Parser:
         # error checking if player uses an unrecognized verb
         # the game system will default to saying it doesn't understand input
         if resolved_verb == None:
-            return ["error"]
+            return ["verb_error"]
 
         # 1st special case:
         # returning "at" for "look at", so checking for this special case
