@@ -39,7 +39,7 @@ if __name__ == "__main__":
        # Set the interactions
        R11.set_interactions({
               "search": "You search the entirety of the hallway but find nothing of else of interest. The only two "
-              "things in this hallway are the rug and console table.",
+              "things in this hallway are the rug and grandfather clock.",
               "touch": "The oak panel walls are cool to the touch except where the sunlight hits them.",
               "taste": "What does it mean to taste a room? No, really... what is it that you had in mind?",
               "smell": "Like many parts of this house, the hallway has a faint 'old' smell to it.",
@@ -147,7 +147,7 @@ if __name__ == "__main__":
                                    "A small, metal trashcan sits in the in the corner of the room.",
                                    {
                                    "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
-                                   "the trash can is completely empty.",
+                                   "the trashcan is completely empty.",
                                    "touch": "The stainless steel exterior feels slightly cold.",
                                    "taste": "Please try to use your better judgment. This is a trashcan.",
                                    "smell": "The smell of the trashcan is unremarkable.",
@@ -240,12 +240,14 @@ if __name__ == "__main__":
                                    "A walnut vanity sits on one side of the room, near where Alice is standing.",
                                    {
                                    "search": "You search the vanity but find nothing beyond what can easily be seen "
-                                   "on top of the vanity desk.",
+                                   "on top of it. You do notice, however, that all of the jewelry in the jewelry "
+                                   "box is gold.",
                                    "touch": "The wood surface is slightly rough.",
                                    "taste": "You lick the top of the vanity, learning nothing of value. Alice stops "
                                    "her crying for just long enough to give you a strange look.",
                                    "smell": "You smell nothing.",
-                                   "listen": "You hear nothing."
+                                   "listen": "You hear nothing.",
+                                   "open": "The vanity cannot be opened."
                                    },
                                    False)
 
@@ -354,8 +356,8 @@ if __name__ == "__main__":
        # MASTER BEDROOM (R14)
        R14 = room.Room("R14", "Master Bedroom",
                      "You enter a large, dark bedroom with velvet curtains that are partially closed. In the dim light, "
-                     "you can see that the floors, walls, and furniture are made from the same dark wood with a "
-                     "reddish hue to it. The room has a very old feel to it, like it was designed in the 17th century. "
+                     "you can see that the floors, walls, and furniture are made from the same dark reddish wood. "
+                     "The room has a very old feel to it, like it was designed in the 17th century. "
                      "A large canopy bed resides in the center of the room. A wooden door leads back to the hallway.",
                      "You enter large, dim bedroom that looks like it was designed in the 17th century. A wooden door "
                      "leads back to the hallway."
@@ -374,8 +376,8 @@ if __name__ == "__main__":
        
        # Set the interactions
        R14.set_interactions({
-              "search": "You search the room but find nothing of note. Perhaps you should examine either the bed or "
-              "the nightstand in more depth.",
+              "search": "You search the room but find nothing of note. You may want to search the nightstand if you "
+              "have not already.",
               "touch": "Perhaps specify which part of the room you'd like to touch?",
               "taste": "Why is it that you want to taste everything?",
               "smell": "The room has a musky smell to it.",
@@ -408,17 +410,18 @@ if __name__ == "__main__":
                                    "The small nightstand is made of the same dark, red wood as the rest of the  "
                                    "furniture in the room, leading you to believe that they must all be part of the "
                                    "same set, likely passed down through several generations. Its legs and borders are "
-                                   "feature intricately carved designs of leaves and vines. The nightstand has a "
-                                   "drawer, which as far as you can tell, has no lock.",
+                                   "feature intricately carved designs of leaves and vines. There is a pile of papers "
+                                   "on top of the nightstand.",
                                    "A small nightstand made of the same dark, red wood as the rest of the furniture "
                                    "sits right next to the bed.",
                                    {
                                    "search": "You search the nightstand. You find nothing interesting among the assortment "
-                                   "of items lying on top of it, but opening the drawer reveals a letter inside.", # CHECK
+                                   "of items lying on top of it, but, as you comb through a pile of papers, one "
+                                   "letter sticks out to you.",
                                    "touch": "The dark red wood is smooth and clearly polished.",
                                    "taste": "The nightstand tastes like wood polish. It is also tastes like dust.",
                                    "smell": "You smell nothing.",
-                                   "listen": "You hear nothing." # open?
+                                   "listen": "You hear nothing."
                                    },
                                    False)
 
@@ -494,20 +497,21 @@ if __name__ == "__main__":
                                    "a wooden box of what you assume must be expensive cigars near the ash tray. "
                                    "A photograph of Norman and Adam sits on one side of the desk. Norman's arm "
                                    "is wrapped over Adam's shoulder in a loving embrace, but the expression on Adam's "
-                                   "face is hard to read. You observe nothing else of note on the desk.",
+                                   "face is hard to read. You observe nothing else of note on the desk. You notice a "
+                                   "desk drawer that can be opened, although it appears to require a key.",
                                    "In front of the window, there's a large desk with several books and papers on top "
                                    "of it.",
                                    {
                                    "search": "You rummage through the papers and books on top of the desk. There's a "
                                    "book on Greek history and an electric bill, but nothing else stands out to you."
-                                   "You notice that the ashtray hasn't yet been emptied. You attempt to open the desk "
-                                   "drawer, but it's locked.",
+                                   "You notice that the ashtray hasn't yet been emptied. You notice a desk drawer "
+                                   "that can be opened, although it appears to require a key.",
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
                                    "smell": "You smell cigar smoke.",
                                    "listen": "You hear nothing.",
                                    "open": "You open the drawer and rummage through it. At the bottom of the drawer, "
-                                   "you notice a small paper."
+                                   "you notice an envelope."
                                    },
                                    False)
 
@@ -534,7 +538,7 @@ if __name__ == "__main__":
 
        sys.add_feature(F02R15)
 
-       # Safe Code Paper (O04)
+       # Safe Code Envelope (O04)
        O04 = object.Object("O04", "Safe Code Envelope",
                             "The envelope is dirty and looks like it was crumpled at one point. Four "
                             "numbers are written across it in thick ink. Perhaps you should read them?",
@@ -547,7 +551,7 @@ if __name__ == "__main__":
                                    "read": "In thick ink, the envelope reads: 0123",
                                    "search": "There is nothing inside the enevelope, but you notice that "
                                    "something is written on it. Maybe you should read it if you have not "
-                                   "already done so."
+                                   "done so already."
                             },
                             True)
 
