@@ -16,12 +16,14 @@ if __name__ == "__main__":
                      "You find yourself in a wide, dimly lit hallway surrounded by large oak panel walls. "
                      "A small amount of daylight streams in through a curtained window on the opposite end of the hallway, "
                      "exposing floating dust in the air and providing a sliver of light by which you make out some of "
-                     "the features within the hallway. There are four doors, two on each side of the hallway: "
-                     "a northwest door, a southwest door, a northeast door, and a southwest door. "
-                     "To the south, a grand staircase leads to the bottom floor.",
-                     "You find yourself in a dimly lit hallway. There are four doors, two on each side of the hallway: "
-                     "a northwest door, a southwest door, a northeast door, and a southwest door. "
-                     "A grand staircase leads back to the bottom floor."
+                     "the features within the hallway. "
+                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
+                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Going south will lead you back to the grand foyer downstairs.",
+                     "You find yourself in a dimly lit hallway. "
+                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
+                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Going south will lead you back to the grand foyer downstairs."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -32,14 +34,14 @@ if __name__ == "__main__":
                             "south": "R01"      # grand foyer
                             })
 
-       R11.set_features(["F01R11", # console table
+       R11.set_features(["F01R11", # grandfather clock
                          "F02R11"  # rug
                          ])
        
        # Set the interactions
        R11.set_interactions({
               "search": "You search the entirety of the hallway but find nothing of else of interest. The only two "
-              "things in this hallway are the rug and console table.",
+              "things in this hallway are the rug and grandfather clock.",
               "touch": "The oak panel walls are cool to the touch except where the sunlight hits them.",
               "taste": "What does it mean to taste a room? No, really... what is it that you had in mind?",
               "smell": "Like many parts of this house, the hallway has a faint 'old' smell to it.",
@@ -48,21 +50,20 @@ if __name__ == "__main__":
 
        sys.add_room(R11)
 
-       # Console Table (F01R11)
-       F01R11 = feature.Feature("F01R11", "Console Table",
-                                   "A picture of the retreat owner and a younger man with glasses and messy brown hair "
-                                   "sits on the top of the table. The younger man appears to be in his mid-to-late thirties. "
-                                   "The retreat owner's arm is wrapped around the man's shoulder in a loving embrace, but "
-                                   "the expression on the younger man's face is hard to read. You observe nothing else of "
-                                   "note on the table.",
-                                   "A wooden console table with a few items on it resides between the two doors to the east.",
+       # Grandfather Clock (F01R11)
+       F01R11 = feature.Feature("F01R11", "Grandfather Clock",
+                                   "The grandfather clock features impressive, highly detailed woodwork and appears "
+                                   "very aged. You can see its large, golden pendulum swaying behind the door class. "
+                                   "Roman numerals and large serpentine clock hands mark the time.",
+                                   "A grandfather clock resides on the eastern side of the hallway. You hear the "
+                                   "familiar tick tock, tick tock of the pendulum swinging.",
                                    {
-                                   "search": "There is nothing else here.",
-                                   "touch": "You run your fingertips across the top of the console table. Dust. "
+                                   "search": "There is nothing here.",
+                                   "touch": "You run your fingertips across the surface of the grandfather clock. Dust. "
                                    "Lots of dust.",
-                                   "taste": "Taste the table? Really?",
-                                   "smell": "The table smells faintly of wood varnish.",
-                                   "listen": "You hear nothing."
+                                   "taste": "Taste the clock? Really?",
+                                   "smell": "The grandfather clock smells faintly of wood varnish.",
+                                   "listen": "You hear the tick tock, tick tock of the pendulum swinging."
                                    },
                                    False)
 
@@ -71,10 +72,11 @@ if __name__ == "__main__":
        # Rug (F02R11)
        F02R11 = feature.Feature("F02R11", "White Rug",
                                    "For a white rug in a commonly used space, this rug seems oddly clean. That is, until "
-                                   "you notice a small red stain on the corner of the rug nearest to the southwest door.",
+                                   "you notice a small red stain on the corner of the rug nearest to the bathroom.",
                                    "A white, strangely pristine rug lies in the center of the floor.",
                                    {
-                                   "search": "There is nothing else here.",
+                                   "search": "There is nothing else here besides the red stain on the corner nearest "
+                                   "to the bathroom.",
                                    "touch": "Soft. Very soft.",
                                    "taste": "Against what should be your better judgment, you taste the rug that lies "
                                    "in the center of the floor of a commonly used hallway. It tastes like nothing, "
@@ -91,9 +93,10 @@ if __name__ == "__main__":
        R12 = room.Room("R12", "Bathroom",
                      "You enter a bathroom with marble floors and granite countertops. The bathroom is large... "
                      "almost too large. And bright... almost too bright. It reminds you of a museum gallery. You feel "
-                     "strangely small within it. Behind you, a door leads back to the hallway. You notice a faint smell...",
-                     "You enter a large bathroom with marble floors and granite countertops. Behind you, a door leads "
-                     "back to the hallway."
+                     "strangely small within it. You notice a faint smell. "
+                     "To your east is the hallway from which you entered.",
+                     "You enter a large bathroom with marble floors and granite countertops. "
+                     "To your east is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -147,7 +150,7 @@ if __name__ == "__main__":
                                    "A small, metal trashcan sits in the in the corner of the room.",
                                    {
                                    "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
-                                   "the trash can is completely empty.",
+                                   "the trashcan is completely empty.",
                                    "touch": "The stainless steel exterior feels slightly cold.",
                                    "taste": "Please try to use your better judgment. This is a trashcan.",
                                    "smell": "The smell of the trashcan is unremarkable.",
@@ -177,10 +180,10 @@ if __name__ == "__main__":
        R13 = room.Room("R13", "Second Bedroom",
                      "You enter a small bedroom pleasantly decorated with flower wallpaper. Bright, morning "
                      "light pours in through a set of large windows on the opposite side of the room. An assortment of "
-                     "vases filled with flower arrangements are scattered around the room. Behind you, a door leads"
-                     "back to the hallway.",
-                     "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. Behind you, a door "
-                     "leads back to the hallway."
+                     "vases filled with flower arrangements are scattered around the room. "
+                     "To your west is the hallway from which you entered.",
+                     "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. "
+                     "To your west is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -213,11 +216,10 @@ if __name__ == "__main__":
        F01R13 = feature.Feature("F01R13", "Bed",
                                    "The queen-sized bed has been neatly made. Its thick white comforter looks like it "
                                    "would sink right in if you were to lie down on top of it. You find yourself "
-                                   "suddenly yearning for a nap. You suddenly notice a white washcloth sticking out from "
-                                   "underneath the corner of the bed.",
+                                   "suddenly yearning for a nap. You wonder if perhaps you should search the bed...",
                                    "A queen-sized bed with a thick white comforter sits in the center of the room.",
                                    {
-                                   "search": "The bed is empty.", # CHECK - Add washcloth?
+                                   "search": "You search the bed and notice a white washcloth.",
                                    "touch": "The comforter slowly sinks in a very satisfying manner when you press your "
                                    "hand into it. You make a mental note to get yourself one of these when you return "
                                    "home.",
@@ -240,12 +242,14 @@ if __name__ == "__main__":
                                    "A walnut vanity sits on one side of the room, near where Alice is standing.",
                                    {
                                    "search": "You search the vanity but find nothing beyond what can easily be seen "
-                                   "on top of the vanity desk.",
+                                   "on top of it. You do notice, however, that all of the jewelry in the jewelry "
+                                   "box is gold.",
                                    "touch": "The wood surface is slightly rough.",
                                    "taste": "You lick the top of the vanity, learning nothing of value. Alice stops "
                                    "her crying for just long enough to give you a strange look.",
                                    "smell": "You smell nothing.",
-                                   "listen": "You hear nothing."
+                                   "listen": "You hear nothing.",
+                                   "open": "The vanity cannot be opened."
                                    },
                                    False)
 
@@ -255,7 +259,7 @@ if __name__ == "__main__":
        O06 = object.Object("O06", "Washcloth",
                             "The white washcloth looks like it might belong to a bathroom set. It's stained with the "
                             "unmistakable color of blood.",
-                            "The corner of a white washcloth sticks out from beneath the bed. It has a red stain on it.",
+                            "A white washcloth lies on the ground. It has a red stain on it.",
                             {
                                    "touch": "The washcloth is soft except for where the blood has started to dry.",
                                    "taste": "You lick the washcloth and notice the metallic taste of blood.",
@@ -305,6 +309,10 @@ if __name__ == "__main__":
                                           "belongs in the foyer downstairs,' she mumbles. She pauses and then eyes you "
                                           "suspiciously. 'Please don't tell me you're using this as an opportunity to "
                                           "steal items from a dead man.'",
+                                   "O04": "You ask Alice about the envelope with the code written on it. "
+                                          "'I vaguely recall Norman mentioning something about a safe,' she tells "
+                                          "you. 'I believe it was on the bottom floor, although I can't be entirely "
+                                          "certain. He didn't share its exact location with me.'",
                                    "O05": "You ask Alice about the earring. "
                                           "Alice takes the earring, quickly examines it, then hands it back to you. "
                                           "'There's no way that's mine,' she says. 'I'm allergic to silver.'",
@@ -350,18 +358,19 @@ if __name__ == "__main__":
        # MASTER BEDROOM (R14)
        R14 = room.Room("R14", "Master Bedroom",
                      "You enter a large, dark bedroom with velvet curtains that are partially closed. In the dim light, "
-                     "you can see that the floors, walls, and furniture are made from the same dark wood with a "
-                     "reddish hue to it. The room has a very old feel to it, like it was designed in the 17th century. "
-                     "A wooden door leads back to the hallway.",
-                     "You enter large, dim bedroom that looks like it was designed in the 17th century. A wooden door "
-                     "leads back to the hallway."
+                     "you can see that the floors, walls, and furniture are made from the same dark reddish wood. "
+                     "The room has a very old feel to it, like it was designed in the 17th century. A large canopy bed "
+                     "resides in the center of the room. "
+                     "To your west is the hallway from which you entered.",
+                     "You enter large, dim bedroom that looks like it was designed in the 17th century. "
+                     "To your west is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
        R14.set_connections({"west": "R11" # hallway
                             })
 
-       R14.set_features(["F01R14", # bed
+       R14.set_features(["F01R14", # bear head wall mount
                          "F02R14"  # nightstand
                          ])
 
@@ -370,8 +379,8 @@ if __name__ == "__main__":
        
        # Set the interactions
        R14.set_interactions({
-              "search": "You search the room but find nothing of note. Perhaps you should examine either the bed or "
-              "the nightstand in more depth.",
+              "search": "You search the room but find nothing of note. You may want to search the nightstand if you "
+              "have not already.",
               "touch": "Perhaps specify which part of the room you'd like to touch?",
               "taste": "Why is it that you want to taste everything?",
               "smell": "The room has a musky smell to it.",
@@ -380,19 +389,18 @@ if __name__ == "__main__":
 
        sys.add_room(R14)
 
-       # Bed (F01R14) # CHECK - Give different name?
-       F01R14 = feature.Feature("F01R14", "Bed",
-                                   "You pull aside the canopy curtain to look at the bed. The covers and sheets are "
-                                   "unmade. Norman must have not had the chance to make it before he was killed. "
-                                   "Either that, or he was messy, which doesn't seem very likely based upon the rest "
-                                   "of the house. Judging from its size, the bed must be at least a California King.",
-                                   "A large canopy bed resides in the center of the room.",
+       # Bear Head Wall Mount (F01R14)
+       F01R14 = feature.Feature("F01R14", "Bear Head Wall Mount",
+                                   "You stride over to the large bear head that is mounted on the wall and stand under "
+                                   "it, gazing up at its intimidating face. Its expression is frozen in a ferocious snarl, "
+                                   "its large teeth bared and blacks eyes as impenetrable as a moonless night. You "
+                                   "consider yourself to be the rational and analytical type, but, for some unknown "
+                                   "reason, you find yourself growing scared the longer you look at it.",
+                                   "A large bear head is mounted one one of the walls.",
                                    {
-                                   "search": "You look through the unmade bed but find nothing.",
-                                   "touch": "The bed sheets are surprisingly soft. You wonder what their thread count "
-                                   "is and make a mental note to look into it when you get back home.",
-                                   "taste": "You rather intrusively taste the bed and glean no useful information "
-                                   "from it.",
+                                   "search": "Looking around the mounted bear head reveals nothing.",
+                                   "touch": "You reach up and touch the bear's fur. It feels rough.",
+                                   "taste": "The bear head is mounted too high on the wall for you to taste it.",
                                    "smell": "You smell nothing.",
                                    "listen": "You hear nothing."
                                    },
@@ -402,30 +410,31 @@ if __name__ == "__main__":
 
        # Nightstand (F02R14)
        F02R14 = feature.Feature("F02R14", "Nightstand",
-                                   "The small nightstand is made of the same dark, red wood as the rest of the  "
+                                   "The small nightstand is made of the same dark, red wood as the rest of the "
                                    "furniture in the room, leading you to believe that they must all be part of the "
                                    "same set, likely passed down through several generations. Its legs and borders are "
-                                   "feature intricately carved designs of leaves and vines. The nightstand has a "
-                                   "drawer, which as far as you can tell, has no lock.",
+                                   "feature intricately carved designs of leaves and vines. There is a pile of papers "
+                                   "on top of the nightstand.",
                                    "A small nightstand made of the same dark, red wood as the rest of the furniture "
                                    "sits right next to the bed.",
                                    {
                                    "search": "You search the nightstand. You find nothing interesting among the assortment "
-                                   "of items lying on top of it, but opening the drawer reveals a letter inside.", # CHECK
+                                   "of items lying on top of it, but, as you comb through a pile of papers, a neatly "
+                                   "folded letter sticks out to you.",
                                    "touch": "The dark red wood is smooth and clearly polished.",
                                    "taste": "The nightstand tastes like wood polish. It is also tastes like dust.",
                                    "smell": "You smell nothing.",
-                                   "listen": "You hear nothing." # open?
+                                   "listen": "You hear nothing."
                                    },
                                    False)
 
        sys.add_feature(F02R14)
 
        # Letter (O09)
-       O09 = object.Object("O12", "Letter",
+       O09 = object.Object("O09", "Letter",
                             "The letter is neatly folded and looks otherwise unremarkable at first glance. Maybe you "
                             "should read it.",
-                            "A neatly folded letter sits in the nightstand drawer.", # CHECK
+                            "There is a neatly folded letter that looks otherwise unremarkable at first glance.",
                             {
                                    "touch": "It feels like paper.",
                                    "taste": "You lick the letter and taste, well, nothing aside from maybe a little "
@@ -434,7 +443,7 @@ if __name__ == "__main__":
                                    "listen": "You hear nothing.",
                                    "read": "You open the letter and read the following: "
                                    "DATE\n"
-                                   "Dear Norman,\n I know it's been a long time since we last spoke but last night, "  # CHECK
+                                   "Dear Norman,\n I know it's been a long time since we last spoke but last night, "
                                    "as I was walking around the lake near my house, I couldn't stop thinking about "
                                    "our trip to Lake Tahoe and how wonderful it was. What was it, 10 years ago? That "
                                    "one of the happiest times of my life.\n I know you think that our break up was "
@@ -453,10 +462,10 @@ if __name__ == "__main__":
        R15 = room.Room("R15", "Study",
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
                      "Several leather chairs are positioned in various parts of the room, presumably to accomodate "
-                     "visitors. A large paned window provides a view to the outside. Behind you, a door leads back to "
-                     "the hallway.",
+                     "visitors. A large paned window provides a view to the outside. "
+                     "To your east is the hallway from which you entered.",
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
-                     "Behind you, a door leads back to the hallway."
+                     "To your east is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -467,7 +476,7 @@ if __name__ == "__main__":
                          "F02R15"  # bar cart
                          ])
 
-       R15.set_objects(["O04"  # safe code paper
+       R15.set_objects(["O04"  # safe code envelope
                         ])
 
        R15.set_people(["P02" # Adam Bates
@@ -488,20 +497,24 @@ if __name__ == "__main__":
        F01R15 = feature.Feature("F01R15", "Desk",
                                    "The large desk sits in front of the window. Several books, a few papers, and "
                                    "an ash tray are on top it. It seems like Norman liked to smoke cigars as there's "
-                                   "a wooden box of what you assume must be expensive cigars near the ash tray. ",
-                                   "In front of the window, there's a large desk with several books and papers on top "
-                                   "of it.",
+                                   "a wooden box of what you assume must be expensive cigars near the ash tray. "
+                                   "A photograph of Norman and Adam sits on one side of the desk. Norman's arm "
+                                   "is wrapped over Adam's shoulder in a loving embrace, but the expression on Adam's "
+                                   "face is hard to read. You observe nothing else of note on the desk. You notice a "
+                                   "desk drawer that can be opened, although it appears to require a key.",
+                                   "In front of the window, there's a large desk with several books and a few papers "
+                                   "on top of it.",
                                    {
                                    "search": "You rummage through the papers and books on top of the desk. There's a "
                                    "book on Greek history and an electric bill, but nothing else stands out to you."
-                                   "You notice that the ashtray hasn't yet been emptied. You attempt to open the desk "
-                                   "drawer, but it's locked.",
+                                   "You notice that the ashtray hasn't yet been emptied. You also notice a desk drawer "
+                                   "that can be opened, although it appears to require a key.",
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
                                    "smell": "You smell cigar smoke.",
                                    "listen": "You hear nothing.",
                                    "open": "You open the drawer and rummage through it. At the bottom of the drawer, "
-                                   "you notice a small paper."
+                                   "you notice an envelope."
                                    },
                                    False)
 
@@ -528,17 +541,20 @@ if __name__ == "__main__":
 
        sys.add_feature(F02R15)
 
-       # Safe Code Paper (O04)
-       O04 = object.Object("O04", "Safe Code Paper",
-                            "The small piece of paper is dirty and looks like it has been previously crumpled. Four "
-                            "letters are written across it in thick ink: 0123",
-                            "A small piece of paper sits beneath the other items in the drawer.", # CHECK - How is sdesc being used for features and objects?
+       # Safe Code Envelope (O04)
+       O04 = object.Object("O04", "Safe Code Envelope",
+                            "The envelope is dirty and looks like it was crumpled at one point. Four "
+                            "numbers are written across it in thick ink. Perhaps you should read them?",
+                            "A dirtied envelope with something written on it catches your attention.",
                             {
-                                   "touch": "The paper is rough where it has been previously folded.",
-                                   "taste": "You taste the dirtied paper. It tastes like paper.",
-                                   "smell": "The paper has a slight smell of cigar smoke.",
+                                   "touch": "The envelope is rough where it had been previously folded.",
+                                   "taste": "You taste the dirtied envelope. It tastes like paper.",
+                                   "smell": "The envelope has the slight smell of cigar smoke.",
                                    "listen": "You hear nothing.",
-                                   "read": "In thick ink, the paper reads: 0123"
+                                   "read": "In thick ink, the envelope reads: 0123",
+                                   "search": "There is nothing inside the enevelope, but you notice that "
+                                   "something is written on it. Maybe you should read it if you have not "
+                                   "done so already."
                             },
                             True)
 
@@ -590,10 +606,11 @@ if __name__ == "__main__":
                                    "O01": "You ask Adam about the candlestick. "
                                           "'That candlestick is part of a set that my father inherited,' Adam says. "
                                           "'I'm not sure how long it's been in our family.'",
-                                   "O04": "You ask Adam about the scrap paper. "
+                                   "O04": "You ask Adam about the envelope with the numbers written on it. "
                                           "'Looks like a safe combination,' Adam says. 'I don't recall my father "
-                                          "having a safe anywhere though...' He narrows his eyes and repeats the numbers "
-                                          "under his breath as if commiting them to memory.",
+                                          "having a safe anywhere, although I wouldn't be surprised if he kept one "
+                                          "hidden from me.' He narrows his eyes and repeats the numbers under his "
+                                          "breath as if commiting them to memory.",
                                    "O05": "You ask Adam about the earring. "
                                           "Adam looks at the earring with clear disinterest. 'I don't recognize it,' "
                                           "he says.",

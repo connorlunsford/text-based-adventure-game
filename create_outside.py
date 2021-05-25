@@ -471,7 +471,7 @@ if __name__ == "__main__":
                                 'O01': "You ask Al about the candlestick. 'I don't spend much time in the house. I know there "
                                 "used to be a candlestick like that in the foyer. It's been a while since I've seen it, so I'm "
                                 "not sure if it's the same one, but it sure was ugly like that one you got there.'",
-                                'O04': "You ask Al about the paper with the code. 'Hmm, well that's not the garage door code, "
+                                'O04': "You ask Al about the envelope with the code. 'Hmm, well that's not the garage door code, "
                                 "I can tell you that much. Knowing Norman, there's probably a safe or two hidden somewhere in the "
                                 "house.'",
                                 'O05': "You ask Al about the earring. 'Don't know nothin' about that. I never was one for jewelry. "
