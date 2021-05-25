@@ -17,25 +17,25 @@ if __name__ == "__main__":
                      "A small amount of daylight streams in through a curtained window on the opposite end of the hallway, "
                      "exposing floating dust in the air and providing a sliver of light by which you make out some of "
                      "the features within the hallway. "
-                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
-                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Four rooms connect to the hallway: a bathroom to the northwest, a study to the northeast, "
+                     "a master bedroom to the southeast, and a second bedroom to the southwest. "
                      "Going south will lead you back to the grand foyer downstairs.",
                      "You find yourself in a dimly lit hallway. "
-                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
-                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Four rooms connect to the hallway: a bathroom to the northwest, a study to the northeast, "
+                     "a master bedroom to the southeast, and a second bedroom to the southwest. "
                      "Going south will lead you back to the grand foyer downstairs."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
        R11.set_connections({"northeast": "R15", # study
-                            "southeast": "R12", # bathroom
-                            "northwest": "R14", # master bedroom
-                            "northeast": "R13", # second bedroom
+                            "northwest": "R12", # bathroom
+                            "southwest": "R13", # second bedroom
                             "south": "R01"      # grand foyer
                             })
 
        R11.set_features(["F01R11", # grandfather clock
-                         "F02R11"  # rug
+                         "F02R11",  # rug
+                         "F03R11",  # master bedroom door
                          ])
        
        # Set the interactions
@@ -88,6 +88,32 @@ if __name__ == "__main__":
                                    False)
 
        sys.add_feature(F02R11)
+
+       # Locked Master Bedroom Door (F03R11)
+       F03R11 = feature.Feature("F03R11", "Master Bedroom Door",
+                                "The large door to the master bedroom stands imposingly. There is a massive golden lock on "
+                                "the door, you could try to open it to see if it is locked.",
+                                "The door to the master bedroom has a massive golden lock just above the handle",
+                                {
+                                    "touch": "The door is made of wood",
+                                    "taste": "You lick the door, tastes of wood and paint",
+                                    "smell": "You smell nothing",
+                                    "listen": "You hear nothing. Nobody appears to be in the room.",
+                                    'use': {
+                                        'O03': 'You insert the large golden key into the lock. It easily turns with a '
+                                               'satisfying click, the door appears to be unlocked now'
+                                    },
+                                    'open': {
+                                        'locked': 'The door appears to be locked from the other side with a heavy bolt.',
+                                        'unlocked': 'The door easily swings open, revealing the master bedroom',
+                                        'room_ids': [['southeast','R14']]
+                                    },
+                                },
+                                False)
+
+       F03R11.add_condition(False)
+
+       sys.add_feature(F03R11)
 
        # BATHROOM (R12)
        R12 = room.Room("R12", "Bathroom",
@@ -181,13 +207,13 @@ if __name__ == "__main__":
                      "You enter a small bedroom pleasantly decorated with flower wallpaper. Bright, morning "
                      "light pours in through a set of large windows on the opposite side of the room. An assortment of "
                      "vases filled with flower arrangements are scattered around the room. "
-                     "To your west is the hallway from which you entered.",
+                     "To your east is the hallway from which you entered.",
                      "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. "
-                     "To your west is the hallway from which you entered."
+                     "To your east is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
-       R13.set_connections({"west": "R11" # hallway
+       R13.set_connections({"east": "R11" # hallway
                             })
 
        R13.set_features(["F01R13", # bed
@@ -463,13 +489,13 @@ if __name__ == "__main__":
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
                      "Several leather chairs are positioned in various parts of the room, presumably to accomodate "
                      "visitors. A large paned window provides a view to the outside. "
-                     "To your east is the hallway from which you entered.",
+                     "To your west is the hallway from which you entered.",
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
-                     "To your east is the hallway from which you entered."
+                     "To your west is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
-       R15.set_connections({"east": "R11" # hallway
+       R15.set_connections({"west": "R11" # hallway
                             })
 
        R15.set_features(["F01R15", # desk
@@ -513,10 +539,20 @@ if __name__ == "__main__":
                                    "taste": "You taste nothing.",
                                    "smell": "You smell cigar smoke.",
                                    "listen": "You hear nothing.",
-                                   "open": "You open the drawer and rummage through it. At the bottom of the drawer, "
-                                   "you notice an envelope."
+                                   "open": {
+                                       'unlocked': "You open the drawer and rummage through it. At the bottom of the drawer, "
+                                   "you notice an envelope.",
+                                       'locked': "You attempt to open the desk drawer, it is locked tight",
+                                       'obj_ids': ['O04']
+                                   },
+                                   "use": {
+                                       "O02": "You take the small rusty key out of your pocket and insert it into the lock "
+                                              "on the drawer. It fits perfectly. The drawer appears to be unlocked now",
+                                   },
                                    },
                                    False)
+
+       F01R15.add_condition(False)
 
        sys.add_feature(F01R15)
 
@@ -557,6 +593,8 @@ if __name__ == "__main__":
                                    "done so already."
                             },
                             True)
+
+       O04.add_condition(False)
 
        sys.add_obj(O04)
 
