@@ -16,12 +16,14 @@ if __name__ == "__main__":
                      "You find yourself in a wide, dimly lit hallway surrounded by large oak panel walls. "
                      "A small amount of daylight streams in through a curtained window on the opposite end of the hallway, "
                      "exposing floating dust in the air and providing a sliver of light by which you make out some of "
-                     "the features within the hallway. There are four doors, two on each side of the hallway: "
-                     "a northwest door, a southwest door, a northeast door, and a southwest door. "
-                     "To the south, a grand staircase leads to the bottom floor.",
-                     "You find yourself in a dimly lit hallway. There are four doors, two on each side of the hallway: "
-                     "a northwest door, a southwest door, a northeast door, and a southwest door. "
-                     "A grand staircase leads back to the bottom floor."
+                     "the features within the hallway. "
+                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
+                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Going south will lead you back to the grand foyer downstairs.",
+                     "You find yourself in a dimly lit hallway. "
+                     "Four rooms connect to the hallway: a bathroom to the southeast, a study to the northeast, "
+                     "a master bedroom to the northwest, and a second bedroom to the northeast. "
+                     "Going south will lead you back to the grand foyer downstairs."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -56,7 +58,7 @@ if __name__ == "__main__":
                                    "A grandfather clock resides on the eastern side of the hallway. You hear the "
                                    "familiar tick tock, tick tock of the pendulum swinging.",
                                    {
-                                   "search": "There is nothing else here.",
+                                   "search": "There is nothing here.",
                                    "touch": "You run your fingertips across the surface of the grandfather clock. Dust. "
                                    "Lots of dust.",
                                    "taste": "Taste the clock? Really?",
@@ -91,9 +93,10 @@ if __name__ == "__main__":
        R12 = room.Room("R12", "Bathroom",
                      "You enter a bathroom with marble floors and granite countertops. The bathroom is large... "
                      "almost too large. And bright... almost too bright. It reminds you of a museum gallery. You feel "
-                     "strangely small within it. Behind you, a door leads back to the hallway. You notice a faint smell...",
-                     "You enter a large bathroom with marble floors and granite countertops. Behind you, a door leads "
-                     "back to the hallway."
+                     "strangely small within it. You notice a faint smell. "
+                     "To your east is the hallway from which you entered.",
+                     "You enter a large bathroom with marble floors and granite countertops. "
+                     "To your east is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -177,10 +180,10 @@ if __name__ == "__main__":
        R13 = room.Room("R13", "Second Bedroom",
                      "You enter a small bedroom pleasantly decorated with flower wallpaper. Bright, morning "
                      "light pours in through a set of large windows on the opposite side of the room. An assortment of "
-                     "vases filled with flower arrangements are scattered around the room. Behind you, a door leads"
-                     "back to the hallway.",
-                     "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. Behind you, a door "
-                     "leads back to the hallway."
+                     "vases filled with flower arrangements are scattered around the room. "
+                     "To your west is the hallway from which you entered.",
+                     "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. "
+                     "To your west is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -213,11 +216,10 @@ if __name__ == "__main__":
        F01R13 = feature.Feature("F01R13", "Bed",
                                    "The queen-sized bed has been neatly made. Its thick white comforter looks like it "
                                    "would sink right in if you were to lie down on top of it. You find yourself "
-                                   "suddenly yearning for a nap. You suddenly notice a white washcloth sticking out from "
-                                   "underneath the corner of the bed.",
+                                   "suddenly yearning for a nap. You wonder if perhaps you should search the bed...",
                                    "A queen-sized bed with a thick white comforter sits in the center of the room.",
                                    {
-                                   "search": "The bed is empty.", # CHECK - Add washcloth?
+                                   "search": "You search the bed and notice a white washcloth.",
                                    "touch": "The comforter slowly sinks in a very satisfying manner when you press your "
                                    "hand into it. You make a mental note to get yourself one of these when you return "
                                    "home.",
@@ -257,7 +259,7 @@ if __name__ == "__main__":
        O06 = object.Object("O06", "Washcloth",
                             "The white washcloth looks like it might belong to a bathroom set. It's stained with the "
                             "unmistakable color of blood.",
-                            "The corner of a white washcloth sticks out from beneath the bed. It has a red stain on it.",
+                            "A white washcloth lies on the ground. It has a red stain on it.",
                             {
                                    "touch": "The washcloth is soft except for where the blood has started to dry.",
                                    "taste": "You lick the washcloth and notice the metallic taste of blood.",
@@ -357,10 +359,11 @@ if __name__ == "__main__":
        R14 = room.Room("R14", "Master Bedroom",
                      "You enter a large, dark bedroom with velvet curtains that are partially closed. In the dim light, "
                      "you can see that the floors, walls, and furniture are made from the same dark reddish wood. "
-                     "The room has a very old feel to it, like it was designed in the 17th century. "
-                     "A large canopy bed resides in the center of the room. A wooden door leads back to the hallway.",
-                     "You enter large, dim bedroom that looks like it was designed in the 17th century. A wooden door "
-                     "leads back to the hallway."
+                     "The room has a very old feel to it, like it was designed in the 17th century. A large canopy bed "
+                     "resides in the center of the room. "
+                     "To your west is the hallway from which you entered.",
+                     "You enter large, dim bedroom that looks like it was designed in the 17th century. "
+                     "To your west is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -407,7 +410,7 @@ if __name__ == "__main__":
 
        # Nightstand (F02R14)
        F02R14 = feature.Feature("F02R14", "Nightstand",
-                                   "The small nightstand is made of the same dark, red wood as the rest of the  "
+                                   "The small nightstand is made of the same dark, red wood as the rest of the "
                                    "furniture in the room, leading you to believe that they must all be part of the "
                                    "same set, likely passed down through several generations. Its legs and borders are "
                                    "feature intricately carved designs of leaves and vines. There is a pile of papers "
@@ -416,8 +419,8 @@ if __name__ == "__main__":
                                    "sits right next to the bed.",
                                    {
                                    "search": "You search the nightstand. You find nothing interesting among the assortment "
-                                   "of items lying on top of it, but, as you comb through a pile of papers, one "
-                                   "letter sticks out to you.",
+                                   "of items lying on top of it, but, as you comb through a pile of papers, a neatly "
+                                   "folded letter sticks out to you.",
                                    "touch": "The dark red wood is smooth and clearly polished.",
                                    "taste": "The nightstand tastes like wood polish. It is also tastes like dust.",
                                    "smell": "You smell nothing.",
@@ -428,10 +431,10 @@ if __name__ == "__main__":
        sys.add_feature(F02R14)
 
        # Letter (O09)
-       O09 = object.Object("O12", "Letter",
+       O09 = object.Object("O09", "Letter",
                             "The letter is neatly folded and looks otherwise unremarkable at first glance. Maybe you "
                             "should read it.",
-                            "A neatly folded letter sits in the nightstand drawer.", # CHECK
+                            "There is a neatly folded letter that looks otherwise unremarkable at first glance.",
                             {
                                    "touch": "It feels like paper.",
                                    "taste": "You lick the letter and taste, well, nothing aside from maybe a little "
@@ -459,10 +462,10 @@ if __name__ == "__main__":
        R15 = room.Room("R15", "Study",
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
                      "Several leather chairs are positioned in various parts of the room, presumably to accomodate "
-                     "visitors. A large paned window provides a view to the outside. Behind you, a door leads back to "
-                     "the hallway.",
+                     "visitors. A large paned window provides a view to the outside. "
+                     "To your east is the hallway from which you entered.",
                      "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
-                     "Behind you, a door leads back to the hallway."
+                     "To your east is the hallway from which you entered."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -499,12 +502,12 @@ if __name__ == "__main__":
                                    "is wrapped over Adam's shoulder in a loving embrace, but the expression on Adam's "
                                    "face is hard to read. You observe nothing else of note on the desk. You notice a "
                                    "desk drawer that can be opened, although it appears to require a key.",
-                                   "In front of the window, there's a large desk with several books and papers on top "
-                                   "of it.",
+                                   "In front of the window, there's a large desk with several books and a few papers "
+                                   "on top of it.",
                                    {
                                    "search": "You rummage through the papers and books on top of the desk. There's a "
                                    "book on Greek history and an electric bill, but nothing else stands out to you."
-                                   "You notice that the ashtray hasn't yet been emptied. You notice a desk drawer "
+                                   "You notice that the ashtray hasn't yet been emptied. You also notice a desk drawer "
                                    "that can be opened, although it appears to require a key.",
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
