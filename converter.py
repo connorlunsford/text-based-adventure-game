@@ -57,15 +57,27 @@ def room_from_json(json_room):
 
 def obj_to_json(object_obj: object.Object):
     """takes an Object object and converts it to a json object"""
-    # store each of object_obj's atttributes in a dict
-    object_dict = {
-        'id': object_obj.get_id(),
-        'name': object_obj.get_name(),
-        'desc': object_obj.get_desc(),
-        'sdesc': object_obj.get_sdesc(),
-        'interactions': object_obj.get_interactions(),
-        'hidden': object_obj.get_hidden()
-    }
+    if hasattr(object_obj, "_condition"):
+        # store each of object_obj's atttributes in a dict
+        object_dict = {
+            'id': object_obj.get_id(),
+            'name': object_obj.get_name(),
+            'desc': object_obj.get_desc(),
+            'sdesc': object_obj.get_sdesc(),
+            'interactions': object_obj.get_interactions(),
+            'hidden': object_obj.get_hidden(),
+            'condition': object_obj.get_condition()
+        }
+    else:
+        # store each of object_obj's atttributes in a dict
+        object_dict = {
+            'id': object_obj.get_id(),
+            'name': object_obj.get_name(),
+            'desc': object_obj.get_desc(),
+            'sdesc': object_obj.get_sdesc(),
+            'interactions': object_obj.get_interactions(),
+            'hidden': object_obj.get_hidden()
+        }
 
     # converts the dict to a json file and returns it
     return json.dumps(object_dict)
@@ -85,6 +97,12 @@ def obj_from_json(json_object):
 
     # creates a new Object object with the specified attributes
     new_object = object.Object(id, name, desc, sdesc, interactions, hidden)
+
+    try:
+        if object_dict['condition'] is not None:
+            new_object.add_condition(object_dict.get('condition'))
+    except KeyError:
+        pass
 
     # returns the new_object object as an Object object
     return new_object

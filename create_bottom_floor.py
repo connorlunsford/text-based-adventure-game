@@ -383,7 +383,8 @@ if __name__ == '__main__':
                                                  'of the wood. As you pull the bookcase easily swings away revealing an entrance to '
                                                  'a secret room behind it.',
                                      'locked': 'You attempt to grab the bookcase to pull on it, but you cannot get a good '
-                                               'hold on the wood around it.'
+                                               'hold on the wood around it.',
+                                     'room_ids': [['east','R04']]
                                  },
                                  'use': {
                                      'F03R03': 'You press the button, you hear a satisfying click as the bookshelf shifts '
@@ -391,6 +392,8 @@ if __name__ == '__main__':
                                  }
                              },
                              False)
+
+    F01R03.add_condition(False)
 
     sys.add_feature(F01R03)
 
@@ -589,6 +592,8 @@ if __name__ == '__main__':
                              },
                              False)
 
+    F01R04.add_condition(True)
+
     sys.add_feature(F01R04)
 
     # F02R04
@@ -602,7 +607,7 @@ if __name__ == '__main__':
                              {
                                  'search': 'You sift through the ashes of the fireplace, searching for something. You '
                                            'almost give up '
-                                           'before your dirty fingers grasp something. What appears to be a key.',
+                                           'before your dirty fingers grasp something. What appears to be a golden key.',
                                  'touch': 'You press your hand into the ash, it appears to be cold as if it has not been '
                                           'used in a '
                                           'while',
@@ -624,17 +629,24 @@ if __name__ == '__main__':
                              'The safe is made of strong looking steel.',
                              'A safe sits on the wall underneath the painting that has been swung open',
                              {
+                                 'use': {
+                                     'O04': 'You take the code written on the envelope and type it into the keypad on the '
+                                            'safe. It beeps three times and the small red light on the front turns green.'
+                                 },
                                  'open': {
                                      'locked': 'You attempt to open the safe. It is sealed shut, you clearly need to find '
                                                'a code in order to unlock it.',
                                      'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents'
+                                                 ' '
                                                  "of the safe underneath it; several thick black rubber bands with '$10,000 "
                                                  "written on them in white writing, and a piece of high quality paper with "
                                                  "'Norman Bates's Will' written on it in thick bold lettering.",
-                                     'ids': ['O11'],
+                                     'obj_ids': ['O11'],
                                  },
                              },
                              True)
+
+    F03R04.add_condition(False)
 
     sys.add_feature(F03R04)
 
@@ -672,7 +684,7 @@ if __name__ == '__main__':
                         },
                         True)
 
-    O11.add_condition(True)
+    O11.add_condition(False)
 
     sys.add_obj(O11)
 
@@ -705,8 +717,8 @@ if __name__ == '__main__':
     })
 
     R05.set_connections({
-        'west': 'R02',  # the dining room
-        'east': 'R04',  # the library
+        'west': 'R02',  # the kitchen
+        'east': 'R03',  # the library
     })
 
     sys.add_room(R05)

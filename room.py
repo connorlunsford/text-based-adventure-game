@@ -199,7 +199,7 @@ class Room:
         this method raises an exception"""
         if direction not in ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest']:
             raise IDAlreadyExists
-        if connection not in self._connections:
+        if direction not in self._connections:
             self._connections[direction] = connection
         else:
             raise IDAlreadyExists

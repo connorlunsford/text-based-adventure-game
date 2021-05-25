@@ -8,7 +8,7 @@
 {"open": ["open"]}, 
 {"search": ["search", "scavenge","probe","rummage","seek"]},
 {"touch": ["touch","feel","hold"]},
-{"taste": ["taste","lick"]},
+{"taste": ["taste","lick","drink","eat"]},
 {"smell": ["smell","sniff"]},
 {"listen": ["listen","hear"]},
 {"read": ["read","peruse"]},
