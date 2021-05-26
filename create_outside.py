@@ -171,12 +171,12 @@ if __name__ == "__main__":
                     "As you enter the garden you have to stop to take it all in. 'Wow' you think, 'this garden is "
                     "amazing!' A maze of flowers and plants lies before you, all immaculately manicured and cared for.  "
                     "It seems every color of the rainbow is represented through beautiful flowers. A particularly beautiful "
-                    "purple flower in the far corner catches your eye. As you start to head that way to get a better look "
-                    "you spot something shiny down another path. 'Well that seems out of place' you think to yourself.\n"
+                    "purple flower in the far corner catches your eye. As you start to head that way to get a better look, "
+                    "you spot something glossy down another path. 'Well that seems out of place' you think to yourself.\n"
                     "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. The gateway "
                     "to the west will return you to the patio.\n"
                     "There's so much to see you don't know which way to go first. ",
-                    "You enter an immaculately manicured garden. Beautiful purple flowers and something shiny catch your eye. "
+                    "You enter an immaculately manicured garden. Beautiful purple flowers and something glossy catch your eye. "
                     "To the north is a greenhouse and a shed is to the northeast. Going west will return you to the patio. "
                     )
     
@@ -190,20 +190,20 @@ if __name__ == "__main__":
                         ])
 
     R07.set_objects(["O10",  # drawing/page from book about wolfsbane
-                    "O13",  # FBI badge
+                    "O12",  # FBI badge
                     ])
     
     # Set the interactions
     R07.set_interactions({
             "search": "You wander around the garden slowly, taking it all in. You see what appears to be a crumpled "
                 "paper on one path, perhaps a page torn from a book? Oh wait, what's that? The sun glimmers "
-                "off a shiny object down another path. 'Well that seems out of place' you think.",
+                "off a glossy item down another path. 'Well that seems out of place' you think.",
             "touch": "You delicately touch some of the flowers as you pass. Ouch! A thorn. ",
             "taste": "So many options! Do you really think eating random plants and flowers will help you?",
             "smell": "Ah, such a wonderful fragrance from all of the flowers. But wait, is that a trace of a woman's "
                 "perfume you smell? Someone else has been here recently.",
-            "listen": "The sound of a light breeze blowng through the trees that surround the garden is so relaxing. "
-                "You could spend hours in here, it's so peaceful. That is, if you didn't have a murder to solve."
+            "listen": "The sound of a light breeze blowing through the trees that surround the garden is so relaxing. "
+                "You could spend hours in here; it's so peaceful. That is, if you didn't have a murder to solve."
             })
 
     sys.add_room(R07)
@@ -245,11 +245,11 @@ if __name__ == "__main__":
 
     sys.add_obj(O10)
 
-    # FBI badge (O13)
-    O13 = object.Object("O13", "FBI badge",
-                        "The gold shiny object is partially buried in the dirt, like someone may have stepped on it. "
+    # FBI badge (O12)
+    O12 = object.Object("O12", "FBI badge",
+                        "The glossy gold item is partially buried in the dirt, like someone may have stepped on it. "
                         "You wipe the dirt away and see 'F...B...I'. It's an FBI badge! Where did that come from?! ",
-                        "A shiny object is partially buried in the dirt. It's an FBI badge'.",
+                        "A glossy item is partially buried in the dirt. It's an FBI badge.",
                         {
                                 "touch": "It's hard metal. Probably the real thing.",
                                 "taste": "It tastes like metal...and dirt.",
@@ -259,7 +259,7 @@ if __name__ == "__main__":
                         },
                         True)
 
-    sys.add_obj(O13)    
+    sys.add_obj(O12)    
 
     # Garage (R08)
     R08 = room.Room("R08", "Garage",
