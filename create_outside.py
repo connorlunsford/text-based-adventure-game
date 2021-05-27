@@ -19,9 +19,8 @@ if __name__ == "__main__":
                     "It sparkles and shimmers and looks so inviting. Maybe when all of this is over "
                     "you can go for a nice swim. \n"
                     "To the west are french doors that appear to go into the living room. The doors are locked. "
-                    "You can get to the garage via the path to the northwest."
-                    "To the north is a pool house. It doesn't look like it's currently being used. "
-                    "Its doors are also locked. \n"
+                    "You can get to the garage via the path to the northwest. "
+                    "To the north is a pool house. It doesn't look like it's currently being used and the doors are also locked. \n"
                     "To the east is the garden. It looks rather beatiful from here. There seem to be some outbuildings "
                     "on the far edges of the garden, but you can't quite tell from here what they are. "
                     "There are some muddy footprints coming out of the garden, maybe they deserve a closer look. \n"
@@ -64,10 +63,9 @@ if __name__ == "__main__":
 
     # Muddy Footprints (F01R06)
     F01R06 = feature.Feature("F01R06", "Muddy Footprints",
-                                "You follow the muddy footprints. The prints are close together so it doesn't appear "
-                                "this person was in any hurry. You reach the end of the footprints and find one of the "
-                                "other guests. You think his name is Sam. He's acting shady, as usual. You wonder what "
-                                "he's doing lurking around out here. ",
+                                "You follow the path of the muddy footprints. The prints are close together so it doesn't appear "
+                                "this person was in any hurry. You reach the end of the footprints and they've led you directly to Sam. "
+                                "You wonder what he's doing lurking around out here and what business he had in the garden.",
                                 "The muddy footprints lead to Sam, another retreat guest. He's acting a bit shady and is "
                                 "avoiding eye contact.",
                                 {
@@ -77,7 +75,7 @@ if __name__ == "__main__":
                                 "smell": "Smells...like mud.",
                                 "listen": "What do you really expect to hear from footprints?"
                                 },
-                                False)
+                                True)
 
     sys.add_feature(F01R06)
 
@@ -112,7 +110,7 @@ if __name__ == "__main__":
                         "'What is that?' you try to figure out. Gloves perhaps? Well, he is acting kind of guilty. "
                         "Of what though, you're not quite sure. He's been acting like that since you got here. "
                         "You might want to keep an eye on him.",
-                        "Sam Smith is acting shifty, as usual. It looks like he has some gloves in his pocket.",
+                        "Sam Smith is here and acting shifty, as usual. It looks like he has some gloves in his pocket.",
                         {
                             "ask": {
                                 'P01': "You question Sam about Alice. He responds: 'Is that the broad, I mean lady, that lives here? "
@@ -331,10 +329,10 @@ if __name__ == "__main__":
     F01R08 = feature.Feature("F01R08", "storage closet",
                                 "Ah, so this is where they hide all the junk. It's the complete opposite of the orderly "
                                 "garage. Shelves full of old and musty smelling boxes. Piles of random things covering "
-                                "the floor. Complete disarray. 'How can they even find anything in here' you wonder. ",
+                                "the floor. Complete disarray. 'How can they even find anything in here?' you wonder. ",
                                 "A closet full of what appears to be old, forgotten junk.",
                                 {
-                                "search": " Seems like your first impression was right, just a bunch of junk. But just "
+                                "search": "Seems like your first impression was right, just a bunch of junk. But just "
                                 "as you're about to close the door you notice a nice, shiny candlestick tucked between "
                                 "some of the boxes on the shelf. 'Well that seems out of place' you muse.",
                                 "touch": "Dust covers almost every surface.",
@@ -356,7 +354,7 @@ if __name__ == "__main__":
                                 "search": "The doors are locked but you peer through the windows. Either it's been "
                                 "restored lately or it's been very well taken care of. Nothing seems to be out of "
                                 "place inside. It may have a slight oil leak as there's a stain underneath on "
-                                "the garage floor",
+                                "the garage floor.",
                                 "touch": "The hood is slightly warm. Someone must have driven it recently.",
                                 "taste": "I'm not sure why, but you lick the van. There's a metallic tang like you might "
                                 "expect, but nothing else.",
