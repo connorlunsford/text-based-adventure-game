@@ -993,8 +993,8 @@ class System:
             "door. When no one answers, you try the doorknob. To your "
             "surprise, it's unlocked. ",
             "You open the door and enter...",
-            "You quickly realize this vacation is not going to be as calming as you had hoped. A dead body is lying in the "
-            "floor. You recognized it as your host, Norman Bates. Six people surround him, in various states of shock and "
+            "You quickly realize this vacation is not going to be as calming as you had hoped. A dead body is lying on the "
+            "floor. You recognize it as your host, Norman Bates. Six people surround him, in various states of shock and "
             "despair. "
             "The next few minutes are a blur, but you realize that, as the only person in the house who could not be the "
             "killer, you are the only one qualified to find out who is.",
