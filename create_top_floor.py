@@ -93,20 +93,22 @@ if __name__ == "__main__":
        F03R11 = feature.Feature("F03R11", "Master Bedroom Door",
                                 "The large door to the master bedroom stands imposingly. There is a massive golden lock on "
                                 "the door, you could try to open it to see if it is locked.",
-                                "The door to the master bedroom has a massive golden lock just above the handle",
+                                "The door to the master bedroom has a massive golden lock just above the handle.",
                                 {
                                     "touch": "The door is made of wood",
                                     "taste": "You lick the door, tastes of wood and paint",
                                     "smell": "You smell nothing",
                                     "listen": "You hear nothing. Nobody appears to be in the room.",
-                                    'use': {
-                                        'O03': 'You insert the large golden key into the lock. It easily turns with a '
-                                               'satisfying click, the door appears to be unlocked now'
+                                    "use": {
+                                        "O03": "You insert the large golden key into the lock. It easily turns with a "
+                                               "satisfying click. The door appears to be unlocked now."
                                     },
-                                    'open': {
-                                        'locked': 'The door appears to be locked from the other side with a heavy bolt.',
-                                        'unlocked': 'The door easily swings open, revealing the master bedroom',
-                                        'room_ids': [['southeast','R14']]
+                                    "open": {
+                                        "locked": "The door appears to be locked from the other side with a heavy "
+                                        "bolt. (Hint: If you've found the key to this room, try 'use [key] on [room]' "
+                                        "in order to unlock it)",
+                                        "unlocked": "The door easily swings open, revealing the master bedroom.",
+                                        "room_ids": [["southeast","R14"]]
                                     },
                                 },
                                 False)
@@ -540,14 +542,16 @@ if __name__ == "__main__":
                                    "smell": "You smell cigar smoke.",
                                    "listen": "You hear nothing.",
                                    "open": {
-                                       'unlocked': "You open the drawer and rummage through it. At the bottom of the drawer, "
-                                   "you notice an envelope.",
-                                       'locked': "You attempt to open the desk drawer, it is locked tight",
-                                       'obj_ids': ['O04']
+                                       "unlocked": "You open the drawer and rummage through it. At the bottom of the "
+                                   "drawer, you notice an envelope.",
+                                       "locked": "You attempt to open the desk drawer. It is locked. "
+                                       "(Hint: If you've found the key to this drawer, try 'use [key] on [object]' "
+                                       "in order to unlock it)",
+                                       "obj_ids": ["O04"]
                                    },
                                    "use": {
                                        "O02": "You take the small rusty key out of your pocket and insert it into the lock "
-                                              "on the drawer. It fits perfectly. The drawer appears to be unlocked now",
+                                              "on the drawer. It fits perfectly. The drawer appears to be unlocked now.",
                                    },
                                    },
                                    False)
