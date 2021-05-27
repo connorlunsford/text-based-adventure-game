@@ -85,7 +85,7 @@ if __name__ == "__main__":
     F02R06 = feature.Feature("F02R06", "Gloves",
                                 "You can't be sure, but they look like they might be gardening gloves. 'Why "
                                 "would Sam have gardening gloves?' you wonder. 'What is he up to?' You'll have to "
-                                "ask him about them if you want any answers."
+                                "ask him about them if you want any answers.",
                                 "They appear to be gardening gloves in Sam's pocket.",
                                 {
                                 "search": "You look the gloves over as best you can. There doesn't appear to "
