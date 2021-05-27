@@ -177,7 +177,8 @@ if __name__ == "__main__":
                     "amazing!' A maze of flowers and plants lies before you, all immaculately manicured and cared for. "
                     "It seems every color of the rainbow is represented through beautiful flowers. A particularly beautiful "
                     "purple flower in the far corner catches your eye. As you start to head that way to get a better look, "
-                    "you spot something metallic down another path as it shimmers in the sunlight. 'Well that seems out of place'" "you think to yourself.\n"
+                    "you spot something metallic down another path as it shimmers in the sunlight. 'Well that seems out of place' "
+                    "you think to yourself.\n"
                     "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. The gateway "
                     "to the west will return you to the patio.\n"
                     "There's so much to see you don't know which way to go first.",
@@ -202,8 +203,7 @@ if __name__ == "__main__":
     # Set the interactions
     R07.set_interactions({
             "search": "You wander around the garden slowly, taking it all in. You see what appears to be a crumpled "
-                "paper on one path, perhaps a page torn from a book? Oh wait, what's that? The sun shimmers "
-                "off a metallic item down another path. 'Well that seems out of place' you think.",
+                "paper on one path, perhaps a page torn from a book?",
             "touch": "You delicately touch some of the flowers as you pass. Ouch! A thorn.",
             "taste": "So many options! Do you really think eating random plants and flowers will help you?",
             "smell": "Aah, such a wonderful fragrance from all of the flowers. But wait, is that a trace of a woman's "
@@ -219,7 +219,7 @@ if __name__ == "__main__":
                                 "The leaves are dark green with sharp, almost tooth-like points around the perimenter. "
                                 "The shape of the deep purple flowers remind you of a medieval helmet, domed across "
                                 "the top longer in the back.",
-                                "The plant has dark green leaves and deep purple, helmet-like flowers. ",
+                                "The plant with the beatiful purple flowers has dark green leaves and the flowers are helmet shaped. ",
                                 {
                                 "search": "This plant seems to be separate from the rest. But what's that there? There's some "
                                 "disturbed soil nearby and there's a sunken spot. Perhaps something was recently dug up..."
@@ -231,7 +231,7 @@ if __name__ == "__main__":
                                 "listen": "Listen to a plant? Really? People talk to plants but it doesn't usually work "
                                 "the other way around."
                                 },
-                                False)
+                                True)
 
     sys.add_feature(F01R07)
 
@@ -240,7 +240,7 @@ if __name__ == "__main__":
                                 "The soil has been recently turned and it's slightly sunken. Almost as if something "
                                 "was removed and the soil fell in to fill the void. You'll have to remember to ask the "
                                 "gardener about it.",
-                                "A slightly sunken, disturbed area of soil.",
+                                "A slightly sunken area of disturbed soil.",
                                 {
                                 "search": "You try to dig up the spot to see if there's anything there, but all you "
                                 "have to work with is your hands. You're rewarded with a few earthworms and fresh "
@@ -384,8 +384,9 @@ if __name__ == "__main__":
     # Gardener’s shed (R09)
     R09 = room.Room("R09", "Gardener’s shed",
                     "You enter the shed. It seems quite orderly for a tool shed. The walls are made up of pegboard "
-                    "and have labeled spots for various tools of all sorts. You've never seen such an organized shed.",
-                    "The shed is well organized with a wide array of tools."
+                    "and have labeled spots for various tools of all sorts. You've never seen such an organized shed. "
+                    "To the west is the door to return to the garden. ",
+                    "The shed is well organized with a wide array of tools. The garden is through the west door."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
@@ -558,10 +559,11 @@ if __name__ == "__main__":
 
     # Greenhouse (R10)
     R10 = room.Room("R10", "Greenhouse",
-                    "You enter a lovely greenhouse, it's quite warm in here. The tables are full of "
+                    "You are in a lovely greenhouse, it's quite warm in here. The tables are full of "
                     "all sorts of plants and flowers, every color of the rainbow seems to be represented. "
-                    "This must be where Al starts his new plants.",
-                    "You enter a greenhouse with all sorts of plants and flowers on display."
+                    "This must be where Al starts his new plants. To the south is the door to the garden.",
+                    "The greenhouse has all sorts of plants and flowers on display. The door to the "
+                    "south leads back to the garden."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
@@ -612,7 +614,7 @@ if __name__ == "__main__":
     F02R10 = feature.Feature("F02R10", "bags of potting soil",
                                 "The bags look like they were once stacked neatly but some have been pulled out of the "
                                 "middle of the stack and messed up the orderly pile.",
-                                "Some bags have been pulled out of the middle of the pile.",
+                                "Some bags of potting soil have been pulled out of the middle of the pile.",
                                 {
                                 "search": "You take a closer look at where the bags have been removed and see a pair "
                                     "of gardening shears stuck down in the middle of the pile.",
