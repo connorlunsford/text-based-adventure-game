@@ -39,17 +39,17 @@ if __name__ == '__main__':
 
     # creates the grand foyer
     R01 = room.Room('R01', 'Grand Foyer',
-                    'The large empty expanse of the Grand Foyer stretches out in front of you. Impressively clean '
-                    'marble floors, dark stained wood-paneled walls, and a large double sided curved staircase make '
-                    'up the architecture of this massive entrance room. The walls are decorated in several paintings, '
+                    'The large empty expanse of the grand foyer stretches out in front of you. Impressively clean '
+                    'marble floors, dark stained wood panel walls, and a large double-sided curved staircase make '
+                    'up the architecture of this massive entrance room. The walls are decorated with several paintings, '
                     'some of which look to be quite expensive. \n'
-                    'To the south is the entrance to the house, you know you cannot leave until the murder has been '
+                    'To the south is the entrance to the house. You know you cannot leave until the murder has been '
                     'solved.\n'
-                    'To the west through an open arch appears to be the entrance to a gleaming white kitchen.\n'
-                    'To the east through a massive set of open double doors seems to be a Library of sorts.\n'
-                    'To the north is the upstairs hall of the house',
-                    'The Grand Foyer stretches out in front of you. To the west is the kitchen, to the east is the '
-                    'library, and going upstairs to the north would take you to the upstairs hall')
+                    'To the west, through an open archway, appears to be the entrance to a gleaming white kitchen.\n'
+                    'To the east seems to be a library of sort.\n'
+                    'To the north is the upstairs hallway.',
+                    'The grand foyer stretches out in front of you. To the west is the kitchen, to the east is the '
+                    'library, and going upstairs to the north will take you to the upstairs hallway.')
     # sets the connections for the room
     R01.set_connections({
         'west': 'R02',  # kitchen
@@ -68,17 +68,17 @@ if __name__ == '__main__':
     # no people so no need to set the people list
     # sets the interactions
     R01.set_interactions({
-        'search': "You walk around the room inspecting every nook and cranny, as far as you can tell, "
-                  "the only things in the room are the victim's body and some gaudy old furniture",
-        'touch': 'You run your hands along the ground, careful to walk around the puddle of blood, it feels cold '
+        'search': "You walk around the room, inspecting every nook and cranny. As far as you can tell, "
+                  "the only things in the room are the victim's body, an end table, a rotary phone,  and some gaudy old furniture.",
+        'touch': 'You run your hands along the ground, careful to avoid the puddle of blood. It feels cool '
                  'to the touch. Placing your hands upon the wood paneling of the wall reveals it is sturdy dark wood. '
                  'This building was clearly quite expensive to construct.',
-        'taste': 'You get on all fours and lean down to touch the marble to your tongue. It tastes similar to some '
-                 'kind of floor polish or cleaning solution.',
-        'smell': 'For the first time since entering the room you notice the smell of the blood. It smells acrid '
+        'taste': 'You get on all fours and lean down to touch the marble with your tongue. It tastes similar to some '
+                 'kind of floor polish.',
+        'smell': 'For the first time since entering the room, you notice the smell of the blood. It smells acrid '
                  'and metallic. You recoil and turn your nose out of surprise.',
         'listen': 'You can hear the creaks and groans of an old house. You sit in silence for a minute before you '
-                  'hear someone speaking in the library. You cannot make out what they are saying',
+                  'hear someone speaking in the library. You cannot make out what they are saying.',
     })
 
     sys.add_room(R01)
@@ -86,9 +86,9 @@ if __name__ == '__main__':
     # F01R01 the victims body
     F01R01 = feature.Feature('F01R01', "Victim's Body",
                              'You turn the body over for a minute, careful not to touch the blood. '
-                             'Examining his face closely you can tell he is an older man in his 50s '
-                             'with graying hair and wrinkles. In life he may have been quite handsome, '
-                             'but the shock of death has left him pale white with a purple tinge around his lips. ',
+                             'Examining his face closely, you can tell he is an older man in his 50s '
+                             'with graying hair and wrinkles. In life, he may have been quite handsome, '
+                             'but the shock of death has left him pale with a purple tinge around his lips. ',
                              "The victim's body lays face down on the floor in the middle of the room. He is wearing "
                              "a green sweater with gray slacks. You can see a little dirt around the collar of his "
                              "sweater. Judging by the large gash on the back of his head, "
@@ -96,15 +96,15 @@ if __name__ == '__main__':
                              "him, slowly congealing on the cold floor.",
                              {
                                  'search': 'You pat the body down, searching his pockets for any belongings he may '
-                                           'have been carrying. You quickly discover in his front left pocket is a '
+                                           'have been carrying. You quickly discover that in his front left pocket is a '
                                            'rusty metal key.',
-                                 'touch': "You place your hands on the victim's neck. He is still slightly warm. "
+                                 'touch': "You place your fingers on the victim's neck. He is still slightly warm. "
                                           "You are unable to locate a pulse.",
                                  'taste': "You place two fingers in the pool of blood around the victim. Touching "
-                                          "them to your tongue immediately confirms this is blood...you may want "
+                                          "them to your tongue immediately confirms that this is blood. You may want "
                                           "to get tested when you get home.",
-                                 'smell': 'Smelling the body reveals it is coated in a deep musky cologne. Although, '
-                                          'you can detect hints of another less powerful smell, one that is more '
+                                 'smell': 'Smelling the body reveals the overwhelming scent of a deep musky cologne. Although, '
+                                          'you can detect hints of another less powerful smell: one that is more '
                                           'flowery and delicate.',
                                  'listen': "You place your ear to the victim's chest. You can hear no heartbeat.",
                              },
@@ -115,17 +115,17 @@ if __name__ == '__main__':
     # F02R01 the end table
     F02R01 = feature.Feature('F02R01', "End Table",
                              'Examining the end table closer reveals nothing out of the ordinary at first. You '
-                             'open the window to get a closer look, which allows a beam of light to enter the room. '
+                             'open the window, which allows a beam of light to enter the room, to get a closer look. '
                              'The light reveals a thin layer of dust on the table, almost imperceptible. Next to the '
                              'candlestick is a ring of clean table where a similar object appears to have been removed.',
-                             'A small end table sits in the corner of the room near the entrance to the kitchen, '
-                             'a single candlestick sits atop it.',
+                             'A small end table sits in the corner of the room near the entrance to the kitchen. '
+                             'A single candlestick sits on top of it.',
                              {
-                                 'touch': 'You run a finger on the top of the end table, you feel a little bit of '
+                                 'touch': 'You run a finger along the top of the end table. You feel a little bit of '
                                           'dust between your fingers.',
                                  'taste': 'You bend down and run your tongue along the table. It tastes as if it has '
                                           'not been cleaned in a little while.',
-                                 'smell': 'The table smells dusty, you recoil as you begin to sneeze.',
+                                 'smell': 'The table smells dusty. You recoil as you begin to sneeze.',
                              },
                              False)
 
@@ -135,17 +135,17 @@ if __name__ == '__main__':
 
     F03R01 = feature.Feature('F03R01', "Rotary Phone",
                              'You examine the phone closely. It is an older model of phone, maybe from the 50s or 60s. '
-                             'It is a shiny black, though it shows its age through the dulling of the gloss on its surface.',
+                             'It is a shiny black, although its age shows through the dulling of the gloss on its surface.',
                              'A rotary phone sits on a table near the front door of the house.',
                              {
-                                 'touch': 'You touch the handle of the earpiece. A layer of dust has settled on it, clearly '
+                                 'touch': 'You touch the handle of the earpiece. A layer of dust has settled on it. Clearly '
                                           'the victim has not called anyone in quite a while.',
                                  'taste': 'You raise the earpiece and run your tongue over the end you talk into. You '
-                                          'realize that doing this may seem a bit weird to others',
-                                 'smell': 'The phone has no distinct smell',
-                                 'listen': 'You bring the earpiece to your ear and listen for a second. A harsh dialtone '
-                                           'rings in your ear as you realize you may need to input a number into the phone.'
-                                           '(Try the "call" command to call the police and end the game).'
+                                          'realize that doing this may seem a bit weird to others.',
+                                 'smell': 'The phone has no distinct smell.',
+                                 'listen': 'You bring the earpiece to your ear and listen for a second. A harsh dial tone '
+                                           'rings in your ear as you realize that you may need to input a number into the phone. '
+                                           '(Hint: Try the "call" command to call the police and end the game)'
                              },
                              False)
 
@@ -153,15 +153,15 @@ if __name__ == '__main__':
 
     # O02 the rusty key
 
-    O02 = object.Object('O02', 'Rusty Key',
-                        'The key is quite old, examining it in your hands reveals it is made of some sort of metal. '
+    O02 = object.Object('O02', 'rusty key',
+                        'The key is quite old. Examining it in your hands reveals that it is made of some sort of metal. '
                         'Nearly the entire key has been coated in rust. It is smaller than a normal door key.',
-                        'A rusty key sits on the ground',
+                        'A rusty key sits on the ground.',
                         {
-                            'touch': 'The key is old and rough, the years have been unkind to it as rust has eaten '
+                            'touch': 'The key is old and rough. The years have been unkind to it as rust has eaten '
                                      'through the top layer of metal.',
-                            'taste': 'The key feels rough on your tongue and feels metallic, the only question '
-                                     'running through your mind is "Am I up to date on my Tetanus shot?"',
+                            'taste': 'The key feels rough and tastes metallic on your tongue. The only question '
+                                     'running through your mind is, "Am I up to date on my tetanus shot?"',
                             'smell': 'The key lacks any distinct smell.',
                         },
                         True)
