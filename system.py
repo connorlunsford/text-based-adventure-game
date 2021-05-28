@@ -179,6 +179,9 @@ class System:
                     return True
                 except interactable.KeyDoesNotExist:
                     print("'Sorry, I don't know anything about that.'")
+                    print("Hint: If you wish to ask this person about an object that is in the game, "
+                    "please make sure that the object is in your inventory first. You can place an "
+                    "object in your inventory by using the 'take' command.")
                     return False
             elif obj_id in self._features:
                 try:

@@ -210,7 +210,7 @@ if __name__ == "__main__":
                      "light pours in through a set of large windows on the opposite side of the room. An assortment of "
                      "vases filled with flower arrangements are scattered around the room. "
                      "To your east is the hallway from which you entered.",
-                     "You enter a sunlight-lit bedroom pleasantly decorated with flower wallpaper. "
+                     "You enter a sunlit bedroom pleasantly decorated with flower wallpaper. "
                      "To your east is the hallway from which you entered."
                      )
        
@@ -265,7 +265,7 @@ if __name__ == "__main__":
                                    "and base. You wonder if it might be an antique. A framed photograph of Norman "
                                    "and Alice sits right at the center of the top of the vanity. They both look very "
                                    "happy. Beside the photograph, a jewelry box filled with all kinds of jewelry--"
-                                   "from earrings, to necklances, to bracelets--is open. You notice that all of the "
+                                   "from earrings, to necklaces, to bracelets--is open. You notice that all of the "
                                    "jewelry is gold.",
                                    "A walnut vanity sits on one side of the room, near where Alice is standing.",
                                    {
@@ -276,15 +276,14 @@ if __name__ == "__main__":
                                    "taste": "You lick the top of the vanity, learning nothing of value. Alice stops "
                                    "her crying for just long enough to give you a strange look.",
                                    "smell": "You smell nothing.",
-                                   "listen": "You hear nothing.",
-                                   "open": "The vanity cannot be opened."
+                                   "listen": "You hear nothing."
                                    },
                                    False)
 
        sys.add_feature(F02R13)
 
        # Washcloth (O06)
-       O06 = object.Object("O06", "Washcloth",
+       O06 = object.Object("O06", "washcloth",
                             "The white washcloth looks like it might belong to a bathroom set. It's stained with the "
                             "unmistakable color of blood.",
                             "A white washcloth lies on the ground. It has a red stain on it.",
@@ -309,13 +308,13 @@ if __name__ == "__main__":
                                    "ask": {
                                    "P02": "You ask Alice about Adam. "
                                           "Alice sighs softly before answering. 'Norman and Adam's relationship was... "
-                                          "complicated, to say the least. They had your typical father and son "
-                                          "disagreements about who should inherit the house and Norman's business. "
-                                          "Norman wanted Adam to stay here and take over the business, but Adam wanted  "
-                                          "to forge a new path on his own. Norman loved Adam dearly, though, and I "
-                                          "believe Adam loved his father too.",
+                                          "complicated, to say the least. They had your typical disagreements "
+                                          "about who should inherit the house and Norman's business. "
+                                          "Norman wanted Adam to stay here and take over the business, but Adam wanted "
+                                          "to forge a new path on his own. Norman loved Adam dearly though, and I "
+                                          "believe that deep down Adam loved his father too.",
                                    "P03": "You ask Alice about Sam. "
-                                          "Alice waves her hand dismissively. 'He's a little shady looking, if you ask "
+                                          "Alice waves her hand dismissively. 'He's a little shady, if you ask "
                                           "me, but, quite frankly, I haven't had much time to get to know the retreat "
                                           "participants after what happened.'",
                                    "P04": "You ask Alice about Al. "
@@ -327,10 +326,10 @@ if __name__ == "__main__":
                                           "participant to me.'",
                                    "P06": "You ask Alice about Ava. "
                                           "'Ava Scarlett is her name, right?' Alice asks. 'The woman straight up "
-                                          "glared at me like I had killed dog when she arrived here. Gave me a really "
+                                          "glared at me like I had killed her dog when she arrived here. Gave me a really "
                                           "bad vibe.'",
                                    "F01R01": "You ask Alice about Norman. " 
-                                          "At the very mention of Norman, Alice begins to sob heavily again. She "
+                                          "At the very mention of him, Alice begins to sob heavily. She "
                                           "waves you away, indicating that she wants to be left alone.",
                                    "O01": "You show the candlestick to Alice. "
                                           "Alice looks at the candlestick with a vague disinterest. 'That looks like it "
@@ -348,8 +347,8 @@ if __name__ == "__main__":
                                           "Alice recoils when you show her the blood stains. 'Is that... "
                                           "his blood?' she asks, her voice barely a whisper. When you tell her that it "
                                           "was found in her room, she squints her eyes. 'Do you...? Do you think... "
-                                          "that I did it?' When you don't answer, she responds angrily. 'Norman meant"
-                                          "'the world to me. I won't be subjected to such accusations.' She looks away,"
+                                          "that I did it?' When you don't answer, she responds angrily. 'Norman meant "
+                                          "the world to me. I won't be subjected to such accusations.' She looks away, "
                                           "indicating that the conversation is over.",
                                    "O09": "You ask Alice about the letter. "
                                           "'Norman had mentioned that one of his exes was still trying to get back "
@@ -610,15 +609,15 @@ if __name__ == "__main__":
                             {
                                    "ask": {
                                    "P01": "You ask Adam about Alice. "
-                                          "'Alice and my father have been dating for a few years,' Adam says. 'She "
+                                          "'Alice and my father had been dating for a few years,' Adam says. 'She "
                                           "started out as just his assistant, but then I guess they grew closer. I have mixed "
                                           "feelings about her. On the one hand, she's been good for my father in many ways. "
                                           "On the other hand, I feel that they grew too close too quickly and, when there's "
-                                          "money involved, you can never be completely sure about a person's intentions, "
+                                          "money involved, you can never be completely sure of a person's intentions, "
                                           "you know?'",                                       
                                    "P03": "You ask Adam about Sam. "
                                           "'Sam Smith is his name, right?' Adam says.'To be honest, he's a little "
-                                          "suspicious, and I noticed that he mentioned nothihng about occupation when "
+                                          "suspicious, and I noticed that he mentioned nothing about occupation when "
                                           "we spoke. That being said, I don't know much about him.'",
                                    "P04": "You ask Adam about Al. "
                                           "'Al has always been there for me,' Adam says, 'even when my father wasn't. "
@@ -626,19 +625,19 @@ if __name__ == "__main__":
                                           "Al was always loyal, maybe even too loyal... Either way, you won't catch me "
                                           "saying a bad thing about Al. He's like a second father to me.'",
                                    "P05": "You ask Adam about Heather. "
-                                          "'Ah, Heather Poirot.' Adam says. 'I didn't get much of an opportunity to "
+                                          "'Ah, Heather Poirot,' Adam says. 'I didn't get much of an opportunity to "
                                           "speak with her, but I got the sense that she came here with a purpose. As far "
-                                          "as what that purpose may be, your guess is as good as mine...",
+                                          "as what that purpose may be, your guess is as good as mine...'",
                                    "P06": "You ask Adam about Ava. "
                                           "'She looks very familiar to me,' Adam says, 'but, for the life of me, I "
-                                          "can't entirely place her. I think my father may have known her years ago...?'",
+                                          "can't entirely place her. I think my father may have known her years ago...'",
                                    "F01R01": "You ask Adam about Norman. " 
                                           "Adam grimaces when he hears you say his father's name. 'He wasn't the "
                                           "best father,' Adam admits. 'He wasn't exactly there for me when I was younger, "
                                           "and we didn't get along. For years, I wished the old man would just pass away "
                                           "so I could live my life without forever being weighed down by his presence in "
                                           "my life.' Adam pauses, as if deliberating over something. After a few "
-                                          "moments, he continues. 'To be honest, we got in an argument this morning. The last "
+                                          "moments, he continues. 'To be honest, we got into an argument this morning. The last "
                                           "words I said to him were... well, let's just say that they weren't that kind.' "
                                           "Adam's expression changes to one of sorrow and regret. He clears this throat and "
                                           "turns away.",
@@ -684,7 +683,7 @@ if __name__ == "__main__":
                                           "do something as backstabbing as disinheriting his own son. And here I was feeling "
                                           "sorry that he had died. I should have killed him when...' Realizing that he may "
                                           "have said too much, Adam suddenly stops speaking.",
-                                   "O12": "You show the FBI bad to Adam. "
+                                   "O12": "You show the FBI badge to Adam. "
                                           "Adam seems slightly startled when you show him the FBI badge. 'That's "
                                           "concerning,' he states, lowering his voice. 'To be completely honest with you, "
                                           "I suspect that my father, well, may have gotten into some trouble with the IRS if "
@@ -695,14 +694,14 @@ if __name__ == "__main__":
                                           "would you?'",
                                    "F01R15": "You ask Adam about the desk. "
                                           "'My father kept a lot of important papers there,' he says. 'Let me know if "
-                                          "you find anything of interest.",
+                                          "you find anything of interest.'",
                                    "F02R15": "You ask Adam about the bar cart. " 
                                           "Adam shrugs. 'My father liked to drink,' he simply says."
                                    },
                                    "search": "Adam doesn't seem like the type of person that would let you search him.",
                                    "touch": "You place your hand on Adam's shoulder. He looks up, pats it awkwardly, "
                                    "and then returns to reading.",
-                                   "smell": "You near Adam and attempt to smell him. He smells slightly of alcohol.",
+                                   "smell": "You near Adam and smell him. He smells slightly of alcohol.",
                                    "listen": "Adam sighs sadly and turns the page of the book that he's reading."
                             })
 
