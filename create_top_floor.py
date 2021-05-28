@@ -101,7 +101,8 @@ if __name__ == "__main__":
                                     "listen": "You hear nothing. Nobody appears to be in the room.",
                                     "use": {
                                         "O03": "You insert the large golden key into the lock. It turns easily with a "
-                                               "satisfying click. The master bedroom door appears to be unlocked now."
+                                               "satisfying click. The master bedroom door appears to be unlocked now. "
+                                               "Open the master bedroom door so that you can enter the room."
                                     },
                                     "open": {
                                         "locked": "The door appears to be locked from the other side with a heavy "
@@ -232,7 +233,7 @@ if __name__ == "__main__":
        R13.set_interactions({
               "search": "You search the room but find nothing of note. Perhaps you should examine either the bed or "
               "the vanity in more depth.",
-              "touch": "Perhaps specify which part of the room you'd like to touch?",
+              "touch": "Perhaps try touching one of the features that you observe within the room.",
               "taste": "Really? You want to 'taste' the bedroom?",
               "smell": "The soft scent of flowers fills the room.",
               "listen": "Alice sobs quietly in the corner of the room."
@@ -353,11 +354,11 @@ if __name__ == "__main__":
                                    "O09": "You ask Alice about the letter. "
                                           "'Norman had mentioned that one of his exes was still trying to get back "
                                           "together with him,' Alice tells you after reading the letter. 'Although he "
-                                          "never mentioned that she was this serious. The woman sounds obsessed.' "
+                                          "never mentioned that she was this serious. This woman sounds obsessed.' "
                                           "She thinks for a moment. 'What was the name of that one retreat "
-                                          "participant downstairs? The woman named Ava? If I recall correctly, he "
-                                          "dated a woman who went by that name many years ago, although it could just ",
-                                          "be a coincidence.'"
+                                          "participant downstairs? Ava, right? If I recall correctly, he "
+                                          "dated a woman who went by that name many years ago, although it could just "
+                                          "be a coincidence.'",
                                    "O11": "You ask Alice about the will. "
                                           "Alice's lips purse when you mention that she will inherit everything. You "
                                           "find her expression hard to read. 'Does Adam know?' she asks with a little "
@@ -408,7 +409,7 @@ if __name__ == "__main__":
        R14.set_interactions({
               "search": "You search the room but find nothing of note. You may want to search the nightstand if you "
               "have not already.",
-              "touch": "Perhaps specify which part of the room you'd like to touch?",
+              "touch": "Perhaps try touching one of the features that you observe within the room.",
               "taste": "Why is it that you want to taste everything?",
               "smell": "The room has a musky smell to it.",
               "listen": "The room is silent."
@@ -439,7 +440,7 @@ if __name__ == "__main__":
        F02R14 = feature.Feature("F02R14", "Nightstand",
                                    "The small nightstand is made of the same dark, red wood as the rest of the "
                                    "furniture in the room, leading you to believe that they must all be part of the "
-                                   "same set, likely passed down through several generations. Its legs and borders are "
+                                   "same set, likely passed down through several generations. Its legs and borders "
                                    "feature intricately carved designs of leaves and vines. There is a pile of papers "
                                    "on top of the nightstand.",
                                    "A small nightstand made of the same dark, red wood as the rest of the furniture "
@@ -449,7 +450,7 @@ if __name__ == "__main__":
                                    "of items lying on top of it, but, as you comb through a pile of papers, a neatly "
                                    "folded letter sticks out to you.",
                                    "touch": "The dark red wood is smooth and clearly polished.",
-                                   "taste": "The nightstand tastes like wood polish. It is also tastes like dust.",
+                                   "taste": "The nightstand tastes like wood polish. It also tastes like dust.",
                                    "smell": "You smell nothing.",
                                    "listen": "You hear nothing."
                                    },
@@ -458,7 +459,7 @@ if __name__ == "__main__":
        sys.add_feature(F02R14)
 
        # Letter (O09)
-       O09 = object.Object("O09", "Letter",
+       O09 = object.Object("O09", "letter",
                             "The letter is neatly folded and looks otherwise unremarkable at first glance. Maybe you "
                             "should read it.",
                             "There is a neatly folded letter that looks otherwise unremarkable at first glance.",
@@ -469,7 +470,7 @@ if __name__ == "__main__":
                                    "smell": "The letter has the familiar scent of paper.",
                                    "listen": "You hear nothing.",
                                    "read": "You open the letter and read the following: "
-                                   "DATE\n"
+                                   "\n"
                                    "Dear Norman,\n I know it's been a long time since we last spoke but last night, "
                                    "as I was walking around the lake near my house, I couldn't stop thinking about "
                                    "our trip to Lake Tahoe and how wonderful it was. What was it, 10 years ago? That "
