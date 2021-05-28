@@ -89,7 +89,7 @@ if __name__ == '__main__':
                              'Examining his face closely you can tell he is an older man in his 50s '
                              'with graying hair and wrinkles. In life he may have been quite handsome, '
                              'but the shock of death has left him pale white with a purple tinge around his lips. ',
-                             "The Victim's Body lays face down on the floor in the middle of the room. He is wearing "
+                             "The victim's body lays face down on the floor in the middle of the room. He is wearing "
                              "a green sweater with gray slacks. You can see a little dirt around the collar of his "
                              "sweater. Judging by the large gash on the back of his head, "
                              "he was likely struck by some sort of object. A small pool of blood has surrounded "
@@ -97,13 +97,13 @@ if __name__ == '__main__':
                              {
                                  'search': 'You pat the body down, searching his pockets for any belongings he may '
                                            'have been carrying. You quickly discover in his front left pocket is a '
-                                           'rusty metal key',
+                                           'rusty metal key.',
                                  'touch': "You place your hands on the victim's neck. He is still slightly warm. "
-                                          "You are unable to locate a pulse",
+                                          "You are unable to locate a pulse.",
                                  'taste': "You place two fingers in the pool of blood around the victim. Touching "
                                           "them to your tongue immediately confirms this is blood...you may want "
-                                          "to get tested when you get home",
-                                 'smell': 'Smelling the body reveals it is coated in a deep musky cologne. Although,'
+                                          "to get tested when you get home.",
+                                 'smell': 'Smelling the body reveals it is coated in a deep musky cologne. Although, '
                                           'you can detect hints of another less powerful smell, one that is more '
                                           'flowery and delicate.',
                                  'listen': "You place your ear to the victim's chest. You can hear no heartbeat.",
@@ -115,8 +115,8 @@ if __name__ == '__main__':
     # F02R01 the end table
     F02R01 = feature.Feature('F02R01', "End Table",
                              'Examining the end table closer reveals nothing out of the ordinary at first. You '
-                             'open the window to get a closer look which allows a beam of light to enter the room. '
-                             'The light reveals a thin layer of dust on the table almost imperceptible. Next to the '
+                             'open the window to get a closer look, which allows a beam of light to enter the room. '
+                             'The light reveals a thin layer of dust on the table, almost imperceptible. Next to the '
                              'candlestick is a ring of clean table where a similar object appears to have been removed.',
                              'A small end table sits in the corner of the room near the entrance to the kitchen, '
                              'a single candlestick sits atop it.',
@@ -125,7 +125,7 @@ if __name__ == '__main__':
                                           'dust between your fingers.',
                                  'taste': 'You bend down and run your tongue along the table. It tastes as if it has '
                                           'not been cleaned in a little while.',
-                                 'smell': 'The table smells dusty, you recoil as you begin to sneeze',
+                                 'smell': 'The table smells dusty, you recoil as you begin to sneeze.',
                              },
                              False)
 
@@ -162,7 +162,7 @@ if __name__ == '__main__':
                                      'through the top layer of metal.',
                             'taste': 'The key feels rough on your tongue and feels metallic, the only question '
                                      'running through your mind is "Am I up to date on my Tetanus shot?"',
-                            'smell': 'The key lacks any distinct smell',
+                            'smell': 'The key lacks any distinct smell.',
                         },
                         True)
 
@@ -172,7 +172,7 @@ if __name__ == '__main__':
 
     R02 = room.Room('R02', 'Kitchen',
                     "The bright white of the kitchen almost blinds you in this room. Under different circumstances "
-                    "this would excite you for a weekend of great meals. However due to the retreat owner's "
+                    "this would excite you for a weekend of great meals. However, due to the retreat owner's "
                     "untimely demise, the kitchen just seems cold and empty. Large stainless steel appliances sit "
                     "unused next to the white marble counters.\n"
                     "To the west is an open door you suspect leads to the garage.\n"
@@ -210,7 +210,7 @@ if __name__ == '__main__':
 
     F01R02 = feature.Feature('F01R02', "Pantry",
                              'Opening the door to the pantry and switching on the light you can see the kitchen is well '
-                             'stocked. Every kind of food imaginable is stored in this pantry; boxes of pasta, bags of '
+                             'stocked. Every kind of food imaginable is stored in this pantry: boxes of pasta, bags of '
                              'potatoes, a bin of onions and garlic, and several large sacks of flour. Those who live '
                              'in the house full time clearly do not go hungry.',
                              'The door to a large open pantry is cracked, you can see many boxes of food inside.',
@@ -223,7 +223,7 @@ if __name__ == '__main__':
                                           'it is a normal water cracker. You take a bite and determine it is a little '
                                           'bland.',
                                  'smell': 'The pantry smells of dried food that has been stored for quite a while.',
-                                 'listen': 'You do not hear anything out of the ordinary in the pantry',
+                                 'listen': 'You do not hear anything out of the ordinary in the pantry.',
                              },
                              False)
 
@@ -234,7 +234,7 @@ if __name__ == '__main__':
     F02R02 = feature.Feature('F02R02', "Dishes",
                              'Examining the pile of dishes closely you can see they were recently used to cook a full '
                              'meal. You see several pans that have been used to cook many different things.',
-                             'A pile of dirty dishes sits by the sink, recently used',
+                             'A pile of dirty dishes sits by the sink, recently used.',
                              {
                                  'search': 'You look through the pile of dirty dishes, absentmindedly searching for '
                                            'something. You see several substances cooked into the pans, bits of meat, '
@@ -258,7 +258,7 @@ if __name__ == '__main__':
                         'shade of black with red highlights. Her makeup has been carefully done, with dark '
                         'eyeliner and red lipstick. She is wearing a patterned dark t-shirt with jeans and '
                         'black boots. She only has one earring in. She seems a bit annoyed by your presence '
-                        ' as she reads a novel in a small breakfast nook near the window.',
+                        'as she reads a novel in a small breakfast nook near the window.',
                         'Ava Scarlett sits near the window in a breakfast nook reading a novel.',
                         {
                             'ask': {
@@ -276,17 +276,16 @@ if __name__ == '__main__':
                                        "know much about him. He seems like a bit of a loner'",
                                 'P05': "You question Ava about Heather. Ava states 'She seems pretty cheery. Kind of odd "
                                        "that she's not more upset about the murder though, isn't it?'",
-                                'P06': "You ask Ava about herself. 'Me?' she says 'Well I work as a software developer "
+                                'P06': "You ask Ava about herself. 'Me?' she says 'Well, I work as a software developer "
                                        "at a tech company downtown. It's a lot of screen time, so every once in a while "
-                                       "I like to get out of the office and do a retreat like this one' she pauses 'This "
+                                       "I like to get out of the office and do a retreat like this one.' she pauses. 'This "
                                        "is the first time I've been to this retreat though, I wish it could have been "
                                        "under better circumstances...'",
-                                'F01R01': "'You question Ava about the victim. She quickly answers, 'I didn't know him "
+                                'F01R01': "You question Ava about the victim. She quickly answers, 'I didn't know him "
                                           "very well. I only spoke with him once over the phone when I called to set up "
-                                          "this weekend. I'm sorry to say, he seemed like a great guy'",
+                                          "this weekend. I'm sorry to say, he seemed like a great guy.'",
                                 'O01': "You ask Ava about the candlestick. Her eyes widen, and she quickly glances toward "
-                                       "the door, 'Isn't that "
-                                       "the gaudy candlestick from the foyer? Why'd you pick it up?'",
+                                       "the door, 'Isn't that the gaudy candlestick from the foyer? Why'd you pick it up?'",
                                 'O05': "You question Ava about the earring. She snatches it from your hand and looks it "
                                        "over. She says 'Where did you find this? The bathroom huh? I must have lost it "
                                        "when I washed my face earlier. If it helps your investigation you're welcome to "

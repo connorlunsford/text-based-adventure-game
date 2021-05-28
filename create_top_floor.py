@@ -38,12 +38,12 @@ if __name__ == "__main__":
        
        # Set the interactions
        R11.set_interactions({
-              "search": "You search the entirety of the hallway but find nothing of else of interest. The only two "
-              "things in this hallway are the rug and grandfather clock.",
+              "search": "You search the entirety of the hallway but find nothing else of interest. The only two "
+              "things in the hallway are the rug and grandfather clock.",
               "touch": "The oak panel walls are cool to the touch except where the sunlight hits them.",
               "taste": "What does it mean to taste a room? No, really... what is it that you had in mind?",
               "smell": "Like many parts of this house, the hallway has a faint 'old' smell to it.",
-              "listen": "The soft sound of a woman crying comes from behind the southeast door."
+              "listen": "The soft sound of a woman crying comes from behind the second bedroom."
               })
 
        sys.add_room(R11)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
                                    "to the bathroom.",
                                    "touch": "Soft. Very soft.",
                                    "taste": "Against what should be your better judgment, you taste the rug that lies "
-                                   "in the center of the floor of a commonly used hallway. It tastes like nothing, "
+                                   "in the center of the floor of the commonly used hallway. It tastes like nothing, "
                                    "although a small thread does get stuck on your tongue. Did we mention that this "
                                    "hallway was commonly used?",
                                    "smell": "You smell nothing",
@@ -90,21 +90,23 @@ if __name__ == "__main__":
        # Locked Master Bedroom Door (F03R11)
        F03R11 = feature.Feature("F03R11", "Master Bedroom Door",
                                 "The large door to the master bedroom stands imposingly. There is a massive golden lock on "
-                                "the door, you could try to open it to see if it is locked.",
-                                "The door to the master bedroom has a massive golden lock just above the handle",
+                                "the door. You could try to open it to see if it is locked.",
+                                "The door to the master bedroom has a massive golden lock just above the handle.",
                                 {
-                                    "touch": "The door is made of wood",
-                                    "taste": "You lick the door, tastes of wood and paint",
-                                    "smell": "You smell nothing",
+                                    "touch": "The door is made of wood.",
+                                    "taste": "You lick the door. It tastes of wood and paint.",
+                                    "smell": "You smell nothing.",
                                     "listen": "You hear nothing. Nobody appears to be in the room.",
-                                    'use': {
-                                        'O03': 'You insert the large golden key into the lock. It easily turns with a '
-                                               'satisfying click, the door appears to be unlocked now'
+                                    "use": {
+                                        "O03": "You insert the large golden key into the lock. It turns easily with a "
+                                               "satisfying click. The master bedroom door appears to be unlocked now."
                                     },
-                                    'open': {
-                                        'locked': 'The door appears to be locked from the other side with a heavy bolt.',
-                                        'unlocked': 'The door easily swings open, revealing the master bedroom',
-                                        'room_ids': [['southeast','R14']]
+                                    "open": {
+                                        "locked": "The door appears to be locked from the other side with a heavy "
+                                        "bolt. (Hint: If you've found the key to this room, try 'use [key] on [room]' "
+                                        "in order to unlock it)",
+                                        "unlocked": "The door easily swings open, revealing the master bedroom.",
+                                        "room_ids": [["southeast", "R14"]]
                                     },
                                 },
                                 False)
@@ -538,14 +540,16 @@ if __name__ == "__main__":
                                    "smell": "You smell cigar smoke.",
                                    "listen": "You hear nothing.",
                                    "open": {
-                                       'unlocked': "You open the drawer and rummage through it. At the bottom of the drawer, "
-                                   "you notice an envelope.",
-                                       'locked': "You attempt to open the desk drawer, it is locked tight",
-                                       'obj_ids': ['O04']
+                                       "unlocked": "You open the drawer and rummage through it. At the bottom of the "
+                                   "drawer, you notice an envelope.",
+                                       "locked": "You attempt to open the desk drawer. It is locked. "
+                                       "(Hint: If you've found the key to this drawer, try 'use [key] on [object]' "
+                                       "in order to unlock it)",
+                                       "obj_ids": ["O04"]
                                    },
                                    "use": {
                                        "O02": "You take the small rusty key out of your pocket and insert it into the lock "
-                                              "on the drawer. It fits perfectly. The drawer appears to be unlocked now",
+                                              "on the drawer. It fits perfectly. The drawer appears to be unlocked now.",
                                    },
                                    },
                                    False)
