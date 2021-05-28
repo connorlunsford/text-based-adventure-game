@@ -673,13 +673,13 @@ class System:
                     print('\033[1;33;40mYou cannot pick up that object.\033[1;37;40m')
                     return False
                 else:
-                    print('You picked up the ' + self._objects[obj].get_name() + '.')
+                    print('You pick up the ' + self._objects[obj].get_name() + '.')
                     self._rooms[self._cur_room].remove_object(obj)
                     self._player.add_to_inventory(obj)
                     self._objects[obj].set_hidden(False)
                     return True
             except feature.AttributeDoesNotExist:
-                print('You picked up the ' + self._objects[obj].get_name() + '.')
+                print('You pick up the ' + self._objects[obj].get_name() + '.')
                 self._rooms[self._cur_room].remove_object(obj)
                 self._player.add_to_inventory(obj)
                 self._objects[obj].set_hidden(False)
@@ -693,7 +693,7 @@ class System:
         if item in self._player.get_inventory():
             self._player.remove_from_inventory(item)
             self._rooms[self._cur_room].add_object(item)
-            print('You dropped the ' + self._objects[item].get_name() + '.')
+            print('You drop the ' + self._objects[item].get_name() + '.')
             return True
         else:
             print('\033[1;33;40mThat item is not in your inventory.\033[1;37;40m')
@@ -729,7 +729,7 @@ class System:
             print('\033[1;33;40mYour inventory is empty.\033[1;37;40m')
             return False
         for obj in self._player.get_inventory():
-            print('\033[1;33;40m' + self._objects[obj].get_name() + '.\033[1;37;40m')
+            print('\033[1;33;40m' + self._objects[obj].get_name() + '\033[1;37;40m')
         return True
 
     def save(self):

@@ -121,7 +121,7 @@ if __name__ == "__main__":
        R12 = room.Room("R12", "Bathroom",
                      "You enter a bathroom with marble floors and granite countertops. The bathroom is large... "
                      "almost too large. And bright... almost too bright. It reminds you of a museum gallery. You feel "
-                     "strangely small within it. You notice a faint smell. "
+                     "strangely small within it. You notice a faint smell that you may want to further investigate. "
                      "To your east is the hallway from which you entered.",
                      "You enter a large bathroom with marble floors and granite countertops. "
                      "To your east is the hallway from which you entered."
@@ -164,7 +164,7 @@ if __name__ == "__main__":
                                    "seems safe...",
                                    "smell": "The smell of cleaning chemicals lingers in the air. You're almost certain "
                                    "that the smell is bleach.",
-                                   "listen": "You hear the occasional drop of water leaking from the sink faucet."
+                                   "listen": "You hear the occasional drop of water leaking from the faucet."
                                    },
                                    False)
 
@@ -172,9 +172,9 @@ if __name__ == "__main__":
 
        # Trashcan (F02R12)
        F02R12 = feature.Feature("F02R12", "Trashcan",
-                                   "The trashcan is made of stainless steel and is one of those trashcans that has a step "
-                                   "used for opening it. As you begin to look away, the glint of a small shiny object on the "
-                                   "floor catches your eye.",
+                                   "The trashcan is made of stainless steel and is one of those trashcans that has a small "
+                                   "step used for opening it. As you begin to look away, the glint of a small shiny object "
+                                   "on the floor catches your eye.",
                                    "A small, metal trashcan sits in the in the corner of the room.",
                                    {
                                    "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
@@ -534,8 +534,8 @@ if __name__ == "__main__":
                                    "on top of it.",
                                    {
                                    "search": "You rummage through the papers and books on top of the desk. There's a "
-                                   "book on Greek history and an electric bill, but nothing else stands out to you."
-                                   "You notice that the ashtray hasn't yet been emptied. You also notice a desk drawer "
+                                   "book on Greek history and an electric bill, but nothing else stands out to you. "
+                                   "You notice that the ashtray hasn't been emptied. You also notice a desk drawer "
                                    "that can be opened, although it appears to require a key.",
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
@@ -545,7 +545,7 @@ if __name__ == "__main__":
                                        "unlocked": "You open the drawer and rummage through it. At the bottom of the "
                                    "drawer, you notice an envelope.",
                                        "locked": "You attempt to open the desk drawer. It is locked. "
-                                       "(Hint: If you've found the key to this drawer, try 'use [key] on [object]' "
+                                       "(Hint: If you've found the key to this object, try 'use [key] on [object]' "
                                        "in order to unlock it)",
                                        "obj_ids": ["O04"]
                                    },
@@ -582,19 +582,16 @@ if __name__ == "__main__":
        sys.add_feature(F02R15)
 
        # Safe Code Envelope (O04)
-       O04 = object.Object("O04", "Safe Code Envelope",
+       O04 = object.Object("O04", "safe code envelope",
                             "The envelope is dirty and looks like it was crumpled at one point. Four "
-                            "numbers are written across it in thick ink. Perhaps you should read them?",
+                            "numbers are written across it in thick ink. Perhaps you should read it?",
                             "A dirtied envelope with something written on it catches your attention.",
                             {
                                    "touch": "The envelope is rough where it had been previously folded.",
                                    "taste": "You taste the dirtied envelope. It tastes like paper.",
                                    "smell": "The envelope has the slight smell of cigar smoke.",
                                    "listen": "You hear nothing.",
-                                   "read": "In thick ink, the envelope reads: 0123",
-                                   "search": "There is nothing inside the enevelope, but you notice that "
-                                   "something is written on it. Maybe you should read it if you have not "
-                                   "done so already."
+                                   "read": "In thick ink, the envelope reads: 0123"
                             },
                             True)
 
