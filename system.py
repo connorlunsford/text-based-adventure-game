@@ -228,7 +228,7 @@ class System:
                 weapon = input('\033[0;33;40mName of the murder weapon: \033[0;32;40m').upper()
                 print('\033[0;37;40m')
 
-                # Save and format player input for later use
+                # Format and save the player input for later use
                 killer_str = killer.title()
                 weapon_str = weapon.lower()
 
@@ -240,47 +240,48 @@ class System:
                     "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
                     "You return home, and life goes on, but, a week later, you come across "
                     "an article in the news that reads: ")
+                
                 if killer == 'wrong' and weapon == 'wrong':
-                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
+                    print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'\n")
                     print("It turns out that " + str(killer_str) + " was not the killer and the " +
                         str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
                         "the years that follow, but no substantial updates are ever released, and, "
                         "eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Friday morning "
                           "at the retreat was able to get away.")
-                    print("THE END.")
+                    print("\nTHE END.")
                     exit()
 
                 # change 'correct' to the killers name in final implementation
                 elif killer == 'correct' and weapon == 'wrong':
-                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
-                    print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
+                    print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'\n")
+                    print("It turns out that the " + str(weapon_str) + " was not the murder weapon. "
                         "You continue to follow the case in the years that follow, but no substantial "
                         "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, " + str(killer_str) + " was able to get away with killing Norman "
                         "that bright Friday morning at the retreat.")
-                    print("THE END.")
+                    print("\nTHE END.")
                     exit()
 
                 # change 'correct' to the weapon name in final implementation
                 elif killer == 'wrong' and weapon == 'correct':
-                    print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
+                    print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'\n")
                     print("It turns out that " + str(killer_str) + " was not the killer. "
                         "You continue to follow the case in the years that follow, but no substantial "
                         "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Friday morning "
                         "at the retreat was able to get away.")
-                    print("THE END.")
+                    print("\nTHE END.")
                     exit()
 
                 elif killer == 'correct' and weapon == 'correct':
-                    print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
-                    print("It seems like your information was correct! You closely follow the case"
+                    print("\n'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'\n")
+                    print("It seems like your information was correct! You closely follow the case "
                         "in the years that follow until one afternoon three years later, you turn on the TV "
                         "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
                         "presented to the court, murdered Norman Bates with the " + str(
                         weapon_str) + " one bright Friday morning three years ago.")
-                    print("THE END.")
+                    print("\nTHE END.")
                     exit()
             else:
                 print('You decide you need more evidence. You set the phone down.')
@@ -937,7 +938,7 @@ class System:
     def introduction(self):
         """plays the main introduction for the game"""
 
-        setting = "\033[1;37;40m'San Francisco, California. June 2019."
+        setting = "\033[1;37;40mSan Francisco, California. June 2019."
         introduction = [
             "Work has been difficult lately. "
             "Over the past six months, your boss at the detective agency has been "
