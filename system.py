@@ -51,33 +51,33 @@ class System:
             inp = input('\033[0;32;40m')
             print('\033[0;37;40m')
             if inp == '':
-                print('\033[1;33;40mPlease type a command\033[1;37;40m')
+                print('\033[1;33;40mPlease type a command.\033[1;37;40m')
             else:
 
                 # parses the input and returns a command with an interaction word and 1-2 objects
                 command = self._parser.parse(inp)
                 if 'verb_error' in command:
-                    print('\033[1;33;40mThe game cannot determine what action you are trying to take\033[1;37;40m')
-                    print('\033[1;33;40mPlease try again using a simpler verb\033[1;37;40m')
-                    print("\033[1;33;40mTry typing 'help' for a list of commands\033[1;37;40m")
+                    print('\033[1;33;40mThe game cannot determine what action you are trying to take.\033[1;37;40m')
+                    print('\033[1;33;40mPlease try again using a simpler verb.\033[1;37;40m')
+                    print("\033[1;33;40mTry typing 'help' for a list of commands.\033[1;37;40m")
                     pass
                 if 'object_error' in command:
-                    print('\033[1;33;40mThe game cannot find the object you are interacting with\033[1;37;40m')
-                    print('\033[1;33;40mTry to be more specific when talking about the item\033[1;37;40m')
+                    print('\033[1;33;40mThe game cannot find the object you are trying to interacting with.\033[1;37;40m')
+                    print('\033[1;33;40mTry to be more specific when talking about the object.\033[1;37;40m')
                     pass
                 else:
                     if command[0] == 'use':
                         if len(command) < 3:
-                            print("\033[1;33;40mYou must 'use' one object on another, try rephrasing to 'use [object] on ["
-                                  "feature]'\033[1;37;40m")
+                            print("\033[1;33;40mYou must 'use' one object on another. Try rephrasing to 'use [object] on ["
+                                  "feature]'.\033[1;37;40m")
                             pass
                         else:
                             self.use(command[1], command[2])
                     elif command[0] == 'ask':
                         if len(command) < 3:
-                            print('They respond "What did you want to ask me about?"')
+                            print("They respond by asking, 'What did you want to ask me about?'")
                             print('\033[1;33;40mTry asking this person about an object you are carrying, a feature in the '
-                                  'house, or another person\033[1;37;40m')
+                                  'house, or another person.\033[1;37;40m')
                         else:
                             self.ask(command[1], command[2])
                     elif command[0] == 'call':
@@ -118,7 +118,7 @@ class System:
                         self.drop(command[1])
                     else:
                         print('\033[1;33;40mSorry, the game does not understand that input.\033[1;37;40m')
-                        print('\033[1;33;40mTry again with simpler language, and please make sure that you use commands and '
+                        print('\033[1;33;40mTry again with simpler language. Please make sure that you use commands and '
                               'objects that are in the game.\033[1;37;40m')
                         print("\033[1;33;40mUse the command 'help' for a list of useful phrases.\033[1;37;40m")
 
@@ -139,18 +139,18 @@ class System:
                     return True
                 except interactable.KeyDoesNotExist:
                     print('\033[1;33;40mYou cannot use the ' + self._objects[object1].get_name() + ' on the '
-                          + self._features[object2].get_name() + '\033[1;37;40m')
+                          + self._features[object2].get_name() + '.\033[1;37;40m')
                     return False
             # checks if the object is a person
             elif object2 in self._people:
-                print('\033[1;33;40mYou cannot use an object on a person\033[1;37;40m')
+                print('\033[1;33;40mYou cannot use an object on a person.\033[1;37;40m')
                 return False
             # checks if the object is a room
             elif object2 in self._rooms:
-                print('\033[1;33;40mYou cannot use an object on a room\033[1;37;40m')
+                print('\033[1;33;40mYou cannot use an object on a room.\033[1;37;40m')
                 return False
             else:
-                print('\033[1;33;40mYou cannot use that on an object that is not in the room\033[1;37;40m')
+                print('\033[1;33;40mYou cannot use that on an object that is not in the room.\033[1;37;40m')
                 return False
         elif object1 in self._features:
             try:
@@ -161,10 +161,10 @@ class System:
                 return True
             except interactable.KeyDoesNotExist:
                 print('\033[1;33;40mYou cannot use the ' + self._objects[object1].get_name() + ' on the '
-                      + self._features[object2].get_name() + '\033[1;37;40m')
+                      + self._features[object2].get_name() + '.\033[1;37;40m')
                 return False
         else:
-            print("\033[1;33;40mYou cannot use that object\033[1;37;40m")
+            print("\033[1;33;40mYou cannot use that object.\033[1;37;40m")
             return False
 
     def ask(self, person_id: str, obj_id: str):
@@ -178,35 +178,35 @@ class System:
                     print(self._people[person_id].get_interaction('ask', obj_id))
                     return True
                 except interactable.KeyDoesNotExist:
-                    print("'Sorry I don't know anything about that'")
+                    print("'Sorry, I don't know anything about that.'")
                     return False
             elif obj_id in self._features:
                 try:
                     print(self._people[person_id].get_interaction('ask', obj_id))
                     return True
                 except interactable.KeyDoesNotExist:
-                    print("'Sorry I don't know anything about that'")
+                    print("'Sorry, I don't know anything about that.'")
                     return False
             elif obj_id in self._people:
                 try:
                     print(self._people[person_id].get_interaction('ask', obj_id))
                     return True
                 except interactable.KeyDoesNotExist:
-                    print("'Sorry I don't know anything about that'")
+                    print("'Sorry, I don't know anything about that.'")
                     return False
             else:
-                print("'Sorry I don't know anything about that'")
+                print("'Sorry, I don't know anything about that.'")
                 return False
         else:
-            print("\033[1;33;40mYou can only speak with a person in this room\033[1;37;40m")
+            print("\033[1;33;40mYou can only speak with a person in this room.\033[1;37;40m")
             return False
 
     def call(self):
         """this command allows you to call the police when you are in the grand foyer and end the game"""
         if self._cur_room == 'R01':
-            print('You pick up the phone')
-            print('\033[1;33;40mAre you sure you want to call the police? Make sure you know the killer and the murder '
-                  'weapon (Y/N)\033[1;37;40m')
+            print('You pick up the phone.')
+            print('\033[1;33;40mAre you sure you want to call the police? Make sure that you know the killer '
+                  'and the murder weapon. (Y/N)\033[1;37;40m')
             inp = input('\033[0;32;40m').upper()
             print('\033[0;37;40m')
             if inp == 'Y' or inp == 'YES':
@@ -217,12 +217,12 @@ class System:
                 time.sleep(1)
                 print('ring...')
                 time.sleep(1)
-                print('"Hello, this is Officer Christie with the Police Department, who is this"')
-                print('You tell him your name and the situation')
-                print('"A murder you say! And who did you say was the culprit?"')
-                killer = input('\033[0;33;40mWho is the killer: \033[0;32;40m').upper()
-                print('"\033[0;37;40mAh I see, and how did they kill this man?"')
-                weapon = input('\033[0;33;40mWhat was the murder weapon: \033[0;32;40m').upper()
+                print('"Hello, this is Officer Christie with the Eureka Police Department. Who is this?"')
+                print('You tell him your name and describe the situation.')
+                print('"A murder, you say? And who did you say was the culprit?"')
+                killer = input('\033[0;33;40mName of the killer: \033[0;32;40m').upper()
+                print('"\033[0;37;40mAh, I see. And how did they kill this man?"')
+                weapon = input('\033[0;33;40mName of the murder weapon: \033[0;32;40m').upper()
                 print('\033[0;37;40m')
 
                 # Save and format player input for later use
@@ -234,15 +234,15 @@ class System:
                 weapon = self._parser.find_weapon(weapon)
 
                 print("Not long after you you make the call, the police arrive on the scene, "
-                      "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
-                                                                                                 "You return home, and life goes on, but, a week later, you come across "
-                                                                                                 "an article in the news that reads: ")
+                    "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
+                    "You return home, and life goes on, but, a week later, you come across "
+                    "an article in the news that reads: ")
                 if killer == 'wrong' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'")
                     print("It turns out that " + str(killer_str) + " was not the killer and the " +
-                          str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
-                                            "the years that follow, but no substantial updates are ever released, and, "
-                                            "eventually, it's declared a cold case.")
+                        str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
+                        "the years that follow, but no substantial updates are ever released, and, "
+                        "eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Friday morning "
                           "at the retreat was able to get away.")
                     print("THE END.")
@@ -252,10 +252,10 @@ class System:
                 elif killer == 'correct' and weapon == 'wrong':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'")
                     print("It turns out that the " + str(weapon_str) + " was not the murder weapon."
-                                                                       "You continue to follow the case in the years that follow, but no substantial "
-                                                                       "updates are ever released, and, eventually, it's declared a cold case.")
+                        "You continue to follow the case in the years that follow, but no substantial "
+                        "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, " + str(killer_str) + " was able to get away with killing Norman "
-                                                              "that bright Friday morning at the retreat.")
+                        "that bright Friday morning at the retreat.")
                     print("THE END.")
                     exit()
 
@@ -263,27 +263,26 @@ class System:
                 elif killer == 'wrong' and weapon == 'correct':
                     print("'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'")
                     print("It turns out that " + str(killer_str) + " was not the killer. "
-                                                                   "You continue to follow the case in the years that follow, but no substantial "
-                                                                   "updates are ever released, and, eventually, it's declared a cold case.")
+                        "You continue to follow the case in the years that follow, but no substantial "
+                        "updates are ever released, and, eventually, it's declared a cold case.")
                     print("As a result, whoever it was that killed Norman that bright Friday morning "
-                          "at the retreat was able to get away.")
+                        "at the retreat was able to get away.")
                     print("THE END.")
                     exit()
 
                 elif killer == 'correct' and weapon == 'correct':
                     print("'SUSPECT CHARGED IN THE MURDER OF NORMAN BATES'")
                     print("It seems like your information was correct! You closely follow the case"
-                          "in the years that follow until one afternoon three years later, you turn on the TV "
-                          "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
-                                                                                  "presented to the court, murdered Norman Bates with the " + str(
-                        weapon_str) + " one bright "
-                                      "Friday morning three years ago.")
+                        "in the years that follow until one afternoon three years later, you turn on the TV "
+                        "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
+                        "presented to the court, murdered Norman Bates with the " + str(
+                        weapon_str) + " one bright Friday morning three years ago.")
                     print("THE END.")
                     exit()
             else:
-                print('You decide you need more evidence. You set the phone down')
+                print('You decide you need more evidence. You set the phone down.')
         else:
-            print('\033[1;33;40mSorry you cannot call the police from this room\033[1;37;40m')
+            print('\033[1;33;40mSorry, you cannot call the police from this room.\033[1;37;40m')
 
     def read(self, obj: str):
         """this command takes an object and allows you to attempt to read it"""
@@ -293,7 +292,7 @@ class System:
                 print(self._objects[obj].get_interaction('read'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot read this object\033[1;37;40m')
+                print('\033[1;33;40mYou cannot read this object.\033[1;37;40m')
                 return False
 
         # if the object is in the current room
@@ -302,7 +301,7 @@ class System:
                 print(self._objects[obj].get_interaction('read'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot read this object\033[1;37;40m')
+                print('\033[1;33;40mYou cannot read this object.\033[1;37;40m')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -310,30 +309,30 @@ class System:
                 print(self._features[obj].get_interaction('read'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot read this object\033[1;37;40m')
+                print('\033[1;33;40mYou cannot read this object.\033[1;37;40m')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
-            print('\033[1;33;40mYou cannot read a person...try "ask" or "look" instead\033[1;37;40m')
+            print('\033[1;33;40mYou cannot read a person. Maybe try "ask" or "look" instead.\033[1;37;40m')
             return False
         # if the object you are trying to read is the room itself
         elif obj in self._rooms:
-            print('\033[1;33;40mYou cannot read a room...try "look at [room]" or just "look" instead\033[1;37;40m')
+            print('\033[1;33;40mYou cannot read a room. Try "look at [room]" or just "look" instead.\033[1;37;40m')
             return False
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to read does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing you are trying to read does not appear to be in this room.\033[1;37;40m')
             return False
 
     def open(self, obj: str):
         """this command takes an object and allows you to attempt to open it"""
         # if the object is an object
         if obj in self._objects:
-            print('\033[1;33;40myou cannot open this object\033[1;37;40m')
+            print('\033[1;33;40mYou cannot open this object.\033[1;37;40m')
             return False
         # if the object is a person
         elif obj in self._people:
-            print('\033[1;33;40mYou cannot open a  person\033[1;37;40m')
+            print('\033[1;33;40mYou cannot open a person.\033[1;37;40m')
             return False
         # if the object is a feature in the room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -361,21 +360,21 @@ class System:
                         pass
                     return True
             except feature.AttributeDoesNotExist:
-                print('\033[1;33;40mYou cannot open that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot open that thing.\033[1;37;40m')
         # if the object is a room
         elif obj in self._rooms:
-            print('\033[1;33;40mYou cannot open a room, try "go to [room]" or "open [door to room]" instead\033[1;37;40m')
+            print('\033[1;33;40mYou cannot open a room. Try "go to [room]" or "open [door to room]" instead.\033[1;37;40m')
             return False
         # if the object is not in the room
         else:
-            print('\033[1;33;40mThe thing you are trying to open is not in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to open is not in this room.\033[1;37;40m')
             return False
 
     def search(self, obj: str):
         """this command lets you search a  given room or feature"""
         # if the search parameter is an object
         if obj in self._objects:
-            print('\033[1;33;40mYou cannot search this object\033[1;37;40m')
+            print('\033[1;33;40mYou cannot search this object.\033[1;37;40m')
             return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -383,7 +382,7 @@ class System:
                 print(self._features[obj].get_interaction('search'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot search that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot search that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to search is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -391,7 +390,7 @@ class System:
                 print(self._people[obj].get_interaction('search'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot search that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot search that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to search is the room itself
         elif obj == self._cur_room:
@@ -399,11 +398,11 @@ class System:
                 print(self._rooms[self._cur_room].get_interaction('search'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot search that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot search that thing.\033[1;37;40m')
                 return False
         # if the object is not in this room
         else:
-            print('\033[1;33;40mThe thing you are trying to search does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to search does not appear to be in this room.\033[1;37;40m')
             return False
 
     def touch(self, obj: str):
@@ -414,7 +413,7 @@ class System:
                 print(self._objects[obj].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot touch that object\033[1;37;40m')
+                print('\033[1;33;40mYou cannot touch that object.\033[1;37;40m')
                 return False
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
@@ -422,7 +421,7 @@ class System:
                 print(self._objects[obj].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot touch that object\033[1;37;40m')
+                print('\033[1;33;40mYou cannot touch that object.\033[1;37;40m')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -430,7 +429,7 @@ class System:
                 print(self._features[obj].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot touch that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot touch that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -438,7 +437,7 @@ class System:
                 print(self._people[obj].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot touch that person\033[1;37;40m')
+                print('\033[1;33;40mYou cannot touch that person.\033[1;37;40m')
                 return False
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
@@ -446,11 +445,11 @@ class System:
                 print(self._rooms[self._cur_room].get_interaction('touch'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot touch the room\033[1;37;40m')
+                print('\033[1;33;40mYou cannot touch that room.\033[1;37;40m')
                 return False
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to touch does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing you are trying to touch does not appear to be in this room.\033[1;37;40m')
             return False
 
     def taste(self, obj: str):
@@ -461,7 +460,7 @@ class System:
                 print(self._objects[obj].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot taste that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot taste that thing.\033[1;37;40m')
                 return False
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
@@ -469,7 +468,7 @@ class System:
                 print(self._objects[obj].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot taste that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot taste that thing.\033[1;37;40m')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -477,7 +476,7 @@ class System:
                 print(self._features[obj].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot taste that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot taste that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -485,7 +484,7 @@ class System:
                 print(self._people[obj].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot taste that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot taste that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
@@ -493,11 +492,11 @@ class System:
                 print(self._rooms[self._cur_room].get_interaction('taste'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mYou cannot taste that thing\033[1;37;40m')
+                print('\033[1;33;40mYou cannot taste that thing.\033[1;37;40m')
                 return False
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to taste does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to taste does not appear to be in this room.\033[1;37;40m')
             return False
 
     def smell(self, obj: str):
@@ -508,7 +507,7 @@ class System:
                 print(self._objects[obj].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot smell that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot smell that thing.\033[1;37;40m')
                 return False
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
@@ -516,7 +515,7 @@ class System:
                 print(self._objects[obj].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot smell that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot smell that thing.\033[1;37;40m')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -524,7 +523,7 @@ class System:
                 print(self._features[obj].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot smell that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot smell that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -532,7 +531,7 @@ class System:
                 print(self._people[obj].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot smell that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot smell that thing.\033[1;37;40m')
                 return False
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
@@ -540,11 +539,11 @@ class System:
                 print(self._rooms[self._cur_room].get_interaction('smell'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot smell that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot smell that thing.\033[1;37;40m')
                 return False
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to smell does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to smell does not appear to be in this room.\033[1;37;40m')
             return False
 
     def listen(self, obj: str):
@@ -555,7 +554,7 @@ class System:
                 print(self._objects[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('You hear nothing')
+                print('You hear nothing.')
                 return False
         # if the object is in the current room
         elif obj in self._rooms[self._cur_room].get_objects():
@@ -563,7 +562,7 @@ class System:
                 print(self._objects[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('You hear nothing')
+                print('You hear nothing.')
                 return False
         # if the feature is in the current room
         elif obj in self._rooms[self._cur_room].get_features():
@@ -571,7 +570,7 @@ class System:
                 print(self._features[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('You hear nothing')
+                print('You hear nothing.')
                 return False
         # if the object you are trying to read is a person
         elif obj in self._rooms[self._cur_room].get_people():
@@ -579,7 +578,7 @@ class System:
                 print(self._people[obj].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('You hear nothing')
+                print('You hear nothing.')
                 return False
         # if the object you are trying to read is the room itself
         elif obj == self._cur_room:
@@ -587,11 +586,11 @@ class System:
                 print(self._rooms[self._cur_room].get_interaction('listen'))
                 return True
             except interactable.KeyDoesNotExist:
-                print('\033[1;33;40mSorry you cannot listen to that thing\033[1;37;40m')
+                print('\033[1;33;40mSorry, you cannot listen to that thing.\033[1;37;40m')
                 return False
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to listen to does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to listen to does not appear to be in this room.\033[1;37;40m')
             return False
 
     def look_at(self, obj: str):
@@ -622,7 +621,7 @@ class System:
             return True
         # if the object is not in your room or the inventory
         else:
-            print('\033[1;33;40mThe thing you are trying to examine does not appear to be in this room\033[1;37;40m')
+            print('\033[1;33;40mThe thing that you are trying to examine does not appear to be in this room.\033[1;37;40m')
             return False
 
     def look(self):
@@ -642,7 +641,7 @@ class System:
                 self.get_description()
                 return True
             except KeyError:
-                print('\033[1;33;40mThis room does not have a connection to the ' + room_id + '\033[1;37;40m')
+                print('\033[1;33;40mThis room does not have a connection to the ' + room_id + '.\033[1;37;40m')
                 return False
         # if the room_id is actually a room_id
         elif room_id in self._rooms[self._cur_room].get_connections().values():
@@ -650,43 +649,43 @@ class System:
             self.get_description()
             return True
         else:
-            print('\033[1;33;40mYou cannot currently enter that room from this room\033[1;37;40m')
-            print('\033[1;33;40mPerhaps the door is locked? Try to use "open [door name]\033[1;37;40m')
+            print('\033[1;33;40mYou cannot enter that room from this room.\033[1;37;40m')
+            print('\033[1;33;40mPerhaps the door is locked? Try to use "open [door name]".\033[1;37;40m')
             return False
 
     def take(self, obj: str):
         """takes an object id and allows you to attempt to take it from the room it is currently in"""
         if obj in self._people:
-            print('\033[1;33;40mYou cannot take a person\033[1;37;40m')
+            print('\033[1;33;40mYou cannot take a person.\033[1;37;40m')
             return False
         elif obj in self._features:
-            print('\033[1;33;40mYou cannot take this from the room\033[1;37;40m')
+            print('\033[1;33;40mYou cannot take this item from the room.\033[1;37;40m')
             return False
         elif obj in self._rooms:
-            print('\033[1;33;40mYou cannot take a room\033[1;37;40m')
+            print('\033[1;33;40mYou cannot take a room.\033[1;37;40m')
             return False
         elif obj in self._player.get_inventory():
-            print('\033[1;33;40mThat object is already in your inventory\033[1;37;40m')
+            print('\033[1;33;40mThat object is already in your inventory.\033[1;37;40m')
             return False
         elif obj in self._rooms[self._cur_room].get_objects():
             try:
                 if self._objects[obj].get_condition() is False:
-                    print('\033[1;33;40mYou cannot pick up that object\033[1;37;40m')
+                    print('\033[1;33;40mYou cannot pick up that object.\033[1;37;40m')
                     return False
                 else:
-                    print('You picked up the ' + self._objects[obj].get_name())
+                    print('You picked up the ' + self._objects[obj].get_name() + '.')
                     self._rooms[self._cur_room].remove_object(obj)
                     self._player.add_to_inventory(obj)
                     self._objects[obj].set_hidden(False)
                     return True
             except feature.AttributeDoesNotExist:
-                print('You picked up the ' + self._objects[obj].get_name())
+                print('You picked up the ' + self._objects[obj].get_name() + '.')
                 self._rooms[self._cur_room].remove_object(obj)
                 self._player.add_to_inventory(obj)
                 self._objects[obj].set_hidden(False)
                 return True
         else:
-            print('\033[1;33;40mYou could not find that object in this room, try being more specific\033[1;37;40m')
+            print('\033[1;33;40mYou could not find that object in this room. Try being more specific.\033[1;37;40m')
             return False
 
     def drop(self, item):
@@ -694,49 +693,49 @@ class System:
         if item in self._player.get_inventory():
             self._player.remove_from_inventory(item)
             self._rooms[self._cur_room].add_object(item)
-            print('You dropped the ' + self._objects[item].get_name())
+            print('You dropped the ' + self._objects[item].get_name() + '.')
             return True
         else:
-            print('\033[1;33;40mThat item is not in your inventory\033[1;37;40m')
+            print('\033[1;33;40mThat item is not in your inventory.\033[1;37;40m')
             return False
 
     def help(self):
         """takes no parameters, prints out a list of commands that the player is allowed to use"""
-        print('\033[1;33;40mHere are some examples of possible commands you can use')
+        print('\033[1;33;40mHere are some examples of possible commands you can use:')
         print('look at [object] - allows you to examine an object, feature, or person')
-        print('look - allows you to examine the room')
+        print('look - allows you to examine the room in detail')
         print('go to [room] - allows you to enter unlocked rooms connected to the current room')
         print('take [object] - allows you to pick up an object')
         print('drop [object] - allows you to drop an object in your inventory into the room')
         print('inventory - allows you to examine the contents of your inventory')
         print('savegame - allows you to save the game')
-        print('loadgame - allows you to load the game')
+        print('loadgame - allows you to load a saved game')
         print('exit - allows you to exit the game (remember to save your progress first)')
-        print('use [object] on [object/feature] - allows you to use an object on another object')
-        print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, feature of '
-              'the house, or another person')
+        print('use [object] on [object/feature] - allows you to use an object on another object or feature')
+        print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, '
+              'a feature in the house, or another person')
         print('read [object] - allows you to read an object')
         print('open [object] - allows you to open an unlocked door or other similar object')
         print('search [object] - allows you to search through an object or room')
-        print('touch [object] - allows you to feel an object, may give you more clues')
-        print('taste [object] - allows you to taste an object, may give you more clues')
-        print('smell [object] - allows you to smell an object or room, may give you more clues')
-        print('listen [object] - allows you to smell an object or room, may give you more clues\033[1;37;40m')
+        print('touch [object] - allows you to feel an object; this may give you more clues')
+        print('taste [object] - allows you to taste an object; this may give you more clues')
+        print('smell [object] - allows you to smell an object or room; this may give you more clues')
+        print('listen [object] - allows you to smell an object or room; this may give you more clues\033[1;37;40m')
         return
 
     def inventory(self):
         """takes no parameters, prints out the players current inventory"""
         if len(self._player.get_inventory()) == 0:
-            print('\033[1;33;40myour inventory is empty\033[1;37;40m')
+            print('\033[1;33;40mYour inventory is empty.\033[1;37;40m')
             return False
         for obj in self._player.get_inventory():
-            print('\033[1;33;40m' + self._objects[obj].get_name() + '\033[1;37;40m')
+            print('\033[1;33;40m' + self._objects[obj].get_name() + '.\033[1;37;40m')
         return True
 
     def save(self):
         """takes no parameters, allows you to save the game"""
 
-        print('\033[1;33;40mPlease enter a save file name (case sensitive)\033[1;37;40m')
+        print('\033[1;33;40mPlease enter a save file name (case sensitive): \033[1;37;40m')
         location = input('\033[0;32;40m')
         print('\033[0;37;40m')
 
@@ -777,20 +776,20 @@ class System:
             filename = 'saves/' + location + '/rooms/' + room_obj.get_id() + '.json'
             json.dump(json_room, open(filename, 'w'))
 
-        print('\033[1;33;40mGame saved to ./saves/' + location + '\033[1;37;40m')
+        print('\033[1;33;40mGame saved to ./saves/' + location + '.\033[1;37;40m')
 
         return
 
     def load(self):
         """takes no parameters, allows you to load the game from a save file"""
 
-        print('\033[1;33;40mEnter the location to load the game from (case sensitive)\033[1;37;40m')
+        print('\033[1;33;40mEnter the location of the save file to load the game from (case sensitive): \033[1;37;40m')
         location = input('\033[0;32;40m')
         print('\033[0;37;40m')
 
         if os.path.isdir('saves/' + location):
 
-            print('\033[1;33;40mGame Loading...\033[1;37;40m')
+            print('\033[1;33;40mGame loading...\033[1;37;40m')
             time.sleep(1)
 
             # grabs the player object
@@ -835,12 +834,12 @@ class System:
                 people_obj = converter.person_from_json(people_json)
                 self._people[people_obj.get_id()] = people_obj
 
-            print('\033[1;33;40mGame Loaded from save file: ' + location + '\033[1;37;40m')
+            print('\033[1;33;40mGame loaded from save file: ' + location + '.\033[1;37;40m')
             return True
 
         else:
 
-            print('\033[1;33;40mSave file could not be found\033[1;37;40m')
+            print('\033[1;33;40mSave file could not be found.\033[1;37;40m')
             return False
 
     def get_description(self):
@@ -866,13 +865,13 @@ class System:
         print('\033[1;33;40mAre you sure you want to quit the game? (y/n)\033[1;37;40m')
         ans = input('\033[0;32;40m').lower()
         print('\033[0;37;40m')
-        if ans in ['y', 'yes', 'yeah', 'Y', 'YES']:
-            print('\033[1;33;40mWould you like to save first (y/n)?\033[1;37;40m')
+        if ans in ['y', 'yes', 'yeah']:
+            print('\033[1;33;40mWould you like to save first? (y/n)\033[1;37;40m')
             ans = input('\033[0;32;40m').lower()
             print('\033[0;37;40m')
-            if ans in ['y', 'yes', 'yeah', 'Y', 'YES']:
+            if ans in ['y', 'yes', 'yeah']:
                 self.save()
-            print('\033[1;33;40mExiting Game...\033[1;37;40m')
+            print('\033[1;33;40mExiting game...\033[1;37;40m')
             exit()
         else:
             print('\033[1;33;40mReturning to game...\033[1;37;40m')
@@ -914,7 +913,7 @@ class System:
 
         os.system('color')
 
-        print('\033[1;33;40mWould you like to load a save (y/n)?\033[1;37;40m')
+        print('\033[1;33;40mWould you like to load a saved game? (y/n)\033[1;37;40m')
         inp = input('\033[0;32;40m').lower()
         print('\033[0;37;40m')
         if inp in ['y', 'yes', 'yeah']:
