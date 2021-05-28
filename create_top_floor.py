@@ -1,10 +1,8 @@
 import system
 import room
-import interactable
 import object
 import feature
 import person
-import converter
 
 if __name__ == "__main__":
        

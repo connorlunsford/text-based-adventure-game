@@ -1,7 +1,3 @@
-import object
-import feature
-import person
-import interactable
 
 class RoomException(Exception):
     """Base exception class for the Room class"""

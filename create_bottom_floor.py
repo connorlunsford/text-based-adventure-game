@@ -1,10 +1,8 @@
 import system
 import room
-import interactable
 import object
 import feature
 import person
-import converter
 
 # DESC
 # This python file will use everything from the system to generate the json files for the game

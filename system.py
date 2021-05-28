@@ -61,7 +61,7 @@ class System:
                     print('\033[1;33;40mPlease try again using a simpler verb.\033[1;37;40m')
                     print("\033[1;33;40mTry typing 'help' for a list of commands.\033[1;37;40m")
                     pass
-                if 'object_error' in command:
+                elif 'object_error' in command:
                     print('\033[1;33;40mThe game cannot find the object you are trying to interacting with.\033[1;37;40m')
                     print('\033[1;33;40mTry to be more specific when talking about the object.\033[1;37;40m')
                     pass
@@ -934,7 +934,7 @@ class System:
     def introduction(self):
         """plays the main introduction for the game"""
 
-        setting = "San Francisco, California. June 2019."
+        setting = "\033[1;37;40m'San Francisco, California. June 2019."
         introduction = [
             "Work has been difficult lately. "
             "Over the past six months, your boss at the detective agency has been "
