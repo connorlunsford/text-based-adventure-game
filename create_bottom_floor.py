@@ -518,14 +518,14 @@ if __name__ == '__main__':
     # R04 Secret Room
 
     R04 = room.Room('R04', 'Secret Room',
-                    'You see a cold windowless room in front of you. Clearly designated as a secret room by the owner of '
-                    'the house. The sides of the room made of rough brick with a wood '
-                    'floor. The room is cold and dark, a single lamp stands near the door to the library. You switch it on '
-                    'to allow you to get a better look at the room. The room is bare with few decorations and only a single '
-                    'side table and chair as furniture.\n'
-                    'The entrance back to the library is through the doorway behind you to the west.',
-                    'The secret room is cold and dark, the only thing inside is some sparse furniture. The doorway back '
-                    'toward the library stands behind you to the west.')
+                    'You see a cold windowless room in front of you. It was clearly designated as a secret room by the '
+                    'owner of the house. The sides of the room are made of rough brick with a wood '
+                    'floor. The room is dark. A single lamp stands near the exit to the library. You switch it on '
+                    'to allow yourself to get a better look at the room. The room is bare, with few decorations and '
+                    'only a single side table and chair as furniture. \n'
+                    'The library is behind you to the west.',
+                    'The secret room is cold and dark. The only thing inside is some sparse furniture. '
+                    'The library is behind you to the west.')
 
     R04.set_features([
         'F01R04',  # Picture
@@ -541,13 +541,13 @@ if __name__ == '__main__':
     R04.set_interactions({
         'search': 'You look over every inch of the room. It does not take long since the room is already remarkably bare. '
                   'You do not notice anything out of the ordinary until you notice the frame to the painting is thicker '
-                  'than it seems, perhaps there is more to it than meets the eye.',
-        'touch': 'The room is made of rough brick and wood. It is unclear if this was a finished room or added on in an '
-                 'expansion. Perhaps the owner of the house had it custom made',
-        'smell': 'The room smells dusty, it has clearly been quite some time since it was cleaned.',
-        'listen': "You listen in, at first it is silent until you hear someone speak in one of the other rooms. 'The target "
-                  "has been eliminated, unsure of the next actions to take' whispers the voice of Heather from the library. "
-                  "She appears to be talking to someone else.",
+                  'than it initially seems. Perhaps there is more to it than meets the eye.',
+        'touch': 'The room is made of rough brick and wood. It is unclear if this was a finished room or added on as an '
+                 'expansion. Perhaps the owner of the house had it custom made.',
+        'smell': 'The room smells dusty. It has clearly been quite some time since it was last cleaned.',
+        'listen': "You listen. At first, it is silent until you hear someone speak in one of the other rooms. 'The target "
+                  "has been eliminated. Unsure of the next actions to take,' whispers a voice you recognize as Heather "
+                  "from the library. She appears to be talking to someone else.",
         'taste': 'You touch your fingers to the floor and draw a line in the dust. You bring it to your mouth and almost '
                  'begin to lick it before you decide it is probably not the best idea to go around tasting everything you '
                  'see.',
@@ -563,27 +563,25 @@ if __name__ == '__main__':
 
     F01R04 = feature.Feature('F01R04', 'Painting',
                              'You step up to take a closer look at the painting. It is a wonderful painted portrait of '
-                             'what appears to be '
-                             'the victim in his youth. You notice that the frame of the painting is thicker than it should '
-                             'be, it sticks '
-                             'out from the wall a good 2 to 3 inches.',
-                             'A painting of a young man in a nice suit sits on the northern wall',
+                             'what appears to be the victim in his youth. '
+                             'You notice that the frame of the painting is thicker than it should be. '
+                             'It sticks out from the wall a good two to three inches.',
+                             'A painting of a young man in a nice suit is on the northern wall.',
                              {
                                  'search': 'As you touch the painting, you notice it has a small latch on one side and '
-                                           'hinges on the '
-                                           'other. It appears to be hiding something underneath it.',
-                                 'touch': 'You run your hand along the paintings frame. Your fingers touch a latch on the '
-                                          'side of the '
-                                          'painting. Perhaps you could open the latch.',
+                                           'hinges on the other side. '
+                                           'It appears to be hiding something behind it. '
+                                           'Perhaps you could try to open it.',
+                                 'touch': 'You run your hand along the frame of the painting. Your fingers touch '
+                                          'a latch on the side of the painting. '
+                                          'Perhaps you could open the latch.',
                                  'open': {
                                      'unlocked': 'The latch easily comes undone and you swing the painting open on the '
-                                                 'hinges, revealing an '
-                                                 'electronic safe underneath it.'
+                                                 'hinges, revealing an electronic safe behind it.'
                                  },
-                                 'smell': 'The painting smells of old paint and wood',
+                                 'smell': 'The painting smells of old paint and wood.',
                                  'taste': 'You stick your tongue out and lick the paint. Not only does it taste bad, '
-                                          'but you likely just '
-                                          'ruined an old, old painting',
+                                          'but you likely just ruined an old, old painting.',
                              },
                              False)
 
@@ -594,24 +592,23 @@ if __name__ == '__main__':
     # F02R04
 
     F02R04 = feature.Feature('F02R04', 'Fireplace',
-                             'You glance at the cold fireplace. It is made of brick and flagstone, with an iron grate in '
+                             'You glance at the cold fireplace. It is made of brick and flagstone with an iron grate in '
                              'the hearth. '
-                             'The hearth is filled with ashes, it clearly has been used many times before without being '
-                             'cleaned out',
-                             'A cold fireplace sits on the eastern wall, filled with ash.',
+                             'The hearth is filled with ashes. It clearly has been used many times before without being '
+                             'cleaned out.',
+                             'A cold fireplace is built into the eastern wall, filled with ash.',
                              {
                                  'search': 'You sift through the ashes of the fireplace, searching for something. You '
                                            'almost give up '
-                                           'before your dirty fingers grasp something. What appears to be a golden key.',
-                                 'touch': 'You press your hand into the ash, it appears to be cold as if it has not been '
-                                          'used in a '
-                                          'while',
-                                 'smell': 'The fireplace smells like burnt wood',
-                                 'taste': 'You touch the ash and lick your fingers, you can be absolutely sure that this '
+                                           'before your dirty fingers grasp something. It appears to be a golden key.',
+                                 'touch': 'You press your hand into the ash. It appears to be cold as if it has not been '
+                                          'used in a while.',
+                                 'smell': 'The fireplace smells like burnt wood.',
+                                 'taste': 'You touch the ash and lick your fingers. You can be absolutely sure that this '
                                           'is ash.',
                                  'listen': 'If the fireplace was active, you would be able to hear the sound of a '
                                            'crackling fire. '
-                                           'Currently it is silent',
+                                           'Currently, it is silent.',
                              },
                              False)
 
@@ -620,22 +617,21 @@ if __name__ == '__main__':
     # F03R04 The Safe
 
     F03R04 = feature.Feature('F03R04', 'Safe',
-                             'You get a closer look at the safe, it is a simple electronic lock with a normal keypad. '
+                             'You get a closer look at the safe. It has a simple electronic lock with a normal keypad. '
                              'The safe is made of strong looking steel.',
-                             'A safe sits on the wall underneath the painting that has been swung open',
+                             'A safe sits on the wall underneath the painting that has been swung open.',
                              {
                                  'use': {
                                      'O04': 'You take the code written on the envelope and type it into the keypad on the '
-                                            'safe. It beeps three times and the small red light on the front turns green.'
+                                            'safe. It beeps three times, and the small red light on the front turns green.'
                                  },
                                  'open': {
-                                     'locked': 'You attempt to open the safe. It is sealed shut, you clearly need to find '
-                                               'a code in order to unlock it.',
-                                     'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents'
-                                                 ' '
-                                                 "of the safe underneath it; several thick black rubber bands with '$10,000 "
-                                                 "written on them in white writing, and a piece of high quality paper with "
-                                                 "'Norman Bates's Will' written on it in thick bold lettering.",
+                                     'locked': 'You attempt to open the safe. It is sealed shut. You clearly need to find '
+                                               'the code in order to unlock it.',
+                                     'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents '
+                                                 "of the safe: several thick, black rubber bands with '$10,000 "
+                                                 "written on them in white writing and a piece of high quality paper with "
+                                                 "'Norman Bates' Will' written on it in bold lettering.",
                                      'obj_ids': ['O11'],
                                  },
                              },
@@ -647,14 +643,14 @@ if __name__ == '__main__':
 
     # O03 The Golden Key
 
-    O03 = object.Object('O03', 'Golden Key',
+    O03 = object.Object('O03', 'golden key',
                         'The key is large and made of high quality material. It is plated in gold with a single red gem '
                         'placed on the hilt of the key.',
-                        'A golden key sits undisturbed on the floor',
+                        'A golden key sits undisturbed on the floor.',
                         {
-                            'touch': 'The key is made of high quality material, it is smooth to the touch',
-                            'smell': 'The key does not smell',
-                            'taste': 'The key tastes metallic'
+                            'touch': 'The key is made of high quality material. It is smooth to the touch.',
+                            'smell': 'The key does not smell.',
+                            'taste': 'The key tastes metallic.'
                         },
                         True)
 
@@ -662,20 +658,21 @@ if __name__ == '__main__':
 
     # O11 The Will
 
-    O11 = object.Object('O11', "Victim's Will",
-                        "The Victim's will is complicated and created with very technical vocabulary",
-                        "The Victim's will sits, waiting to be read",
+    O11 = object.Object('O11', "victim's will",
+                        "The victim's will is complicated and written with very technical vocabulary. "
+                        "Maybe you should read it if you have not already.",
+                        "The victim's will sits, waiting to be read.",
                         {
-                            'touch': 'The will is made of high quality paper',
-                            'smell': 'The will smells of ink, it must have been created or edited relatively recently',
-                            'read': 'The will is complicated, with very technical writing. You look it over trying to parse '
-                                    'it. it contains the normal information on what to do with the body in the event of '
-                                    'his death, as well as some additional information on where he wants individual objects '
+                            'touch': 'The will is made of high quality paper.',
+                            'smell': 'The will smells of ink. It must have been created or edited relatively recently.',
+                            'read': 'The will is complicated, with very technical writing. You look it over, trying to understand '
+                                    'it. It contains the normal information on what to do with the body in the event of '
+                                    'death, as well as some additional information on where the victim wants individual objects '
                                     'to go. You skip to the bottom of the page and read an interesting line: '
                                     "'I, Norman Bates, hereby remove any inheritance from my son, Adam Bates, and instead "
                                     "relinquish my estate and all my earthly possessions to my dear friend and business "
                                     "partner, Alice Stone, in the event of "
-                                    "my death'"
+                                    "my death.'"
                         },
                         True)
 
