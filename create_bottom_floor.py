@@ -685,12 +685,12 @@ if __name__ == '__main__':
     R05 = room.Room('R05', 'Dining Room',
                     'The incredibly lavish dining room is well lit and beautifully decorated. Huge windows line the '
                     'northern wall, allowing you to peer into the backyard of the house. '
-                    'A large table with 8 seats '
-                    'made of expensive dark wood sits in the center of the room. A well stocked bar stands at the other '
-                    'end of the room, clearly it has been well used as many of the bottles are half full.\n'
+                    'A large table with eights seats '
+                    'made of expensive dark wood sits in the center of the room. A fully stocked bar stands at the other '
+                    'end of the room. Clearly, it has been well used as many of the bottles are half full.\n'
                     'A set of large glass doors sit to the west that lead to the kitchen.\n'
                     'An open doorway in the east leads to the library.',
-                    'The Dining Room is lavish and beautiful. With a large table and a well stocked bar at one end.'
+                    'The dining room is lavish and beautiful, with a large table and a fully stocked bar at one end. '
                     'A set of glass doors to the west leads to the kitchen, while an open doorway to the east leads '
                     'to the library.')
 
@@ -702,10 +702,10 @@ if __name__ == '__main__':
     R05.set_interactions({
         'search': 'You search under the table and behind the bar. You cannot find anything out of the ordinary in this '
                   'room.',
-        'touch': 'You run your hand along the beautiful wood of the table and bar. It is smooth and sturdy',
-        'smell': 'The room smells of food that has recently been cooked',
-        'listen': "You attempt to listen to the room. The room is silent, besides the wind howling on the windows outside",
-        'taste': 'You lick the table, it tastes of a bitter varnish.',
+        'touch': 'You run your hand along the beautiful wood of the table and bar. It is smooth and sturdy.',
+        'smell': 'The room smells of food that has recently been cooked.',
+        'listen': "You attempt to listen to the room. The room is silent aside from the wind howling against the windows outside.",
+        'taste': 'You lick the table. It tastes of a bitter varnish.',
     })
 
     R05.set_connections({
@@ -718,20 +718,21 @@ if __name__ == '__main__':
     # F01R05 The Food
 
     F01R05 = feature.Feature('F01R05','Plate of Food',
-                             'You examine the food more closely, it was made within the last few hours although it '
+                             'You examine the food more closely. It was made within the last few hours, although it '
                              'has long since gone cold. The steak is cooked rare with a flowery pepper cream sauce. '
-                             'The mashed potatoes have been well seasoned with garlic and bits of greenish herbs. The '
+                             'The mashed potatoes have been seasoned with garlic and bits of greenish herbs. The '
                              'salad is coated in an oily vinaigrette with a lot of purple flowers used as garnish. '
-                             'It appears only a few bites have been taken off the plate.',
-                             'A plate of food sits barely touched on the table',
+                             'Only a few bites have been taken off of the plate.',
+                             'A plate of food sits barely touched on the table.',
                              {
                                  'touch': 'The food has long since gone cold.',
-                                 'taste': 'The food tastes off somehow. The steak is well cooked and the rest of the food '
-                                          'is well seasoned, but there is a bitter after taste that holds in the back of '
-                                          'your mouth as you try a bite.',
-                                 'smell': 'The food smells delicious, you almost want to take a bite to try it for yourself',
+                                 'taste': 'The food tastes off somehow. The steak is cooked rare, and the rest of the food '
+                                          'is well seasoned, but there is a bitter aftertaste that holds in the back of '
+                                          'your mouth as you try a bite of the salad.',
+                                 'smell': 'The food smells delicious. You almost want to take a bite to try it for yourself.',
                                  'search': 'Combing through the mashed potatoes and salad with a fork does not reveal '
-                                           'anything hidden within'
+                                           'anything hidden within, although, for some reason, the purple flowers strike '
+                                           'you as odd.'
                              },
                              False)
 
@@ -740,16 +741,16 @@ if __name__ == '__main__':
     # F02R05 The Glasses
 
     F02R05 = feature.Feature('F02R05','Glasses',
-                             'You examine the glasses on the bar more closely. Both are half full, one with a red liquid '
-                             'and the other with a clear amber colored drink. The glass with the read liquid appears to '
-                             'have lipstick around the glass',
-                             'A pair of glasses sit on the bar, each half full.',
+                             'You examine the glasses on the bar more closely. Both are half full--one with a red liquid '
+                             'and the other with an amber colored liquid. The glass with the red liquid appears to '
+                             'have lipstick on the rim of the glass.',
+                             'A pair of glasses rest on the bar, each half full.',
                              {
-                                 'touch': 'The glasses are warm to the touch, they have been sitting out for a while',
+                                 'touch': 'The glasses are warm to the touch. They have been sitting out for a while.',
                                  'taste': 'You individually bring each of the glasses to your lips, tasting the liquids '
                                           'inside. The red glass contains a bitter red wine, while the amber glass contains '
                                           'a slightly watered down sweet whiskey.',
-                                 'smell': 'It quickly becomes very clear to you as you bring the glasses to your nose, that '
+                                 'smell': 'It quickly becomes very clear to you as you bring the glasses to your nose that '
                                           'these drinks are alcoholic.',
                              },
                              False)
