@@ -7,7 +7,7 @@
 {"go": ["go","move","walk","climb","proceed","travel","enter"]},
 {"open": ["open"]}, 
 {"search": ["search", "scavenge","probe","rummage","seek"]},
-{"touch": ["touch","feel","hold"]},
+{"touch": ["touch","feel","hold","press"]},
 {"taste": ["taste","lick","drink","eat"]},
 {"smell": ["smell","sniff"]},
 {"listen": ["listen","hear"]},

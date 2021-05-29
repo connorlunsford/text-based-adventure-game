@@ -321,13 +321,13 @@ if __name__ == '__main__':
     # R03 The Library
 
     R03 = room.Room('R03', 'Library',
-                    'You walk into a massive double story room lined with books. Every wall is covered in a book of every '
-                    'size and color. In the center of the room is a large red cloth couch with two matching sitting chairs. '
-                    'Between them sits a massive oak coffee table.\n'
+                    'You walk into a massive double-story room lined with bookcases. Each wall is covered by books of every '
+                    'size and color. In the center of the room is a large red fabric couch with two matching chairs. '
+                    'Between them, sits an oak coffee table.\n'
                     'In a massive set of double doors to the southwest is the entrance to the grand foyer.\n'
                     'Through a door to the northwest you can see the ridiculously oversized table of the dining room.\n'
                     'To the north is a set of french doors that lead outside to the patio.',
-                    'You enter the library and marvel at the wall to wall bookcase lined with books. To the southwest is '
+                    'You enter the library and marvel at the wall-to-wall bookcases filled with books. To the southwest is '
                     'the double doors that lead to the grand foyer, to the northwest is a door leading to the dining room, '
                     'and to the north is a set of french doors leading to the patio.')
     # sets the connections for the room
@@ -346,13 +346,13 @@ if __name__ == '__main__':
         'P05'  # Heather Poirot, the FBI Agent
     ])
     R03.set_interactions({
-        'search': "You walk around the room looking for any objects that look out of the ordinary. You realize you may "
-                  "need to get a closer look at the books if you want to find anything.",
-        'touch': 'You run your hands along the soft green carpet of the room. It is clearly high quality',
+        'search': "You walk around the room, looking for any objects that seem out of the ordinary. You realize that you "
+                  "may need to get a closer look at the massive bookcase if you want to find anything.",
+        'touch': 'You run your hands along the soft green carpet of the room. It is clearly high quality.',
         'taste': 'You get on all fours and lean down to lick the carpet. You realize you probably should not have done '
-                 'this as the carpet tastes a bit musty',
+                 'this as the carpet tastes a bit dirty.',
         'smell': 'The smell of paper and old books is unmistakable. Someone has used a perfume or air freshener to make '
-                 'the room smell a little less musty',
+                 'the room smell a little less musty.',
         'listen': 'The room is eerily quiet. Heather coughs, looking to break the uncomfortable silence.',
     })
 
@@ -361,31 +361,31 @@ if __name__ == '__main__':
     # F01R03 bookcase
 
     F01R03 = feature.Feature('F01R03', "Bookcase",
-                             'The bookcase has books of every size and color. You absentmindedly look through the books,'
+                             'The bookcase has books of every size and color. You absentmindedly look through the books, '
                              'examining them. You see a set of encyclopedia, a few classic novels, and some books on '
-                             'nonfiction topics as well, such as horticulture and cooking.',
-                             'Massive wooden bookcases line the eastern wall of the room.',
+                             'nonfiction topics, such as horticulture and cooking, as well.',
+                             'A massive wooden bookcase lines the eastern wall of the room.',
                              {
-                                 'search': 'You run your hands along the bookcases, pulling out a few books and searching '
+                                 'search': 'You run your hands along the bookcase, pulling out a few books and searching '
                                            "along the back and undersides of the shelves. You're almost ready to give up "
-                                           "until you pull out one last book, revealing a small red button behind it.",
-                                 'touch': 'You run your hands along the books, nothing appears to be out of the ordinary. '
-                                          'You then touch a book which seems oddly stiff and out of place, maybe you should '
-                                          'look a little closer.',
+                                           "when you pull out one last book, revealing a small red button behind it.",
+                                 'touch': 'You run your hands along the books. Nothing appears to be out of the ordinary. '
+                                          'You then touch a book, which seems oddly stiff and out of place. Maybe you should '
+                                          'search the bookcase a little more.',
                                  'smell': 'The bookcase smells of old wood and paper that has been sitting for a long time.',
                                  'listen': 'The bookcase is strangely silent.',
                                  'open': {
-                                     'unlocked': 'You grab the bookcase with the little bit of leverage you can find on '
-                                                 'the corner '
-                                                 'of the wood. As you pull the bookcase easily swings away revealing an entrance to '
+                                     'unlocked': 'You grab the bookcase, using the small indented handle on the side. '
+                                                 'As you pull, the bookcase easily swings away, revealing an entrance to '
                                                  'a secret room behind it.',
                                      'locked': 'You attempt to grab the bookcase to pull on it, but you cannot get a good '
-                                               'hold on the wood around it.',
+                                               'hold on the wood around it. Maybe there is another way to open it...',
                                      'room_ids': [['east','R04']]
                                  },
                                  'use': {
-                                     'F03R03': 'You press the button, you hear a satisfying click as the bookshelf shifts '
-                                               'slightly toward you, revealing a small indented handle on the side.',
+                                     'F03R03': 'You press the button and hear a satisfying click as the bookshelf shifts '
+                                               'slightly toward you, revealing a small indented handle on the side. '
+                                               'Maybe the bookcase can be opened now...',
                                  }
                              },
                              False)
@@ -397,25 +397,25 @@ if __name__ == '__main__':
     # F02R03 book
 
     F02R03 = feature.Feature('F02R03', "Book",
-                             'The book has a green cover, the title states it is a book on gardening and horticulture. '
-                             'You take a closer look and it appears the book has a page ripped out of it in the plant '
-                             'biography.',
+                             'The book has a green cover. The title states it is a book on gardening and horticulture. '
+                             'You take a closer look. It appears the book has a page ripped out of it in the plant '
+                             'section.',
                              'A book with a green cover is sitting in the center of the room on the coffee table.',
                              {
-                                 'touch': 'The book is made of a rough paper, it appears to be some kind of organic '
+                                 'touch': 'The book is made of a rough paper. It appears to be some kind of organic '
                                           'recycled material.',
-                                 'smell': 'The book smells slightly perfumed, as if it had been around flowers recently.',
-                                 'listen': 'The book does not sound like anything',
+                                 'smell': 'The book smells slightly fragrant, as if it had been around flowers recently.',
+                                 'listen': 'The book does not sound like anything.',
                                  'use': {
                                      'O10': 'You take the piece of paper and hold it up to the torn page. Although the '
-                                            'paper has been damaged by water, you are able to tell this book is where the '
-                                            'page came from.'
+                                            'paper has been damaged by water, you are able to tell that this book is '
+                                            'where the page came from.'
                                  },
-                                 'read': 'The book mostly talks about gardening and horticulture, several pages on the '
+                                 'read': 'The book mostly talks about gardening and horticulture. Several pages cover the '
                                          'correct times to plant and water flowers, where to plant them, and many other '
-                                         "topics that don't really interest you. You do find a torn page with some of the "
-                                         "words still on it, you can make chunks of letters that spell out 'wolfs-' and "
-                                         "'poi-'",
+                                         "topics that don't really interest you. You do find a torn page with some words "
+                                         "still on it. You can make out chunks of letters that spell out 'wolfs-' and "
+                                         "'poi-'.",
                              },
                              False)
 
@@ -424,21 +424,20 @@ if __name__ == '__main__':
     # F03R03 button
 
     F03R03 = feature.Feature('F03R03', "Button",
-                             'A small, red button sits on the back of the shelf, all but hidden if the books were'
-                             ' in their normal '
-                             'spot on the shelf',
-                             'A button peers out from where a book used to be on the shelf',
+                             'A small, red button sits at the back of the shelf. It would be all but hidden if the '
+                             'books were in their normal spot.',
+                             'A button peers out from where a book used to be on the massive bookcase.',
                              {
-                                 'touch': 'Touching the button reveals it is able to be pressed (perhaps you could try to '
-                                          "'use' the button on the bookcase)",
+                                 'touch': 'Touching the button reveals that it is able to be pressed. (Hint: perhaps you '
+                                          "could try to 'use' the button on the bookcase)",
                              },
                              True)
 
     sys.add_feature(F03R03)
 
     F04R03 = feature.Feature('F04R03', 'Gun',
-                             'You attempt to take a closer look at the gun Heather is carrying. Unfortunately her coat '
-                             'hides everything besides a brief flash of it when she moves around quickly.',
+                             'You attempt to take a closer look at the gun Heather is carrying. Unfortunately, her coat '
+                             'hides everything beyond a brief flash of it when she moves around quickly.',
                              '',
                              {
 
@@ -450,69 +449,68 @@ if __name__ == '__main__':
     # P05 Heather Poirot
 
     P05 = person.Person('P05', 'Heather Poirot',
-                        'You take a look at Heather and scan her up and down, trying to get a read on who she is. She is '
+                        'You take a look at Heather and scan her up and down, trying to get a read on who she is. She appears '
                         'middle aged, maybe early 30s. She is tall, with long brown hair pulled back into a ponytail. She '
-                        "doesn't appear to be wearing that much makeup, and her outfit is plain as well, just a simple "
+                        "doesn't appear to be wearing that much makeup, and her outfit is plain as well: just a simple "
                         "long tan coat with jeans and brown boots. She acts a bit nervous, like she doesn't know what "
-                        "to be doing as you walk in the room. She looks away as she notices you staring at her.",
-                        'A young woman you recognize as Heather Poirot sits in one of the chairs, staring at the window',
+                        "to be doing when you walk into the room. She looks away when she notices you staring at her.",
+                        'A woman who you recognize as Heather Poirot sits in one of the chairs, staring at the window.',
                         {
                             'ask': {
-                                'F04R03': 'You ask Heather about the gun she is carrying, she seems surprised then responds '
-                                          "'I was asked to come to a creepy retreat by my boss and you expected me not to "
-                                          "bring a weapon? Clearly I was right to come armed since someone already died. "
-                                          "I'm not the one that killed him though, he didn't die of a gunshot'",
-                                'P01': "You ask Heather about Alice. She responds 'I don't know much about her, she seemed "
-                                       "really broken up by the death though. I wonder how she's doing?'",
-                                'P02': "You ask Heather about Adam. She says 'That guy seems like a hothead. I can't "
+                                'F04R03': 'You ask Heather about the gun she is carrying. She seems surprised then responds, '
+                                          "'I was asked to come to a creepy retreat by my boss, and you expect me not to "
+                                          "bring a weapon? Clearly, I was right to come armed since someone already died. "
+                                          "I'm not the one that killed him though. He didn't die of a gunshot.'",
+                                'P01': "You ask Heather about Alice. She responds, 'I don't know much about her. She seemed "
+                                       "really broken up by the death though. I wonder how she's doing.'",
+                                'P02': "You ask Heather about Adam. She says, 'That guy seems like a hothead. I can't "
                                        "believe he is the son of that kind old man.'",
-                                'P03': "You ask Heather about Sam. She responds 'I don't really know about that guy. He "
-                                       "seems pretty shady. Earlier I saw him snooping around the library and outside "
-                                       "before you arrived. I wonder what he was doing'",
-                                'P04': "You ask Heather about Al. She states 'The groundskeeper? He seemed nice, but I "
-                                       "noticed he was complaining about being underpaid earlier'",
-                                'P05': "You ask Heather about herself. She states 'Well I am a single mom and I work as a "
-                                       "lawyer. My life is a little...stressful. So my boss sent me on this trip in order "
-                                       "to get me away from it all. To be honest I think it's kind of a waste of time, "
+                                'P03': "You ask Heather about Sam. She responds, 'I don't really know about that guy. He "
+                                       "seems pretty shady. Earlier, I saw him snooping around the library and outside area "
+                                       "before you arrived. I wonder what he was doing.'",
+                                'P04': "You ask Heather about Al. She states, 'The groundskeeper? He seemed nice, but I "
+                                       "noticed he was complaining about being underpaid earlier.'",
+                                'P05': "You ask Heather about herself. She states, 'Well, I am a single mom, and I work as a "
+                                       "lawyer. My life is a little... stressful. So my boss sent me on this trip in order "
+                                       "to get me away from it all. To be honest, I think it's kind of a waste of time, "
                                        "especially since it looks like this is going to be more stressful than working for "
-                                       "obvious reasons",
-                                'P06': "You ask Heather about Ava. She responds 'She seems off. Too calm in this situation'",
+                                       "obvious reasons.",
+                                'P06': "You ask Heather about Ava. She responds, 'She seems off. Too calm in this situation.'",
                                 'F01R01': "You ask Heather about the victim. 'Mr. Bates seemed really nice. He greeted me "
                                           "at the door and seemed very excited to spend the weekend with everyone. I'm "
                                           "surprised someone would even want to kill him...'",
-                                'O01': "You ask Heather about the candlestick. 'Oh man, that thing is ugly. Why are you "
+                                'O01': "You ask Heather about the candlestick. 'Oh, man. That thing is ugly. Why are you "
                                        "carrying it around?'",
-                                'O05': "You question Heather about the earring. 'Oh? That's not mine, I only brought one "
-                                       "pair "
-                                       "and they're still in'. You check her earlobes, and can see two pearl earrings in "
-                                       "place.",
-                                'O06': "You show Heather the bloodied washcloth. She seems surprised. 'Oh!' she exclaims "
-                                       "'Could you take that away, I really can't stand the sight of blood'",
+                                'O05': "You question Heather about the earring. 'Oh? That's not mine. I only brought one "
+                                       "pair, and they're still in'. You check her earlobes and can see two pearl "
+                                       "earrings in place.",
+                                'O06': "You show Heather the bloodied washcloth. She seems surprised. 'Oh!' she exclaims. "
+                                       "'Could you take that away? I really can't stand the sight of blood.'",
                                 'O09': "You show Heather the letter. She takes a second to glance over it, blushing "
-                                       "slightly. 'This is...a little scandalous' she says",
-                                'O10': "You show heather the smudged drawing. 'Huh' she says, 'It looks like it could "
-                                       "have been ripped out of one of the books in here'",
-                                'O11': "You ask Heather about the will. She says 'Sorry all this lawyer speak is above "
-                                       "my head. Not sure how I could help'",
+                                       "slightly. 'This is... a little scandalous,' she says.",
+                                'O10': "You show Heather the smudged drawing. 'Huh,' she says. 'It looks like it could "
+                                       "have been ripped out of one of the books in here.'",
+                                'O11': "You ask Heather about the will. She says, 'Sorry, all this lawyer speak is above "
+                                       "my head. Not sure how I could help.'",
                                 'O12': "You show the FBI badge to Heather. Her eyes widen as she pats a pocket in her "
-                                       "jacket. 'Shit!' she exclaims 'First big case and I manage to lose my badge' she "
-                                       "mutters under her breath. 'Well you caught me. I was sent here to investigate "
-                                       "Mr. bates for tax fraud, but before I could even start the investigation he was "
-                                       "murdered. I'm sorry for hindering the investigation but some people tend to "
-                                       "get... angry when we reveal that we were lying to them so I decided it was for the "
-                                       "best. Let me know if there is anything else I can do to help'"
+                                       "jacket. 'Shit!' she exclaims. 'First big case and I manage to lose my badge,' she "
+                                       "mutters under her breath. 'Well, you caught me. I was sent here to investigate "
+                                       "Mr. Bates for tax fraud, but before I could even start the investigation, he was "
+                                       "murdered. I'm sorry for hindering the investigation, but some people tend to "
+                                       "get... angry when we reveal that we were lying to them, so I decided it was for the "
+                                       "best. Let me know if there is anything else I can do to help.'"
                             },
                             'touch': 'You take a step closer to Heather and touch her arm. She recoils and jumps back, '
-                                     "surprised you would touch her. 'Please don't do that!' she says taking a second to "
-                                     "calm down and adjust her coat. As she is adjusting you do see something interesting, "
+                                     "surprised that you would touch her. 'Please don't do that!' she says, taking a second to "
+                                     "calm down and adjust her coat. As she is adjusting, you do see something interesting: "
                                      "the hilt of a pistol poking through a shoulder holster under her left arm.",
                             'smell': 'You take a step toward Heather and sniff. She gives you a strange look and takes a '
                                      'step back. She does not appear to be wearing any perfume.',
                             'listen': 'Heather does not appear to be making any noise besides the odd cough to break the '
-                                      'silence every once in a while',
+                                      'silence every once in a while.',
                             'search': 'You ask Heather if you can pat her down to check if she has any items that could '
-                                      "help the investigation. She stops you and says 'No, if you want to search me you're "
-                                      "just going to have to have the police come here and do it themselves, sorry'",
+                                      "help the investigation. She stops you and says, 'No, if you want to search me, you're "
+                                      "going to have to have the police come here and do it themselves, sorry.'",
                         })
 
     sys.add_person(P05)
