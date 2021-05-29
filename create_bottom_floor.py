@@ -171,8 +171,8 @@ if __name__ == '__main__':
     # R02 The Kitchen
 
     R02 = room.Room('R02', 'Kitchen',
-                    "The bright white of the kitchen almost blinds you in this room. Under different circumstances "
-                    "this would excite you for a weekend of great meals. However, due to the retreat owner's "
+                    "The bright whiteness of the kitchen almost blinds you. Under different circumstances, this would "
+                    "excite you in anticipation for a weekend of great meals. However, due to Norman Bates' "
                     "untimely demise, the kitchen just seems cold and empty. Large stainless steel appliances sit "
                     "unused next to the white marble counters.\n"
                     "To the west is an open door you suspect leads to the garage.\n"
@@ -193,14 +193,14 @@ if __name__ == '__main__':
     R02.set_people(['P06',  # Ava Scarlett (the killer)
                     ])
     R02.set_interactions({
-        'search': "You walk around the room opening cabinet doors and drawers. The cabinets are filled with various "
+        'search': "You walk around the room, opening cabinet doors and drawers. The cabinets are filled with various "
                   "cooking utensils and dishes. You do not sense anything out of the ordinary.",
         'touch': 'You run your hands along the cold marble counters and the warm metal top of the stove. The room has '
-                 'been impeccably cleaned besides a small pile of dishes, not a spot of grease to be found.',
-        'taste': 'You place your tongue on the marble counter top and lick, confirming that the marble has recently '
+                 'been impeccably cleaned. Aside from a small pile of dishes, there is not a spot of grease to be found.',
+        'taste': 'You place your tongue on the marble countertop and lick, confirming that the marble has recently '
                  'been cleaned.',
-        'smell': 'The room has recently been used to cook. You can smell hints of garlic and butter wafting from the'
-                 ' dishes near the sink.',
+        'smell': 'The room has recently been used to cook. You can smell hints of garlic and butter wafting from the '
+                 'dishes near the sink.',
         'listen': 'You can hear the electric buzz of the appliances and not much else.',
     })
 
@@ -209,19 +209,19 @@ if __name__ == '__main__':
     # F01R02 pantry
 
     F01R02 = feature.Feature('F01R02', "Pantry",
-                             'Opening the door to the pantry and switching on the light you can see the kitchen is well '
+                             'Opening the door to the pantry and switching on the light, you can see the kitchen is well-'
                              'stocked. Every kind of food imaginable is stored in this pantry: boxes of pasta, bags of '
                              'potatoes, a bin of onions and garlic, and several large sacks of flour. Those who live '
-                             'in the house full time clearly do not go hungry.',
-                             'The door to a large open pantry is cracked, you can see many boxes of food inside.',
+                             'in the house full-time clearly do not go hungry.',
+                             'The door to a large open pantry is cracked open. You can see many boxes of food inside.',
                              {
                                  'search': 'You take a minute to comb through every box and bag in the pantry. You do not '
                                            'notice anything out of the ordinary stored in here.',
                                  # NOTE: May need to change this and put an item in search
                                  'touch': 'You touch a few of the boxes in the pantry. It appears to be normal food.',
                                  'taste': 'You open up a box of crackers and take one out. Examining it reveals that '
-                                          'it is a normal water cracker. You take a bite and determine it is a little '
-                                          'bland.',
+                                          'it is a normal water cracker. You take a bite and determine that it is a '
+                                          'little bland.',
                                  'smell': 'The pantry smells of dried food that has been stored for quite a while.',
                                  'listen': 'You do not hear anything out of the ordinary in the pantry.',
                              },
@@ -232,18 +232,18 @@ if __name__ == '__main__':
     # F02R02 dishes
 
     F02R02 = feature.Feature('F02R02', "Dishes",
-                             'Examining the pile of dishes closely you can see they were recently used to cook a full '
-                             'meal. You see several pans that have been used to cook many different things.',
+                             'Examining the pile of dishes closely, you can see that they were recently used to cook a '
+                             'full meal. You see several pans that have been used to cook many different things.',
                              'A pile of dirty dishes sits by the sink, recently used.',
                              {
                                  'search': 'You look through the pile of dirty dishes, absentmindedly searching for '
-                                           'something. You see several substances cooked into the pans, bits of meat, '
+                                           'something. You see several substances stuck on the pans: bits of meat, '
                                            'grease, purple flower petals, and veggie scraps.',
                                  'touch': 'You touch one of the pans. It is coated in grease and oil.',
-                                 'taste': 'You take one of the pans and bring it up to your mouth. Tasting the '
-                                          'substance inside it. It coats your tongue with a greasy bitter taste '
+                                 'taste': 'You take one of the pans and bring it up to your mouth, tasting the '
+                                          'substance inside it. It coats your tongue with a greasy, bitter taste '
                                           'that takes a bit of time to dissipate.',
-                                 'smell': 'The pans smell strongly of grease',
+                                 'smell': 'The pans smell strongly of grease.',
                              },
                              False)
 
@@ -253,64 +253,64 @@ if __name__ == '__main__':
 
     P06 = person.Person('P06', 'Ava Scarlett',
                         'You take a step closer to the woman who introduced herself earlier as Ava Scarlett. '
-                        'She is a woman in her early to mid 30s, young but with some wrinkles starting to '
+                        'She is in her early to mid 30s, young but with some wrinkles starting to '
                         'appear. She keeps her hair cut short and dyed a deep '
-                        'shade of black with red highlights. Her makeup has been carefully done, with dark '
+                        'shade of black with red highlights. Her makeup has been carefully done, with charcoal '
                         'eyeliner and red lipstick. She is wearing a patterned dark t-shirt with jeans and '
                         'black boots. She only has one earring in. She seems a bit annoyed by your presence '
                         'as she reads a novel in a small breakfast nook near the window.',
                         'Ava Scarlett sits near the window in a breakfast nook reading a novel.',
                         {
                             'ask': {
-                                'P01': "You question Ava about Alice. Ava responds: 'Well I don't know much about her "
-                                       "I only just met her when I got here. If you ask me though, I think her and our "
-                                       "recently deceased host were 'well acquainted' if you know what I mean'",
-                                'P02': "You question Ava about Adam, the victim's son. Ava's eyebrows raise as she says "
+                                'P01': "You question Ava about Alice. Ava responds, 'Well, I don't know much about her. "
+                                       "I only just met her when I got here. If you ask me, though, I think her and our "
+                                       "recently deceased host were 'well acquainted' if you know what I mean.'",
+                                'P02': "You question Ava about Adam, the victim's son. Ava's eyebrows raise as she says, "
                                        "'You didn't hear it from me, but I heard him and his dad fighting before we found "
                                        "the body. I'm not sure if he's the one that killed his dad, but I can tell you "
-                                       "that they did not have the best relationship'",
+                                       "that they did not have the best relationship.'",
                                 'P03': "You question Ava about Sam. She looks annoyed, stating 'I never liked that guy. "
-                                       "We arrived together, and he had a bad attitude. Not only that but he just looks "
-                                       "like a thug. What a weird guy'",
-                                'P04': "You ask Ava about the groundskeeper. Ava responds 'To be honest I don't really "
-                                       "know much about him. He seems like a bit of a loner'",
-                                'P05': "You question Ava about Heather. Ava states 'She seems pretty cheery. Kind of odd "
+                                       "We arrived together, and he had a bad attitude. Not only that, but he just looks "
+                                       "like a thug. What a weird guy.'",
+                                'P04': "You ask Ava about the groundskeeper, Al. Ava responds, 'To be honest, I don't "
+                                       "really know much about him. He seems like a bit of a loner.'",
+                                'P05': "You question Ava about Heather. Ava states, 'She seems pretty cheery. Kind of odd "
                                        "that she's not more upset about the murder though, isn't it?'",
-                                'P06': "You ask Ava about herself. 'Me?' she says 'Well, I work as a software developer "
-                                       "at a tech company downtown. It's a lot of screen time, so every once in a while "
-                                       "I like to get out of the office and do a retreat like this one.' she pauses. 'This "
-                                       "is the first time I've been to this retreat though, I wish it could have been "
+                                'P06': "You ask Ava about herself. 'Me?' she says. 'Well, I work as a software developer "
+                                       "at a tech company in the city. It's a lot of screen time, so every once in a while "
+                                       "I like to get out of the office and do a retreat like this one.' She pauses. 'This "
+                                       "is the first time I've been to this retreat though. I wish it could have been "
                                        "under better circumstances...'",
-                                'F01R01': "You question Ava about the victim. She quickly answers, 'I didn't know him "
+                                'F01R01': "You question Ava about Norman. She quickly answers, 'I didn't know him "
                                           "very well. I only spoke with him once over the phone when I called to set up "
                                           "this weekend. I'm sorry to say, he seemed like a great guy.'",
                                 'O01': "You ask Ava about the candlestick. Her eyes widen, and she quickly glances toward "
-                                       "the door, 'Isn't that the gaudy candlestick from the foyer? Why'd you pick it up?'",
+                                       "the door. 'Isn't that the gaudy candlestick from the foyer? Why'd you pick it up?'",
                                 'O05': "You question Ava about the earring. She snatches it from your hand and looks it "
-                                       "over. She says 'Where did you find this? The bathroom huh? I must have lost it "
-                                       "when I washed my face earlier. If it helps your investigation you're welcome to "
-                                       "keep it until we can leave'",
-                                'O06': "You show Ava the bloodied washcloth. She recoils 'Gross! Keep that away from me, "
+                                       "over. She says, 'Where did you find this? The bathroom, huh? I must have lost it "
+                                       "when I washed my face earlier. If it helps your investigation, you're welcome to "
+                                       "keep it until we leave.'",
+                                'O06': "You show Ava the bloodied washcloth. She recoils. 'Gross! Keep that away from me. "
                                        "I can't stand the sight of blood'",
                                 'O09': "You ask Ava about the letter. Her face goes blank. She sheepishly looks around and "
-                                       "sighs. 'Okay' she says 'You caught me, my motives for coming here weren't exactly "
+                                       "sighs. 'Okay,' she says 'You caught me. My motives for coming here weren't exactly "
                                        "one hundred percent genuine. Norman and I used to be lovers when I was in my "
-                                       "twenties. It didn't end well...I came here so I could confront him. I swear I'm "
-                                       "not the one that killed him though! Before I even got to talk to him he was "
+                                       "twenties. It didn't end well... I came here so I could confront him. I swear I'm "
+                                       "not the one who killed him though! Before I even got to talk to him, he was "
                                        "murdered! The only reason I've been lying was because I didn't want to be pegged "
-                                       "as the killer. I'm not a bad person I promise. You have to believe me!'",
-                                'O11': "You ask Ava about the will. 'What's that?' She says 'Norman's will? Does it say "
+                                       "as the killer. I'm not a bad person, I promise. You have to believe me!'",
+                                'O11': "You ask Ava about the will. 'What's that?' she says. 'Norman's will? Does it say "
                                        "he's giving everything to Alice? I wonder what could possess him to do something "
                                        "like that instead of giving it to his son?'",
-                                'O12': "You question Ava about the FBI badge. 'Oh no way!' She says excitedly 'Someone "
+                                'O12': "You question Ava about the FBI badge. 'Oh, no way!' she says excitedly. 'Someone "
                                        "here is an FBI agent? I wonder who it is. Wait, you don't think I'm an FBI Agent, "
-                                       "do you? I wish! That would be a great gig'"
+                                       "do you? I wish! That would be a great gig.'"
                             },
-                            'search': 'You ask Ava if she has any belongings that could help in your investigation, '
-                                      'she turns her pockets inside out, showing she has nothing on her. She shrugs '
-                                      "and says 'Sorry I can't be more help'",
-                            'touch': 'As you walk up to her, hand outstretched, Ava holds her hand up and says '
-                                     "'I would prefer if you didn't'",
+                            'search': 'You ask Ava if she has any belongings that could help in your investigation. '
+                                      'She turns her pockets inside out, showing that she has nothing on her. She shrugs '
+                                      "and says, 'Sorry I can't be of more help.'",
+                            'touch': 'As you walk up to her, hand outstretched, Ava holds her hand up and says, '
+                                     "'I would prefer if you didn't.'",
                             'smell': 'You walk up to Ava and sniff. You smell a slightly floral perfume. As you '
                                      'look up, Ava is staring at you with a concerned look on her face.',
                             'listen': 'Ava is remarkably silent as she reads her book.',
