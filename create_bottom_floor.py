@@ -45,7 +45,7 @@ if __name__ == '__main__':
                     'some of which look to be quite expensive. \n'
                     'To the south is the entrance to the house. You know you cannot leave until the murder has been '
                     'solved.\n'
-                    'To the west, through an open archway, appears to be the entrance to a gleaming white kitchen.\n'
+                    'To the west appears to be the entrance to a gleaming white kitchen.\n'
                     'To the east seems to be a library of sort.\n'
                     'To the north is the upstairs hallway.',
                     'The grand foyer stretches out in front of you. To the west is the kitchen, to the east is the '
@@ -175,12 +175,12 @@ if __name__ == '__main__':
                     "excite you in anticipation for a weekend of great meals. However, due to Norman Bates' "
                     "untimely demise, the kitchen just seems cold and empty. Large stainless steel appliances sit "
                     "unused next to the white marble counters.\n"
-                    "To the west is an open door you suspect leads to the garage.\n"
-                    "To the southeast is an archway that leads back to the grand foyer.\n"
-                    "To the northeast are clear glass french doors that look into a dining room.",
+                    "To the west is a door you suspect leads to the garage.\n"
+                    "To the southeast leads back to the grand foyer.\n"
+                    "To the northeast is a set of doors that lead into a dining room.",
                     'You enter the kitchen, glancing around to see the white counter tops and stainless steel '
                     'appliances. A door to the west leads to the garage, an archway to the southeast leads to '
-                    'the grand foyer, and some french doors to the northeast leads to the dining room.'
+                    'the grand foyer, and northeast leads to the dining room.'
                     )
     R02.set_connections({
         'west': 'R08',  # garage
@@ -324,12 +324,12 @@ if __name__ == '__main__':
                     'You walk into a massive double-story room lined with bookcases. Each wall is covered by books of every '
                     'size and color. In the center of the room is a large red fabric couch with two matching chairs. '
                     'Between them, sits an oak coffee table.\n'
-                    'In a massive set of double doors to the southwest is the entrance to the grand foyer.\n'
+                    'To the southwest is the entrance to the grand foyer.\n'
                     'Through a door to the northwest you can see the ridiculously oversized table of the dining room.\n'
-                    'To the north is a set of french doors that lead outside to the patio.',
+                    'To the north is a set of doors that lead outside to the patio.',
                     'You enter the library and marvel at the wall-to-wall bookcases filled with books. To the southwest is '
-                    'the double doors that lead to the grand foyer, to the northwest is a door leading to the dining room, '
-                    'and to the north is a set of french doors leading to the patio.')
+                    'the doors that lead to the grand foyer, to the northwest is a door leading to the dining room, '
+                    'and to the north is a set of doors leading to the patio.')
     # sets the connections for the room
     R03.set_connections({
         'north': 'R06',  # patio
@@ -438,7 +438,7 @@ if __name__ == '__main__':
     F04R03 = feature.Feature('F04R03', 'Gun',
                              'You attempt to take a closer look at the gun Heather is carrying. Unfortunately, her coat '
                              'hides everything beyond a brief flash of it when she moves around quickly.',
-                             '',
+                             "Though she is trying to find it, you can see the hilt of a gun peaking out of Heather's coat",
                              {
 
                              },
@@ -688,10 +688,10 @@ if __name__ == '__main__':
                     'A large table with eights seats '
                     'made of expensive dark wood sits in the center of the room. A fully stocked bar stands at the other '
                     'end of the room. Clearly, it has been well used as many of the bottles are half full.\n'
-                    'A set of large glass doors sit to the west that lead to the kitchen.\n'
+                    'To the west is the kitchen.\n'
                     'An open doorway in the east leads to the library.',
                     'The dining room is lavish and beautiful, with a large table and a fully stocked bar at one end. '
-                    'A set of glass doors to the west leads to the kitchen, while an open doorway to the east leads '
+                    'To the west is the kitchen, while an open doorway to the east leads '
                     'to the library.')
 
     R05.set_features([
