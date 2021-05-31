@@ -2,7 +2,7 @@
 {"take": ["take", "pick", "grab", "get"]},
 {"drop": ["drop","remove","relinquish","place","yeet"]},
 {"use": ["use","try","combine","employ","manipulate","apply"]},
-{"look": ["look","gaze","peer"]},
+{"look": ["look"]},
 {"look at": ["look at", "examine","study","watch","scrutinize", "inspect"]},
 {"go": ["go","move","walk","climb","proceed","travel","enter"]},
 {"open": ["open"]}, 
@@ -12,11 +12,11 @@
 {"smell": ["smell","sniff"]},
 {"listen": ["listen","hear"]},
 {"read": ["read","peruse"]},
-{"call": ["call","phonecall","dial"]},
+{"call": ["call"]},
 {"ask": ["ask", "talk", "speak","question","interrogate"]},
-{"help": ["help","commands"]},
-{"inventory": ["inventory","bag"]},
-{"savegame": ["savegame","save"]},
-{"loadgame": ["loadgame","load"]},
-{"exit":  ["exit","quit"]}
+{"help": ["help"]},
+{"inventory": ["inventory"]},
+{"savegame": ["savegame"]},
+{"loadgame": ["loadgame"]},
+{"exit":  ["exit"]}
 ]
