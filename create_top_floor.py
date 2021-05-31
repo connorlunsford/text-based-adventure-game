@@ -43,7 +43,7 @@ if __name__ == "__main__":
               "touch": "The oak panel walls are cool to the touch except where the sunlight hits them.",
               "taste": "What does it mean to taste a room? No, really... what is it that you had in mind?",
               "smell": "Like many parts of this house, the hallway has a faint 'old' smell to it.",
-              "listen": "The soft sound of a woman crying comes from behind the second bedroom."
+              "listen": "The soft sound of a woman crying comes from the second bedroom."
               })
 
        sys.add_room(R11)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
        # Grandfather Clock (F01R11)
        F01R11 = feature.Feature("F01R11", "Grandfather Clock",
                                    "The grandfather clock features impressive, highly detailed woodwork and appears "
-                                   "very aged. You can see its large, golden pendulum swaying behind the door class. "
+                                   "very aged. You can see its large, golden pendulum swaying behind the glass door. "
                                    "Roman numerals and large serpentine clock hands mark the time.",
                                    "A grandfather clock resides on the eastern side of the hallway. You hear the "
                                    "familiar tick tock, tick tock of the pendulum swinging.",
@@ -80,7 +80,7 @@ if __name__ == "__main__":
                                    "in the center of the floor of the commonly used hallway. It tastes like nothing, "
                                    "although a small thread does get stuck on your tongue. Did we mention that this "
                                    "hallway was commonly used?",
-                                   "smell": "You smell nothing",
+                                   "smell": "You smell nothing.",
                                    "listen": "You hear nothing. It's a rug."
                                    },
                                    False)
@@ -94,7 +94,7 @@ if __name__ == "__main__":
                                 "The door to the master bedroom has a massive golden lock just above the handle.",
                                 {
                                     "touch": "The door is made of wood.",
-                                    "taste": "You lick the door. It tastes of wood and paint.",
+                                    "taste": "You lick the door. It tastes of wood and varnish.",
                                     "smell": "You smell nothing.",
                                     "listen": "You hear nothing. Nobody appears to be in the room.",
                                     "use": {
@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
        # Sink (F01R12)
        F01R12 = feature.Feature("F01R12", "Sink",
-                                   "The sink is made of granite and features a silver faucet  The bowl of the sink is "
+                                   "The sink is made of granite and features a silver faucet. The bowl of the sink is "
                                    "enormous. You can tell by the shine on the faucet that it has been recently cleaned. "
                                    "A pile of clean, white washcloths sit neatly folded next to the sink.",
                                    "A fancy sink with a silver faucet is built into one of the granite countertops.",
@@ -174,11 +174,11 @@ if __name__ == "__main__":
                                    "The trashcan is made of stainless steel and is one of those trashcans that has a small "
                                    "step used for opening it. As you begin to look away, the glint of a small shiny object "
                                    "on the floor catches your eye.",
-                                   "A small, metal trashcan sits in the in the corner of the room.",
+                                   "A small, metal trashcan sits in the corner of the room.",
                                    {
                                    "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
                                    "the trashcan is completely empty.",
-                                   "touch": "The stainless steel exterior feels slightly cold.",
+                                   "touch": "The stainless steel exterior feels slightly cool.",
                                    "taste": "Please try to use your better judgment. This is a trashcan.",
                                    "smell": "The smell of the trashcan is unremarkable.",
                                    "listen": "You hear nothing."
@@ -188,13 +188,13 @@ if __name__ == "__main__":
        sys.add_feature(F02R12)
 
        # Earring (O05)
-       O05 = object.Object("O05", "Silver Earring",
+       O05 = object.Object("O05", "silver earring",
                             "The women's earring is made of silver and shaped like a small crescent moon.",
-                            "A small shiny object lies on the floor. It looks like a women's earring.",
+                            "A small shiny object lies on the floor. It looks like a woman's earring.",
                             {
                                    "touch": "The earring feels strong and well-made.",
                                    "taste": "It tastes like metal. We would like to take this opportunity to note that "
-                                   "tasting a stranger's earring is not really sanitary.",
+                                   "tasting a stranger's earring is not very sanitary.",
                                    "smell": "You smell nothing.",
                                    "listen": "As you listen to the earring, you begin to hear a faint hum and the sound of "
                                    "drums in the distance. Just kidding. It's an earring. You hear nothing."
@@ -262,7 +262,7 @@ if __name__ == "__main__":
        F02R13 = feature.Feature("F02R13", "Vanity",
                                    "The walnut vanity features a large mirror and intricate woodwork along its edges "
                                    "and base. You wonder if it might be an antique. A framed photograph of Norman "
-                                   "and Alice sits right at the center of the top of the vanity. They both look very "
+                                   "and Alice sits in the center of the top of the vanity. They both look very "
                                    "happy. Beside the photograph, a jewelry box filled with all kinds of jewelry--"
                                    "from earrings, to necklaces, to bracelets--is open. You notice that all of the "
                                    "jewelry is gold.",
@@ -340,7 +340,7 @@ if __name__ == "__main__":
                                           "you. 'I believe it was on the bottom floor, although I can't be entirely "
                                           "certain. He didn't share its exact location with me.'",
                                    "O05": "You ask Alice about the earring. "
-                                          "Alice takes the earring, quickly examines it, then hands it back to you. "
+                                          "Alice examines the earring, but avoids touching it. "
                                           "'There's no way that's mine,' she says. 'I'm allergic to silver.'",
                                    "O06": "You ask Alice about the washcloth. "
                                           "Alice recoils when you show her the blood stains. 'Is that... "
@@ -360,7 +360,7 @@ if __name__ == "__main__":
                                    "O11": "You ask Alice about the will. "
                                           "Alice's lips purse when you mention that she will inherit everything. You "
                                           "find her expression hard to read. 'Does Adam know?' she asks with a little "
-                                          "fear in her voice. 'I knew that Norman had changed it,' she states, after "
+                                          "fear in her voice. 'I knew that Norman had changed it,' she states after "
                                           "you press her on the matter, 'but it was entirely Norman's decision. I even "
                                           "urged him not to change it, knowing that it would ruin the relationship "
                                           "between him and Adam, but Norman was stubborn.'",
@@ -387,9 +387,9 @@ if __name__ == "__main__":
                      "you can see that the floors, walls, and furniture are made from the same dark reddish wood. "
                      "The room has a very old feel to it, like it was designed in the 17th century. A large canopy bed "
                      "resides in the center of the room. "
-                     "To your west is the hallway from which you entered.",
-                     "You enter large, dim bedroom that looks like it was designed in the 17th century. "
-                     "To your west is the hallway from which you entered."
+                     "To your west is the hallway from which you came.",
+                     "You enter a large, dim bedroom that looks like it was designed in the 17th century. "
+                     "To your west is the hallway from which you came."
                      )
        
        # Set the connections, features, objects, and persons (if applicable)
@@ -419,10 +419,10 @@ if __name__ == "__main__":
        F01R14 = feature.Feature("F01R14", "Bear Head Wall Mount",
                                    "You stride over to the large bear head that is mounted on the wall and stand under "
                                    "it, gazing up at its intimidating face. Its expression is frozen in a ferocious snarl, "
-                                   "its large teeth bared and blacks eyes as impenetrable as a moonless night. You "
+                                   "its large teeth bared and black eyes as impenetrable as a moonless night. You "
                                    "consider yourself to be the rational and analytical type, but, for some unknown "
                                    "reason, you find yourself growing scared the longer you look at it.",
-                                   "A large bear head is mounted one one of the walls.",
+                                   "A large bear head is mounted on one of the walls.",
                                    {
                                    "search": "Looking around the mounted bear head reveals nothing.",
                                    "touch": "You reach up and touch the bear's fur. It feels rough.",
@@ -463,7 +463,7 @@ if __name__ == "__main__":
                             "There is a neatly folded letter that looks otherwise unremarkable at first glance.",
                             {
                                    "touch": "It feels like paper.",
-                                   "taste": "You lick the letter and taste, well, nothing aside from maybe a little "
+                                   "taste": "You lick the letter and taste... well, nothing aside from maybe a little "
                                    "ink.",
                                    "smell": "The letter has the familiar scent of paper.",
                                    "listen": "You hear nothing.",
@@ -471,13 +471,13 @@ if __name__ == "__main__":
                                    "\n"
                                    "Dear Norman,\n I know it's been a long time since we last spoke but last night, "
                                    "as I was walking around the lake near my house, I couldn't stop thinking about "
-                                   "our trip to Lake Tahoe and how wonderful it was. What was it, 10 years ago? That "
+                                   "our trip to Lake Tahoe and how wonderful it was. What was it, 10 years ago? That was "
                                    "one of the happiest times of my life.\n I know you think that our break up was "
                                    "for the best, and I know that our relationship could be unhealthy at times, but "
                                    "I really do think that we were meant to be together. I mean, after all, there must "
                                    "be a reason why you haven't dated anyone else after all these years.\n Anyway, "
                                    "I know that, like always, you likely won't respond to this, but I'll be in your "
-                                   "area in a couple weeks for work, and I was thinking that maybe I could stop by.\n"
+                                   "area in a couple weeks for work and I was thinking that maybe I could stop by.\n"
                                    "Love,\n     A.S."
                             },
                             True)
@@ -486,11 +486,11 @@ if __name__ == "__main__":
 
        # STUDY (R15)
        R15 = room.Room("R15", "Study",
-                     "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
+                     "You enter a very welcoming study with walls lined with paintings, maps, and other oddities. "
                      "Several leather chairs are positioned in various parts of the room, presumably to accomodate "
                      "visitors. A large paned window provides a view to the outside. "
                      "To your west is the hallway from which you entered.",
-                     "You enter a very welcoming study whose walls are lined with paintings, maps, and other oddities. "
+                     "You enter a very welcoming study with walls lined with paintings, maps, and other oddities. "
                      "To your west is the hallway from which you entered."
                      )
        
@@ -562,12 +562,12 @@ if __name__ == "__main__":
        F02R15 = feature.Feature("F02R15", "Bar Cart",
                                    "The antique bar cart looks like it is made of brass and may be several centuries "
                                    "old. Several bottles and decanters of liquor, a few of which are only partially "
-                                   "full, along with some crystal tumblers are on the top shelf. One of the whiskey "
+                                   "full, and some crystal tumblers, are on the top shelf. One of the whiskey "
                                    "decanters has its stopper removed. There's a dirty tumbler beside it.",
                                    "An antique bar cart is beside the desk.",
                                    {
                                    "search": "You search the bar cart but don't find anything aside from a few "
-                                   "expensive-looking bottles of liquor and crystal tumblers",
+                                   "expensive-looking bottles of liquor and crystal tumblers.",
                                    "touch": "The bar cart feels slightly cool.",
                                    "taste": "You open a bottle of whiskey and take a sip. It burns as it goes down "
                                    "your throat.",
@@ -589,7 +589,7 @@ if __name__ == "__main__":
                                    "taste": "You taste the dirtied envelope. It tastes like paper.",
                                    "smell": "The envelope has the slight smell of cigar smoke.",
                                    "listen": "You hear nothing.",
-                                   "read": "In thick ink, the envelope reads: 0123"
+                                   "read": "In thick ink, the envelope reads: 0123."
                             },
                             True)
 
@@ -608,7 +608,7 @@ if __name__ == "__main__":
                             {
                                    "ask": {
                                    "P01": "You ask Adam about Alice. "
-                                          "'Alice and my father had been dating for a few years,' Adam says. 'She "
+                                          "'Alice and my father have been dating for a few years,' Adam says. 'She "
                                           "started out as just his assistant, but then I guess they grew closer. I have mixed "
                                           "feelings about her. On the one hand, she's been good for my father in many ways. "
                                           "On the other hand, I feel that they grew too close too quickly and, when there's "
@@ -664,7 +664,7 @@ if __name__ == "__main__":
                                           "He pauses for a moment to think. 'You don't think that woman downstairs was the "
                                           "the one who sent this, do you?' He shakes his head. 'Nah, probably not. Although"
                                           "I swear she looks familiar...'",
-                                   "O10": "You show the drawing of the Wolfsbane to Adam. "
+                                   "O10": "You show the drawing of the wolfsbane to Adam. "
                                           "Adam's cheeks turn red when he looks at the drawing. You notice him "
                                           "clenching his fists so tightly that his knuckles turn white. 'Alright,' he "
                                           "says. 'I had a hunch that my father might be changing his will sometime "
@@ -683,10 +683,10 @@ if __name__ == "__main__":
                                           "sorry that he had died. I should have killed him when...' Realizing that he may "
                                           "have said too much, Adam suddenly stops speaking.",
                                    "O12": "You show the FBI badge to Adam. "
-                                          "Adam seems slightly startled when you show him the FBI badge. 'That's "
+                                          "He seems slightly startled at the sight. 'That's "
                                           "concerning,' he states, lowering his voice. 'To be completely honest with you, "
                                           "I suspect that my father, well, may have gotten into some trouble with the IRS if "
-                                          "you catch my drift, although I was never one-hundred percent sure. He wouldn't "
+                                          "you catch my drift. Although I was never one-hundred percent sure. He wouldn't "
                                           "talk about it when I brought it up. Either way, it looks like something caught up "
                                           "to him. My guess is that one of the retreat participants is here undercover.' He "
                                           "eyes you suspiciously. 'You wouldn't happen to be an undercover FBI agent, "

@@ -41,23 +41,24 @@ if __name__ == '__main__':
     R01 = room.Room('R01', 'Grand Foyer',
                     'The large empty expanse of the grand foyer stretches out in front of you. Impressively clean '
                     'marble floors, dark stained wood panel walls, and a large double-sided curved staircase make '
-                    'up the architecture of this massive entrance room. The walls are decorated with several paintings, '
+                    'up the architecture of this massive entrance. The walls are decorated with several paintings, '
                     'some of which look to be quite expensive. \n'
                     'To the south is the entrance to the house. You know you cannot leave until the murder has been '
                     'solved.\n'
                     'To the west, through an open archway, appears to be the entrance to a gleaming white kitchen.\n'
-                    'To the east seems to be a library of sort.\n'
+                    'To the east seems to be a library of sorts.\n'
                     'To the north is the upstairs hallway.',
                     'The grand foyer stretches out in front of you. To the west is the kitchen, to the east is the '
                     'library, and going upstairs to the north will take you to the upstairs hallway.')
+   
     # sets the connections for the room
     R01.set_connections({
         'west': 'R02',  # kitchen
         'east': 'R03',  # library
         'north': 'R11'  # hallway
     })
+
     # sets the objects in the room
-    # sets the objects in the roof
     R01.set_objects(['O02',  # rusty key
                      ])
     # sets the features in the room
@@ -65,11 +66,13 @@ if __name__ == '__main__':
                       'F02R01',  # side table
                       'F03R01',  # rotary phone
                       ])
+
     # no people so no need to set the people list
+
     # sets the interactions
     R01.set_interactions({
-        'search': "You walk around the room, inspecting every nook and cranny. As far as you can tell, "
-                  "the only things in the room are the victim's body, an end table, a rotary phone,  and some gaudy old furniture.",
+        'search': "You walk around the foyer, inspecting every nook and cranny. As far as you can tell, "
+                  "the only things in the room are the victim's body, an end table, a rotary phone, and some gaudy old furniture.",
         'touch': 'You run your hands along the ground, careful to avoid the puddle of blood. It feels cool '
                  'to the touch. Placing your hands upon the wood paneling of the wall reveals it is sturdy dark wood. '
                  'This building was clearly quite expensive to construct.',
@@ -77,7 +80,7 @@ if __name__ == '__main__':
                  'kind of floor polish.',
         'smell': 'For the first time since entering the room, you notice the smell of the blood. It smells acrid '
                  'and metallic. You recoil and turn your nose out of surprise.',
-        'listen': 'You can hear the creaks and groans of an old house. You sit in silence for a minute before you '
+        'listen': 'You can hear the creaks and groans of an old house. You stand in silence for a minute before you '
                   'hear someone speaking in the library. You cannot make out what they are saying.',
     })
 
@@ -85,7 +88,7 @@ if __name__ == '__main__':
 
     # F01R01 the victims body
     F01R01 = feature.Feature('F01R01', "Victim's Body",
-                             'You turn the body over for a minute, careful not to touch the blood. '
+                             'You turn the body over to get a better look, careful not to touch the blood. '
                              'Examining his face closely, you can tell he is an older man in his 50s '
                              'with graying hair and wrinkles. In life, he may have been quite handsome, '
                              'but the shock of death has left him pale with a purple tinge around his lips. ',
@@ -103,7 +106,7 @@ if __name__ == '__main__':
                                  'taste': "You place two fingers in the pool of blood around the victim. Touching "
                                           "them to your tongue immediately confirms that this is blood. You may want "
                                           "to get tested when you get home.",
-                                 'smell': 'Smelling the body reveals the overwhelming scent of a deep musky cologne. Although, '
+                                 'smell': 'Smelling the body reveals the overwhelming scent of a deep musky cologne. Although... '
                                           'you can detect hints of another less powerful smell: one that is more '
                                           'flowery and delicate.',
                                  'listen': "You place your ear to the victim's chest. You can hear no heartbeat.",
@@ -115,9 +118,9 @@ if __name__ == '__main__':
     # F02R01 the end table
     F02R01 = feature.Feature('F02R01', "End Table",
                              'Examining the end table closer reveals nothing out of the ordinary at first. You '
-                             'open the window, which allows a beam of light to enter the room, to get a closer look. '
+                             'open the window to allow a beam of light to enter the room so you can get a closer look. '
                              'The light reveals a thin layer of dust on the table, almost imperceptible. Next to the '
-                             'candlestick is a ring of clean table where a similar object appears to have been removed.',
+                             'candlestick is a void in the dust, where a similar shaped object appears to have been recently.',
                              'A small end table sits in the corner of the room near the entrance to the kitchen. '
                              'A single candlestick sits on top of it.',
                              {
@@ -135,7 +138,7 @@ if __name__ == '__main__':
 
     F03R01 = feature.Feature('F03R01', "Rotary Phone",
                              'You examine the phone closely. It is an older model of phone, maybe from the 50s or 60s. '
-                             'It is a shiny black, although its age shows through the dulling of the gloss on its surface.',
+                             'It is shiny black, although its age shows through the dulling of the glossy surface.',
                              'A rotary phone sits on a table near the front door of the house.',
                              {
                                  'touch': 'You touch the handle of the earpiece. A layer of dust has settled on it. Clearly '
@@ -144,8 +147,8 @@ if __name__ == '__main__':
                                           'realize that doing this may seem a bit weird to others.',
                                  'smell': 'The phone has no distinct smell.',
                                  'listen': 'You bring the earpiece to your ear and listen for a second. A harsh dial tone '
-                                           'rings in your ear as you realize that you may need to input a number into the phone. '
-                                           '(Hint: Try the "call" command to call the police and end the game)'
+                                           'sounds in your ear as you realize you may need to input a number into the phone. '
+                                           '(Hint: Try the "call" command to call the police and end the game.)'
                              },
                              False)
 
@@ -155,7 +158,7 @@ if __name__ == '__main__':
 
     O02 = object.Object('O02', 'rusty key',
                         'The key is quite old. Examining it in your hands reveals that it is made of some sort of metal. '
-                        'Nearly the entire key has been coated in rust. It is smaller than a normal door key.',
+                        'Nearly the entire key has rusted. It is smaller than a normal door key.',
                         'A rusty key sits on the ground.',
                         {
                             'touch': 'The key is old and rough. The years have been unkind to it as rust has eaten '
@@ -174,24 +177,28 @@ if __name__ == '__main__':
                     "The bright whiteness of the kitchen almost blinds you. Under different circumstances, this would "
                     "excite you in anticipation for a weekend of great meals. However, due to Norman Bates' "
                     "untimely demise, the kitchen just seems cold and empty. Large stainless steel appliances sit "
-                    "unused next to the white marble counters.\n"
+                    "unused amongst the white marble counters.\n"
                     "To the west is an open door you suspect leads to the garage.\n"
                     "To the southeast is an archway that leads back to the grand foyer.\n"
                     "To the northeast are clear glass french doors that look into a dining room.",
                     'You enter the kitchen, glancing around to see the white counter tops and stainless steel '
                     'appliances. A door to the west leads to the garage, an archway to the southeast leads to '
-                    'the grand foyer, and some french doors to the northeast leads to the dining room.'
+                    'the grand foyer, and some glass french doors to the northeast lead to the dining room.'
                     )
+
     R02.set_connections({
         'west': 'R08',  # garage
         'southeast': 'R01',  # grand foyer
         'northeast': 'R05'  # dining room
     })
+
     R02.set_features(['F01R02',  # the pantry
                       'F02R02',  # the dishes
                       ])
+
     R02.set_people(['P06',  # Ava Scarlett (the killer)
                     ])
+
     R02.set_interactions({
         'search': "You walk around the room, opening cabinet doors and drawers. The cabinets are filled with various "
                   "cooking utensils and dishes. You do not sense anything out of the ordinary.",
@@ -201,7 +208,7 @@ if __name__ == '__main__':
                  'been cleaned.',
         'smell': 'The room has recently been used to cook. You can smell hints of garlic and butter wafting from the '
                  'dishes near the sink.',
-        'listen': 'You can hear the electric buzz of the appliances and not much else.',
+        'listen': 'You can hear the electric hum of the appliances and not much else.',
     })
 
     sys.add_room(R02)
@@ -256,7 +263,7 @@ if __name__ == '__main__':
                         'She is in her early to mid 30s, young but with some wrinkles starting to '
                         'appear. She keeps her hair cut short and dyed a deep '
                         'shade of black with red highlights. Her makeup has been carefully done, with charcoal '
-                        'eyeliner and red lipstick. She is wearing a patterned dark t-shirt with jeans and '
+                        'eyeliner and red lipstick. She is wearing a patterned, dark t-shirt with jeans and '
                         'black boots. She only has one earring in. She seems a bit annoyed by your presence '
                         'as she reads a novel in a small breakfast nook near the window.',
                         'Ava Scarlett sits near the window in a breakfast nook reading a novel.',
@@ -291,7 +298,7 @@ if __name__ == '__main__':
                                        "when I washed my face earlier. If it helps your investigation, you're welcome to "
                                        "keep it until we leave.'",
                                 'O06': "You show Ava the bloodied washcloth. She recoils. 'Gross! Keep that away from me. "
-                                       "I can't stand the sight of blood'",
+                                       "I can't stand the sight of blood.'",
                                 'O09': "You ask Ava about the letter. Her face goes blank. She sheepishly looks around and "
                                        "sighs. 'Okay,' she says 'You caught me. My motives for coming here weren't exactly "
                                        "one hundred percent genuine. Norman and I used to be lovers when I was in my "
@@ -322,14 +329,14 @@ if __name__ == '__main__':
 
     R03 = room.Room('R03', 'Library',
                     'You walk into a massive double-story room lined with bookcases. Each wall is covered by books of every '
-                    'size and color. In the center of the room is a large red fabric couch with two matching chairs. '
-                    'Between them, sits an oak coffee table.\n'
+                    'size and color. In the center of the room is a large red fabric couch and two matching chairs. '
+                    'Between them sits an oak coffee table.\n'
                     'In a massive set of double doors to the southwest is the entrance to the grand foyer.\n'
                     'Through a door to the northwest you can see the ridiculously oversized table of the dining room.\n'
-                    'To the north is a set of french doors that lead outside to the patio.',
+                    'To the north is a set of sliding glass doors that lead outside to the patio.',
                     'You enter the library and marvel at the wall-to-wall bookcases filled with books. To the southwest is '
                     'the double doors that lead to the grand foyer, to the northwest is a door leading to the dining room, '
-                    'and to the north is a set of french doors leading to the patio.')
+                    'and to the north is a set of sliding glass doors leading to the patio.')
     # sets the connections for the room
     R03.set_connections({
         'north': 'R06',  # patio
@@ -347,8 +354,8 @@ if __name__ == '__main__':
     ])
     R03.set_interactions({
         'search': "You walk around the room, looking for any objects that seem out of the ordinary. You realize that you "
-                  "may need to get a closer look at the massive bookcase if you want to find anything.",
-        'touch': 'You run your hands along the soft green carpet of the room. It is clearly high quality.',
+                  "may need to get a closer look at the massive bookcase if you want to find anything of interest.",
+        'touch': 'You run your hands along the soft green carpet of the room. It is clearly high-quality.',
         'taste': 'You get on all fours and lean down to lick the carpet. You realize you probably should not have done '
                  'this as the carpet tastes a bit dirty.',
         'smell': 'The smell of paper and old books is unmistakable. Someone has used a perfume or air freshener to make '
@@ -362,15 +369,15 @@ if __name__ == '__main__':
 
     F01R03 = feature.Feature('F01R03', "Bookcase",
                              'The bookcase has books of every size and color. You absentmindedly look through the books, '
-                             'examining them. You see a set of encyclopedia, a few classic novels, and some books on '
-                             'nonfiction topics, such as horticulture and cooking, as well.',
+                             'examining them. You see a set of encyclopedias, a few classic novels, and some books on '
+                             'nonfiction topics, such as horticulture and cooking.',
                              'A massive wooden bookcase lines the eastern wall of the room.',
                              {
-                                 'search': 'You run your hands along the bookcase, pulling out a few books and searching '
+                                 'search': "You run your hands along the bookcase, pulling out a few books and searching "
                                            "along the back and undersides of the shelves. You're almost ready to give up "
                                            "when you pull out one last book, revealing a small red button behind it.",
                                  'touch': 'You run your hands along the books. Nothing appears to be out of the ordinary. '
-                                          'You then touch a book, which seems oddly stiff and out of place. Maybe you should '
+                                          'You then touch a book that seems oddly stiff and out of place. Maybe you should '
                                           'search the bookcase a little more.',
                                  'smell': 'The bookcase smells of old wood and paper that has been sitting for a long time.',
                                  'listen': 'The bookcase is strangely silent.',
@@ -379,7 +386,7 @@ if __name__ == '__main__':
                                                  'As you pull, the bookcase easily swings away, revealing an entrance to '
                                                  'a secret room behind it.',
                                      'locked': 'You attempt to grab the bookcase to pull on it, but you cannot get a good '
-                                               'hold on the wood around it. Maybe there is another way to open it...',
+                                               'grip on the wood around it. Maybe there is another way to open it...',
                                      'room_ids': [['east','R04']]
                                  },
                                  'use': {
@@ -466,15 +473,15 @@ if __name__ == '__main__':
                                 'P02': "You ask Heather about Adam. She says, 'That guy seems like a hothead. I can't "
                                        "believe he is the son of that kind old man.'",
                                 'P03': "You ask Heather about Sam. She responds, 'I don't really know about that guy. He "
-                                       "seems pretty shady. Earlier, I saw him snooping around the library and outside area "
+                                       "seems pretty shady. I saw him snooping around the library and outside area "
                                        "before you arrived. I wonder what he was doing.'",
-                                'P04': "You ask Heather about Al. She states, 'The groundskeeper? He seemed nice, but I "
+                                'P04': "You ask Heather about Al. She states, 'The groundskeeper? He seems nice, but I "
                                        "noticed he was complaining about being underpaid earlier.'",
                                 'P05': "You ask Heather about herself. She states, 'Well, I am a single mom, and I work as a "
-                                       "lawyer. My life is a little... stressful. So my boss sent me on this trip in order "
+                                       "lawyer. My life is a little... stressful. My boss sent me on this trip in order "
                                        "to get me away from it all. To be honest, I think it's kind of a waste of time, "
-                                       "especially since it looks like this is going to be more stressful than working for "
-                                       "obvious reasons.",
+                                       "especially since it looks like this is going to be more stressful than working for, "
+                                       "obvious reasons.'",
                                 'P06': "You ask Heather about Ava. She responds, 'She seems off. Too calm in this situation.'",
                                 'F01R01': "You ask Heather about the victim. 'Mr. Bates seemed really nice. He greeted me "
                                           "at the door and seemed very excited to spend the weekend with everyone. I'm "
@@ -482,7 +489,7 @@ if __name__ == '__main__':
                                 'O01': "You ask Heather about the candlestick. 'Oh, man. That thing is ugly. Why are you "
                                        "carrying it around?'",
                                 'O05': "You question Heather about the earring. 'Oh? That's not mine. I only brought one "
-                                       "pair, and they're still in'. You check her earlobes and can see two pearl "
+                                       "pair, and they're still in.' You check her earlobes and can see two pearl "
                                        "earrings in place.",
                                 'O06': "You show Heather the bloodied washcloth. She seems surprised. 'Oh!' she exclaims. "
                                        "'Could you take that away? I really can't stand the sight of blood.'",
@@ -493,14 +500,14 @@ if __name__ == '__main__':
                                 'O11': "You ask Heather about the will. She says, 'Sorry, all this lawyer speak is above "
                                        "my head. Not sure how I could help.'",
                                 'O12': "You show the FBI badge to Heather. Her eyes widen as she pats a pocket in her "
-                                       "jacket. 'Shit!' she exclaims. 'First big case and I manage to lose my badge,' she "
+                                       "jacket. 'Shit!' she exclaims. 'My first big case and I manage to lose my badge,' she "
                                        "mutters under her breath. 'Well, you caught me. I was sent here to investigate "
                                        "Mr. Bates for tax fraud, but before I could even start the investigation, he was "
                                        "murdered. I'm sorry for hindering the investigation, but some people tend to "
                                        "get... angry when we reveal that we were lying to them, so I decided it was for the "
                                        "best. Let me know if there is anything else I can do to help.'"
                             },
-                            'touch': 'You take a step closer to Heather and touch her arm. She recoils and jumps back, '
+                            'touch': "You take a step closer to Heather and touch her arm. She recoils and jumps back, "
                                      "surprised that you would touch her. 'Please don't do that!' she says, taking a second to "
                                      "calm down and adjust her coat. As she is adjusting, you do see something interesting: "
                                      "the hilt of a pistol poking through a shoulder holster under her left arm.",
@@ -545,10 +552,10 @@ if __name__ == '__main__':
         'touch': 'The room is made of rough brick and wood. It is unclear if this was a finished room or added on as an '
                  'expansion. Perhaps the owner of the house had it custom made.',
         'smell': 'The room smells dusty. It has clearly been quite some time since it was last cleaned.',
-        'listen': "You listen. At first, it is silent until you hear someone speak in one of the other rooms. 'The target "
+        'listen': "You listen. It is silent at first, then you hear someone speak in one of the other rooms. 'The target "
                   "has been eliminated. Unsure of the next actions to take,' whispers a voice you recognize as Heather "
                   "from the library. She appears to be talking to someone else.",
-        'taste': 'You touch your fingers to the floor and draw a line in the dust. You bring it to your mouth and almost '
+        'taste': 'You touch your finger to the floor and draw a line in the dust. You bring it to your mouth and almost '
                  'begin to lick it before you decide it is probably not the best idea to go around tasting everything you '
                  'see.',
     })
@@ -596,7 +603,7 @@ if __name__ == '__main__':
                              'the hearth. '
                              'The hearth is filled with ashes. It clearly has been used many times before without being '
                              'cleaned out.',
-                             'A cold fireplace is built into the eastern wall, filled with ash.',
+                             'A cold fireplace is built into the eastern wall, filled with ashes.',
                              {
                                  'search': 'You sift through the ashes of the fireplace, searching for something. You '
                                            'almost give up '
@@ -619,7 +626,7 @@ if __name__ == '__main__':
     F03R04 = feature.Feature('F03R04', 'Safe',
                              'You get a closer look at the safe. It has a simple electronic lock with a normal keypad. '
                              'The safe is made of strong looking steel.',
-                             'A safe sits on the wall underneath the painting that has been swung open.',
+                             'A safe sits in the wall behind the painting that has been swung open.',
                              {
                                  'use': {
                                      'O04': 'You take the code written on the envelope and type it into the keypad on the '
@@ -629,8 +636,8 @@ if __name__ == '__main__':
                                      'locked': 'You attempt to open the safe. It is sealed shut. You clearly need to find '
                                                'the code in order to unlock it.',
                                      'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents '
-                                                 "of the safe: several thick, black rubber bands with '$10,000 "
-                                                 "written on them in white writing and a piece of high quality paper with "
+                                                 "of the safe: several thick, black rubber bands with '$10,000' "
+                                                 "written on them in white writing and a piece of high-quality paper with "
                                                  "'Norman Bates' Will' written on it in bold lettering.",
                                      'obj_ids': ['O11'],
                                  },
@@ -663,16 +670,15 @@ if __name__ == '__main__':
                         "Maybe you should read it if you have not already.",
                         "The victim's will sits, waiting to be read.",
                         {
-                            'touch': 'The will is made of high quality paper.',
+                            'touch': 'The will is made of high-quality paper.',
                             'smell': 'The will smells of ink. It must have been created or edited relatively recently.',
                             'read': 'The will is complicated, with very technical writing. You look it over, trying to understand '
                                     'it. It contains the normal information on what to do with the body in the event of '
-                                    'death, as well as some additional information on where the victim wants individual objects '
-                                    'to go. You skip to the bottom of the page and read an interesting line: '
+                                    'death, as well as some additional information on to whom various items have been left. '
+                                    'You skip to the bottom of the page and read an interesting line: '
                                     "'I, Norman Bates, hereby remove any inheritance from my son, Adam Bates, and instead "
-                                    "relinquish my estate and all my earthly possessions to my dear friend and business "
-                                    "partner, Alice Stone, in the event of "
-                                    "my death.'"
+                                    "relinquish my estate and all my remaining possessions to my dear friend and business "
+                                    "partner, Alice Stone, in the event of my death.'"
                         },
                         True)
 
@@ -683,10 +689,10 @@ if __name__ == '__main__':
     # R05 Dining Room
 
     R05 = room.Room('R05', 'Dining Room',
-                    'The incredibly lavish dining room is well lit and beautifully decorated. Huge windows line the '
+                    'The incredibly lavish dining room is well-lit and beautifully decorated. Huge windows line the '
                     'northern wall, allowing you to peer into the backyard of the house. '
-                    'A large table with eights seats '
-                    'made of expensive dark wood sits in the center of the room. A fully stocked bar stands at the other '
+                    'A large table made of expensive dark wood sits in the center of the room, surrounded by eight chairs. '
+                    'A fully stocked bar stands at the other '
                     'end of the room. Clearly, it has been well used as many of the bottles are half full.\n'
                     'A set of large glass doors sit to the west that lead to the kitchen.\n'
                     'An open doorway in the east leads to the library.',
@@ -744,7 +750,7 @@ if __name__ == '__main__':
                              'You examine the glasses on the bar more closely. Both are half full--one with a red liquid '
                              'and the other with an amber colored liquid. The glass with the red liquid appears to '
                              'have lipstick on the rim of the glass.',
-                             'A pair of glasses rest on the bar, each half full.',
+                             'Two glasses rest on the bar, each half full.',
                              {
                                  'touch': 'The glasses are warm to the touch. They have been sitting out for a while.',
                                  'taste': 'You individually bring each of the glasses to your lips, tasting the liquids '
