@@ -22,7 +22,7 @@ if __name__ == "__main__":
                     "To the east is the garden. It looks rather beatiful from here. There seem to be some outbuildings "
                     "on the far edges of the garden, but you can't quite tell from here what they are. "
                     "There are some muddy footprints coming out of the garden, maybe they deserve a closer look. \n"
-                    "To the south are french doors that will take you back into the house via the library.",
+                    "To the south are doors that will take you back into the house via the library.",
                     "You are on the patio with a dazzling pool and ample seating for lounging or dining. "
                     "To the west is the locked door into the living room, the library is to the south, "
                     "to the east is the garden, and to the north is the locked pool house. The path to the "
@@ -254,13 +254,13 @@ if __name__ == "__main__":
     sys.add_feature(F02R07)
 
     # drawing/page from book about wolfsbane (O10)
-    O10 = object.Object("O10", "drawing of Wolfsbane",
+    O10 = object.Object("O10", "crumpled paper",
                         "The paper has gotten wet from the irrigation system so you can't quite make out what was "
                         "on the page. It looks like it may have been a picture with some text. There are faint "
                         "purple and green colors and you can make out part of a word, 'Wolfs'-something. Definitely "
                         "looks like a page torn out of a book or notebook, you decide.",
                         "A page torn from a book which had a picture of something green and purple and the incomplete "
-                        "word 'Wolfs-'.",
+                        "word 'wolfs-'.",
                         {
                                 "touch": "It is still damp, as the flowers were recently watered.",
                                 "taste": "Tastes like...damp paper. No surprise there.",
@@ -365,7 +365,7 @@ if __name__ == "__main__":
     sys.add_feature(F02R08)
 
     # Candlestick (O01)
-    O01 = object.Object("O01", "Candlestick",
+    O01 = object.Object("O01", "candlestick",
                         "The shiny candlestick definitely looks out of place here, as if it's just been cleaned or "
                         "polished. It doesn't match the rest of the old and dusty items in the closet.",
                         "The shiny candlestick looks out of place in the dirty old closet.",
@@ -451,7 +451,7 @@ if __name__ == "__main__":
     sys.add_feature(F02R09)    
 
     # receipt (O07)
-    O07 = object.Object("O07", "Receipt",
+    O07 = object.Object("O07", "receipt",
                         "The receipt seems fresh. The print is still nice and dark and there are not any wrinkles to indicate "
                         "age or wear.",
                         "The receipt appears to be from a recent purchase.", 
