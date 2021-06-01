@@ -135,7 +135,10 @@ class System:
                     # prints what happens the first time you use object1 on object 2
                     print(self._features[object2].get_interaction('use', object1))
                     # sets the condition for the feature to True (unlocked, interacted, etc)
-                    self._features[object2].set_condition(True)
+                    try:
+                        self._features[object2].set_condition(True)
+                    except feature.AttributeDoesNotExist:
+                        pass
                     return True
                 except interactable.KeyDoesNotExist:
                     print('\033[1;33;40mYou cannot use the ' + self._objects[object1].get_name() + ' on the '
@@ -620,7 +623,7 @@ class System:
             print(self._people[obj].get_desc())
             return True
         # if the object you are trying to read is the room itself
-        elif obj in self._rooms:
+        elif obj == self._rooms[self._cur_room]:
             print(self._rooms[obj].get_description())
             return True
         # if the object is not in your room or the inventory
@@ -724,7 +727,7 @@ class System:
         print('touch [object] - allows you to feel an object; this may give you more clues')
         print('taste [object] - allows you to taste an object; this may give you more clues')
         print('smell [object] - allows you to smell an object or room; this may give you more clues')
-        print('listen [object] - allows you to smell an object or room; this may give you more clues\033[1;37;40m')
+        print('listen [object] - allows you to listen to an object or room; this may give you more clues\033[1;37;40m')
         return
 
     def inventory(self):
@@ -744,6 +747,7 @@ class System:
         print('\033[0;37;40m')
 
         try:
+            os.mkdir('saves')
             os.mkdir('saves/' + location)
             os.mkdir('saves/' + location + '/features')
             os.mkdir('saves/' + location + '/objects')
@@ -787,7 +791,7 @@ class System:
     def load(self):
         """takes no parameters, allows you to load the game from a save file"""
 
-        print('\033[1;33;40mEnter the location of the save file to load the game from (case sensitive): \033[1;37;40m')
+        print('\033[1;33;40mEnter the name of the save data (case sensitive): \033[1;37;40m')
         location = input('\033[0;32;40m')
         print('\033[0;37;40m')
 
@@ -851,14 +855,23 @@ class System:
         if self._rooms[self._cur_room].get_visited() is False:
             print(self._rooms[self._cur_room].get_desc())
             self._rooms[self._cur_room].set_visited(False)
-            print('Looking around, you observe the following details:')
+            check_hidden = True
             for feat in self._rooms[self._cur_room].get_features():
                 if self._features[feat].get_hidden() is False:
+                    if check_hidden is True:
+                        print('Looking around, you observe the following details:')
+                        check_hidden = False
                     print(self._features[feat].get_sdesc())
             for obj in self._rooms[self._cur_room].get_objects():
                 if self._objects[obj].get_hidden() is False:
+                    if check_hidden is True:
+                        print('Looking around, you observe the following details:')
+                        check_hidden = False
                     print(self._objects[obj].get_sdesc())
             for person_id in self._rooms[self._cur_room].get_people():
+                if check_hidden is True:
+                    print('Looking around, you observe the following details:')
+                    check_hidden = False
                 print(self._people[person_id].get_sdesc())
             self._rooms[self._cur_room].set_visited(True)
         else:
@@ -917,16 +930,19 @@ class System:
 
         os.system('color')
 
-        print('\033[1;33;40mWould you like to load a saved game? (y/n)\033[1;37;40m')
-        inp = input('\033[0;32;40m').lower()
-        print('\033[0;37;40m')
-        if inp in ['y', 'yes', 'yeah']:
-            check = False
-            # makes sure you're able to load the game
-            while not check:
+        inp = 'y'
+        while inp in ['y', 'yes', 'yeah']:
+            print('\033[1;33;40mWould you like to load a saved game? (y/n)\033[1;37;40m')
+            inp = input('\033[0;32;40m').lower()
+            print('\033[0;37;40m')
+            if inp in ['y','yes','yeah']:
                 check = self.load()
-            self.game_loop()
+                if check is True:
+                    self.game_loop()
+                else:
+                    pass
         else:
+
             self.introduction()
 
             self.get_description()
