@@ -60,7 +60,6 @@ class System:
                     print('\033[1;33;40mThe game cannot determine what action you are trying to take.\033[0;37;40m')
                     print('\033[1;33;40mPlease try again using a simpler verb.\033[0;37;40m')
                     print("\033[1;33;40mTry typing 'help' for a list of commands.\033[0;37;40m")
-                    print("\033[1;33;40mTry typing 'help' for a list of commands.\033[0;37;40m")
                     pass
                 elif 'object_error' in command:
                     print('\033[1;33;40mThe game cannot find the object you are trying to interacting with.\033[0;37;40m')
@@ -716,9 +715,6 @@ class System:
         print('take [object] - allows you to pick up an object')
         print('drop [object] - allows you to drop an object in your inventory into the room')
         print('inventory - allows you to examine the contents of your inventory')
-        print('savegame - allows you to save the game')
-        print('loadgame - allows you to load a saved game')
-        print('exit - allows you to exit the game (remember to save your progress first)')
         print('use [object] on [object/feature] - allows you to use an object on another object or feature')
         print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, '
               'a feature in the house, or another person')
@@ -728,7 +724,10 @@ class System:
         print('touch [object] - allows you to feel an object; this may give you more clues')
         print('taste [object] - allows you to taste an object; this may give you more clues')
         print('smell [object] - allows you to smell an object or room; this may give you more clues')
-        print('listen [object] - allows you to listen to an object or room; this may give you more clues\033[1;37;40m')
+        print('listen [object] - allows you to listen to an object or room; this may give you more clues')
+        print('savegame - allows you to save the game')
+        print('loadgame - allows you to load a saved game')
+        print('exit - allows you to exit the game (remember to save your progress first)\033[1;37;40m')
         return
 
     def inventory(self):
@@ -969,7 +968,7 @@ class System:
             "over the weekend at an old, historical mansion in a remote location "
             "five hours north of the city. No cellphones, laptops, or computers "
             "of any kind are permitted. "
-            "'Perfect', you think. The retreat is not too far away, and you've "
+            "'Perfect,' you think. The retreat is not too far away, and you've "
             "been looking for an excuse to finally turn off your cellphone and "
             "get away from everything. ",
             "You perform a quick Google search and learn that the mansion is owned "
@@ -1022,7 +1021,7 @@ class System:
             "up objects and collect evidence to enter locked rooms, interact with other objects, and question "
             "the inhabitants. When you are reasonably certain you "
             "know the killer and the murder weapon, come back to this room and call the police on the rotary phone in this "
-            "room. This will end the story. (Remember at any point you can type 'help' for a list of useful commands and "
+            "room. This will end the story. (Remember, at any point you can type 'help' for a list of useful commands and "
             "phrases).",
         ]
 
