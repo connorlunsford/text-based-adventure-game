@@ -45,8 +45,8 @@ if __name__ == '__main__':
                     'some of which look to be quite expensive. \n'
                     'To the south is the entrance to the house. You know you cannot leave until the murder has been '
                     'solved.\n'
-                    'To the west, through an open archway, appears to be the entrance to a gleaming white kitchen.\n'
-                    'To the east seems to be a library of sorts.\n'
+                    'To the west appears to be the entrance to a gleaming white kitchen.\n'
+                    'To the east seems to be a library of sort.\n'
                     'To the north is the upstairs hallway.',
                     'The grand foyer stretches out in front of you. To the west is the kitchen, to the east is the '
                     'library, and going upstairs to the north will take you to the upstairs hallway.')
@@ -445,7 +445,7 @@ if __name__ == '__main__':
     F04R03 = feature.Feature('F04R03', 'Gun',
                              'You attempt to take a closer look at the gun Heather is carrying. Unfortunately, her coat '
                              'hides everything beyond a brief flash of it when she moves around quickly.',
-                             '',
+                             "Though she is trying to find it, you can see the hilt of a gun peaking out of Heather's coat",
                              {
 
                              },

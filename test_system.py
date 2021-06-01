@@ -13,7 +13,7 @@ class TestSystemClass(unittest.TestCase):
 
     def set_up_1(self):
         sys = system.System()
-        ob1 = object.Object('O01', 'Object1', 'an object',
+        ob1 = object.Object('O01', 'Object1', 'an object', 'an object',
                             {
                                 'read': 'you read the words on the page',
                                 'touch': 'you touch the object',
@@ -22,7 +22,7 @@ class TestSystemClass(unittest.TestCase):
                                 'listen': 'you listen to the object'
                             },
                             False)
-        feat1 = feature.Feature('F01', 'Feature1', 'a feature',
+        feat1 = feature.Feature('F01', 'Feature1', 'a feature','a feature',
                               {
                                   'use': {
                                       'O01': 'you used the object on this feature'
@@ -31,7 +31,7 @@ class TestSystemClass(unittest.TestCase):
                               },
                               False)
         feat1.add_condition(False)
-        per1 = person.Person('P01','Person1','a person',
+        per1 = person.Person('P01','Person1','a person','a person',
                              {
                                  'ask': {
                                      'O01': 'i admit, I am the murderer',
@@ -39,8 +39,8 @@ class TestSystemClass(unittest.TestCase):
                                      'P02': 'she is kind of shady'
                                  }
                              })
-        per2 = person.Person('P02','Person2','a second person',{})
-        r1 = room.Room('R01','Room1','a room','room',False)
+        per2 = person.Person('P02','Person2','a second person','a person',{})
+        r1 = room.Room('R01','Room1','a room','room')
         r1.add_feature(feat1.get_id())
         r1.add_object(ob1.get_id())
         r1.add_person(per1.get_id())
@@ -49,7 +49,7 @@ class TestSystemClass(unittest.TestCase):
         sys.add_person(per1)
         sys.add_person(per2)
         sys.add_room(r1)
-        r2 = room.Room('R02', 'Room2', 'a room', 'room', False)
+        r2 = room.Room('R02', 'Room2', 'a room', 'room')
         r1.add_connection('north','R02')
         sys.add_room(r2)
         return sys,ob1,feat1, per1, r1
@@ -65,7 +65,7 @@ class TestSystemClass(unittest.TestCase):
         sys,ob1,feat1, per1, r1 = self.set_up_1()
         sys.take(ob1.get_id())
         sys.use(ob1.get_id(),feat1.get_id())
-        self.assertFalse(sys.use(ob1.get_id(), feat1.get_id()))
+        self.assertTrue(sys.use(ob1.get_id(), feat1.get_id()))
 
     def test_use_3(self):
         """tests use if we pass it an object that isn't in your inventory"""
@@ -168,11 +168,6 @@ class TestSystemClass(unittest.TestCase):
         sys, ob1, feat1, per1, r1 = self.set_up_1()
         self.assertFalse(sys.search(per1.get_id()))
 
-    def test_search_5(self):
-        """tests search on a room without the search key"""
-        sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertFalse(sys.search(r1.get_id()))
-
     def test_search_6(self):
         """tests search on an id that doesn't exist"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
@@ -198,11 +193,6 @@ class TestSystemClass(unittest.TestCase):
         """tests touch on a person without the touch key"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
         self.assertFalse(sys.touch(per1.get_id()))
-
-    def test_touch_5(self):
-        """tests touch on a room without the touch key"""
-        sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertFalse(sys.touch(r1.get_id()))
 
     def test_touch_6(self):
         """tests touch on an id that doesn't exist"""
@@ -230,11 +220,6 @@ class TestSystemClass(unittest.TestCase):
         sys, ob1, feat1, per1, r1 = self.set_up_1()
         self.assertFalse(sys.smell(per1.get_id()))
 
-    def test_smell_5(self):
-        """tests smell on a room without the smell key"""
-        sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertFalse(sys.smell(r1.get_id()))
-
     def test_smell_6(self):
         """tests smell on an id that doesn't exist"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
@@ -261,11 +246,6 @@ class TestSystemClass(unittest.TestCase):
         sys, ob1, feat1, per1, r1 = self.set_up_1()
         self.assertFalse(sys.taste(per1.get_id()))
 
-    def test_taste_5(self):
-        """tests taste on a room without the taste key"""
-        sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertFalse(sys.taste(r1.get_id()))
-
     def test_taste_6(self):
         """tests taste on an id that doesn't exist"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
@@ -291,11 +271,6 @@ class TestSystemClass(unittest.TestCase):
         """tests listen on a person without the listen key"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
         self.assertFalse(sys.listen(per1.get_id()))
-
-    def test_listen_5(self):
-        """tests listen on a room without the listen key"""
-        sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertFalse(sys.listen(r1.get_id()))
 
     def test_listen_6(self):
         """tests listen on an id that doesn't exist"""
@@ -326,7 +301,7 @@ class TestSystemClass(unittest.TestCase):
     def test_look_at_5(self):
         """tests look_at on a room without the look_at key"""
         sys, ob1, feat1, per1, r1 = self.set_up_1()
-        self.assertTrue(sys.look_at(r1.get_id()))
+        self.assertFalse(sys.look_at(r1.get_id()))
 
     def test_look_at_6(self):
         """tests look_at on an id that doesn't exist"""
