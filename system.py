@@ -233,7 +233,7 @@ class System:
 
                 # Format and save the player input for later use
                 killer_str = killer
-                weapon_str = self._parser.remove_articles(list(weapon.split()))[0]
+                weapon_str = " ".join(self._parser.remove_articles(list(weapon.split())))
 
                 # Validate the killer and weapon using the respective NLP methods
                 killer = self._parser.find_killer(killer_str)
