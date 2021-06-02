@@ -39,7 +39,7 @@ if __name__ == "__main__":
        # Set the interactions
        R11.set_interactions({
               "search": "You search the entirety of the hallway but find nothing else of interest. The only two "
-              "things in the hallway are the rug and grandfather clock.",
+                        "things in the hallway are the rug and grandfather clock.",
               "touch": "The oak panel walls are cool to the touch except where the sunlight hits them.",
               "taste": "What does it mean to taste a room? No, really... what is it that you had in mind?",
               "smell": "Like many parts of this house, the hallway has a faint 'old' smell to it.",
@@ -58,7 +58,7 @@ if __name__ == "__main__":
                                    {
                                    "search": "There is nothing here.",
                                    "touch": "You run your fingertips across the surface of the grandfather clock. Dust. "
-                                   "Lots of dust.",
+                                            "Lots of dust.",
                                    "taste": "Taste the clock? Really?",
                                    "smell": "The grandfather clock smells faintly of wood varnish.",
                                    "listen": "You hear the tick tock, tick tock of the pendulum swinging."
@@ -74,12 +74,12 @@ if __name__ == "__main__":
                                    "A white, strangely pristine rug lies in the center of the floor.",
                                    {
                                    "search": "There is nothing else here besides the red stain on the corner nearest "
-                                   "to the bathroom.",
+                                            "to the bathroom.",
                                    "touch": "Soft. Very soft.",
                                    "taste": "Against what should be your better judgment, you taste the rug that lies "
-                                   "in the center of the floor of the commonly used hallway. It tastes like nothing, "
-                                   "although a small thread does get stuck on your tongue. Did we mention that this "
-                                   "hallway was commonly used?",
+                                            "in the center of the floor of the commonly used hallway. It tastes like nothing, "
+                                            "although a small thread does get stuck on your tongue. Did we mention that this "
+                                            "hallway was commonly used?",
                                    "smell": "You smell nothing.",
                                    "listen": "You hear nothing. It's a rug."
                                    },
@@ -104,8 +104,8 @@ if __name__ == "__main__":
                                     },
                                     "open": {
                                         "locked": "The door appears to be locked from the other side with a heavy "
-                                        "bolt. (Hint: If you've found the key to this room, try 'use [key] on [room]' "
-                                        "in order to unlock it)",
+                                                "bolt. (Hint: If you've found the key to this room, try 'use [key] on [door to room]' "
+                                                "in order to unlock it)",
                                         "unlocked": "The door easily swings open, revealing the master bedroom.",
                                         "room_ids": [["southeast", "R14"]]
                                     },
@@ -139,11 +139,11 @@ if __name__ == "__main__":
        
        # Set the interactions
        R12.set_interactions({
-              "search": "A brief search initially yields nothing, although you may want to check the trashcan if you have "
-              "not already.",
+              "search": "A brief search initially yields nothing, although you may want to take a closer look at "
+                        "the trashcan, if you haven't already.",
               "touch": "The marble floors and granite countertops are cold.",
               "taste": "Sigh... so be it. You taste the sink handles and the toilet seat. Neither offers any valuable "
-              "information beyond perhaps a sobering insight into your own judgment.",
+                        "information beyond perhaps a sobering insight into your own judgment.",
               "smell": "The faint smell of cleaning chemicals lingers in the air. The smell is very familiar. Bleach?",
               "listen": "The room is so quiet that you can hear the occasional drop of water leaking from the faucet."
               })
@@ -160,9 +160,9 @@ if __name__ == "__main__":
                                    "search": "There is nothing else here.",
                                    "touch": "The sink feels smooth.",
                                    "taste": "The bowl of the sink tastes like cleaning chemicals. Tasting it definitely "
-                                   "seems safe...",
+                                            "seems safe...",
                                    "smell": "The smell of cleaning chemicals lingers in the air. You're almost certain "
-                                   "that the smell is bleach.",
+                                            "that the smell is bleach.",
                                    "listen": "You hear the occasional drop of water leaking from the faucet."
                                    },
                                    False)
@@ -177,7 +177,7 @@ if __name__ == "__main__":
                                    "A small, metal trashcan sits in the corner of the room.",
                                    {
                                    "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
-                                   "the trashcan is completely empty.",
+                                            "the trashcan is completely empty.",
                                    "touch": "The stainless steel exterior feels slightly cool.",
                                    "taste": "Please try to use your better judgment. This is a trashcan.",
                                    "smell": "The smell of the trashcan is unremarkable.",
@@ -194,10 +194,10 @@ if __name__ == "__main__":
                             {
                                    "touch": "The earring feels strong and well-made.",
                                    "taste": "It tastes like metal. We would like to take this opportunity to note that "
-                                   "tasting a stranger's earring is not very sanitary.",
+                                            "tasting a stranger's earring is not very sanitary.",
                                    "smell": "You smell nothing.",
                                    "listen": "As you listen to the earring, you begin to hear a faint hum and the sound of "
-                                   "drums in the distance. Just kidding. It's an earring. You hear nothing."
+                                            "drums in the distance. Just kidding. It's an earring. You hear nothing."
                             },
                             True)
 
@@ -230,7 +230,7 @@ if __name__ == "__main__":
        # Set the interactions
        R13.set_interactions({
               "search": "You search the room but find nothing of note. Perhaps you should examine either the bed or "
-              "the vanity in more depth.",
+                        "the vanity in more depth.",
               "touch": "Perhaps try touching one of the features that you observe within the room.",
               "taste": "Really? You want to 'taste' the bedroom?",
               "smell": "The soft scent of flowers fills the room.",
@@ -248,8 +248,8 @@ if __name__ == "__main__":
                                    {
                                    "search": "You search the bed and notice a white washcloth.",
                                    "touch": "The comforter slowly sinks in a very satisfying manner when you press your "
-                                   "hand into it. You make a mental note to get yourself one of these when you return "
-                                   "home.",
+                                            "hand into it. You make a mental note to get yourself one of these when you return "
+                                            "home.",
                                    "taste": "The bed tastes like... nothing.",
                                    "smell": "The bed and its comforter smell clean.",
                                    "listen": "You hear nothing."
@@ -263,17 +263,17 @@ if __name__ == "__main__":
                                    "The walnut vanity features a large mirror and intricate woodwork along its edges "
                                    "and base. You wonder if it might be an antique. A framed photograph of Norman "
                                    "and Alice sits in the center of the top of the vanity. They both look very "
-                                   "happy. Beside the photograph, a jewelry box filled with all kinds of jewelry--"
-                                   "from earrings, to necklaces, to bracelets--is open. You notice that all of the "
+                                   "happy. Beside the photograph, a jewelry box sits open. It's filled with all kinds of jewelry - "
+                                   "from earrings, to necklaces, to bracelets. You notice that all of the "
                                    "jewelry is gold.",
                                    "A walnut vanity sits on one side of the room, near where Alice is standing.",
                                    {
                                    "search": "You search the vanity but find nothing beyond what can easily be seen "
-                                   "on top of it. You do notice, however, that all of the jewelry in the jewelry "
-                                   "box is gold.",
+                                            "on top of it. You do notice, however, that all of the jewelry in the jewelry "
+                                            "box is gold.",
                                    "touch": "The wood surface is slightly rough.",
                                    "taste": "You lick the top of the vanity, learning nothing of value. Alice stops "
-                                   "her crying for just long enough to give you a strange look.",
+                                            "her crying for just long enough to give you a strange look.",
                                    "smell": "You smell nothing.",
                                    "listen": "You hear nothing."
                                    },
@@ -370,12 +370,12 @@ if __name__ == "__main__":
                                           "further, but she refuses to provide you with any additional information."
                                    },
                                    "search": "Alice is wearing only a plain t-shirt and jeans. You ask her if she has "
-                                   "anything of importance on her. She shakes her head.",
+                                            "anything of importance on her. She shakes her head.",
                                    "touch": "Alice watches you warily as you approach then says, 'Please don't touch me.' "
-                                   "You respect her wishes.",
+                                            "You respect her wishes.",
                                    "smell": "You walk closer towards Alice, but, just as you are about to smell her, "
-                                   "she turns and gives you a look of disgust, clearly communicating that you need to "
-                                   "back away.",
+                                            "she turns and gives you a look of disgust, clearly communicating that you need to "
+                                            "back away.",
                                    "listen": "Alice sobs quietly."
                             })
 
@@ -406,7 +406,7 @@ if __name__ == "__main__":
        # Set the interactions
        R14.set_interactions({
               "search": "You search the room but find nothing of note. You may want to search the nightstand if you "
-              "have not already.",
+                        "have not already.",
               "touch": "Perhaps try touching one of the features that you observe within the room.",
               "taste": "Why is it that you want to taste everything?",
               "smell": "The room has a musky smell to it.",
@@ -419,7 +419,7 @@ if __name__ == "__main__":
        F01R14 = feature.Feature("F01R14", "Bear Head Wall Mount",
                                    "You stride over to the large bear head that is mounted on the wall and stand under "
                                    "it, gazing up at its intimidating face. Its expression is frozen in a ferocious snarl, "
-                                   "its large teeth bared and black eyes as impenetrable as a moonless night. You "
+                                   "its large teeth bared, and black eyes as impenetrable as a moonless night. You "
                                    "consider yourself to be the rational and analytical type, but, for some unknown "
                                    "reason, you find yourself growing scared the longer you look at it.",
                                    "A large bear head is mounted on one of the walls.",
@@ -445,8 +445,8 @@ if __name__ == "__main__":
                                    "sits right next to the bed.",
                                    {
                                    "search": "You search the nightstand. You find nothing interesting among the assortment "
-                                   "of items lying on top of it, but, as you comb through a pile of papers, a neatly "
-                                   "folded letter sticks out to you.",
+                                            "of items lying on top of it, but, as you comb through a pile of papers, a neatly "
+                                            "folded letter sticks out to you.",
                                    "touch": "The dark red wood is smooth and clearly polished.",
                                    "taste": "The nightstand tastes like wood polish. It also tastes like dust.",
                                    "smell": "You smell nothing.",
@@ -464,18 +464,18 @@ if __name__ == "__main__":
                             {
                                    "touch": "It feels like paper.",
                                    "taste": "You lick the letter and taste... well, nothing aside from maybe a little "
-                                   "ink.",
+                                            "ink.",
                                    "smell": "The letter has the familiar scent of paper.",
                                    "listen": "You hear nothing.",
                                    "read": "You open the letter and read the following: "
                                    "\n"
-                                   "Dear Norman,\n I know it's been a long time since we last spoke but last night, "
+                                   "Dear Norman,\nI know it's been a long time since we last spoke but last night, "
                                    "as I was walking around the lake near my house, I couldn't stop thinking about "
                                    "our trip to Lake Tahoe and how wonderful it was. What was it, 10 years ago? That was "
-                                   "one of the happiest times of my life.\n I know you think that our break up was "
+                                   "one of the happiest times of my life.\nI know you think that our break up was "
                                    "for the best, and I know that our relationship could be unhealthy at times, but "
                                    "I really do think that we were meant to be together. I mean, after all, there must "
-                                   "be a reason why you haven't dated anyone else after all these years.\n Anyway, "
+                                   "be a reason why you haven't dated anyone else after all these years.\nAnyway, "
                                    "I know that, like always, you likely won't respond to this, but I'll be in your "
                                    "area in a couple weeks for work and I was thinking that maybe I could stop by.\n"
                                    "Love,\n     A.S."
@@ -532,9 +532,9 @@ if __name__ == "__main__":
                                    "on top of it.",
                                    {
                                    "search": "You rummage through the papers and books on top of the desk. There's a "
-                                   "book on Greek history and an electric bill, but nothing else stands out to you. "
-                                   "You notice that the ashtray hasn't been emptied. You also notice a desk drawer "
-                                   "that can be opened, although it appears to require a key.",
+                                            "book on Greek history and an electric bill, but nothing else stands out to you. "
+                                            "You notice that the ashtray hasn't been emptied. You also notice a desk drawer "
+                                            "that can be opened, although it appears to require a key.",
                                    "touch": "The wood that the desk is made of feels rough.",
                                    "taste": "You taste nothing.",
                                    "smell": "You smell cigar smoke.",
@@ -567,12 +567,12 @@ if __name__ == "__main__":
                                    "An antique bar cart is beside the desk.",
                                    {
                                    "search": "You search the bar cart but don't find anything aside from a few "
-                                   "expensive-looking bottles of liquor and crystal tumblers.",
+                                            "expensive-looking bottles of liquor and crystal tumblers.",
                                    "touch": "The bar cart feels slightly cool.",
                                    "taste": "You open a bottle of whiskey and take a sip. It burns as it goes down "
-                                   "your throat.",
+                                            "your throat.",
                                    "smell": "You open a bottle of whiskey and sniff it. It smells sharp and burns "
-                                   "the inside of your nose.",
+                                            "the inside of your nose.",
                                    "listen": "You hear nothing."
                                    },
                                    False)
@@ -580,7 +580,7 @@ if __name__ == "__main__":
        sys.add_feature(F02R15)
 
        # Safe Code Envelope (O04)
-       O04 = object.Object("O04", "safe code envelope",
+       O04 = object.Object("O04", "envelope",
                             "The envelope is dirty and looks like it was crumpled at one point. Four "
                             "numbers are written across it in thick ink. Perhaps you should read it?",
                             "A dirtied envelope with something written on it catches your attention.",
@@ -600,7 +600,7 @@ if __name__ == "__main__":
        # Adam Bates (P02)
        P02 = person.Person("P02", "Adam Bates",
                             "Adam Bates raises his eyebrows and adjusts his glasses when he senses you looking at him. "
-                            "He appears to be in his late thirties or early forties. His brown hair is messy, and his "
+                            "He appears to be in his late 30s or early 40s. His brown hair is messy, and his "
                             "eyes look sad. 'Can I help you?' he asks.",
                             "Adam Bates is bent over the top of the desk, going through the papers on the desk. He "
                             "quickly straightens up and moves to a nearby bookcase, picking up a book, when you enter. "
@@ -660,9 +660,9 @@ if __name__ == "__main__":
                                    "O09": "You show the letter to Adam. "
                                           "Adam takes the letter and quickly looks over it. 'My father has dated a lot "
                                           "of women over the years,' he says, 'but I don't recall him mentioning anyone other "
-                                          "than Alice recently. From the looks of it, it sounds like this woman was obsessed.'"
+                                          "than Alice recently. From the looks of it, it sounds like this woman was obsessed.' "
                                           "He pauses for a moment to think. 'You don't think that woman downstairs was the "
-                                          "the one who sent this, do you?' He shakes his head. 'Nah, probably not. Although"
+                                          "the one who sent this, do you?' He shakes his head. 'Nah, probably not. Although "
                                           "I swear she looks familiar...'",
                                    "O10": "You show the drawing of the wolfsbane to Adam. "
                                           "Adam's cheeks turn red when he looks at the drawing. You notice him "
@@ -670,7 +670,7 @@ if __name__ == "__main__":
                                           "says. 'I had a hunch that my father might be changing his will sometime "
                                           "soon, what with him and Alice being so close and all. That didn't sit right "
                                           "with me. After all, the estate has been in our family for many generations.' "
-                                          "Adam pauses, and takes a deep breath. 'So I poisoned his breakfast. The man "
+                                          "Adam pauses, and takes a deep breath. 'So I poisoned his dinner. The man "
                                           "had it coming. He was an utterly worthless father and a terrible human "
                                           "being. But, at the last minute, we got into an argument, and I confessed "
                                           "what I had done to him. He stormed off, and that was the last time I saw "
@@ -692,14 +692,14 @@ if __name__ == "__main__":
                                           "eyes you suspiciously. 'You wouldn't happen to be an undercover FBI agent, "
                                           "would you?'",
                                    "F01R15": "You ask Adam about the desk. "
-                                          "'My father kept a lot of important papers there,' he says. 'Let me know if "
+                                          "'My father kept a lot of important papers in there,' he says. 'Let me know if "
                                           "you find anything of interest.'",
                                    "F02R15": "You ask Adam about the bar cart. " 
                                           "Adam shrugs. 'My father liked to drink,' he simply says."
                                    },
                                    "search": "Adam doesn't seem like the type of person that would let you search him.",
                                    "touch": "You place your hand on Adam's shoulder. He looks up, pats it awkwardly, "
-                                   "and then returns to reading.",
+                                            "and then returns to reading.",
                                    "smell": "You near Adam and smell him. He smells slightly of alcohol.",
                                    "listen": "Adam sighs sadly and turns the page of the book that he's reading."
                             })

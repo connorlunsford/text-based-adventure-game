@@ -46,7 +46,7 @@ if __name__ == '__main__':
                     'To the south is the entrance to the house. You know you cannot leave until the murder has been '
                     'solved.\n'
                     'To the west appears to be the entrance to a gleaming white kitchen.\n'
-                    'To the east seems to be a library of sort.\n'
+                    'To the east seems to be a library of sorts.\n'
                     'To the north is the upstairs hallway.',
                     'The grand foyer stretches out in front of you. To the west is the kitchen, to the east is the '
                     'library, and going upstairs to the north will take you to the upstairs hallway.')
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     R01.set_interactions({
         'search': "You walk around the foyer, inspecting every nook and cranny. As far as you can tell, "
                   "the only things in the room are the victim's body, an end table, a rotary phone, and some gaudy old furniture.",
-        'touch': 'You run your hands along the ground, careful to avoid the puddle of blood. It feels cool '
+        'touch': 'You run your hands along the floor, careful to avoid the puddle of blood. It feels cool '
                  'to the touch. Placing your hands upon the wood paneling of the wall reveals it is sturdy dark wood. '
                  'This building was clearly quite expensive to construct.',
         'taste': 'You get on all fours and lean down to touch the marble with your tongue. It tastes similar to some '
@@ -180,8 +180,8 @@ if __name__ == '__main__':
                     "unused amongst the white marble counters.\n"
                     "To the west is an entrance you suspect leads to the garage.\n"
                     "To the southeast is an archway that leads back to the grand foyer.\n"
-                    "To the northeast is the entrance to the Dining Room",
-                    'You enter the kitchen, glancing around to see the white counter tops and stainless steel '
+                    "To the northeast is the entrance to the dining room.",
+                    'You enter the kitchen, glancing around to see the white countertops and stainless steel '
                     'appliances. To the west is the garage, to the southeast is '
                     'the grand foyer, and to the northeast is the dining room.'
                     )
@@ -216,7 +216,7 @@ if __name__ == '__main__':
     # F01R02 pantry
 
     F01R02 = feature.Feature('F01R02', "Pantry",
-                             'Opening the door to the pantry and switching on the light, you can see the kitchen is well-'
+                             'Opening the door to the pantry and switching on the light, you can see it is well-'
                              'stocked. Every kind of food imaginable is stored in this pantry: boxes of pasta, bags of '
                              'potatoes, a bin of onions and garlic, and several large sacks of flour. Those who live '
                              'in the house full-time clearly do not go hungry.',
@@ -224,7 +224,6 @@ if __name__ == '__main__':
                              {
                                  'search': 'You take a minute to comb through every box and bag in the pantry. You do not '
                                            'notice anything out of the ordinary stored in here.',
-                                 # NOTE: May need to change this and put an item in search
                                  'touch': 'You touch a few of the boxes in the pantry. It appears to be normal food.',
                                  'taste': 'You open up a box of crackers and take one out. Examining it reveals that '
                                           'it is a normal water cracker. You take a bite and determine that it is a '
@@ -276,10 +275,10 @@ if __name__ == '__main__':
                                        "'You didn't hear it from me, but I heard him and his dad fighting before we found "
                                        "the body. I'm not sure if he's the one that killed his dad, but I can tell you "
                                        "that they did not have the best relationship.'",
-                                'P03': "You question Ava about Sam. She looks annoyed, stating 'I never liked that guy. "
+                                'P03': "You question Ava about Sam. She looks annoyed, stating 'I don't like that guy. "
                                        "We arrived together, and he had a bad attitude. Not only that, but he just looks "
                                        "like a thug. What a weird guy.'",
-                                'P04': "You ask Ava about the groundskeeper, Al. Ava responds, 'To be honest, I don't "
+                                'P04': "You ask Ava about the gardener, Al. Ava responds, 'To be honest, I don't "
                                        "really know much about him. He seems like a bit of a loner.'",
                                 'P05': "You question Ava about Heather. Ava states, 'She seems pretty cheery. Kind of odd "
                                        "that she's not more upset about the murder though, isn't it?'",
@@ -308,7 +307,7 @@ if __name__ == '__main__':
                                        "as the killer. I'm not a bad person, I promise. You have to believe me!'",
                                 'O11': "You ask Ava about the will. 'What's that?' she says. 'Norman's will? Does it say "
                                        "he's giving everything to Alice? I wonder what could possess him to do something "
-                                       "like that instead of giving it to his son?'",
+                                       "like that instead of giving it to his son.'",
                                 'O12': "You question Ava about the FBI badge. 'Oh, no way!' she says excitedly. 'Someone "
                                        "here is an FBI agent? I wonder who it is. Wait, you don't think I'm an FBI Agent, "
                                        "do you? I wish! That would be a great gig.'"
@@ -333,7 +332,7 @@ if __name__ == '__main__':
                     'Between them sits an oak coffee table.\n'
                     'To the southwest is the entrance to the grand foyer.\n'
                     'To the northwest you can see the ridiculously oversized table of the dining room.\n'
-                    'To the north is the exit that lead outside to the patio.',
+                    'To the north is the exit that leads outside to the patio.',
                     'You enter the library and marvel at the wall-to-wall bookcases filled with books. To the southwest is '
                     'the entrance to the grand foyer, to the northwest is the dining room, '
                     'and to the north is the exit leading to the patio.')
@@ -370,7 +369,7 @@ if __name__ == '__main__':
     F01R03 = feature.Feature('F01R03', "Bookcase",
                              'The bookcase has books of every size and color. You absentmindedly look through the books, '
                              'examining them. You see a set of encyclopedias, a few classic novels, and some books on '
-                             'nonfiction topics, such as horticulture and cooking.',
+                             'nonfiction topics like horticulture and cooking.',
                              'A massive wooden bookcase lines the eastern wall of the room.',
                              {
                                  'search': "You run your hands along the bookcase, pulling out a few books and searching "
@@ -407,14 +406,14 @@ if __name__ == '__main__':
                              'The book has a green cover. The title states it is a book on gardening and horticulture. '
                              'You take a closer look. It appears the book has a page ripped out of it in the plant '
                              'section.',
-                             'A book with a green cover is sitting in the center of the room on the coffee table.',
+                             'A book with a green cover is sitting on the coffee table.',
                              {
                                  'touch': 'The book is made of a rough paper. It appears to be some kind of organic '
                                           'recycled material.',
                                  'smell': 'The book smells slightly fragrant, as if it had been around flowers recently.',
                                  'listen': 'The book does not sound like anything.',
                                  'use': {
-                                     'O10': 'You take the piece of paper and hold it up to the torn page. Although the '
+                                     'O10': 'You take the piece of paper and hold it up to the torn page in the book. Although the '
                                             'paper has been damaged by water, you are able to tell that this book is '
                                             'where the page came from.'
                                  },
@@ -436,7 +435,7 @@ if __name__ == '__main__':
                              'A button peers out from where a book used to be on the massive bookcase.',
                              {
                                  'touch': 'Touching the button reveals that it is able to be pressed. (Hint: perhaps you '
-                                          "could try to 'use' the button on the bookcase)",
+                                          "could try to 'use' the button on the bookcase.)",
                              },
                              True)
 
@@ -445,7 +444,7 @@ if __name__ == '__main__':
     F04R03 = feature.Feature('F04R03', 'Gun',
                              'You attempt to take a closer look at the gun Heather is carrying. Unfortunately, her coat '
                              'hides everything beyond a brief flash of it when she moves around quickly.',
-                             "Though she is trying to find it, you can see the hilt of a gun peaking out of Heather's coat",
+                             "Though she is trying to hide it, you can see the hilt of a gun peaking out of Heather's coat.",
                              {
 
                              },
@@ -471,16 +470,16 @@ if __name__ == '__main__':
                                 'P01': "You ask Heather about Alice. She responds, 'I don't know much about her. She seemed "
                                        "really broken up by the death though. I wonder how she's doing.'",
                                 'P02': "You ask Heather about Adam. She says, 'That guy seems like a hothead. I can't "
-                                       "believe he is the son of that kind old man.'",
+                                       "believe he's the son of that kind old man.'",
                                 'P03': "You ask Heather about Sam. She responds, 'I don't really know about that guy. He "
                                        "seems pretty shady. I saw him snooping around the library and outside area "
                                        "before you arrived. I wonder what he was doing.'",
-                                'P04': "You ask Heather about Al. She states, 'The groundskeeper? He seems nice, but I "
+                                'P04': "You ask Heather about Al. She states, 'The gardener? He seems nice, but I "
                                        "noticed he was complaining about being underpaid earlier.'",
-                                'P05': "You ask Heather about herself. She states, 'Well, I am a single mom, and I work as a "
+                                'P05': "You ask Heather about herself. She states, 'Well, I'm a single mom and I work as a "
                                        "lawyer. My life is a little... stressful. My boss sent me on this trip in order "
                                        "to get me away from it all. To be honest, I think it's kind of a waste of time, "
-                                       "especially since it looks like this is going to be more stressful than working for, "
+                                       "especially since it looks like this is going to be more stressful than working, for "
                                        "obvious reasons.'",
                                 'P06': "You ask Heather about Ava. She responds, 'She seems off. Too calm in this situation.'",
                                 'F01R01': "You ask Heather about the victim. 'Mr. Bates seemed really nice. He greeted me "
@@ -633,12 +632,12 @@ if __name__ == '__main__':
                                             'safe. It beeps three times, and the small red light on the front turns green.'
                                  },
                                  'open': {
-                                     'locked': 'You attempt to open the safe. It is sealed shut. You clearly need to find '
+                                     'locked': 'You attempt to open the safe. It is locked up tight. You clearly need to find '
                                                'the code in order to unlock it.',
                                      'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents '
                                                  "of the safe: several thick, black rubber bands with '$10,000' "
                                                  "written on them in white writing and a piece of high-quality paper with "
-                                                 "'Norman Bates' Will' written on it in bold lettering.",
+                                                 "\"Last Will and Testament of Norman Bates\" written on it in bold lettering.",
                                      'obj_ids': ['O11'],
                                  },
                              },
@@ -692,10 +691,9 @@ if __name__ == '__main__':
                     'The incredibly lavish dining room is well-lit and beautifully decorated. Huge windows line the '
                     'northern wall, allowing you to peer into the backyard of the house. '
                     'A large table made of expensive dark wood sits in the center of the room, surrounded by eight chairs. '
-                    'A fully stocked bar stands at the other '
-                    'end of the room. Clearly, it has been well used as many of the bottles are half full.\n'
-                    'Through an entrance to the west is the Kitchen.\n'
-                    'To the east is the Library.',
+                    'A fully stocked bar stands along the far west wall. Clearly, it has been well used as many of the bottles are half full.\n'
+                    'Through an entrance to the west is the kitchen.\n'
+                    'To the east is the library.',
                     'The dining room is lavish and beautiful, with a large table and a fully stocked bar at one end. '
                     'To the west is the kitchen, to the east is the library.')
 
@@ -749,7 +747,7 @@ if __name__ == '__main__':
                              'You examine the glasses on the bar more closely. Both are half full--one with a red liquid '
                              'and the other with an amber colored liquid. The glass with the red liquid appears to '
                              'have lipstick on the rim of the glass.',
-                             'Two glasses rest on the bar, each half full.',
+                             'Two glasses rest on the bar, each half empty.',
                              {
                                  'touch': 'The glasses are warm to the touch. They have been sitting out for a while.',
                                  'taste': 'You individually bring each of the glasses to your lips, tasting the liquids '
