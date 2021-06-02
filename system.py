@@ -749,6 +749,9 @@ class System:
 
         try:
             os.mkdir('saves')
+        except FileExistsError:
+            pass
+        try:
             os.mkdir('saves/' + location)
             os.mkdir('saves/' + location + '/features')
             os.mkdir('saves/' + location + '/objects')
