@@ -749,6 +749,9 @@ class System:
 
         try:
             os.mkdir('saves')
+        except FileExistsError:
+            pass
+        try:
             os.mkdir('saves/' + location)
             os.mkdir('saves/' + location + '/features')
             os.mkdir('saves/' + location + '/objects')
@@ -930,13 +933,12 @@ class System:
             people_obj = converter.person_from_json(people_json)
             self._people[people_obj.get_id()] = people_obj
 
-        print('\033[1;33;40mWould you like to load a saved game? (y/n)\033[0;37;40m')
-        inp = input('\033[0;32;40m').lower()
-        print('\033[0;37;40m')
-        if inp in ['y', 'yes', 'yeah']:
-            check = False
-            # makes sure you're able to load the game
-            while not check:
+        inp = 'y'
+        while inp in ['y', 'yes', 'yeah']:
+            print('\033[1;33;40mWould you like to load a saved game? (y/n)\033[0;37;40m')
+            inp = input('\033[0;32;40m').lower()
+            print('\033[0;37;40m')
+            if inp in ['y','yes','yeah']:
                 check = self.load()
                 if check is True:
                     self.game_loop()
