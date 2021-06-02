@@ -307,7 +307,7 @@ if __name__ == '__main__':
                                        "as the killer. I'm not a bad person, I promise. You have to believe me!'",
                                 'O11': "You ask Ava about the will. 'What's that?' she says. 'Norman's will? Does it say "
                                        "he's giving everything to Alice? I wonder what could possess him to do something "
-                                       "like that instead of giving it to his son?'",
+                                       "like that instead of giving it to his son.'",
                                 'O12': "You question Ava about the FBI badge. 'Oh, no way!' she says excitedly. 'Someone "
                                        "here is an FBI agent? I wonder who it is. Wait, you don't think I'm an FBI Agent, "
                                        "do you? I wish! That would be a great gig.'"
@@ -413,7 +413,7 @@ if __name__ == '__main__':
                                  'smell': 'The book smells slightly fragrant, as if it had been around flowers recently.',
                                  'listen': 'The book does not sound like anything.',
                                  'use': {
-                                     'O10': 'You take the piece of paper and hold it up to the torn page. Although the '
+                                     'O10': 'You take the piece of paper and hold it up to the torn page in the book. Although the '
                                             'paper has been damaged by water, you are able to tell that this book is '
                                             'where the page came from.'
                                  },
@@ -637,7 +637,7 @@ if __name__ == '__main__':
                                      'unlocked': 'You grasp the handle of the safe and swing it open, revealing the contents '
                                                  "of the safe: several thick, black rubber bands with '$10,000' "
                                                  "written on them in white writing and a piece of high-quality paper with "
-                                                 "'Norman Bates' Will' written on it in bold lettering.",
+                                                 "\"Last Will and Testament of Norman Bates\" written on it in bold lettering.",
                                      'obj_ids': ['O11'],
                                  },
                              },

@@ -39,7 +39,7 @@
 {"O03": ["gold key", "golden key", "large key", "large gold key", "large golden key"]}, 
 {"O04": ["envelope", "dirty envelope", "dirtied envelope", "crumpled envelope",
     "safe code envelope", "code envelope", "envelope safe code", "envelope code",
-    "dirtied envelope something written", "envelope something written", "safe code"]},
+    "dirtied envelope something written", "envelope something written", "safe code", "code"]},
 {"O05": ["earring", "silver earring", "womans earring", "womens earring", "small earring", 
     "small shiny object", "small object", "shiny object", "metal earring", "object", "shiny",
     "avas earring", "ava earring", "ava scarletts earring", "ava scarlett earring",

@@ -670,7 +670,7 @@ if __name__ == "__main__":
                                           "says. 'I had a hunch that my father might be changing his will sometime "
                                           "soon, what with him and Alice being so close and all. That didn't sit right "
                                           "with me. After all, the estate has been in our family for many generations.' "
-                                          "Adam pauses, and takes a deep breath. 'So I poisoned his breakfast. The man "
+                                          "Adam pauses, and takes a deep breath. 'So I poisoned his dinner. The man "
                                           "had it coming. He was an utterly worthless father and a terrible human "
                                           "being. But, at the last minute, we got into an argument, and I confessed "
                                           "what I had done to him. He stormed off, and that was the last time I saw "
