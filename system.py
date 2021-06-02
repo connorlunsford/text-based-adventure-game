@@ -709,15 +709,15 @@ class System:
     def help(self):
         """takes no parameters, prints out a list of commands that the player is allowed to use"""
         print('\033[1;33;40mHere are some examples of possible commands you can use:')
-        print('look at [object] - allows you to examine an object, feature, or person')
         print('look - allows you to examine the room in detail')
+        print('look at [object] - allows you to examine an object, feature, or person')
         print('go to [room] - allows you to enter unlocked rooms connected to the current room')
+        print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, '
+              'a feature in the house, or another person')        
         print('take [object] - allows you to pick up an object')
         print('drop [object] - allows you to drop an object in your inventory into the room')
         print('inventory - allows you to examine the contents of your inventory')
         print('use [object] on [object/feature] - allows you to use an object on another object or feature')
-        print('ask [person] about [object/feature/person] - allows you to interrogate a person about an object, '
-              'a feature in the house, or another person')
         print('read [object] - allows you to read an object')
         print('open [object] - allows you to open an unlocked door or other similar object')
         print('search [object] - allows you to search through an object or room')
@@ -725,6 +725,7 @@ class System:
         print('taste [object] - allows you to taste an object; this may give you more clues')
         print('smell [object] - allows you to smell an object or room; this may give you more clues')
         print('listen [object] - allows you to listen to an object or room; this may give you more clues')
+        print('call - allows you to call the police')
         print('savegame - allows you to save the game')
         print('loadgame - allows you to load a saved game')
         print('exit - allows you to exit the game (remember to save your progress first)\033[1;37;40m')
@@ -742,7 +743,7 @@ class System:
     def save(self):
         """takes no parameters, allows you to save the game"""
 
-        print('\033[1;33;40mPlease enter a save file name (case sensitive): \033[0;37;40m')
+        print('\033[1;33;40mPlease enter a file name to save your progress to (case sensitive): \033[0;37;40m')
         location = input('\033[0;32;40m')
         print('\033[0;37;40m')
 
