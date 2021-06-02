@@ -131,7 +131,7 @@ if __name__ == "__main__":
                             })
 
        R12.set_features(["F01R12", # sink
-                         "F02R12"  # trashcan
+                         "F02R12"  # trash can
                          ])
 
        R12.set_objects(["O05"  # earring
@@ -140,7 +140,7 @@ if __name__ == "__main__":
        # Set the interactions
        R12.set_interactions({
               "search": "A brief search initially yields nothing, although you may want to take a closer look at "
-                        "the trashcan, if you haven't already.",
+                        "the trash can, if you haven't already.",
               "touch": "The marble floors and granite countertops are cold.",
               "taste": "Sigh... so be it. You taste the sink handles and the toilet seat. Neither offers any valuable "
                         "information beyond perhaps a sobering insight into your own judgment.",
@@ -169,18 +169,18 @@ if __name__ == "__main__":
 
        sys.add_feature(F01R12)
 
-       # Trashcan (F02R12)
-       F02R12 = feature.Feature("F02R12", "Trashcan",
-                                   "The trashcan is made of stainless steel and is one of those trashcans that has a small "
+       # Trash can (F02R12)
+       F02R12 = feature.Feature("F02R12", "Trash can",
+                                   "The trash can is made of stainless steel and is one of those trash cans that has a small "
                                    "step used for opening it. As you begin to look away, the glint of a small shiny object "
                                    "on the floor catches your eye.",
-                                   "A small, metal trashcan sits in the corner of the room.",
+                                   "A small, metal trash can sits in the corner of the room.",
                                    {
-                                   "search": "You step on the trashcan's step, and the lid silently opens. The inside of "
-                                            "the trashcan is completely empty.",
+                                   "search": "You step on the trash can's step, and the lid silently opens. The inside of "
+                                            "the trash can is completely empty.",
                                    "touch": "The stainless steel exterior feels slightly cool.",
-                                   "taste": "Please try to use your better judgment. This is a trashcan.",
-                                   "smell": "The smell of the trashcan is unremarkable.",
+                                   "taste": "Please try to use your better judgment. This is a trash can.",
+                                   "smell": "The smell of the trash can is unremarkable.",
                                    "listen": "You hear nothing."
                                    },
                                    False)
@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
        # Earring (O05)
        O05 = object.Object("O05", "silver earring",
-                            "The women's earring is made of silver and shaped like a small crescent moon.",
+                            "The woman's earring is made of silver and shaped like a small crescent moon.",
                             "A small shiny object lies on the floor. It looks like a woman's earring.",
                             {
                                    "touch": "The earring feels strong and well-made.",
@@ -667,12 +667,13 @@ if __name__ == "__main__":
                                           "clenching his fists so tightly that his knuckles turn white. 'Alright,' he "
                                           "says. 'I had a hunch that my father might be changing his will sometime "
                                           "soon, what with him and Alice being so close and all. That didn't sit right "
-                                          "with me. After all, the estate has been in our family for many generations.' "
+                                          "with me. After all, the estate has been in our family for many generations. "
+                                          "I saw that plant in a book and thought I remembered seeing it in the garden.' "
                                           "Adam pauses, and takes a deep breath. 'So I poisoned his food. The man "
                                           "had it coming. He was an utterly worthless father and a terrible human "
                                           "being. But, at the last minute, we got into an argument, and I confessed "
                                           "what I had done to him. He stormed off, and that was the last time I saw "
-                                          "him alive. I never actually poisoned him though.'",
+                                          "him alive. He didn't eat the food though, so that's not what killed him.'",
                                    "O11": "You ask Adam about the will. "
                                           "Adam's interest is clearly piqued when you mention the will. 'What's that?' "
                                           "he asks. 'You found it?' When you tell him that Alice stands to inherit everything, "

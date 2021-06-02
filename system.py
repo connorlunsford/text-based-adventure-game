@@ -239,7 +239,7 @@ class System:
                 killer = self._parser.find_killer(killer_str)
                 weapon = self._parser.find_weapon(weapon_str)
 
-                print("Not long after you you make the call, the police arrive on the scene, "
+                print("Not long after you make the call, the police arrive on the scene, "
                     "taking " + str(killer_str) + " into custody and the " + str(weapon_str) + " as evidence. "
                     "You return home, and life goes on, but, a week later, you come across "
                     "an article in the news that reads: ")
@@ -248,32 +248,30 @@ class System:
                     print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI AND INSUFFICIENT EVIDENCE'\n")
                     print("It turns out that " + str(killer_str) + " was not the killer and the " +
                         str(weapon_str) + " was not the murder weapon. You continue to follow the case in "
-                        "the years that follow, but no substantial updates are ever released, and, "
-                        "eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Friday morning "
-                          "at the retreat was able to get away.")
+                        "the years that follow, but no substantial updates are ever released, and "
+                        "it's eventually declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that Friday "
+                          "at the retreat was able to get away with murder.")
                     print("\nTHE END.")
                     exit()
 
-                # change 'correct' to the killers name in final implementation
                 elif killer == 'correct' and weapon == 'wrong':
                     print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO INSUFFICIENT EVIDENCE'\n")
                     print("It turns out that the " + str(weapon_str) + " was not the murder weapon. "
                         "You continue to follow the case in the years that follow, but no substantial "
-                        "updates are ever released, and, eventually, it's declared a cold case.")
+                        "updates are ever released, and it's eventually declared a cold case.")
                     print("As a result, " + str(killer_str) + " was able to get away with killing Norman "
-                        "that bright Friday morning at the retreat.")
+                        "that Friday at the retreat.")
                     print("\nTHE END.")
                     exit()
 
-                # change 'correct' to the weapon name in final implementation
                 elif killer == 'wrong' and weapon == 'correct':
                     print("\n'SUSPECT RELEASED WITHOUT CHARGES DUE TO ALIBI'\n")
                     print("It turns out that " + str(killer_str) + " was not the killer. "
                         "You continue to follow the case in the years that follow, but no substantial "
-                        "updates are ever released, and, eventually, it's declared a cold case.")
-                    print("As a result, whoever it was that killed Norman that bright Friday morning "
-                        "at the retreat was able to get away.")
+                        "updates are ever released, and, it's eventually declared a cold case.")
+                    print("As a result, whoever it was that killed Norman that Friday "
+                        "at the retreat was able to get away with murder.")
                     print("\nTHE END.")
                     exit()
 
@@ -283,7 +281,7 @@ class System:
                         "in the years that follow until one afternoon three years later, you turn on the TV "
                         "to see a guilty verdict given to " + str(killer_str) + " who, by all accounts and evidence "
                         "presented to the court, murdered Norman Bates with the " + str(
-                        weapon_str) + " one bright Friday morning three years ago.")
+                        weapon_str) + " one Friday three years ago.")
                     print("\nTHE END.")
                     exit()
             else:
@@ -962,7 +960,7 @@ class System:
             "Work has been difficult lately. "
             "Over the past six months, your boss at the detective agency has been "
             "down your neck due to an important case that, according to him, "
-            "could 'make his career'. "
+            "could 'make his career.' "
             "You've been living off of coffee and cold lunches and, now, with "
             "the case formally closed, you find yourself yearning for a much "
             "needed vacation and change of pace. ",
@@ -978,12 +976,12 @@ class System:
             "by the descendent of an old family that became wealthy during the "
             "California Gold Rush circa the 1850s--a man by the name of Norman "
             "Bates. "
-            "This piques your interest and, the next day, you call the phone "
+            "This piques your interest. The next day, you call the phone "
             "number on the advertisement to book a reservation two weeks from "
-            "now and request that Friday off from work. ",
-            "Two weeks later, on the Friday of the first day of the retreat, "
-            "you wake up at 4:00 AM to get ready and catch the bus north to "
-            "the city of Eureka. "
+            "now, and you request that Friday off from work. ",
+            "Two weeks later, you wake up at 4:00 AM on Friday, the first day of "
+            "the retreat, to get ready and catch the bus north to the city "
+            "of Eureka. "
             "From there, you follow the instructions in the reservation email "
             "to wait at the post office, and you're picked up by a man in a "
             "weathered truck who simply introduces himself as 'Todd'.",
@@ -1009,7 +1007,7 @@ class System:
             "were supposed to be attending the retreat along with you. "
             "The email also noted that Norman Bates' son, Adam Bates, and "
             "his assistant, Alice Stone, would be present during the retreat "
-            "as well. You vaguely remember that a groundskeeper called "
+            "as well. You vaguely remember that a gardener called "
             "Al Weatherby had been mentioned too. ",
             "Securing your bags, you climb the front steps and knock on the "
             "door. When no one answers, you try the doorknob. To your "
@@ -1023,8 +1021,8 @@ class System:
             "Search the house, talk to the suspects, and find out what happened here. As you explore you may need to pick "
             "up objects and collect evidence to enter locked rooms, interact with other objects, and question "
             "the inhabitants. When you are reasonably certain you "
-            "know the killer and the murder weapon, come back to this room and call the police on the rotary phone in this "
-            "room. This will end the story. (Remember, at any point you can type 'help' for a list of useful commands and "
+            "know the killer and the murder weapon, come back to this room and call the police on the rotary phone. "
+            "This will end the story. (Remember, at any point you can type 'help' for a list of useful commands and "
             "phrases).",
         ]
 
