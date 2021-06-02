@@ -619,10 +619,8 @@ if __name__ == "__main__":
                                           "suspicious, and I noticed that he mentioned nothing about occupation when "
                                           "we spoke. That being said, I don't know much about him.'",
                                    "P04": "You ask Adam about Al. "
-                                          "'Al has always been there for me,' Adam says, 'even when my father wasn't. "
-                                          "Truth be told, my father probably didn't treat him as well as he should have. But "
-                                          "Al was always loyal, maybe even too loyal... Either way, you won't catch me "
-                                          "saying a bad thing about Al. He's like a second father to me.'",
+                                          "'Truth be told, my father probably didn't treat him as well as he should have,' "
+                                          "Adam tells you. 'But Al was always loyal, maybe even too loyal...'",
                                    "P05": "You ask Adam about Heather. "
                                           "'Ah, Heather Poirot,' Adam says. 'I didn't get much of an opportunity to "
                                           "speak with her, but I got the sense that she came here with a purpose. As far "
