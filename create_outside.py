@@ -16,17 +16,14 @@ if __name__ == "__main__":
                     "complete with a massive umbrella to provide shade from the sun. Let's not forget about the pool. "
                     "It sparkles and shimmers and looks so inviting. Maybe when all of this is over "
                     "you can go for a nice swim. \n"
-                    "To the west are french doors that appear to go into the living room. The doors are locked. "
                     "You can get to the garage via the path to the northwest. "
-                    "To the north is a pool house. It doesn't look like it's currently being used and the doors are also locked. \n"
                     "To the east is the garden. It looks rather beatiful from here. There seem to be some outbuildings "
                     "on the far edges of the garden, but you can't quite tell from here what they are. "
                     "There are some muddy footprints coming out of the garden, maybe they deserve a closer look. \n"
-                    "To the south are doors that will take you back into the house via the library.",
+                    "To the south you can go back into the house via the library.",
                     "You are on the patio with a dazzling pool and ample seating for lounging or dining. "
-                    "To the west is the locked door into the living room, the library is to the south, "
-                    "to the east is the garden, and to the north is the locked pool house. The path to the "
-                    "northwest will lead you to the garage."
+                    "The library is to the south, to the east is the garden, and the path to the garage is "
+                    "to the northwest."
                     )
     
     # Set the connections
@@ -177,8 +174,8 @@ if __name__ == "__main__":
                     "purple flower in the far corner catches your eye. As you start to head that way to get a better look, "
                     "you spot something metallic down another path as it shimmers in the sunlight. 'Well that seems out of place' "
                     "you think to yourself.\n"
-                    "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. The gateway "
-                    "to the west will return you to the patio.\n"
+                    "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. To the west "
+                    "will return you to the patio.\n"
                     "There's so much to see you don't know which way to go first.",
                     "You enter an immaculately manicured garden. Beautiful purple flowers and something metallic catch your eye. "
                     "To the north is a greenhouse and a shed is to the northeast. Going west will return you to the patio."
@@ -257,7 +254,7 @@ if __name__ == "__main__":
     O10 = object.Object("O10", "crumpled paper",
                         "The paper has gotten wet from the irrigation system so you can't quite make out what was "
                         "on the page. It looks like it may have been a picture with some text. There are faint "
-                        "purple and green colors and you can make out part of a word, 'Wolfs'-something. Definitely "
+                        "purple and green colors and you can make out part of a word, 'wolfs'-something. Definitely "
                         "looks like a page torn out of a book or notebook, you decide.",
                         "A page torn from a book which had a picture of something green and purple and the incomplete "
                         "word 'wolfs-'.",
@@ -292,7 +289,7 @@ if __name__ == "__main__":
                     "You enter a large garage. This thing is huge! There's only one car though, "
                     "a vintage VW van that looks like it's kept immaculate. In the back corner there is a large "
                     "storage closet. A workbench along the far wall looks very orderly with tools. To the east is "
-                    "the door back into the kitchen. To the north is the back door. It opens onto a paved path that "
+                    "the kitchen. To the north is the rear exit of the garage. It opens onto a paved path that "
                     "will take you around the back of the house to the patio. To the south are the main garage doors. "
                     "There's a fancy looking keypad though, and no button in sight. It appears you need a code to "
                     "open the doors from inside.",
@@ -383,8 +380,8 @@ if __name__ == "__main__":
     R09 = room.Room("R09", "Gardener’s shed",
                     "You enter the shed. It seems quite orderly for a tool shed. The walls are made up of pegboard "
                     "and have labeled spots for various tools of all sorts. You've never seen such an organized shed. "
-                    "To the west is the door to return to the garden. ",
-                    "The shed is well organized with a wide array of tools. The garden is through the west door."
+                    "To the west is the garden. ",
+                    "The shed is well organized with a wide array of tools. The garden is to the west."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
@@ -559,9 +556,9 @@ if __name__ == "__main__":
     R10 = room.Room("R10", "Greenhouse",
                     "You are in a lovely greenhouse, it's quite warm in here. The tables are full of "
                     "all sorts of plants and flowers, every color of the rainbow seems to be represented. "
-                    "This must be where Al starts his new plants. To the south is the door to the garden.",
-                    "The greenhouse has all sorts of plants and flowers on display. The door to the "
-                    "south leads back to the garden."
+                    "This must be where Al starts his new plants. To the south is the garden.",
+                    "The greenhouse has all sorts of plants and flowers on display. The garden "
+                    "is to the south."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
