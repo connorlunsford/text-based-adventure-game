@@ -232,7 +232,7 @@ class System:
                 print('\033[0;37;40m')
 
                 # Format and save the player input for later use
-                killer_str = killer
+                killer_str = killer.title()
                 weapon_str = " ".join(self._parser.remove_articles(list(weapon.split())))
 
                 # Validate the killer and weapon using the respective NLP methods
