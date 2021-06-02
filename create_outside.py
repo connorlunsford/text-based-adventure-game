@@ -147,7 +147,7 @@ if __name__ == "__main__":
                                         "anything about a candlestick.'",
                                 'O06': "You ask Sam about the bloodied washcloth. 'I've never seen that before. Where'd "
                                        "you find it?' Clearly, he's not going to tell you anything useful.",
-                                'O08 ': "You ask Sam about the garden shears found in the greenhouse. 'I got them from the "
+                                'O08' : "You ask Sam about the garden shears found in the greenhouse. 'I got them from the "
                                         "shed. I was going to use them to cut some flowers, I hid them when I was startled "
                                         "and I just took off. I didn't want to get caught with them.'",
                                 'O12': "You question Sam about the FBI badge. 'Huh. I knew the owner was strange. I bet "
