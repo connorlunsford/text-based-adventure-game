@@ -251,7 +251,7 @@ class System:
                         "the years that follow, but no substantial updates are ever released, and "
                         "it's eventually declared a cold case.")
                     print("As a result, whoever it was that killed Norman that Friday "
-                          "at the retreat was able to get away.")
+                          "at the retreat was able to get away with murder.")
                     print("\nTHE END.")
                     exit()
 
@@ -271,7 +271,7 @@ class System:
                         "You continue to follow the case in the years that follow, but no substantial "
                         "updates are ever released, and, it's eventually declared a cold case.")
                     print("As a result, whoever it was that killed Norman that Friday "
-                        "at the retreat was able to get away.")
+                        "at the retreat was able to get away with murder.")
                     print("\nTHE END.")
                     exit()
 
