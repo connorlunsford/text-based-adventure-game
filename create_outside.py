@@ -140,7 +140,7 @@ if __name__ == "__main__":
                                           "from the garden. I didn't want to get cut up by those pesky thorns.' ",
                                 'F01R10': "You ask Sam about the broken pots in the greenhouse. 'Yeah, that was me. I was "
                                           "just looking through the flowers and accidentally dropped one of the pots. It "
-                                          "fell on a few other pots and broke them too. I panicked and ran. I didn't want"
+                                          "fell on a few other pots and broke them too. I panicked and ran. I didn't want "
                                           "to face the wrath of the gardener. His plants are like his babies, and he already "
                                           "threatened me once.'",
                                 'O01': "You ask Sam about the candlestick. 'Candlestick? What candlestick? I don't know "
@@ -533,7 +533,9 @@ if __name__ == "__main__":
                                     "them?'",
                                 'O10': "You ask Al about the smudged drawing. 'Hmm, \"wolfs-\",' he starts to read. 'That looks "
                                     "like it used to be a drawing of wolfsbane. I've got one of those over in the corner of the garden. "
-                                    "Kind of a little pet project I have going on. I got interested in it after reading about it in some "
+                                    "It's the one with the dark purple flowers. I know it's supposed to be poisonous, and it's a bit "
+                                    "of a risk having it here, but I don't think anybody else knows about it but me. It's "
+                                    "kind of a little pet project I have going on. I got interested in it after reading about it in some "
                                     "folklore stories I like to read.'",
                                 'O11': "You ask Al about the victim's will. 'Pfft, I'm sure I'm not in it. All the hard work I "
                                     "put into this garden and Norman never seemed to appreciate it. I'd be surprised if he left me so "
