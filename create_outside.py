@@ -19,9 +19,9 @@ if __name__ == "__main__":
                     "You can get to the garage via the path to the northwest. "
                     "To the east is the garden. It looks rather beatiful from here. There seem to be some outbuildings "
                     "on the far edges of the garden, but you can't quite tell from here what they are. "
-                    "There are some muddy footprints coming out of the garden, maybe they deserve a closer look. \n"
+                    "There are some muddy footprints coming out of the garden. Maybe they deserve a closer look. \n"
                     "To the south you can go back into the house via the library.",
-                    "You are on the patio with a dazzling pool and ample seating for lounging or dining. "
+                    "You are on the patio, which has a dazzling pool and ample seating for lounging or dining. "
                     "The library is to the south, to the east is the garden, and the path to the garage is "
                     "to the northwest."
                     )
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # Muddy Footprints (F01R06)
     F01R06 = feature.Feature("F01R06", "Muddy Footprints",
                                 "You follow the path of the muddy footprints. The prints are close together so it doesn't appear "
-                                "this person was in any hurry. You reach the end of the footprints and they've led you directly to Sam. "
+                                "this person was in any hurry. You reach the end of the footprints, and they've led you directly to Sam. "
                                 "You wonder what he's doing lurking around out here and what business he had in the garden.",
                                 "The muddy footprints lead to Sam, another retreat guest. He's acting a bit shady and is "
                                 "avoiding eye contact.",
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                                 "You can't be sure, but they look like they might be gardening gloves. 'Why "
                                 "would Sam have gardening gloves?' you wonder. What is he up to? You'll have to "
                                 "ask him about them if you want any answers.",
-                                "They appear to be gardening gloves in Sam's pocket.",
+                                "There appear to be gardening gloves in Sam's pocket.",
                                 {
                                 "search": "You look the gloves over as best you can. There doesn't appear to "
                                         "be any blood on them, just a little dirt.",
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     P03 = person.Person("P03", "Sam Smith",
                         "You take a better look at Sam Smith. He's open about his past, says he used to get into trouble a lot. "
                         "Mostly just burglaries he said. Says he's changed his ways but you're not sure you "
-                        "believe him. 'Sam Smith' certainly sounds like a made up name. He's probably early 30s, "
+                        "believe him. 'Sam Smith' certainly sounds like a made-up name. He's probably early 30s, "
                         "good looking in a rugged, bad boy kind of way. You can see how he might be able to "
                         "manipulate people into trusting him. He's acting kind of guilty. "
                         "Of what though, you're not quite sure. He's been acting like that since you got here. "
@@ -107,16 +107,16 @@ if __name__ == "__main__":
                         "Sam Smith is here and acting shifty, as usual. It looks like he has some gloves in his pocket.",
                         {
                             "ask": {
-                                'P01': "You question Sam about Alice. He responds: 'Is that the broad, I mean lady, that lives here? "
+                                'P01': "You question Sam about Alice. He responds: 'Is that the broad, I mean lady, who lives here? "
                                        "She seems nice enough, pretty broken up about what happened. Not sure what else "
                                        "I can say about her.' ",
                                 'P02': "You question Sam about Adam, the victim's son. 'Seems pretty jealous of his old "
                                        "man's money if you ask me. Can't say I blame him though. I heard his dad keeps "
                                        "all his money in the house, right under the kid's nose and he can't even touch it. "
                                        "Doesn't trust banks or something like that, the old kook.'",
-                                'P03': "You question Sam about himself. He seems exasperated, 'Man, why's everyone always "
+                                'P03': "You question Sam about himself. He seems exasperated. 'Man, why's everyone always "
                                        "suspecting me? I told you guys I've gone straight. Nothing to hide.'",
-                                'P04': "You ask Sam about the gardener, Al. Sam responds 'That old guy? He sure does love "
+                                'P04': "You ask Sam about the gardener, Al. Sam responds, 'That old guy? He sure does love "
                                        "his plants. He saw me in the garden and threatened me if I picked any of his "
                                        "precious flowers. What's the big deal if I pick a few? He's got plenty.'",
                                 'P05': "You question Sam about Heather. He gets a far off look before saying, 'She's kind of "
@@ -130,25 +130,25 @@ if __name__ == "__main__":
                                           "in town though. They say he's a bit eccentric, doesn't trust the government or banks, "
                                           "keeps all his money stashed around the house like hidden treasures. I thought "
                                           "it would be fun to check the place out myself.' He stammers a bit, 'I mean, "
-                                          "not that I'd look for the money or take it or anything, I just wanted to see what "
+                                          "not that I'd look for the money or take it or anything. I just wanted to see what "
                                           "the guy was like in person.'",
                                 'F01R06': "You ask Sam about the muddy footprints. What was he doing in the garden anyway? "
                                           "He acts guilty. 'I was just enjoying the garden, honest.' He fidgets a little more "
-                                          "and you wait, it seems like there's more he wants to say but he stays silent.",
+                                          "and you wait. It seems like there's more he wants to say but he stays silent.",
                                 'F02R06': "You ask Sam about the gloves in his pocket. 'The what? Oh, these. I... uh... "
-                                          "ok fine, took them from the shed. I wanted to surprise Heather with some roses "
+                                          "ok, fine, took them from the shed. I wanted to surprise Heather with some roses "
                                           "from the garden. I didn't want to get cut up by those pesky thorns.' ",
                                 'F01R10': "You ask Sam about the broken pots in the greenhouse. 'Yeah, that was me. I was "
                                           "just looking through the flowers and accidentally dropped one of the pots. It "
                                           "fell on a few other pots and broke them too. I panicked and ran. I didn't want"
-                                          "to face the wrath of the gardener. His plants are like his babies and he already "
+                                          "to face the wrath of the gardener. His plants are like his babies, and he already "
                                           "threatened me once.'",
                                 'O01': "You ask Sam about the candlestick. 'Candlestick? What candlestick? I don't know "
                                         "anything about a candlestick.'",
                                 'O06': "You ask Sam about the bloodied washcloth. 'I've never seen that before. Where'd "
                                        "you find it?' Clearly, he's not going to tell you anything useful.",
                                 'O08 ': "You ask Sam about the garden shears found in the greenhouse. 'I got them from the "
-                                        "shed. I was going to use them to cut some flowers, I hid them when I was startled "
+                                        "shed. I was going to use them to cut some flowers. I hid them when I was startled, "
                                         "and I just took off. I didn't want to get caught with them.'",
                                 'O12': "You question Sam about the FBI badge. 'Huh. I knew the owner was strange. I bet "
                                        "he's being investigated for something crazy!' "
@@ -158,8 +158,8 @@ if __name__ == "__main__":
                             'touch': "Sam smacks your hand away. 'What are you doing? Don't touch me! Geez, what's wrong "
                                      "with you?'",
                             'smell': "You try to be subtle as you lean towards Sam and sniff. A mix of sweat and strong "
-                                     "cologne. 'Note to self: don't get too close to him again.' you think to yourself.",
-                            'listen': "You hope Sam will start talking just to fill the awkward silence but he just "
+                                     "cologne. 'Note to self: don't get too close to him again,' you think to yourself.",
+                            'listen': "You hope Sam will start talking just to fill the awkward silence, but he just "
                                         "looks at you expectantly."
                         })
 
@@ -169,15 +169,15 @@ if __name__ == "__main__":
     R07 = room.Room("R07", "Garden",
                     "As you enter the garden you have to stop to take it all in. 'Wow,' you think, 'this garden is "
                     "amazing!' A maze of flowers and plants lies before you, all immaculately manicured and cared for. "
-                    "It seems every color of the rainbow is represented through beautiful flowers. A particularly beautiful "
+                    "It seems every color of the rainbow is represented through the beautiful flowers. A particularly beautiful "
                     "purple flower in the far corner catches your eye. As you start to head that way to get a better look, "
-                    "you spot something metallic down another path as it shimmers in the sunlight. 'Well that seems out of place,' "
+                    "you spot something metallic down another path, shimmering in the sunlight. 'Well, that seems out of place,' "
                     "you think to yourself.\n"
-                    "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. To the west "
+                    "To the north you see a large greenhouse. In the northeast corner is the gardener's tool shed. Going west "
                     "will return you to the patio.\n"
                     "There's so much to see you don't know which way to go first.",
                     "You enter an immaculately manicured garden. Beautiful purple flowers and something metallic catch your eye. "
-                    "To the north is a greenhouse and a shed is to the northeast. Going west will return you to the patio."
+                    "To the north is a greenhouse, and a shed is to the northeast. Going west will return you to the patio."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
@@ -197,13 +197,13 @@ if __name__ == "__main__":
     # Set the interactions
     R07.set_interactions({
             "search": "You wander around the garden slowly, taking it all in. You see what appears to be a crumpled "
-                "paper on one path, perhaps a page torn from a book?",
+                "paper on one path. Perhaps a page torn from a book?",
             "touch": "You delicately touch some of the flowers as you pass. Ouch! A thorn.",
             "taste": "So many options! Do you really think eating random plants and flowers will help you?",
             "smell": "Aah, such a wonderful fragrance from all of the flowers. But wait, is that a trace of a woman's "
                 "perfume you smell? Someone else has been here recently.",
             "listen": "The sound of a light breeze blowing through the trees that surround the garden is so relaxing. "
-                "You could spend hours in here, it's so peaceful. That is, if you didn't have a murder to solve."
+                "You could spend hours in here. It's so peaceful. That is, if you didn't have a murder to solve."
             })
 
     sys.add_room(R07)
@@ -211,18 +211,18 @@ if __name__ == "__main__":
     # wolfsbane/purple flowers (F01R07)
     F01R07 = feature.Feature("F01R07", "Wolfsbane",
                                 "The leaves are dark green with sharp, almost tooth-like points around the perimeter. "
-                                "The shape of the deep purple flowers remind you of a medieval helmet, domed across "
+                                "The shape of the deep purple flowers reminds you of a medieval helmet, domed across "
                                 "the top and longer in the back.",
-                                "The plant with the beatiful purple flowers has dark green leaves and the flowers are helmet shaped.",
+                                "The plant with the beautiful purple flowers has dark green leaves, and the flowers are helmet-shaped.",
                                 {
                                 "search": "This plant seems to be separate from the rest. But what's that there? There's some "
-                                        "disturbed soil nearby and there's a sunken spot. Perhaps something was recently dug up..."
+                                        "disturbed soil nearby, and there's a sunken spot. Perhaps something was recently dug up... "
                                         "or maybe buried...",
-                                "touch": "You reach out to touch the beautiful flowers but something makes you hesitate.",
+                                "touch": "You reach out to touch the beautiful flowers, but something makes you hesitate.",
                                 "taste": "Tasting such a random mysterious plant seems risky. You change your mind. "
                                         "Better safe than sorry.",
-                                "smell": "Hmm, for such a lovely flower you'd expect a lovely scent, but nope, nothing.",
-                                "listen": "Listen to a plant? Really? People talk to plants but it doesn't usually work "
+                                "smell": "Hmm, for such a lovely flower, you'd expect a lovely scent, but nope, nothing.",
+                                "listen": "Listen to a plant? Really? People talk to plants, but it doesn't usually work "
                                         "the other way around."
                                 },
                                 False)
@@ -231,7 +231,7 @@ if __name__ == "__main__":
 
     # disturbed soil (F02R07)
     F02R07 = feature.Feature("F02R07", "disturbed soil",
-                                "The soil has been recently turned and it's slightly sunken. Almost as if something "
+                                "The soil has been recently turned, and it's slightly sunken. Almost as if something "
                                 "was removed and the soil fell in to fill the void. You'll have to remember to ask the "
                                 "gardener about it.",
                                 "A slightly sunken area of disturbed soil.",
@@ -240,7 +240,7 @@ if __name__ == "__main__":
                                         "have to work with is your hands. You're rewarded with a few earthworms and fresh "
                                         "soil under your fingernails, but nothing else.",
                                 "touch": "The soil is loose, like it's been recently disturbed. Not at all like the area "
-                                        "around it which is more compacted.",
+                                        "around it, which is more compacted.",
                                 "taste": "Not sure what you're trying to gain by tasting it, but it tastes like dirt.",
                                 "smell": "Smells like fresh soil.",
                                 "listen": "There's nothing to be heard here."
@@ -253,14 +253,14 @@ if __name__ == "__main__":
     O10 = object.Object("O10", "crumpled paper",
                         "The paper has gotten wet from the irrigation system so you can't quite make out what was "
                         "on the page. It looks like it may have been a picture with some text. There are faint "
-                        "purple and green colors and you can make out part of a word, 'wolfs'-something. Definitely "
+                        "purple and green colors, and you can make out part of a word, 'wolfs'-something. Definitely "
                         "looks like a page torn out of a book or notebook, you decide.",
-                        "A page torn from a book which had a picture of something green and purple and the incomplete "
+                        "A page torn from a book, which had a picture of something green and purple and the incomplete "
                         "word 'wolfs-'.",
                         {
                                 "touch": "It is still damp, as the flowers were recently watered.",
-                                "taste": "Tastes like...damp paper. No surprise there.",
-                                "smell": "Smells like...damp paper. No surprise there.",
+                                "taste": "Tastes like... damp paper. No surprise there.",
+                                "smell": "Smells like... damp paper. No surprise there.",
                                 "listen": "Are you really expecting to hear something from a piece of paper? Mmm-kay..."
                         },
                         True)
@@ -274,8 +274,8 @@ if __name__ == "__main__":
                         "A metallic item is partially buried in the dirt. It's an FBI badge.",
                         {
                                 "touch": "It's hard metal. Probably the real thing.",
-                                "taste": "It tastes like metal...and dirt.",
-                                "smell": "Dirt. Definitely smells like dirt. But wait...is that a trace of a woman's "
+                                "taste": "It tastes like metal... and dirt.",
+                                "smell": "Dirt. Definitely smells like dirt. But wait... is that a trace of a woman's "
                                     "perfume too?",
                                 "listen": "I don't think the badge is going to tell you anything. You're on your own."
                         },
@@ -286,13 +286,13 @@ if __name__ == "__main__":
     # Garage (R08)
     R08 = room.Room("R08", "Garage",
                     "You enter a large garage. This thing is huge! There's only one car though, "
-                    "a vintage VW van that looks like it's kept immaculate. In the back corner there is a large "
+                    "a vintage VW van that looks like it's been kept immaculate. In the back corner, there is a large "
                     "storage closet. A workbench along the far wall looks very orderly with tools. To the east is "
                     "the kitchen. To the north is the rear exit of the garage. It opens onto a paved path that "
                     "will take you around the back of the house to the patio. To the south are the main garage doors. "
                     "There's a fancy looking keypad though, and no button in sight. It appears you need a code to "
                     "open the doors from inside.",
-                    "You enter a large well-kept garage with a vintage VW and a large storage closet. To the east is "
+                    "You enter a large, well-kept garage with a vintage VW and a large storage closet. To the east is "
                     "the kitchen and to the north is a path that leads to the patio."
                     )
     
@@ -310,7 +310,7 @@ if __name__ == "__main__":
     
     # Set the interactions
     R08.set_interactions({
-            "search": "You search the garage but everything seems quite orderly. Perhaps you should check the storage closet. ",
+            "search": "You search the garage, but everything seems quite orderly. Perhaps you should check the storage closet. ",
             "touch": "Touch what, exactly?",
             "taste": "It doesn't seem quite safe to taste things in the garage.",
             "smell": "Hmm, that's odd. There's a slight smell of exhaust. Has someone driven the van recently?",
@@ -327,7 +327,7 @@ if __name__ == "__main__":
                                 "A closet full of what appears to be old, forgotten junk.",
                                 {
                                 "search": "Seems like your first impression was right, just a bunch of junk. But just "
-                                        "as you're about to close the door you notice a nice, shiny candlestick tucked between "
+                                        "as you're about to close the door, you notice a nice, shiny candlestick tucked between "
                                         "some of the boxes on the shelf. 'Well that seems out of place,' you muse.",
                                 "touch": "Dust covers almost every surface.",
                                 "taste": "Tastes like dust and... old stuff.",
@@ -345,7 +345,7 @@ if __name__ == "__main__":
                                 "wouldn't appreciate it, you think sadly. It seems to be well taken care of and loved.",
                                 "The VW van looks to be in good condition.",
                                 {
-                                "search": "The doors are locked but you peer through the windows. Either it's been "
+                                "search": "The doors are locked, but you peer through the windows. Either it's been "
                                         "restored lately or it's been very well taken care of. Nothing seems to be out of "
                                         "place inside. It may have a slight oil leak as there's a stain underneath on "
                                         "the garage floor.",
@@ -369,7 +369,7 @@ if __name__ == "__main__":
                                 "touch": "It's clean, not dusty at all like everything else.",
                                 "taste": "You lick the candlestick and think you taste bleach.",
                                 "smell": "The candlestick smells faintly of bleach, or some other cleaning substance.",
-                                "listen": "The candlestick doesn't make noise, silly, it's a candlestick."
+                                "listen": "The candlestick doesn't make noise, silly. It's a candlestick."
                         },
                         True)
 
@@ -380,7 +380,7 @@ if __name__ == "__main__":
                     "You enter the shed. It seems quite orderly for a tool shed. The walls are made up of pegboard "
                     "and have labeled spots for various tools of all sorts. You've never seen such an organized shed. "
                     "To the west is the garden.",
-                    "The shed is well organized with a wide array of tools. The garden is to the west."
+                    "The shed is well-organized with a wide array of tools. The garden is to the west."
                     )
     
     # Set the connections, features, objects, and persons (if applicable)
@@ -401,7 +401,7 @@ if __name__ == "__main__":
     
     # Set the interactions
     R09.set_interactions({
-            "search": "You search the shed. It seems a tool is missing from its spot on the pegboard wall "
+            "search": "You search the shed. It seems a tool is missing from its spot on the pegboard wall, "
                     "and a workbench drawer is slightly open. Nothing else seems out of place.",
             "touch": "What exactly would you like to touch?",
             "taste": "Considering there are fertilizers and such in here, I would advise against tasting anything.",
@@ -414,7 +414,7 @@ if __name__ == "__main__":
     # missing tool (F01R09) 
     F01R09 = feature.Feature("F01R09", "Missing Tool",
                                 "The empty spot on the pegboard is labeled 'large garden shears'. Based on the "
-                                "size of the empty space, you imagine they're pretty large and probably heavy. They could "
+                                "size of the empty space, you imagine they're pretty large and heavy. They could "
                                 "probably do some bodily harm.",
                                 "A large set of gardening shears are missing from the shed.",
                                 {
@@ -448,12 +448,12 @@ if __name__ == "__main__":
 
     # receipt (O07)
     O07 = object.Object("O07", "receipt",
-                        "The receipt seems fresh. The print is still nice and dark and there are not any wrinkles to indicate "
+                        "The receipt seems fresh. The print is still nice and dark, and there are not any wrinkles to indicate "
                         "age or wear.",
                         "The receipt appears to be from a recent purchase.", 
                         {
                                 "touch": "It feels like paper.",
-                                "taste": "A bit salty, Al must be sweating.",
+                                "taste": "A bit salty. Al must be sweating.",
                                 "smell": "If you try really hard, you think you smell fresh ink.",
                                 "listen": "You hear nothing.",
                                 "read": "You look at the receipt and read the date, time, and store address. It's from today, "
@@ -470,24 +470,24 @@ if __name__ == "__main__":
                         "Al is acting rather nervous. Pacing and muttering to himself. You try to get a good read on him "
                         "without appearing to stare. He's probably in his 60s, tanned and weathered looking. Makes sense "
                         "since he's worked here for so long and spent so much time outside caring for the garden. You know "
-                        "he takes great pride in his work and loves what he does. His hands are dirty, dirt caked under his "
+                        "he takes great pride in his work and loves what he does. His hands are dirty with dirt caked under his "
                         "nails. You'd expect as much. There doesn't appear to be any blood though.",
-                        "The gardener, Al, is acting nervous and muttering about he 'doesn't know what he's going to do now.'",
+                        "The gardener, Al, is acting nervous and muttering about how he 'doesn't know what he's going to do now.'",
                         {
                             'ask': {
                                 'P01': "You ask Al about Alice. 'Poor kid. She was always nice enough to me, treated me with "
-                                    "kindness. She's pretty broken up about losing Norman. Hopefully she'll keep me on if "
-                                    "she inherits this place. I know that's selfish to think about myself at a time like this "
+                                    "kindness. She's pretty broken up about losing Norman. Hopefully, she'll keep me on if "
+                                    "she inherits this place. I know it's selfish to think about myself at a time like this, "
                                     "but I've been here so long, I don't know what else I'd do. Not like he ever payed me enough "
                                     "to be able to retire and take it easy.'",
-                                'P02': "You ask Al about Adam. 'That kid and his dad never got along, all they did was argue "
-                                    "about money. Adam wanted it and Norman didn't want to give him handouts, thought he needed to "
+                                'P02': "You ask Al about Adam. 'That kid and his dad never got along. All they did was argue "
+                                    "about money. Adam wanted it, and Norman didn't want to give him handouts, thought he needed to "
                                     "work to earn it. If he inherits this "
-                                    "place I'm a goner for sure. He'd fire me just out of spite for his dad. I hate to even think "
+                                    "place, I'm a goner for sure. He'd fire me just out of spite for his dad. I hate to even think "
                                     "about what will happen to my beautiful gardens.'",
                                 'P03': "You mention Sam and Al starts to get agitated. 'He's trouble if you ask me. I caught him "
-                                    "snooping around the garden earlier, looking guilty as ever. I don't know what he was doing but "
-                                    "I told him if he messes with any of my plants he'll have me to deal with. I thought I saw him "
+                                    "snooping around the garden earlier, looking guilty as ever. I don't know what he was doing, but "
+                                    "I told him if he messes with any of my plants, he'll have me to deal with. I thought I saw him "
                                     "around my greenhouse earlier too. There's just no reason for him to go in there.'",
                                 'P04': "You ask Al about himself. 'What do you want to know? Seems like I've worked here my whole "
                                     "life. I love this garden, spend more time here than I do at my own home. The stingy old man "
@@ -495,25 +495,25 @@ if __name__ == "__main__":
                                     "the one here.'",
                                 'P05': "You ask Al about Heather. 'Can't say I really know anything about her. I just met her "
                                     "briefly after she arrived, showed her around the garden a little.'",
-                                'P06': "You question Al about Ava. 'You know, there's something familiar about her but I can't "
+                                'P06': "You question Al about Ava. 'You know, there's something familiar about her, but I can't "
                                     "quite put my finger on it. I don't really interact with the retreat participants too much "
                                     "unless they want a guided tour of the gardens. I love to talk about my plants.'",
-                                'F01R01': "You ask Al about Norman and he seems to get frustrated. 'All the work I do for him, "
-                                    "keeping his gardens in immaculate shape and he never showed any appreciation. I wouldn't "
+                                'F01R01': "You ask Al about Norman, and he seems to get frustrated. 'All the work I do for him, "
+                                    "keeping his gardens in immaculate shape, and he never showed any appreciation. I wouldn't "
                                     "still be here if I didn't love what I do so much.'",
-                                'F02R07': "You ask Al about the sunken spot in the corner of the garden. 'Oh that? I had to dig "
+                                'F02R07': "You ask Al about the sunken spot in the corner of the garden. 'Oh, that? I had to dig "
                                     "up a plant recently. Try as I might, I just couldn't get it to flourish. I think it's something "
                                     "in the soil over there, or maybe just not the right climate.'",
-                                'F02R08': "You ask Al about the van being used recently. 'Oh yeah, I ran out to the gardening "
+                                'F02R08': "You ask Al about the van being used recently. 'Oh, yeah. I ran out to the gardening "
                                     "center to get some supplies earlier. The boss let me use his van. See, here's my receipt.' Al "
-                                    "holds the receipt out towards you then goes slightly pale, 'What if I was the last person to "
-                                    "see him alive when I got the keys from him? Oh man, what if I had just stuck around instead, "
-                                    "maybe he'd still be alive.'",
+                                    "holds the receipt out towards you then goes slightly pale. 'What if I was the last person to "
+                                    "see him alive when I got the keys from him? Oh, man. What if I had just stuck around instead? "
+                                    "Maybe he'd still be alive.'",
                                 'F01R09': "You ask Al about the empty space on the wall, where there appears to be a large tool "
                                     "missing. 'I just came in here and found it like that. My large gardening shears are missing. "
-                                    "They're my good heavy-duty ones too. Knock someone over the head with those and... oh God, I "
+                                    "They're my good heavy-duty ones too. Knock someone over the head with those and... oh, God. I "
                                     "didn't mean it like that, bad choice of words.' He seems truly embarrassed by his choice of "
-                                    "words. 'There are some gloves missing too, not sure what somebody is getting up to with those.'",
+                                    "words. 'There are some gloves missing too. Not sure what somebody is getting up to with those.'",
                                 'F02R09': "You ask Al about the open drawer. 'That's where I keep all my different gardening "
                                     "and work gloves. There's a pair missing. I always put things back when I'm done so I don't know "
                                     "where they could possibly be.'",
@@ -527,23 +527,23 @@ if __name__ == "__main__":
                                     "I don't understand guys wearing earrings, myself.'",
                                 'O06': "You ask Al about the washcloth. 'Where'd you find that? It must be from the house, that's "
                                     "too fancy for one of my rags.'",
-                                'O08': "You ask Al about the gardening shears. 'They went missing from my shed, you can see the "
+                                'O08': "You ask Al about the gardening shears. 'They went missing from my shed. You can see the "
                                     "spot there on the wall. I like to keep a tight ship here, everything in it's place. You can even "
-                                    "see where I've labled the spot.' Al points to the empty space on the wall. 'Where'd you find "
+                                    "see where I've labeled the spot.' Al points to the empty space on the wall. 'Where'd you find "
                                     "them?'",
                                 'O10': "You ask Al about the smudged drawing. 'Hmm, \"wolfs-\",' he starts to read. 'That looks "
                                     "like it used to be a drawing of wolfsbane. I've got one of those over in the corner of the garden. "
-                                    "Kind of a little pet project I have going on, got interested in it after reading about it in some "
+                                    "Kind of a little pet project I have going on. I got interested in it after reading about it in some "
                                     "folklore stories I like to read.'",
                                 'O11': "You ask Al about the victim's will. 'Pfft, I'm sure I'm not in it. All the hard work I "
                                     "put into this garden and Norman never seemed to appreciate it. I'd be surprised if he left me so "
                                     "much as a single tool.'",
-                                'O12': "You ask Al about the FBI badge. 'You say you found that in my garden? Well it wasn't there "
+                                'O12': "You ask Al about the FBI badge. 'You say you found that in my garden? Well, it wasn't there "
                                     "yesterday, I can tell you that for sure. Never seen it before.'"
                             },
-                            'touch': "You reach out and pat Al on the shoulder in a consoling way and he just looks at you funny. "
+                            'touch': "You reach out and pat Al on the shoulder in a consoling way, and he just looks at you funny. "
                                 "Ew, he's rather sweaty.",
-                            'smell': "You smell an interesting mix of oil from the tools and sweat from Al, not the most pleasant "
+                            'smell': "You smell an interesting mix of oil from the tools and sweat from Al. Not the most pleasant "
                                 "combination.",
                             'listen': "You catch mutterings of 'What now?' and 'Where are they?'",
                             'search': "You ask Al if he has anything that will help with the investigation. 'Just this receipt "
@@ -554,8 +554,8 @@ if __name__ == "__main__":
 
     # Greenhouse (R10)
     R10 = room.Room("R10", "Greenhouse",
-                    "You are in a lovely greenhouse, it's quite warm in here. The tables are full of "
-                    "all sorts of plants and flowers, every color of the rainbow seems to be represented. "
+                    "You are in a lovely greenhouse. It's quite warm in here. The tables are full of "
+                    "all sorts of plants and flowers. Every color of the rainbow seems to be represented. "
                     "This must be where Al starts his new plants. To the south is the garden.",
                     "The greenhouse has all sorts of plants and flowers on display. The garden "
                     "is to the south."
@@ -575,9 +575,9 @@ if __name__ == "__main__":
     # Set the interactions
     R10.set_interactions({
             "search": "You walk through the greenhouse. There's a section of flower pots that are knocked over "
-                "and broken. That strikes you as very odd, not something that the gardener would do. There's a pile "
+                "and broken. That strikes you as very odd and not something that the gardener would do. There's a pile "
                 "of bags of potting soil in the corner that also looks disturbed. The gardener seems to be the orderly "
-                "sort so this also seems uncharacteristic.",
+                "sort, so this also seems uncharacteristic.",
             "touch": "There are so many things in here. What specifically do you want to touch?",
             "taste": "There are so many plants in here. What specifically do you want to taste?",
             "smell": "It's quite fragrant. There are so many flowers you can't pick out just one scent. The smell of "
@@ -590,13 +590,13 @@ if __name__ == "__main__":
     # broken flower pots (F01R10)
     F01R10 = feature.Feature("F01R10", "broken flower pots",
                                 "There are numerous broken flower pots. You can't tell if it was intentional or an "
-                                "accident. 'What a shame,' you think, hopefully the gardener can still save the plants. "
+                                "accident. 'What a shame,' you think. Hopefully, the gardener can still save the plants. "
                                 "It seems it's just this one section with blue and purple flowers that has been disturbed.",
                                 "The section of blue and purple flowers has many broken and knocked over flower pots.",
                                 {
                                 "search": "You look through the broken pots. There's nothing but a mess of potting soil "
                                     "and damaged plants.",
-                                "touch": "The soil is still damp, it hasn't had time to dry out.",
+                                "touch": "The soil is still damp. It hasn't had time to dry out.",
                                 "taste": "Tastes like dirt.",
                                 "smell": "Potting soil and... maybe a hint of cologne.",
                                 "listen": "You hear nothing."
@@ -607,8 +607,8 @@ if __name__ == "__main__":
 
     # bags of potting soil (F02R10)
     F02R10 = feature.Feature("F02R10", "bags of potting soil",
-                                "The bags look like they were once stacked neatly but some have been pulled out of the "
-                                "middle of the stack and messed up the orderly pile.",
+                                "The bags look like they were once stacked neatly, but some have been pulled out of the "
+                                "middle of the stack, which messed up the orderly pile.",
                                 "Some bags of potting soil have been pulled out of the middle of the pile.",
                                 {
                                 "search": "You take a closer look at where the bags have been removed and see a pair "
@@ -626,13 +626,13 @@ if __name__ == "__main__":
     # gardening shears (O08)
     O08 = object.Object("O08", "gardening shears",
                         "The gardening shears are large and look like they might be quite heavy. They could certainly "
-                        "be used as a weapon in the wrong hands. There's a dark stain, you can't quite tell if it's blood "
+                        "be used as a weapon in the wrong hands. There's a dark stain. You can't quite tell if it's blood "
                         "or rust.",
                         "Large gardening shears with a dark stain, perhaps blood or rust.",
                         {
                                 "touch": "The shears are heavy, just as you suspected.",
                                 "taste": "There's a metallic taste. Is that due to the metal or maybe blood? Are you "
-                                    "second-thinking your decision to taste them now?",
+                                    "second-guessing your decision to taste them now?",
                                 "smell": "Smells like metal and dirt.",
                                 "listen": "The shears have nothing to say at the moment."
                         },
