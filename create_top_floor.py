@@ -478,7 +478,7 @@ if __name__ == "__main__":
                                    "be a reason why you haven't dated anyone else after all these years.\nAnyway, "
                                    "I know that, like always, you likely won't respond to this, but I'll be in your "
                                    "area in a couple weeks for work and I was thinking that maybe I could stop by.\n"
-                                   "Love,\n     A.S."
+                                   "Love,\n     A."
                             },
                             True)
 
@@ -619,10 +619,8 @@ if __name__ == "__main__":
                                           "suspicious, and I noticed that he mentioned nothing about occupation when "
                                           "we spoke. That being said, I don't know much about him.'",
                                    "P04": "You ask Adam about Al. "
-                                          "'Al has always been there for me,' Adam says, 'even when my father wasn't. "
-                                          "Truth be told, my father probably didn't treat him as well as he should have. But "
-                                          "Al was always loyal, maybe even too loyal... Either way, you won't catch me "
-                                          "saying a bad thing about Al. He's like a second father to me.'",
+                                          "'Truth be told, my father probably didn't treat him as well as he should have,' "
+                                          "Adam tells you. 'But Al was always loyal, maybe even too loyal...'",
                                    "P05": "You ask Adam about Heather. "
                                           "'Ah, Heather Poirot,' Adam says. 'I didn't get much of an opportunity to "
                                           "speak with her, but I got the sense that she came here with a purpose. As far "
@@ -664,13 +662,13 @@ if __name__ == "__main__":
                                           "He pauses for a moment to think. 'You don't think that woman downstairs was the "
                                           "the one who sent this, do you?' He shakes his head. 'Nah, probably not. Although "
                                           "I swear she looks familiar...'",
-                                   "O10": "You show the drawing of the wolfsbane to Adam. "
-                                          "Adam's cheeks turn red when he looks at the drawing. You notice him "
+                                   "O10": "You show the torn page to Adam. "
+                                          "Adam's cheeks turn red when he looks at the page. You notice him "
                                           "clenching his fists so tightly that his knuckles turn white. 'Alright,' he "
                                           "says. 'I had a hunch that my father might be changing his will sometime "
                                           "soon, what with him and Alice being so close and all. That didn't sit right "
                                           "with me. After all, the estate has been in our family for many generations.' "
-                                          "Adam pauses, and takes a deep breath. 'So I poisoned his dinner. The man "
+                                          "Adam pauses, and takes a deep breath. 'So I poisoned his food. The man "
                                           "had it coming. He was an utterly worthless father and a terrible human "
                                           "being. But, at the last minute, we got into an argument, and I confessed "
                                           "what I had done to him. He stormed off, and that was the last time I saw "
