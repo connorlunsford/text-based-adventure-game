@@ -976,9 +976,9 @@ class System:
             "by the descendent of an old family that became wealthy during the "
             "California Gold Rush circa the 1850s--a man by the name of Norman "
             "Bates. "
-            "This piques your interest and, the next day, you call the phone "
+            "This piques your interest. The next day, you call the phone "
             "number on the advertisement to book a reservation two weeks from "
-            "now and request that Friday off from work. ",
+            "now, and you request that Friday off from work. ",
             "Two weeks later, you wake up at 4:00 AM on Friday, the first day of "
             "the retreat, to get ready and catch the bus north to the city "
             "of Eureka. "
