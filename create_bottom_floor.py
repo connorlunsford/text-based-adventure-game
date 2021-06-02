@@ -118,7 +118,7 @@ if __name__ == '__main__':
     # F02R01 the end table
     F02R01 = feature.Feature('F02R01', "End Table",
                              'Examining the end table closer reveals nothing out of the ordinary at first. You '
-                             'open the window to allow a beam of light to enter the room so you can get a closer look. '
+                             'open the window to allow a beam of light to enter the room so you can get a better look. '
                              'The light reveals a thin layer of dust on the table, almost imperceptible. Next to the '
                              'candlestick is a void in the dust, where a similar shaped object appears to have been recently.',
                              'A small end table sits in the corner of the room near the entrance to the kitchen. '
