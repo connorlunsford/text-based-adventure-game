@@ -260,12 +260,12 @@ class TestCase(unittest.TestCase):
     #     self.test_room.add_connection("west","R02")
     #     self.test_room.remove_connection("R01")
     #     self.assertEqual(self.test_room.get_connections(), {'west':"R02"})
-
-    def test_remove_connection2(self):
-        """remove_connection successfully raises an exception when the provided
-        room ID does not exist in the connections list"""
-        with self.assertRaises(room.IDDoesNotExist):
-            self.test_room.remove_connection("R01")
+    #
+    # def test_remove_connection2(self):
+    #    """remove_connection successfully raises an exception when the provided
+    #    room ID does not exist in the connections list"""
+    #    with self.assertRaises(room.IDDoesNotExist):
+    #        self.test_room.remove_connection("R01")
     
     def test_get_connections1(self):
         """get_connections successfully returns the entire connections list
