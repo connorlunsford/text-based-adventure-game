@@ -227,8 +227,14 @@ class System:
                 print('You tell him your name and describe the situation.')
                 print('"A murder, you say? And who did you say was the culprit?"')
                 killer = input('\033[0;33;40mName of the killer: \033[0;32;40m')
+                if killer == "":
+                    print("\033[1;33;40mPlease enter a name instead of empty input\033[0;32;40m")
+                    return False
                 print('\033[0;37;40m"Ah, I see. And how did they kill this man?"')
                 weapon = input('\033[0;33;40mName of the murder weapon: \033[0;32;40m')
+                if weapon == "":
+                    print("\033[1;33;40mPlease enter an object instead of empty input\033[0;32;40m")
+                    return False
                 print('\033[0;37;40m')
 
                 # Format and save the player input for later use
